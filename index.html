@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Skor Reports</title>
+  <style>
+    :root {
+      --bg: #050505;
+      --panel: #121212;
+      --panel-strong: #1a1a1a;
+      --ink: #f5f5f5;
+      --muted: #adadad;
+      --line: rgba(255,255,255,0.1);
+      --accent: #ffffff;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Avenir Next", "Helvetica Neue", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(255,255,255,0.06), transparent 20%),
+        linear-gradient(180deg, #1a1a1a 0%, #090909 28%, var(--bg) 100%);
+    }
+    .wrap {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 28px 18px 56px;
+    }
+    .hero {
+      padding: 28px;
+      border-radius: 28px;
+      background: linear-gradient(135deg, #1a1a1a, #080808);
+      border: 1px solid var(--line);
+      box-shadow: 0 24px 48px rgba(0,0,0,0.24);
+    }
+    .eyebrow {
+      margin: 0 0 10px;
+      color: #d3d3d3;
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 800;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(34px, 7vw, 56px);
+      line-height: 0.95;
+    }
+    .sub {
+      margin: 12px 0 0;
+      color: var(--muted);
+      line-height: 1.5;
+      max-width: 56ch;
+    }
+    .grid {
+      margin-top: 22px;
+      display: grid;
+      gap: 14px;
+    }
+    .card, .empty {
+      padding: 20px;
+      border-radius: 22px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+    }
+    .card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+    .title {
+      font-size: 22px;
+      font-weight: 800;
+    }
+    .meta {
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 0 18px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: var(--accent);
+      color: #050505;
+      font-weight: 800;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    @media (max-width: 720px) {
+      .hero, .card, .empty {
+        padding: 18px;
+        border-radius: 20px;
+      }
+      .card {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+      .button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="hero">
+      <div class="eyebrow">Skor Reports</div>
+      <h1>Published game reports.</h1>
+      <p class="sub">Run the GitHub Action with a WhatsApp message or Skor link. The generated reports will appear here.</p>
+    </section>
+    <section class="grid">
+      
+    <article class="card">
+      <div>
+        <div class="title">2201 smash padel</div>
+        <div class="meta">Played 21 Jan 2026 · 10 players · 10 rounds</div>
+      </div>
+      <a class="button" href="reports/5gPfD1QD4GikarmjllEeT3/report.html">Open report</a>
+    </article>
+    
+    </section>
+  </main>
+</body>
+</html>
