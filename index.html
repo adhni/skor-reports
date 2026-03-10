@@ -54,6 +54,12 @@
       line-height: 1.5;
       max-width: 56ch;
     }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 18px;
+    }
     .grid {
       margin-top: 22px;
       display: grid;
@@ -94,6 +100,16 @@
       text-decoration: none;
       white-space: nowrap;
     }
+    .button-secondary {
+      background: transparent;
+      color: var(--ink);
+    }
+    .card-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
     @media (max-width: 720px) {
       .hero, .card, .empty {
         padding: 18px;
@@ -106,6 +122,9 @@
       .button {
         width: 100%;
       }
+      .card-actions {
+        width: 100%;
+      }
     }
   </style>
 </head>
@@ -115,15 +134,19 @@
       <div class="eyebrow">Skor Reports</div>
       <h1>Published game reports.</h1>
       <p class="sub">Run the GitHub Action with a WhatsApp message or Skor link. The generated reports will appear here.</p>
+      <div class="hero-actions"><a class="button" href="reports/44Kk2e0Qejxb6j4G1cGAgv/report.html">Latest report</a><a class="button button-secondary" href="reports/44Kk2e0Qejxb6j4G1cGAgv/stories/index.html">Latest stories</a></div>
     </section>
     <section class="grid">
       
     <article class="card">
       <div>
-        <div class="title">Padelbox Trial 122</div>
-        <div class="meta">Played 12 Feb 2026 · 30 players · 9 rounds</div>
+        <div class="title">Milos 172 Gong Xie</div>
+        <div class="meta">Played 16 Feb 2026 · 20 players · 10 rounds</div>
       </div>
-      <a class="button" href="reports/3Sj6N3HSY11bsG9gEA8zP7/report.html">Open report</a>
+      <div class="card-actions">
+        <a class="button button-secondary" href="reports/44Kk2e0Qejxb6j4G1cGAgv/stories/index.html">Story gallery</a>
+        <a class="button" href="reports/44Kk2e0Qejxb6j4G1cGAgv/report.html">Open report</a>
+      </div>
     </article>
     
 
@@ -132,7 +155,10 @@
         <div class="title">2201 smash padel</div>
         <div class="meta">Played 21 Jan 2026 · 10 players · 10 rounds</div>
       </div>
-      <a class="button" href="reports/5gPfD1QD4GikarmjllEeT3/report.html">Open report</a>
+      <div class="card-actions">
+        <a class="button button-secondary" href="reports/5gPfD1QD4GikarmjllEeT3/stories/index.html">Story gallery</a>
+        <a class="button" href="reports/5gPfD1QD4GikarmjllEeT3/report.html">Open report</a>
+      </div>
     </article>
     
     </section>
