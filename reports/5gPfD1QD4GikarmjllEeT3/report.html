@@ -99,6 +99,28 @@
       margin-top: 22px;
       gap: 10px;
     }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 14px;
+    }
+    .hero-action {
+      display: inline-flex;
+      align-items: center;
+      padding: 12px 16px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.12);
+      color: #ffffff;
+      border: 1px solid rgba(255,255,255,0.14);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      text-decoration: none;
+    }
+    .hero-action:hover {
+      background: rgba(255,255,255,0.18);
+    }
     .chart-legend {
       grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
       margin-top: 18px;
@@ -225,6 +247,57 @@
     .leaderboard-cards {
       display: grid;
       gap: 12px;
+    }
+    .story-grid-links {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+    }
+    .story-link-card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 18px;
+      color: var(--ink);
+    }
+    .story-link-rank {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 44px;
+      height: 32px;
+      padding: 0 12px;
+      border-radius: 999px;
+      background: var(--accent);
+      color: white;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+    }
+    .story-link-name {
+      margin-top: 14px;
+      font-size: 22px;
+      font-weight: 800;
+      line-height: 1;
+    }
+    .story-link-meta {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.45;
+    }
+    .story-link-button {
+      display: inline-flex;
+      align-items: center;
+      margin-top: 14px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: var(--accent);
+      color: white;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      text-decoration: none;
     }
     .leaderboard-card {
       background: var(--panel);
@@ -599,14 +672,15 @@
             <p class="eyebrow">Skor Game Report</p>
             <h1>2201 smash padel</h1>
             <p class="sub">
-              Mexicano night on 22 Jan 2026. Full player standings, round results, and rank flow in one place.
+              Mexicano night on 21 Jan 2026. Full player standings, round results, and rank flow in one place.
             </p>
           </div>
         </div>
       </div>
       <div class="hero-tags">
-        <span class="hero-tag">10 players</span><span class="hero-tag">10 rounds</span><span class="hero-tag">2 courts</span><span class="hero-tag">22 Jan 2026</span>
+        <span class="hero-tag">10 players</span><span class="hero-tag">10 rounds</span><span class="hero-tag">2 courts</span><span class="hero-tag">21 Jan 2026</span>
       </div>
+      <div class="hero-actions"><a class="hero-action" href="player-story-kareem-mulachela.html">Featured player story: Kareem Mulachela</a><a class="hero-action" href="stories/index.html">Story image gallery</a></div>
     </section>
 
     <section class="section">
@@ -651,6 +725,25 @@
         <article class="podium-card place-2"><div class="podium-place">Silver</div><div class="podium-rank">2</div><div class="podium-name">Kareem Mulachela</div><div class="podium-meta">Total 28<br>Record 4-4-0<br>Diff 8</div></article>
 <article class="podium-card place-1"><div class="podium-place">Gold</div><div class="podium-rank">1</div><div class="podium-name">Bima</div><div class="podium-meta">Total 32<br>Record 6-2-0<br>Diff 16</div></article>
 <article class="podium-card place-3"><div class="podium-place">Bronze</div><div class="podium-rank">3</div><div class="podium-name">RachmatP</div><div class="podium-meta">Total 27<br>Record 6-2-0<br>Diff 6</div></article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <h2>Player Stories</h2>
+        <div class="section-note">Generated locally from the same report bundle.</div>
+      </div>
+      <div class="story-grid-links">
+        <article class="story-link-card"><span class="story-link-rank">#1</span><div class="story-link-name">Bima</div><div class="story-link-meta">6W-2L · 28 pts</div><a class="story-link-button" href="player-story-bima.html">Open story</a></article>
+<article class="story-link-card"><span class="story-link-rank">#2</span><div class="story-link-name">Kareem Mulachela</div><div class="story-link-meta">4W-4L · 24 pts</div><a class="story-link-button" href="player-story-kareem-mulachela.html">Open story</a></article>
+<article class="story-link-card"><span class="story-link-rank">#3</span><div class="story-link-name">RachmatP</div><div class="story-link-meta">6W-2L · 23 pts</div><a class="story-link-button" href="player-story-rachmatp.html">Open story</a></article>
+<article class="story-link-card"><span class="story-link-rank">#4</span><div class="story-link-name">Farid</div><div class="story-link-meta">5W-3L · 21 pts</div><a class="story-link-button" href="player-story-farid.html">Open story</a></article>
+<article class="story-link-card"><span class="story-link-rank">#5</span><div class="story-link-name">Medi</div><div class="story-link-meta">4W-4L · 20 pts</div><a class="story-link-button" href="player-story-medi.html">Open story</a></article>
+<article class="story-link-card"><span class="story-link-rank">#6</span><div class="story-link-name">piko er</div><div class="story-link-meta">4W-4L · 19 pts</div><a class="story-link-button" href="player-story-piko-er.html">Open story</a></article>
+<article class="story-link-card"><span class="story-link-rank">#7</span><div class="story-link-name">Areza</div><div class="story-link-meta">4W-4L · 18 pts</div><a class="story-link-button" href="player-story-areza.html">Open story</a></article>
+<article class="story-link-card"><span class="story-link-rank">#8</span><div class="story-link-name">adhni</div><div class="story-link-meta">3W-5L · 16 pts</div><a class="story-link-button" href="player-story-adhni.html">Open story</a></article>
+<article class="story-link-card"><span class="story-link-rank">#9</span><div class="story-link-name">muhammad ghafiqi</div><div class="story-link-meta">2W-6L · 16 pts</div><a class="story-link-button" href="player-story-muhammad-ghafiqi.html">Open story</a></article>
+<article class="story-link-card"><span class="story-link-rank">#10</span><div class="story-link-name">Tea</div><div class="story-link-meta">2W-6L · 15 pts</div><a class="story-link-button" href="player-story-tea.html">Open story</a></article>
       </div>
     </section>
 
