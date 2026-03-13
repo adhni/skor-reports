@@ -335,6 +335,32 @@
       border: 1px solid rgba(19,17,12,0.08);
       background: rgba(255,255,255,0.72);
     }
+    .trust-grid {
+      margin-top: 18px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+    }
+    .trust-card {
+      padding: 14px;
+      border-radius: 20px;
+      border: 1px solid rgba(19,17,12,0.08);
+      background: rgba(255,255,255,0.64);
+    }
+    .trust-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+      font-weight: 900;
+    }
+    .trust-copy {
+      margin-top: 8px;
+      font-size: 14px;
+      line-height: 1.5;
+      color: var(--ink);
+      font-weight: 800;
+    }
     .help-title {
       margin: 0;
       font-size: 16px;
@@ -452,6 +478,35 @@
       flex-wrap: wrap;
       margin-top: 18px;
     }
+    .result-summary[hidden] {
+      display: none;
+    }
+    .result-summary {
+      margin-top: 18px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+    }
+    .result-card {
+      padding: 14px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.72);
+      border: 1px solid rgba(19,17,12,0.08);
+    }
+    .result-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+      font-weight: 900;
+    }
+    .result-value {
+      margin-top: 8px;
+      font-size: 14px;
+      line-height: 1.5;
+      color: var(--ink);
+      font-weight: 800;
+    }
     .status-pill-row {
       display: flex;
       flex-wrap: wrap;
@@ -495,7 +550,7 @@
       font-size: 0.95em;
     }
     @media (max-width: 860px) {
-      .hero, .grid, .proof-strip, .hero-audience {
+      .hero, .grid, .proof-strip, .hero-audience, .trust-grid, .result-summary {
         grid-template-columns: 1fr;
       }
       .proof-item {
@@ -510,12 +565,35 @@
       .shell {
         padding: 18px 14px 32px;
       }
+      .topbar {
+        align-items: flex-start;
+        flex-direction: column;
+      }
       .hero-copy, .hero-panel, .panel, .status-panel {
         border-radius: 24px;
         padding: 18px;
       }
       h1 {
         font-size: clamp(34px, 14vw, 52px);
+      }
+      .sub {
+        font-size: 16px;
+      }
+      .hero-notes {
+        gap: 8px;
+      }
+      .hero-note {
+        width: 100%;
+        justify-content: center;
+      }
+      .theme-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .text-input {
+        min-height: 82px;
+      }
+      .status-panel {
+        position: static;
       }
       button, .button {
         width: 100%;
@@ -626,6 +704,20 @@
               <li>Most reports are ready in about 1 minute.</li>
             </ul>
           </div>
+          <div class="trust-grid">
+            <div class="trust-card">
+              <div class="trust-label">Fast</div>
+              <div class="trust-copy">Most reports finish in about a minute.</div>
+            </div>
+            <div class="trust-card">
+              <div class="trust-label">Private Branding</div>
+              <div class="trust-copy">Uploaded logos are kept temporarily for report generation, then expire automatically.</div>
+            </div>
+            <div class="trust-card">
+              <div class="trust-label">See Example</div>
+              <div class="trust-copy">Want to preview the output first? Open the latest example above before submitting.</div>
+            </div>
+          </div>
 
           <div class="button-row">
             <button id="submit-button" type="submit">Create Match Report</button>
@@ -645,6 +737,7 @@
         </div>
         <div class="status-pill-row" id="status-pill-row"></div>
         <div class="status-actions" id="status-actions"></div>
+        <div class="result-summary" id="result-summary" hidden></div>
         <details id="technical-details" hidden>
           <summary>Technical details</summary>
           <div class="details-body" id="status-meta"></div>
@@ -665,6 +758,7 @@
     const statusPillRow = document.getElementById("status-pill-row");
     const statusMeta = document.getElementById("status-meta");
     const statusActions = document.getElementById("status-actions");
+    const resultSummary = document.getElementById("result-summary");
     const technicalDetails = document.getElementById("technical-details");
     const logoInput = document.getElementById("logo");
     const logoPreview = document.getElementById("logo-preview");
@@ -694,6 +788,18 @@
         .join("");
     }
 
+    function renderResultSummary(data) {
+      const cards = [
+        ["Report Page", "Full match recap page is live and ready to share."],
+        ["Story Pack", "Ranking stories and highlights are published together."],
+        ["Branding", data.theme_label ? `Built with the ${escapeHtml(data.theme_label)} look and your uploaded club logo if provided.` : "Built with your selected look and logo if provided."],
+      ];
+      resultSummary.hidden = false;
+      resultSummary.innerHTML = cards
+        .map(([label, value]) => `<div class="result-card"><div class="result-label">${label}</div><div class="result-value">${value}</div></div>`)
+        .join("");
+    }
+
     function renderStatus(title, copy, actionsHtml = "", metaHtml = "", progressStep = "build", badgeLabel = "In Progress", highlightTitle = "What happens next", highlightCopy = "Once you submit, the report build starts automatically and this panel updates until the final pages are ready.") {
       statusPanel.hidden = false;
       statusBadge.textContent = badgeLabel;
@@ -703,6 +809,8 @@
       statusHighlightCopy.textContent = highlightCopy;
       renderProgress(progressStep);
       statusActions.innerHTML = actionsHtml;
+      resultSummary.hidden = true;
+      resultSummary.innerHTML = "";
       if (metaHtml) {
         technicalDetails.hidden = false;
         statusMeta.innerHTML = metaHtml;
@@ -769,6 +877,7 @@
           "Your assets are live",
           "Open the full report, share the story pack, or start another match while this one is fresh."
         );
+        renderResultSummary(data);
         return true;
       }
       if (data.status === "failed") {
@@ -865,6 +974,8 @@
       statusMeta.innerHTML = "";
       statusActions.innerHTML = "";
       statusPillRow.innerHTML = "";
+      resultSummary.hidden = true;
+      resultSummary.innerHTML = "";
       resetLogoPreview();
       const defaultTheme = form.querySelector(`input[name="theme_id"][value="${defaultThemeId}"]`);
       if (defaultTheme) {
