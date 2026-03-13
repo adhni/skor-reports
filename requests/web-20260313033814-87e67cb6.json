@@ -1,0 +1,12 @@
+{
+  "request_id": "web-20260313033814-87e67cb6",
+  "status": "running",
+  "request_source": "web_form",
+  "input_value": "https://the.skorapp.id/game?id=3krE8OXdV4zgHqGGKnjfjN",
+  "theme_id": "rose",
+  "theme_label": "Rose",
+  "submitted_at_utc": "2026-03-13T03:38:42Z",
+  "updated_at_utc": "2026-03-13T03:38:42Z",
+  "message": "Workflow started. Generating report files now.",
+  "run_url": "https://github.com/adhni/skor-scrape/actions/runs/23035077589"
+}
