@@ -3,5 +3,12 @@
   "source": "share_link",
   "share_token": "4E01nE15I9VTMFvQWUq8ba",
   "game_id": 80409,
-  "generated_at_utc": "2026-03-11T01:28:40.923369+00:00"
+  "folder_name": "4E01nE15I9VTMFvQWUq8ba",
+  "public_report_base_url": "https://adhni.github.io/skor-reports/reports",
+  "branding": {
+    "theme_id": "cobalt",
+    "theme_label": "Cobalt",
+    "logo_filename": "logo.jpg"
+  },
+  "generated_at_utc": "2026-03-13T13:48:59.315575+00:00"
 }

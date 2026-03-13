@@ -5,7 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Imam | Skor Player Story</title>
   <script>
-    if (new URLSearchParams(window.location.search).has("export")) {
+    const skorExportMode =
+      new URLSearchParams(window.location.search).has("export") ||
+      window.location.hash === "#export";
+    if (skorExportMode) {
       document.documentElement.setAttribute("data-export", "1");
     }
   </script>
@@ -21,11 +24,11 @@
       --accent: #1d7d46;
       --accent-soft: rgba(29,125,70,0.26);
       --accent-glow: rgba(29,125,70,0.18);
-      --story-top: #141414;
-      --story-mid: #0a0a0a;
-      --story-bottom: #030303;
-      --story-grid: rgba(255,255,255,0.035);
-      --story-corner-glow: rgba(255,255,255,0.08);
+      --story-top: #1a3b68;
+      --story-mid: #0d2038;
+      --story-bottom: #05101c;
+      --story-grid: rgba(171,212,255,0.06);
+      --story-corner-glow: rgba(122,188,255,0.16);
     }
     * { box-sizing: border-box; }
     body {
@@ -94,9 +97,13 @@
       position: relative;
       z-index: 1;
       display: grid;
-      grid-template-rows: auto auto auto auto 1fr auto;
-      gap: 18px;
+      grid-template-rows: 136px auto auto auto 1fr auto;
+      gap: 14px;
       height: 100%;
+    }
+    .story-safe-top {
+      border-top: 6px solid rgba(255,255,255,0.54);
+      opacity: 0.92;
     }
     .eyebrow {
       margin: 0;
@@ -119,32 +126,41 @@
       min-width: 0;
     }
     .story-logo {
-      width: 138px;
-      height: 138px;
+      width: 112px;
+      height: 112px;
       object-fit: cover;
-      border-radius: 30px;
+      border-radius: 26px;
       background: white;
-      padding: 12px;
+      padding: 10px;
       border: 1px solid rgba(255,255,255,0.1);
       box-shadow: 0 18px 34px rgba(0,0,0,0.26);
       flex: 0 0 auto;
+    }
+    .logo-fallback {
+      display: grid;
+      place-items: center;
+      font-size: 34px;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      color: #0a0a0a;
+      text-transform: uppercase;
     }
     .story-brand-copy {
       min-width: 0;
     }
     .story-brand-title {
-      margin-top: 8px;
+      margin-top: 6px;
       color: rgba(255,255,255,0.84);
-      font-size: 28px;
+      font-size: 34px;
       font-weight: 800;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-      max-width: 34ch;
+      max-width: 24ch;
     }
     .story-code {
       color: rgba(255,255,255,0.68);
-      font-size: 36px;
+      font-size: 52px;
       font-weight: 900;
       line-height: 1;
       letter-spacing: 0.02em;
@@ -153,7 +169,7 @@
     }
     .hero-band {
       display: grid;
-      grid-template-columns: minmax(0, 1.4fr) 278px;
+      grid-template-columns: minmax(0, 1.48fr) 290px;
       gap: 18px;
       align-items: stretch;
     }
@@ -163,12 +179,13 @@
     }
     .identity-card {
       position: relative;
-      padding: 26px;
+      padding: 28px;
       padding-right: 236px;
       background:
         linear-gradient(135deg, rgba(255,255,255,0.08), transparent 40%),
         linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
       border: 1px solid rgba(255,255,255,0.08);
+      min-height: 460px;
     }
     .finish-line {
       margin: 0;
@@ -180,15 +197,15 @@
     }
     h1 {
       margin: 10px 0 0;
-      font-size: clamp(54px, 6.4vw, 88px);
+      font-size: clamp(54px, 6.1vw, 86px);
       line-height: 0.92;
       max-width: 6.8ch;
     }
     .summary {
       margin: 18px 0 0;
-      max-width: 26ch;
+      max-width: 24ch;
       color: rgba(255,255,255,0.78);
-      font-size: 20px;
+      font-size: 24px;
       line-height: 1.4;
     }
     .hero-metrics {
@@ -281,7 +298,7 @@
         linear-gradient(180deg, rgba(255,255,255,0.11), rgba(255,255,255,0.04)),
         linear-gradient(180deg, var(--accent-soft), rgba(255,255,255,0.02));
       border: 1px solid rgba(255,255,255,0.1);
-      min-height: 360px;
+      min-height: 460px;
     }
     .photo-frame {
       width: 100%;
@@ -309,7 +326,7 @@
       color: rgba(255,255,255,0.88);
     }
     .chart-card {
-      padding: 20px;
+      padding: 18px 20px;
       background:
         linear-gradient(180deg, rgba(255,255,255,0.98), rgba(238,238,238,0.98));
       color: var(--ink);
@@ -327,9 +344,9 @@
       font-weight: 900;
     }
     .chart-shell {
-      margin-top: 12px;
+      margin-top: 10px;
       border-radius: 24px;
-      padding: 14px;
+      padding: 12px;
       background: rgba(255,255,255,0.72);
       border: 1px solid rgba(16,16,16,0.08);
     }
@@ -339,10 +356,11 @@
       display: block;
     }
     .history-card {
-      padding: 20px;
+      padding: 18px 20px 22px;
       background:
         linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
       border: 1px solid rgba(255,255,255,0.08);
+      min-height: 440px;
     }
     .history-grid {
       margin-top: 12px;
@@ -357,7 +375,7 @@
       background: rgba(255,255,255,0.95);
       color: var(--ink);
       border: 1px solid rgba(16,16,16,0.08);
-      min-height: 92px;
+      min-height: 102px;
     }
     .round-card.win { background: #edfff2; }
     .round-card.loss { background: #fff0ec; }
@@ -409,6 +427,36 @@
       letter-spacing: 0.08em;
       text-transform: uppercase;
     }
+    .story-qr {
+      position: absolute;
+      right: 34px;
+      bottom: 108px;
+      z-index: 2;
+      width: 128px;
+      padding: 10px;
+      border-radius: 22px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.12);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 18px 30px rgba(0,0,0,0.18);
+    }
+    .story-qr img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 14px;
+      background: #fff;
+    }
+    .story-qr-label {
+      margin-top: 8px;
+      color: rgba(255,255,255,0.86);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-align: center;
+      line-height: 1.2;
+    }
     @media (max-width: 900px) {
       .story {
         padding: 20px;
@@ -416,6 +464,9 @@
       }
       .story-grid {
         grid-template-rows: auto;
+      }
+      .story-safe-top {
+        min-height: 90px;
       }
       .hero-band,
       .history-grid {
@@ -432,6 +483,11 @@
         min-height: 190px;
         border-radius: 28px;
       }
+      .story-qr {
+        right: 20px;
+        bottom: 92px;
+        width: 108px;
+      }
       .story {
         width: 1080px;
         height: 1920px;
@@ -443,7 +499,9 @@
   <div class="story-shell">
     <div class="story-stage">
       <main class="story">
+        <a class="story-qr" href="https://adhni.github.io/skor-reports/reports/4E01nE15I9VTMFvQWUq8ba/report.html" target="_blank" rel="noreferrer"><img src="https://quickchart.io/qr?text=https%3A%2F%2Fadhni.github.io%2Fskor-reports%2Freports%2F4E01nE15I9VTMFvQWUq8ba%2Freport.html&amp;size=180&amp;margin=0&amp;dark=111111&amp;light=ffffff" alt="QR code for full report"><div class="story-qr-label">Full report</div></a>
         <div class="story-grid">
+        <div class="story-safe-top" aria-hidden="true"></div>
         <header class="story-top">
           <div class="story-brand">
             <img class="story-logo" src="logo.jpg" alt="Skor logo">
@@ -483,40 +541,40 @@
             <h2 class="panel-title">Rank Shape</h2>
           </div>
           <div class="chart-shell">
-            <svg class="story-chart" viewBox="0 0 860 312" role="img" aria-label="Rank progression chart">
-  <rect x="72" y="28" width="746" height="242" rx="22" fill="rgba(255,255,255,0.58)" />
-  <line x1="72" y1="28.0" x2="818" y2="28.0" stroke="rgba(16,16,16,0.08)" stroke-width="1" /><text x="58" y="32.0" text-anchor="end" fill="rgba(16,16,16,0.54)" font-size="12" font-weight="800">#1</text>
-<line x1="72" y1="58.2" x2="818" y2="58.2" stroke="rgba(16,16,16,0.08)" stroke-width="1" /><text x="58" y="62.2" text-anchor="end" fill="rgba(16,16,16,0.54)" font-size="12" font-weight="800">#2</text>
-<line x1="72" y1="88.5" x2="818" y2="88.5" stroke="rgba(16,16,16,0.08)" stroke-width="1" /><text x="58" y="92.5" text-anchor="end" fill="rgba(16,16,16,0.54)" font-size="12" font-weight="800">#3</text>
-<line x1="72" y1="118.8" x2="818" y2="118.8" stroke="rgba(16,16,16,0.08)" stroke-width="1" /><text x="58" y="122.8" text-anchor="end" fill="rgba(16,16,16,0.54)" font-size="12" font-weight="800">#4</text>
-<line x1="72" y1="149.0" x2="818" y2="149.0" stroke="rgba(16,16,16,0.08)" stroke-width="1" /><text x="58" y="153.0" text-anchor="end" fill="rgba(16,16,16,0.54)" font-size="12" font-weight="800">#5</text>
-<line x1="72" y1="179.2" x2="818" y2="179.2" stroke="rgba(16,16,16,0.08)" stroke-width="1" /><text x="58" y="183.2" text-anchor="end" fill="rgba(16,16,16,0.54)" font-size="12" font-weight="800">#6</text>
-<line x1="72" y1="209.5" x2="818" y2="209.5" stroke="rgba(16,16,16,0.08)" stroke-width="1" /><text x="58" y="213.5" text-anchor="end" fill="rgba(16,16,16,0.54)" font-size="12" font-weight="800">#7</text>
-<line x1="72" y1="239.8" x2="818" y2="239.8" stroke="rgba(16,16,16,0.08)" stroke-width="1" /><text x="58" y="243.8" text-anchor="end" fill="rgba(16,16,16,0.54)" font-size="12" font-weight="800">#8</text>
-<line x1="72" y1="270.0" x2="818" y2="270.0" stroke="rgba(16,16,16,0.08)" stroke-width="1" /><text x="58" y="274.0" text-anchor="end" fill="rgba(16,16,16,0.54)" font-size="12" font-weight="800">#9</text>
-  <line x1="72.0" y1="28" x2="72.0" y2="270" stroke="rgba(16,16,16,0.06)" stroke-width="1" /><text x="72.0" y="298" text-anchor="middle" fill="rgba(16,16,16,0.58)" font-size="12" font-weight="800">R1</text>
-<line x1="154.9" y1="28" x2="154.9" y2="270" stroke="rgba(16,16,16,0.06)" stroke-width="1" /><text x="154.9" y="298" text-anchor="middle" fill="rgba(16,16,16,0.58)" font-size="12" font-weight="800">R2</text>
-<line x1="237.8" y1="28" x2="237.8" y2="270" stroke="rgba(16,16,16,0.06)" stroke-width="1" /><text x="237.8" y="298" text-anchor="middle" fill="rgba(16,16,16,0.58)" font-size="12" font-weight="800">R3</text>
-<line x1="320.7" y1="28" x2="320.7" y2="270" stroke="rgba(16,16,16,0.06)" stroke-width="1" /><text x="320.7" y="298" text-anchor="middle" fill="rgba(16,16,16,0.58)" font-size="12" font-weight="800">R4</text>
-<line x1="403.6" y1="28" x2="403.6" y2="270" stroke="rgba(16,16,16,0.06)" stroke-width="1" /><text x="403.6" y="298" text-anchor="middle" fill="rgba(16,16,16,0.58)" font-size="12" font-weight="800">R5</text>
-<line x1="486.4" y1="28" x2="486.4" y2="270" stroke="rgba(16,16,16,0.06)" stroke-width="1" /><text x="486.4" y="298" text-anchor="middle" fill="rgba(16,16,16,0.58)" font-size="12" font-weight="800">R6</text>
-<line x1="569.3" y1="28" x2="569.3" y2="270" stroke="rgba(16,16,16,0.06)" stroke-width="1" /><text x="569.3" y="298" text-anchor="middle" fill="rgba(16,16,16,0.58)" font-size="12" font-weight="800">R7</text>
-<line x1="652.2" y1="28" x2="652.2" y2="270" stroke="rgba(16,16,16,0.06)" stroke-width="1" /><text x="652.2" y="298" text-anchor="middle" fill="rgba(16,16,16,0.58)" font-size="12" font-weight="800">R8</text>
-<line x1="735.1" y1="28" x2="735.1" y2="270" stroke="rgba(16,16,16,0.06)" stroke-width="1" /><text x="735.1" y="298" text-anchor="middle" fill="rgba(16,16,16,0.58)" font-size="12" font-weight="800">R9</text>
-<line x1="818.0" y1="28" x2="818.0" y2="270" stroke="rgba(16,16,16,0.06)" stroke-width="1" /><text x="818.0" y="298" text-anchor="middle" fill="rgba(16,16,16,0.58)" font-size="12" font-weight="800">R10</text>
-  <path d="M 72.0 149.0 L 154.9 209.5 L 237.8 88.5 L 320.7 58.2 L 403.6 118.8 L 486.4 209.5 L 569.3 239.8 L 652.2 239.8 L 735.1 209.5 L 818.0 209.5" fill="none" stroke="#1d7d46" stroke-opacity="0.22" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" />
-  <path d="M 72.0 149.0 L 154.9 209.5 L 237.8 88.5 L 320.7 58.2 L 403.6 118.8 L 486.4 209.5 L 569.3 239.8 L 652.2 239.8 L 735.1 209.5 L 818.0 209.5" fill="none" stroke="#1d7d46" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
-  <circle cx="72.0" cy="149.0" r="5.5" fill="#1d7d46" stroke="white" stroke-width="3" />
-<circle cx="154.9" cy="209.5" r="5.5" fill="#1d7d46" stroke="white" stroke-width="3" />
-<circle cx="237.8" cy="88.5" r="5.5" fill="#1d7d46" stroke="white" stroke-width="3" />
-<circle cx="320.7" cy="58.2" r="5.5" fill="#1d7d46" stroke="white" stroke-width="3" />
-<circle cx="403.6" cy="118.8" r="5.5" fill="#1d7d46" stroke="white" stroke-width="3" />
-<circle cx="486.4" cy="209.5" r="5.5" fill="#1d7d46" stroke="white" stroke-width="3" />
-<circle cx="569.3" cy="239.8" r="5.5" fill="#1d7d46" stroke="white" stroke-width="3" />
-<circle cx="652.2" cy="239.8" r="5.5" fill="#1d7d46" stroke="white" stroke-width="3" />
-<circle cx="735.1" cy="209.5" r="5.5" fill="#1d7d46" stroke="white" stroke-width="3" />
-<circle cx="818.0" cy="209.5" r="8" fill="#1d7d46" stroke="white" stroke-width="3" />
-  <g transform="translate(740.0 191.5)">
+            <svg class="story-chart" viewBox="0 0 860 252" role="img" aria-label="Rank progression chart">
+  <rect x="72" y="24" width="746" height="194" rx="22" fill="rgba(255,255,255,0.58)" />
+  <line x1="72" y1="24.0" x2="818" y2="24.0" stroke="rgba(16,16,16,0.08)" stroke-width="1" /><text x="58" y="28.0" text-anchor="end" fill="rgba(16,16,16,0.54)" font-size="12" font-weight="800">#1</text>
+<line x1="72" y1="48.2" x2="818" y2="48.2" stroke="rgba(16,16,16,0.08)" stroke-width="1" /><text x="58" y="52.2" text-anchor="end" fill="rgba(16,16,16,0.54)" font-size="12" font-weight="800">#2</text>
+<line x1="72" y1="72.5" x2="818" y2="72.5" stroke="rgba(16,16,16,0.08)" stroke-width="1" /><text x="58" y="76.5" text-anchor="end" fill="rgba(16,16,16,0.54)" font-size="12" font-weight="800">#3</text>
+<line x1="72" y1="96.8" x2="818" y2="96.8" stroke="rgba(16,16,16,0.08)" stroke-width="1" /><text x="58" y="100.8" text-anchor="end" fill="rgba(16,16,16,0.54)" font-size="12" font-weight="800">#4</text>
+<line x1="72" y1="121.0" x2="818" y2="121.0" stroke="rgba(16,16,16,0.08)" stroke-width="1" /><text x="58" y="125.0" text-anchor="end" fill="rgba(16,16,16,0.54)" font-size="12" font-weight="800">#5</text>
+<line x1="72" y1="145.2" x2="818" y2="145.2" stroke="rgba(16,16,16,0.08)" stroke-width="1" /><text x="58" y="149.2" text-anchor="end" fill="rgba(16,16,16,0.54)" font-size="12" font-weight="800">#6</text>
+<line x1="72" y1="169.5" x2="818" y2="169.5" stroke="rgba(16,16,16,0.08)" stroke-width="1" /><text x="58" y="173.5" text-anchor="end" fill="rgba(16,16,16,0.54)" font-size="12" font-weight="800">#7</text>
+<line x1="72" y1="193.8" x2="818" y2="193.8" stroke="rgba(16,16,16,0.08)" stroke-width="1" /><text x="58" y="197.8" text-anchor="end" fill="rgba(16,16,16,0.54)" font-size="12" font-weight="800">#8</text>
+<line x1="72" y1="218.0" x2="818" y2="218.0" stroke="rgba(16,16,16,0.08)" stroke-width="1" /><text x="58" y="222.0" text-anchor="end" fill="rgba(16,16,16,0.54)" font-size="12" font-weight="800">#9</text>
+  <line x1="72.0" y1="24" x2="72.0" y2="218" stroke="rgba(16,16,16,0.05)" stroke-width="1" /><text x="72.0" y="238" text-anchor="middle" fill="rgba(16,16,16,0.58)" font-size="12" font-weight="800">R1</text>
+<line x1="154.9" y1="24" x2="154.9" y2="218" stroke="rgba(16,16,16,0.05)" stroke-width="1" /><text x="154.9" y="238" text-anchor="middle" fill="rgba(16,16,16,0.58)" font-size="12" font-weight="800">R2</text>
+<line x1="237.8" y1="24" x2="237.8" y2="218" stroke="rgba(16,16,16,0.05)" stroke-width="1" /><text x="237.8" y="238" text-anchor="middle" fill="rgba(16,16,16,0.58)" font-size="12" font-weight="800">R3</text>
+<line x1="320.7" y1="24" x2="320.7" y2="218" stroke="rgba(16,16,16,0.05)" stroke-width="1" /><text x="320.7" y="238" text-anchor="middle" fill="rgba(16,16,16,0.58)" font-size="12" font-weight="800">R4</text>
+<line x1="403.6" y1="24" x2="403.6" y2="218" stroke="rgba(16,16,16,0.05)" stroke-width="1" /><text x="403.6" y="238" text-anchor="middle" fill="rgba(16,16,16,0.58)" font-size="12" font-weight="800">R5</text>
+<line x1="486.4" y1="24" x2="486.4" y2="218" stroke="rgba(16,16,16,0.05)" stroke-width="1" /><text x="486.4" y="238" text-anchor="middle" fill="rgba(16,16,16,0.58)" font-size="12" font-weight="800">R6</text>
+<line x1="569.3" y1="24" x2="569.3" y2="218" stroke="rgba(16,16,16,0.05)" stroke-width="1" /><text x="569.3" y="238" text-anchor="middle" fill="rgba(16,16,16,0.58)" font-size="12" font-weight="800">R7</text>
+<line x1="652.2" y1="24" x2="652.2" y2="218" stroke="rgba(16,16,16,0.05)" stroke-width="1" /><text x="652.2" y="238" text-anchor="middle" fill="rgba(16,16,16,0.58)" font-size="12" font-weight="800">R8</text>
+<line x1="735.1" y1="24" x2="735.1" y2="218" stroke="rgba(16,16,16,0.05)" stroke-width="1" /><text x="735.1" y="238" text-anchor="middle" fill="rgba(16,16,16,0.58)" font-size="12" font-weight="800">R9</text>
+<line x1="818.0" y1="24" x2="818.0" y2="218" stroke="rgba(16,16,16,0.05)" stroke-width="1" /><text x="818.0" y="238" text-anchor="middle" fill="rgba(16,16,16,0.58)" font-size="12" font-weight="800">R10</text>
+  <path d="M 72.0 121.0 L 154.9 169.5 L 237.8 72.5 L 320.7 48.2 L 403.6 96.8 L 486.4 169.5 L 569.3 193.8 L 652.2 193.8 L 735.1 169.5 L 818.0 169.5" fill="none" stroke="#1d7d46" stroke-opacity="0.2" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" />
+  <path d="M 72.0 121.0 L 154.9 169.5 L 237.8 72.5 L 320.7 48.2 L 403.6 96.8 L 486.4 169.5 L 569.3 193.8 L 652.2 193.8 L 735.1 169.5 L 818.0 169.5" fill="none" stroke="#1d7d46" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
+  <circle cx="72.0" cy="121.0" r="5.5" fill="#1d7d46" stroke="white" stroke-width="3" />
+<circle cx="154.9" cy="169.5" r="5.5" fill="#1d7d46" stroke="white" stroke-width="3" />
+<circle cx="237.8" cy="72.5" r="5.5" fill="#1d7d46" stroke="white" stroke-width="3" />
+<circle cx="320.7" cy="48.2" r="5.5" fill="#1d7d46" stroke="white" stroke-width="3" />
+<circle cx="403.6" cy="96.8" r="5.5" fill="#1d7d46" stroke="white" stroke-width="3" />
+<circle cx="486.4" cy="169.5" r="5.5" fill="#1d7d46" stroke="white" stroke-width="3" />
+<circle cx="569.3" cy="193.8" r="5.5" fill="#1d7d46" stroke="white" stroke-width="3" />
+<circle cx="652.2" cy="193.8" r="5.5" fill="#1d7d46" stroke="white" stroke-width="3" />
+<circle cx="735.1" cy="169.5" r="5.5" fill="#1d7d46" stroke="white" stroke-width="3" />
+<circle cx="818.0" cy="169.5" r="8" fill="#1d7d46" stroke="white" stroke-width="3" />
+  <g transform="translate(740.0 151.5)">
     <rect x="0" y="0" width="78" height="30" rx="15" fill="#101010" />
     <text x="39" y="20" text-anchor="middle" fill="white" font-size="13" font-weight="900">FINISH #7</text>
   </g>
@@ -552,7 +610,9 @@
   <script>
     const stage = document.querySelector(".story-stage");
     const story = document.querySelector(".story");
-    const exportMode = new URLSearchParams(window.location.search).has("export");
+    const exportMode =
+      new URLSearchParams(window.location.search).has("export") ||
+      window.location.hash === "#export";
     const resizeStory = () => {
       if (exportMode) {
         story.style.transform = "none";

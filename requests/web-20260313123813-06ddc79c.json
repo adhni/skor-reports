@@ -1,12 +1,15 @@
 {
   "request_id": "web-20260313123813-06ddc79c",
-  "status": "running",
+  "status": "published",
   "request_source": "web_form",
   "input_value": "https://the.skorapp.id/game?id=4E01nE15I9VTMFvQWUq8ba",
   "theme_id": "cobalt",
   "theme_label": "Cobalt",
   "submitted_at_utc": "2026-03-13T13:48:55Z",
-  "updated_at_utc": "2026-03-13T13:48:55Z",
-  "message": "Workflow started. Generating report files now.",
+  "updated_at_utc": "2026-03-13T13:49:14Z",
+  "message": "Report published successfully.",
+  "report_folder": "4E01nE15I9VTMFvQWUq8ba",
+  "report_url": "https://adhni.github.io/skor-reports/reports/4E01nE15I9VTMFvQWUq8ba/report.html",
+  "stories_url": "https://adhni.github.io/skor-reports/reports/4E01nE15I9VTMFvQWUq8ba/stories/index.html",
   "run_url": "https://github.com/adhni/skor-scrape/actions/runs/23051174406"
 }
