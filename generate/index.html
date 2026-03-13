@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Generate Skor Report</title>
+  <style>
+    :root {
+      --paper: #f7f3eb;
+      --ink: #13110c;
+      --muted: #645b4d;
+      --line: rgba(19, 17, 12, 0.14);
+      --panel: rgba(255,255,255,0.82);
+      --panel-strong: rgba(255,255,255,0.94);
+      --shadow: 0 22px 52px rgba(43, 33, 17, 0.14);
+      --gold: #d49a2f;
+      --gold-soft: rgba(212,154,47,0.18);
+      --navy: #183b68;
+      --radius: 28px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Avenir Next", "Segoe UI", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(212,154,47,0.16), transparent 24%),
+        radial-gradient(circle at 92% 8%, rgba(24,59,104,0.12), transparent 20%),
+        linear-gradient(180deg, #fbf7ef 0%, #f2ebdf 42%, #ece2d3 100%);
+    }
+    .shell {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 28px 18px 56px;
+    }
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+    .topbar a {
+      color: var(--navy);
+      text-decoration: none;
+      font-weight: 800;
+    }
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(320px, 420px);
+      gap: 20px;
+      align-items: stretch;
+    }
+    .hero-copy, .hero-panel, .panel, .status-panel {
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+    .hero-copy {
+      padding: 34px;
+      background:
+        radial-gradient(circle at 12% 18%, rgba(212,154,47,0.18), transparent 20%),
+        linear-gradient(135deg, rgba(255,255,255,0.78), rgba(255,248,236,0.86));
+    }
+    .eyebrow {
+      margin: 0 0 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 12px;
+      font-weight: 900;
+      color: var(--muted);
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(40px, 7vw, 70px);
+      line-height: 0.92;
+      letter-spacing: -0.06em;
+      max-width: 9ch;
+    }
+    .sub {
+      margin: 16px 0 0;
+      max-width: 58ch;
+      font-size: 17px;
+      line-height: 1.6;
+      color: var(--muted);
+    }
+    .hero-notes {
+      margin-top: 22px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .hero-note {
+      display: inline-flex;
+      align-items: center;
+      min-height: 38px;
+      padding: 0 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.64);
+      border: 1px solid rgba(19,17,12,0.08);
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--ink);
+    }
+    .hero-panel {
+      padding: 22px;
+      background: linear-gradient(180deg, rgba(18,17,16,0.96), rgba(8,8,8,0.98));
+      color: #f7f3eb;
+    }
+    .hero-panel h2 {
+      margin: 0;
+      font-size: 26px;
+      letter-spacing: -0.03em;
+    }
+    .hero-panel p {
+      margin: 10px 0 0;
+      line-height: 1.55;
+      color: rgba(247,243,235,0.74);
+      font-size: 15px;
+    }
+    .hero-panel ul {
+      margin: 16px 0 0;
+      padding-left: 18px;
+      color: rgba(247,243,235,0.88);
+      line-height: 1.7;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+      gap: 20px;
+      margin-top: 20px;
+      align-items: start;
+    }
+    .panel, .status-panel {
+      background: var(--panel);
+      padding: 22px;
+      backdrop-filter: blur(14px);
+    }
+    .panel-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+    .panel-title {
+      margin: 0;
+      font-size: 28px;
+      letter-spacing: -0.03em;
+    }
+    .panel-note {
+      color: var(--muted);
+      font-size: 14px;
+    }
+    label {
+      display: block;
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .field {
+      margin-top: 18px;
+    }
+    .field:first-of-type {
+      margin-top: 0;
+    }
+    .text-input {
+      width: 100%;
+      margin-top: 8px;
+      min-height: 92px;
+      padding: 16px;
+      resize: vertical;
+      line-height: 1.5;
+      border-radius: 18px;
+      border: 1px solid rgba(19,17,12,0.16);
+      background: var(--panel-strong);
+      color: var(--ink);
+      font: inherit;
+    }
+    .theme-grid {
+      margin-top: 10px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(112px, 1fr));
+      gap: 12px;
+    }
+    .theme-option {
+      position: relative;
+    }
+    .theme-input {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+    .theme-card {
+      display: block;
+      border-radius: 24px;
+      border: 1px solid rgba(19,17,12,0.12);
+      background: rgba(255,255,255,0.76);
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 120ms ease, border-color 120ms ease, box-shadow 120ms ease;
+    }
+    .theme-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 30px rgba(31,24,14,0.08);
+    }
+    .theme-input:checked + .theme-card {
+      border-color: rgba(24,59,104,0.42);
+      box-shadow: 0 0 0 2px rgba(24,59,104,0.18);
+    }
+    .theme-preview {
+      display: block;
+      aspect-ratio: 1 / 0.92;
+    }
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+    .checkbox-row {
+      margin-top: 18px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 16px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.66);
+      border: 1px solid rgba(19,17,12,0.08);
+    }
+    .checkbox-row input {
+      width: 18px;
+      height: 18px;
+      margin: 0;
+    }
+    .checkbox-copy {
+      color: var(--ink);
+      font-size: 15px;
+      line-height: 1.45;
+    }
+    .notice {
+      margin-top: 18px;
+      padding: 14px 16px;
+      border-radius: 18px;
+      border: 1px solid rgba(19,17,12,0.08);
+      background: rgba(255,255,255,0.68);
+      color: var(--muted);
+      line-height: 1.55;
+      font-size: 14px;
+    }
+    .warning {
+      border-color: rgba(173,111,19,0.22);
+      background: rgba(255,246,221,0.86);
+      color: #7b5413;
+    }
+    .button-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+    button, .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      padding: 0 22px;
+      border-radius: 999px;
+      border: 1px solid rgba(19,17,12,0.1);
+      background: linear-gradient(135deg, #15130e, #070707);
+      color: #f7f3eb;
+      font: inherit;
+      font-weight: 900;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    button[disabled] {
+      cursor: not-allowed;
+      opacity: 0.5;
+    }
+    .button.secondary {
+      background: transparent;
+      color: var(--ink);
+    }
+    .status-panel[hidden] {
+      display: none;
+    }
+    .status-kicker {
+      margin: 0;
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 900;
+    }
+    .status-title {
+      margin: 10px 0 0;
+      font-size: 32px;
+      letter-spacing: -0.04em;
+    }
+    .status-copy {
+      margin: 12px 0 0;
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 15px;
+    }
+    .status-meta {
+      margin-top: 14px;
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+    .status-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+    }
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.95em;
+    }
+    @media (max-width: 860px) {
+      .hero, .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    @media (max-width: 620px) {
+      .shell {
+        padding: 18px 14px 32px;
+      }
+      .hero-copy, .hero-panel, .panel, .status-panel {
+        border-radius: 24px;
+        padding: 18px;
+      }
+      h1 {
+        font-size: clamp(34px, 14vw, 52px);
+      }
+      button, .button {
+        width: 100%;
+      }
+      .button-row, .status-actions {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <div class="topbar">
+      <a href="../">Back to published reports</a>
+      <a href="../latest-report.html">Latest report shortcut</a>
+    </div>
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="eyebrow">Hosted Generator</div>
+        <h1>Generate a fresh report.</h1>
+        <p class="sub">Paste a public Skor link, choose a background swatch, and let the same GitHub Actions publishing pipeline produce the report and story gallery. The public site updates automatically when the run finishes.</p>
+        <div class="hero-notes">
+          <span class="hero-note">Same workflow as manual Actions</span>
+          <span class="hero-note">Theme selection included</span>
+          <span class="hero-note">Publishes into the public archive</span>
+        </div>
+      </div>
+      <aside class="hero-panel">
+        <h2>How this flow works</h2>
+        <p>The hosted form is only a trigger layer. GitHub Actions still fetches the Skor data, renders the report, exports story JPGs, and publishes everything into the public pages repo.</p>
+        <ul>
+          <li>Paste a Skor share link, token, or game ID</li>
+          <li>Pick one of the preset background swatches</li>
+          <li>Submit the request and watch status update here</li>
+          <li>Open the report and story gallery when the run finishes</li>
+        </ul>
+      </aside>
+    </section>
+
+    <section class="grid">
+      <section class="panel">
+        <div class="panel-head">
+          <h2 class="panel-title">Create report</h2>
+          <div class="panel-note">Hosted swatch selection is live. Custom logo upload still stays in the local dashboard for now.</div>
+        </div>
+        
+        <form id="generate-form">
+          <div class="field">
+            <label for="input_value">Skor Link</label>
+            <textarea class="text-input" id="input_value" name="input_value" placeholder="https://the.skorapp.id/game?id=..." required></textarea>
+          </div>
+
+          <div class="field">
+            <label>Theme</label>
+            <div class="theme-grid">
+              <label class="theme-option" title="Obsidian"><input class="theme-input" type="radio" name="theme_id" value="obsidian" aria-label="Obsidian"><span class="theme-card"><span class="theme-preview" style="background: radial-gradient(circle at 18% 20%, rgba(255,255,255,0.08), transparent 24%), linear-gradient(180deg, #141414 0%, #0a0a0a 46%, #030303 100%);"></span><span class="visually-hidden">Obsidian</span></span></label>
+<label class="theme-option" title="Forest"><input class="theme-input" type="radio" name="theme_id" value="forest" aria-label="Forest"><span class="theme-card"><span class="theme-preview" style="background: radial-gradient(circle at 18% 20%, rgba(112,191,143,0.22), transparent 24%), linear-gradient(180deg, #17412d 0%, #0b241a 46%, #04110c 100%);"></span><span class="visually-hidden">Forest</span></span></label>
+<label class="theme-option" title="Cobalt"><input class="theme-input" type="radio" name="theme_id" value="cobalt" aria-label="Cobalt" checked><span class="theme-card"><span class="theme-preview" style="background: radial-gradient(circle at 18% 20%, rgba(121,191,255,0.20), transparent 24%), linear-gradient(180deg, #1a3b68 0%, #0d2038 46%, #05101c 100%);"></span><span class="visually-hidden">Cobalt</span></span></label>
+<label class="theme-option" title="Sunset"><input class="theme-input" type="radio" name="theme_id" value="sunset" aria-label="Sunset"><span class="theme-card"><span class="theme-preview" style="background: radial-gradient(circle at 18% 20%, rgba(255,180,124,0.22), transparent 24%), linear-gradient(180deg, #5a221c 0%, #2b100d 46%, #180807 100%);"></span><span class="visually-hidden">Sunset</span></span></label>
+<label class="theme-option" title="Sand"><input class="theme-input" type="radio" name="theme_id" value="sand" aria-label="Sand"><span class="theme-card"><span class="theme-preview" style="background: radial-gradient(circle at 18% 20%, rgba(235,211,167,0.22), transparent 24%), linear-gradient(180deg, #5f4a28 0%, #302313 46%, #17110a 100%);"></span><span class="visually-hidden">Sand</span></span></label>
+<label class="theme-option" title="Rose"><input class="theme-input" type="radio" name="theme_id" value="rose" aria-label="Rose"><span class="theme-card"><span class="theme-preview" style="background: radial-gradient(circle at 18% 20%, rgba(255,176,220,0.24), transparent 24%), linear-gradient(180deg, #6a2950 0%, #321127 46%, #180812 100%);"></span><span class="visually-hidden">Rose</span></span></label>
+            </div>
+          </div>
+
+          <label class="checkbox-row">
+            <input type="checkbox" id="export_story_images" name="export_story_images" checked>
+            <span class="checkbox-copy">Export Instagram-ready story JPGs along with the HTML story gallery.</span>
+          </label>
+
+          <div class="notice">If you need a custom uploaded logo right now, keep using the local dashboard. The hosted flow in this MVP focuses on link submission and theme selection first.</div>
+
+          <div class="button-row">
+            <button id="submit-button" type="submit">Generate report</button>
+            <a class="button secondary" href="../">View published reports</a>
+          </div>
+        </form>
+      </section>
+
+      <aside class="status-panel" id="status-panel" hidden>
+        <p class="status-kicker">Request Status</p>
+        <h2 class="status-title" id="status-title">Waiting for submission</h2>
+        <p class="status-copy" id="status-copy">Submit a link to create a request and watch the hosted workflow move from queued to published.</p>
+        <div class="status-meta" id="status-meta"></div>
+        <div class="status-actions" id="status-actions"></div>
+      </aside>
+    </section>
+  </main>
+  <script>
+    const triggerEndpoint = "https://skor-trigger-worker.adhnimc98.workers.dev/api/requests";
+    const form = document.getElementById("generate-form");
+    const submitButton = document.getElementById("submit-button");
+    const statusPanel = document.getElementById("status-panel");
+    const statusTitle = document.getElementById("status-title");
+    const statusCopy = document.getElementById("status-copy");
+    const statusMeta = document.getElementById("status-meta");
+    const statusActions = document.getElementById("status-actions");
+
+    function escapeHtml(value) {
+      return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;");
+    }
+
+    function requestStatusUrl(requestId) {
+      return new URL(`../requests/${encodeURIComponent(requestId)}.json`, window.location.href).toString();
+    }
+
+    function renderStatus(title, copy, metaHtml = "", actionsHtml = "") {
+      statusPanel.hidden = false;
+      statusTitle.textContent = title;
+      statusCopy.textContent = copy;
+      statusMeta.innerHTML = metaHtml;
+      statusActions.innerHTML = actionsHtml;
+    }
+
+    function renderRequestDetails(data, statusUrl) {
+      const lines = [];
+      if (data.request_id) {
+        lines.push(`Request ID: <code>${escapeHtml(data.request_id)}</code>`);
+      }
+      if (data.theme_label) {
+        lines.push(`Theme: <strong>${escapeHtml(data.theme_label)}</strong>`);
+      }
+      if (statusUrl) {
+        lines.push(`Status JSON: <a href="${escapeHtml(statusUrl)}">${escapeHtml(statusUrl)}</a>`);
+      }
+      return lines.join("<br>");
+    }
+
+    function renderRequestActions(data) {
+      const actions = [];
+      if (data.report_url) {
+        actions.push(`<a class="button" href="${escapeHtml(data.report_url)}">Open report</a>`);
+      }
+      if (data.stories_url) {
+        actions.push(`<a class="button secondary" href="${escapeHtml(data.stories_url)}">Open story gallery</a>`);
+      }
+      if (data.run_url) {
+        actions.push(`<a class="button secondary" href="${escapeHtml(data.run_url)}">Open workflow run</a>`);
+      }
+      return actions.join("");
+    }
+
+    function applyStatusPayload(data, statusUrl) {
+      const metaHtml = renderRequestDetails(data, statusUrl);
+      const actionsHtml = renderRequestActions(data);
+      if (data.status === "published") {
+        renderStatus("Report published", data.message || "The report is live on the public site.", metaHtml, actionsHtml);
+        return true;
+      }
+      if (data.status === "failed") {
+        renderStatus("Generation failed", data.error_message || data.message || "The workflow did not finish successfully.", metaHtml, actionsHtml);
+        return true;
+      }
+      if (data.status === "running") {
+        renderStatus("Generating report", data.message || "GitHub Actions is generating and publishing the report.", metaHtml, actionsHtml);
+        return false;
+      }
+      renderStatus("Request queued", data.message || "The request is waiting for a workflow runner.", metaHtml, actionsHtml);
+      return false;
+    }
+
+    async function pollRequest(requestId, initialStatusUrl) {
+      const statusUrl = initialStatusUrl || requestStatusUrl(requestId);
+      const startedAt = Date.now();
+      while (Date.now() - startedAt < 15 * 60 * 1000) {
+        try {
+          const response = await fetch(statusUrl, { cache: "no-store" });
+          if (response.status === 404) {
+            renderStatus(
+              "Request queued",
+              "The request was accepted. Waiting for the workflow to publish its first status update.",
+              `Request ID: <code>${escapeHtml(requestId)}</code><br>Status JSON: <a href="${escapeHtml(statusUrl)}">${escapeHtml(statusUrl)}</a>`
+            );
+          } else if (response.ok) {
+            const data = await response.json();
+            if (applyStatusPayload(data, statusUrl)) {
+              return;
+            }
+          } else {
+            renderStatus(
+              "Waiting for status",
+              `Status polling returned HTTP ${response.status}. Retrying automatically.`,
+              `Request ID: <code>${escapeHtml(requestId)}</code>`
+            );
+          }
+        } catch (error) {
+          renderStatus(
+            "Waiting for status",
+            "Could not reach the request status file yet. Retrying automatically.",
+            `Request ID: <code>${escapeHtml(requestId)}</code>`
+          );
+        }
+        await new Promise((resolve) => setTimeout(resolve, 4000));
+      }
+      renderStatus(
+        "Still processing",
+        "This request is taking longer than expected. Open the workflow run if you need live logs, or refresh this page in a minute.",
+        `Request ID: <code>${escapeHtml(requestId)}</code>`
+      );
+    }
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      const inputValue = form.input_value.value.trim();
+      const selectedTheme = form.querySelector('input[name="theme_id"]:checked');
+      if (!inputValue) {
+        renderStatus("Link required", "Paste a Skor link, share token, or numeric game ID before submitting.");
+        return;
+      }
+      if (!triggerEndpoint) {
+        renderStatus("Hosted trigger not configured", "This site build does not know where to send web submissions yet. Use GitHub Actions or configure the trigger endpoint first.");
+        return;
+      }
+
+      submitButton.disabled = true;
+      renderStatus("Submitting request", "Sending the request to the hosted trigger service...");
+
+      try {
+        const response = await fetch(triggerEndpoint, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            input_value: inputValue,
+            theme_id: selectedTheme ? selectedTheme.value : "cobalt",
+            export_story_images: form.export_story_images.checked,
+          }),
+        });
+
+        const data = await response.json().catch(() => ({}));
+        if (!response.ok) {
+          throw new Error(data.error || "Hosted trigger rejected the request.");
+        }
+
+        const requestId = data.request_id;
+        const statusUrl = data.status_url || requestStatusUrl(requestId);
+        renderStatus(
+          "Request accepted",
+          data.message || "The GitHub Actions workflow was triggered successfully. Status updates will appear below as soon as the workflow publishes them.",
+          `Request ID: <code>${escapeHtml(requestId)}</code><br>Status JSON: <a href="${escapeHtml(statusUrl)}">${escapeHtml(statusUrl)}</a>`,
+          data.run_url ? `<a class="button secondary" href="${escapeHtml(data.run_url)}">Open workflow run</a>` : ""
+        );
+        await pollRequest(requestId, statusUrl);
+      } catch (error) {
+        renderStatus("Submission failed", error.message || "The hosted trigger could not accept the request.");
+      } finally {
+        submitButton.disabled = false;
+      }
+    });
+  </script>
+</body>
+</html>

@@ -5,7 +5,13 @@
     "share_token": "5gPfD1QD4GikarmjllEeT3",
     "game_id": 96430,
     "folder_name": "5gPfD1QD4GikarmjllEeT3",
-    "generated_at_utc": "2026-03-11T02:17:06.038621+00:00"
+    "public_report_base_url": "https://adhni.github.io/skor-reports/reports",
+    "branding": {
+      "theme_id": "forest",
+      "theme_label": "Forest",
+      "logo_filename": "logo.jpg"
+    },
+    "generated_at_utc": "2026-03-13T02:08:46.218823+00:00"
   },
   "detail": {
     "id": 96430,

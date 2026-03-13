@@ -24,11 +24,11 @@
       --accent: #d6a409;
       --accent-soft: rgba(214,164,9,0.28);
       --accent-glow: rgba(214,164,9,0.22);
-      --story-top: #5b4307;
-      --story-mid: #2a1d03;
-      --story-bottom: #130d02;
-      --story-grid: rgba(255,225,136,0.08);
-      --story-corner-glow: rgba(255,229,122,0.18);
+      --story-top: #17412d;
+      --story-mid: #0b241a;
+      --story-bottom: #04110c;
+      --story-grid: rgba(172,232,196,0.06);
+      --story-corner-glow: rgba(124,210,160,0.16);
     }
     * { box-sizing: border-box; }
     body {
@@ -135,6 +135,15 @@
       border: 1px solid rgba(255,255,255,0.1);
       box-shadow: 0 18px 34px rgba(0,0,0,0.26);
       flex: 0 0 auto;
+    }
+    .logo-fallback {
+      display: grid;
+      place-items: center;
+      font-size: 34px;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      color: #0a0a0a;
+      text-transform: uppercase;
     }
     .story-brand-copy {
       min-width: 0;
