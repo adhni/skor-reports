@@ -3,19 +3,21 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Generate Skor Report</title>
+  <title>Create Match Report</title>
   <style>
     :root {
-      --paper: #f7f3eb;
+      --paper: #f6efe4;
       --ink: #13110c;
       --muted: #645b4d;
       --line: rgba(19, 17, 12, 0.14);
-      --panel: rgba(255,255,255,0.82);
+      --panel: rgba(255,255,255,0.8);
       --panel-strong: rgba(255,255,255,0.94);
-      --shadow: 0 22px 52px rgba(43, 33, 17, 0.14);
+      --shadow: 0 24px 56px rgba(43, 33, 17, 0.14);
       --gold: #d49a2f;
       --gold-soft: rgba(212,154,47,0.18);
       --navy: #183b68;
+      --forest: #154734;
+      --rose: #a04573;
       --radius: 28px;
     }
     * { box-sizing: border-box; }
@@ -51,7 +53,7 @@
       gap: 20px;
       align-items: stretch;
     }
-    .hero-copy, .hero-panel, .panel, .status-panel {
+    .hero-copy, .hero-panel, .panel, .status-panel, .proof-strip {
       border-radius: var(--radius);
       border: 1px solid var(--line);
       box-shadow: var(--shadow);
@@ -103,9 +105,37 @@
       font-weight: 800;
       color: var(--ink);
     }
+    .hero-audience {
+      margin-top: 24px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+    }
+    .hero-audience-card {
+      padding: 14px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.62);
+      border: 1px solid rgba(19,17,12,0.08);
+    }
+    .hero-audience-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+      font-weight: 900;
+    }
+    .hero-audience-copy {
+      margin-top: 8px;
+      font-size: 14px;
+      line-height: 1.5;
+      color: var(--ink);
+      font-weight: 800;
+    }
     .hero-panel {
       padding: 22px;
-      background: linear-gradient(180deg, rgba(18,17,16,0.96), rgba(8,8,8,0.98));
+      background:
+        radial-gradient(circle at 18% 12%, rgba(212,154,47,0.14), transparent 26%),
+        linear-gradient(180deg, rgba(18,17,16,0.96), rgba(8,8,8,0.98));
       color: #f7f3eb;
     }
     .hero-panel h2 {
@@ -124,6 +154,35 @@
       padding-left: 18px;
       color: rgba(247,243,235,0.88);
       line-height: 1.7;
+    }
+    .proof-strip {
+      margin-top: 20px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0;
+      background: rgba(255,255,255,0.7);
+      backdrop-filter: blur(10px);
+    }
+    .proof-item {
+      padding: 18px 20px;
+      border-right: 1px solid rgba(19,17,12,0.08);
+    }
+    .proof-item:last-child {
+      border-right: 0;
+    }
+    .proof-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-weight: 900;
+      color: var(--muted);
+    }
+    .proof-value {
+      margin-top: 8px;
+      font-size: 16px;
+      line-height: 1.45;
+      font-weight: 800;
+      color: var(--ink);
     }
     .grid {
       display: grid;
@@ -206,7 +265,7 @@
     }
     .theme-card {
       display: block;
-      border-radius: 24px;
+      border-radius: 26px;
       border: 1px solid rgba(19,17,12,0.12);
       background: rgba(255,255,255,0.76);
       overflow: hidden;
@@ -219,7 +278,7 @@
     }
     .theme-input:checked + .theme-card {
       border-color: rgba(24,59,104,0.42);
-      box-shadow: 0 0 0 2px rgba(24,59,104,0.18);
+      box-shadow: 0 0 0 2px rgba(24,59,104,0.18), 0 18px 30px rgba(31,24,14,0.08);
     }
     .theme-preview {
       display: block;
@@ -326,6 +385,10 @@
     .status-panel[hidden] {
       display: none;
     }
+    .status-panel {
+      position: sticky;
+      top: 18px;
+    }
     .status-kicker {
       margin: 0;
       font-size: 12px;
@@ -339,11 +402,43 @@
       font-size: 32px;
       letter-spacing: -0.04em;
     }
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      padding: 0 12px;
+      border-radius: 999px;
+      background: rgba(21,71,52,0.08);
+      border: 1px solid rgba(21,71,52,0.12);
+      color: var(--forest);
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 900;
+    }
     .status-copy {
       margin: 12px 0 0;
       color: var(--muted);
       line-height: 1.6;
       font-size: 15px;
+    }
+    .status-highlight {
+      margin-top: 16px;
+      padding: 16px;
+      border-radius: 20px;
+      background: linear-gradient(145deg, rgba(255,255,255,0.88), rgba(255,248,236,0.78));
+      border: 1px solid rgba(19,17,12,0.08);
+    }
+    .status-highlight-title {
+      margin: 0;
+      font-size: 16px;
+      letter-spacing: -0.02em;
+    }
+    .status-highlight-copy {
+      margin: 8px 0 0;
+      color: var(--muted);
+      line-height: 1.55;
+      font-size: 14px;
     }
     .status-meta {
       margin-top: 14px;
@@ -400,8 +495,15 @@
       font-size: 0.95em;
     }
     @media (max-width: 860px) {
-      .hero, .grid {
+      .hero, .grid, .proof-strip, .hero-audience {
         grid-template-columns: 1fr;
+      }
+      .proof-item {
+        border-right: 0;
+        border-bottom: 1px solid rgba(19,17,12,0.08);
+      }
+      .proof-item:last-child {
+        border-bottom: 0;
       }
     }
     @media (max-width: 620px) {
@@ -433,18 +535,32 @@
     <section class="hero">
       <div class="hero-copy">
         <div class="eyebrow">Branded Match Reports</div>
-        <h1>Turn your match link into a polished report.</h1>
-        <p class="sub">Paste your match link, pick a look, add your club logo, and get a clean report plus an Instagram-ready story pack in about a minute.</p>
+        <h1>Match recap pages that feel ready to publish.</h1>
+        <p class="sub">Paste a match link, pick the visual direction, add your club logo, and get a polished report plus a social-ready story pack without building each asset manually.</p>
         <div class="hero-notes">
           <span class="hero-note">Ready in about 1 minute</span>
           <span class="hero-note">Custom club logo supported</span>
           <span class="hero-note">Instagram story pack included</span>
           <span class="hero-note">Built for clubs and communities</span>
         </div>
+        <div class="hero-audience">
+          <div class="hero-audience-card">
+            <div class="hero-audience-label">Clubs</div>
+            <div class="hero-audience-copy">Keep your weekly match updates looking consistent.</div>
+          </div>
+          <div class="hero-audience-card">
+            <div class="hero-audience-label">Organizers</div>
+            <div class="hero-audience-copy">Turn results into something shareable right after play ends.</div>
+          </div>
+          <div class="hero-audience-card">
+            <div class="hero-audience-label">Communities</div>
+            <div class="hero-audience-copy">Make recaps easier to post, browse, and revisit later.</div>
+          </div>
+        </div>
       </div>
       <aside class="hero-panel">
         <h2>What you get</h2>
-        <p>Create a presentation-ready match recap without designing anything manually.</p>
+        <p>Create a presentation-ready match recap without building graphics from scratch after every event.</p>
         <ul>
           <li>A branded report page for the full match</li>
           <li>A story pack for player rankings and highlights</li>
@@ -453,12 +569,26 @@
         </ul>
       </aside>
     </section>
+    <section class="proof-strip">
+      <div class="proof-item">
+        <div class="proof-label">Fast Setup</div>
+        <div class="proof-value">One link, one theme, one logo, and the pack builds itself.</div>
+      </div>
+      <div class="proof-item">
+        <div class="proof-label">Better Output</div>
+        <div class="proof-value">You get a full report page plus social story assets from the same match.</div>
+      </div>
+      <div class="proof-item">
+        <div class="proof-label">Public Ready</div>
+        <div class="proof-value">Share the report link immediately or download the stories for posting.</div>
+      </div>
+    </section>
 
     <section class="grid">
       <section class="panel">
         <div class="panel-head">
           <h2 class="panel-title">Create Match Report</h2>
-          <div class="panel-note">Match link, theme, logo, done.</div>
+          <div class="panel-note">Paste the link, brand it, and publish.</div>
         </div>
         
         <form id="generate-form" enctype="multipart/form-data">
@@ -506,8 +636,13 @@
 
       <aside class="status-panel" id="status-panel" hidden>
         <p class="status-kicker">Live Progress</p>
+        <div class="status-badge" id="status-badge">In Progress</div>
         <h2 class="status-title" id="status-title">Ready when you are</h2>
         <p class="status-copy" id="status-copy">Create a report to see progress here and open the finished result as soon as it is ready.</p>
+        <div class="status-highlight" id="status-highlight">
+          <h3 class="status-highlight-title" id="status-highlight-title">What happens next</h3>
+          <p class="status-highlight-copy" id="status-highlight-copy">Once you submit, the report build starts automatically and this panel updates until the final pages are ready.</p>
+        </div>
         <div class="status-pill-row" id="status-pill-row"></div>
         <div class="status-actions" id="status-actions"></div>
         <details id="technical-details" hidden>
@@ -522,8 +657,11 @@
     const form = document.getElementById("generate-form");
     const submitButton = document.getElementById("submit-button");
     const statusPanel = document.getElementById("status-panel");
+    const statusBadge = document.getElementById("status-badge");
     const statusTitle = document.getElementById("status-title");
     const statusCopy = document.getElementById("status-copy");
+    const statusHighlightTitle = document.getElementById("status-highlight-title");
+    const statusHighlightCopy = document.getElementById("status-highlight-copy");
     const statusPillRow = document.getElementById("status-pill-row");
     const statusMeta = document.getElementById("status-meta");
     const statusActions = document.getElementById("status-actions");
@@ -556,10 +694,13 @@
         .join("");
     }
 
-    function renderStatus(title, copy, actionsHtml = "", metaHtml = "", progressStep = "build") {
+    function renderStatus(title, copy, actionsHtml = "", metaHtml = "", progressStep = "build", badgeLabel = "In Progress", highlightTitle = "What happens next", highlightCopy = "Once you submit, the report build starts automatically and this panel updates until the final pages are ready.") {
       statusPanel.hidden = false;
+      statusBadge.textContent = badgeLabel;
       statusTitle.textContent = title;
       statusCopy.textContent = copy;
+      statusHighlightTitle.textContent = highlightTitle;
+      statusHighlightCopy.textContent = highlightCopy;
       renderProgress(progressStep);
       statusActions.innerHTML = actionsHtml;
       if (metaHtml) {
@@ -623,7 +764,10 @@
           "Your branded report and story pack are ready.",
           actionsHtml,
           metaHtml,
-          "done"
+          "done",
+          "Ready",
+          "Your assets are live",
+          "Open the full report, share the story pack, or start another match while this one is fresh."
         );
         return true;
       }
@@ -633,22 +777,25 @@
           data.error_message || "We could not finish that report. Try again with the same link or a different logo file.",
           '<button class="button secondary" type="button" data-reset>Try Again</button>',
           metaHtml,
-          "build"
+          "build",
+          "Needs Attention",
+          "The build did not finish",
+          "Most failures are fixed by retrying the same link or using a smaller PNG or JPG logo file."
         );
         return true;
       }
       if (data.status === "running") {
         const elapsedSeconds = Math.max(0, Math.round((Date.now() - context.startedAt) / 1000));
         if (context.hasLogo && elapsedSeconds < 8) {
-          renderStatus("Uploading your logo", "Getting your branding ready before the report build starts.", "", metaHtml, "upload");
+          renderStatus("Uploading your logo", "Getting your branding ready before the report build starts.", "", metaHtml, "upload", "In Progress", "Checking your brand assets", "We are storing the uploaded logo and preparing it for the final report layout.");
         } else if (elapsedSeconds < 28) {
-          renderStatus("Building your report", "Pulling the match data together and laying out the full report.", "", metaHtml, "build");
+          renderStatus("Building your report", "Pulling the match data together and laying out the full report.", "", metaHtml, "build", "In Progress", "Shaping the recap", "We are combining scores, player positions, and the chosen theme into the final report page.");
         } else {
-          renderStatus("Preparing your story pack", "Finishing the story images and publishing the final pages.", "", metaHtml, "stories");
+          renderStatus("Preparing your story pack", "Finishing the story images and publishing the final pages.", "", metaHtml, "stories", "Almost Ready", "Packaging the social assets", "The report is nearly done. We are exporting story cards and publishing the final pages now.");
         }
         return false;
       }
-      renderStatus("Getting things ready", "Your request has been accepted and is about to start.", "", metaHtml, context.hasLogo ? "upload" : "build");
+      renderStatus("Getting things ready", "Your request has been accepted and is about to start.", "", metaHtml, context.hasLogo ? "upload" : "build", "In Progress", "Queue confirmed", "Your request is in line and the build should begin in a few seconds.");
       return false;
     }
 
@@ -663,7 +810,10 @@
               context.hasLogo ? "Your upload was received. Starting the report build now." : "Your match link was received. Starting the report build now.",
               "",
               `Request ID: <code>${escapeHtml(requestId)}</code><br>Status JSON: <a href="${escapeHtml(statusUrl)}">${escapeHtml(statusUrl)}</a>`,
-              context.hasLogo ? "upload" : "build"
+              context.hasLogo ? "upload" : "build",
+              "In Progress",
+              "Queue confirmed",
+              "Your request is accepted. The final pages will appear here as soon as publishing finishes."
             );
           } else if (response.ok) {
             const data = await response.json();
@@ -676,7 +826,10 @@
               "We are waiting for the latest update. This usually resolves on its own in a few seconds.",
               "",
               `Request ID: <code>${escapeHtml(requestId)}</code><br>HTTP status: <code>${response.status}</code>`,
-              "build"
+              "build",
+              "In Progress",
+              "Waiting for the latest update",
+              "The report build is still underway. This usually clears itself after the next status refresh."
             );
           }
         } catch (error) {
@@ -685,7 +838,10 @@
             "We are waiting for the latest update. This usually resolves on its own in a few seconds.",
             "",
             `Request ID: <code>${escapeHtml(requestId)}</code>`,
-            "build"
+            "build",
+            "In Progress",
+            "Waiting for the latest update",
+            "The report build is still underway. This usually clears itself after the next status refresh."
           );
         }
         await new Promise((resolve) => setTimeout(resolve, 4000));
@@ -695,7 +851,10 @@
         "This one is taking longer than expected. Give it another minute and refresh this page.",
         '<button class="button secondary" type="button" data-reset>Start Another</button>',
         `Request ID: <code>${escapeHtml(requestId)}</code>`,
-        "stories"
+        "stories",
+        "Delayed",
+        "Taking longer than usual",
+        "This request is still active, but slower than normal. Give it another minute before trying again."
       );
     }
 
@@ -736,11 +895,11 @@
       const selectedTheme = form.querySelector('input[name="theme_id"]:checked');
       const logoFile = (logoInput.files || [])[0] || null;
       if (!inputValue) {
-        renderStatus("Add your match link", "Paste the public match link before creating the report.", "", "", "build");
+        renderStatus("Add your match link", "Paste the public match link before creating the report.", "", "", "build", "Needs Input", "A match link is required", "Use the public Skor match URL so the report builder can pull the event details.");
         return;
       }
       if (!triggerEndpoint) {
-        renderStatus("Not ready yet", "This page is not accepting public submissions right now.", "", "", "build");
+        renderStatus("Not ready yet", "This page is not accepting public submissions right now.", "", "", "build", "Offline", "Public submissions are paused", "The page is visible, but the report endpoint is not configured right now.");
         return;
       }
 
@@ -754,7 +913,10 @@
         logoFile ? "Sending your match link and logo for processing." : "Sending your match link for processing.",
         "",
         "",
-        logoFile ? "upload" : "build"
+        logoFile ? "upload" : "build",
+        "In Progress",
+        logoFile ? "Preparing the brand assets" : "Submitting your match",
+        logoFile ? "Your match link and logo are on the way. The final pages will appear here as soon as the build begins." : "Your match link is on the way. The final pages will appear here as soon as the build begins."
       );
 
       try {
@@ -783,7 +945,10 @@
           "Your request was accepted. We are now creating the report and story pack.",
           "",
           `Request ID: <code>${escapeHtml(requestId)}</code><br>Status JSON: <a href="${escapeHtml(statusUrl)}">${escapeHtml(statusUrl)}</a>`,
-          logoFile ? "upload" : "build"
+          logoFile ? "upload" : "build",
+          "In Progress",
+          "Build confirmed",
+          "Your report is officially in progress. Keep this page open and the result links will appear here."
         );
         await pollRequest(requestId, statusUrl, context);
       } catch (error) {
@@ -792,7 +957,10 @@
           error.message || "Try again with the same match link, or use a smaller PNG or JPG logo file.",
           '<button class="button secondary" type="button" data-reset>Try Again</button>',
           "",
-          "build"
+          "build",
+          "Needs Attention",
+          "The request was not accepted",
+          "Try again with the same match link. If you uploaded a logo, switch to a smaller PNG or JPG file."
         );
       } finally {
         submitButton.disabled = false;
