@@ -563,34 +563,69 @@
     }
     @media (max-width: 620px) {
       .shell {
-        padding: 18px 14px 32px;
+        padding: 14px 14px 28px;
       }
       .topbar {
         align-items: flex-start;
         flex-direction: column;
+        margin-bottom: 12px;
       }
       .hero-copy, .hero-panel, .panel, .status-panel {
-        border-radius: 24px;
-        padding: 18px;
+        border-radius: 22px;
+        padding: 16px;
       }
       h1 {
-        font-size: clamp(34px, 14vw, 52px);
+        font-size: clamp(32px, 13vw, 46px);
       }
       .sub {
-        font-size: 16px;
+        font-size: 15px;
+        margin-top: 12px;
       }
       .hero-notes {
         gap: 8px;
+        margin-top: 16px;
       }
       .hero-note {
         width: 100%;
         justify-content: center;
       }
+      .hero-note:nth-child(n+3) {
+        display: none;
+      }
+      .hero-audience,
+      .hero-panel,
+      .proof-strip,
+      .trust-grid {
+        display: none;
+      }
+      .panel-head {
+        margin-bottom: 14px;
+      }
+      .panel-note {
+        display: none;
+      }
+      .field {
+        margin-top: 14px;
+      }
       .theme-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
       }
       .text-input {
-        min-height: 82px;
+        min-height: 74px;
+      }
+      .logo-preview {
+        min-height: 108px;
+      }
+      .help-card {
+        margin-top: 14px;
+        padding: 14px;
+      }
+      .help-list {
+        margin-top: 8px;
+      }
+      .help-list li:nth-child(n+3) {
+        display: none;
       }
       .status-panel {
         position: static;
@@ -600,6 +635,9 @@
       }
       .button-row, .status-actions {
         flex-direction: column;
+      }
+      .button-row {
+        margin-top: 16px;
       }
     }
   </style>
@@ -614,7 +652,7 @@
       <div class="hero-copy">
         <div class="eyebrow">Branded Match Reports</div>
         <h1>Match recap pages that feel ready to publish.</h1>
-        <p class="sub">Paste a match link, pick the visual direction, add your club logo, and get a polished report plus a social-ready story pack without building each asset manually.</p>
+        <p class="sub">Paste a match link, choose a look, add your club logo, and generate a polished report plus a story pack in about a minute.</p>
         <div class="hero-notes">
           <span class="hero-note">Ready in about 1 minute</span>
           <span class="hero-note">Custom club logo supported</span>
