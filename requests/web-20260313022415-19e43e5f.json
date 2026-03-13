@@ -1,12 +1,15 @@
 {
   "request_id": "web-20260313022415-19e43e5f",
-  "status": "running",
+  "status": "published",
   "request_source": "web_form",
   "input_value": "https://the.skorapp.id/game?id=3krE8OXdV4zgHqGGKnjfjN",
   "theme_id": "sand",
   "theme_label": "Sand",
   "submitted_at_utc": "2026-03-13T02:24:46Z",
-  "updated_at_utc": "2026-03-13T02:24:46Z",
-  "message": "Workflow started. Generating report files now.",
+  "updated_at_utc": "2026-03-13T02:24:59Z",
+  "message": "Report published successfully.",
+  "report_folder": "3krE8OXdV4zgHqGGKnjfjN",
+  "report_url": "https://adhni.github.io/skor-reports/reports/3krE8OXdV4zgHqGGKnjfjN/report.html",
+  "stories_url": "https://adhni.github.io/skor-reports/reports/3krE8OXdV4zgHqGGKnjfjN/stories/index.html",
   "run_url": "https://github.com/adhni/skor-scrape/actions/runs/23033385112"
 }

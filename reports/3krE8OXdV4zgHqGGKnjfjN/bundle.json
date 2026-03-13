@@ -1,0 +1,974 @@
+{
+  "metadata": {
+    "input": "https://the.skorapp.id/game?id=3krE8OXdV4zgHqGGKnjfjN",
+    "source": "share_link",
+    "share_token": "3krE8OXdV4zgHqGGKnjfjN",
+    "game_id": 86805,
+    "folder_name": "3krE8OXdV4zgHqGGKnjfjN",
+    "public_report_base_url": "https://adhni.github.io/skor-reports/reports",
+    "branding": {
+      "theme_id": "sand",
+      "theme_label": "Sand",
+      "logo_filename": "logo.jpg"
+    },
+    "generated_at_utc": "2026-03-13T02:24:48.878098+00:00"
+  },
+  "detail": {
+    "id": 86805,
+    "created_at": "2026-01-11T08:06:00.841496+00:00",
+    "name": "BOC VOL 2  2026",
+    "game_type_id": 2,
+    "court_count": 1,
+    "max_point": 5,
+    "share_url": "",
+    "host_user_id": "401cf5b6-ad05-4bbc-8f6f-415867edb875",
+    "sport": "padel",
+    "is_ended": true,
+    "community_id": null,
+    "opponent_community_id": null,
+    "is_ranked_match": false,
+    "scoring_name": "First to 5",
+    "scoring_code": "race_to",
+    "code": "americano",
+    "is_win_sorted": false,
+    "is_eligible_for_swap": true,
+    "current_round_id": 1093590,
+    "has_third_place": true,
+    "courts": [
+      {
+        "id": 131641,
+        "name": "Court 1",
+        "game_id": 86805,
+        "created_at": "2026-01-11T08:06:00.841496+00:00",
+        "updated_at": "2026-01-11T08:06:00.841496+00:00"
+      }
+    ],
+    "participants": [
+      {
+        "id": 868051,
+        "name": "Kareem Mulachela",
+        "gender": "male",
+        "game_id": 86805,
+        "user_id": "3608b5bd-4050-443c-9eed-218517523d3b",
+        "username": null,
+        "is_joined": true,
+        "created_at": "2026-01-11T08:06:00.923015+00:00",
+        "updated_at": "2026-01-11T08:06:00.923015+00:00",
+        "profile_url": "https://dnoupmrhnyhcmxyqjzxs.supabase.co/storage/v1/object/public/images/user_uploads/3608b5bd-4050-443c-9eed-218517523d3b/1759681296086.jpg",
+        "community_id": 0
+      },
+      {
+        "id": 868052,
+        "name": "Abudy",
+        "gender": "male",
+        "game_id": 86805,
+        "user_id": "60293896-0dc0-40df-891e-80bb81d4fb3d",
+        "username": null,
+        "is_joined": true,
+        "created_at": "2026-01-11T08:06:00.923015+00:00",
+        "updated_at": "2026-01-11T08:06:00.923015+00:00",
+        "profile_url": "https://dnoupmrhnyhcmxyqjzxs.supabase.co/storage/v1/object/public/images/user_uploads/60293896-0dc0-40df-891e-80bb81d4fb3d/1756115457912.jpg",
+        "community_id": 0
+      },
+      {
+        "id": 868053,
+        "name": "Anis",
+        "gender": "male",
+        "game_id": 86805,
+        "user_id": "ba30d1c7-757c-4ae4-97e5-e32eb326611a",
+        "username": null,
+        "is_joined": true,
+        "created_at": "2026-01-11T08:06:00.923015+00:00",
+        "updated_at": "2026-01-11T08:06:00.923015+00:00",
+        "profile_url": "https://dnoupmrhnyhcmxyqjzxs.supabase.co/storage/v1/object/public/images/user_uploads/ba30d1c7-757c-4ae4-97e5-e32eb326611a/1755682967588.jpg",
+        "community_id": 0
+      },
+      {
+        "id": 868054,
+        "name": "adhni",
+        "gender": "male",
+        "game_id": 86805,
+        "user_id": "16ac40e6-8b8a-4207-9139-b10faac277f6",
+        "username": null,
+        "is_joined": true,
+        "created_at": "2026-01-11T08:06:00.923015+00:00",
+        "updated_at": "2026-01-11T08:06:00.923015+00:00",
+        "profile_url": "",
+        "community_id": 0
+      },
+      {
+        "id": 868055,
+        "name": "Mahdi Kemal Assegaf",
+        "gender": "male",
+        "game_id": 86805,
+        "user_id": "401cf5b6-ad05-4bbc-8f6f-415867edb875",
+        "username": null,
+        "is_joined": true,
+        "created_at": "2026-01-11T08:06:00.923015+00:00",
+        "updated_at": "2026-01-11T08:06:00.923015+00:00",
+        "profile_url": "https://dnoupmrhnyhcmxyqjzxs.supabase.co/storage/v1/object/public/images/user_uploads/401cf5b6-ad05-4bbc-8f6f-415867edb875/1757754160281.jpg",
+        "community_id": 0
+      }
+    ],
+    "player_requests": [],
+    "rounds": [
+      {
+        "id": 1092136,
+        "game_id": 86805,
+        "created_at": "2026-01-11T08:06:01.138868+00:00",
+        "round_name": null,
+        "updated_at": "2026-01-11T08:06:01.138868+00:00",
+        "round_number": 1
+      },
+      {
+        "id": 1092137,
+        "game_id": 86805,
+        "created_at": "2026-01-11T08:06:01.245882+00:00",
+        "round_name": null,
+        "updated_at": "2026-01-11T08:06:01.245882+00:00",
+        "round_number": 2
+      },
+      {
+        "id": 1092138,
+        "game_id": 86805,
+        "created_at": "2026-01-11T08:06:01.338917+00:00",
+        "round_name": null,
+        "updated_at": "2026-01-11T08:06:01.338917+00:00",
+        "round_number": 3
+      },
+      {
+        "id": 1092139,
+        "game_id": 86805,
+        "created_at": "2026-01-11T08:06:01.426405+00:00",
+        "round_name": null,
+        "updated_at": "2026-01-11T08:06:01.426405+00:00",
+        "round_number": 4
+      },
+      {
+        "id": 1092140,
+        "game_id": 86805,
+        "created_at": "2026-01-11T08:06:01.518792+00:00",
+        "round_name": null,
+        "updated_at": "2026-01-11T08:06:01.518792+00:00",
+        "round_number": 5
+      },
+      {
+        "id": 1093587,
+        "game_id": 86805,
+        "created_at": "2026-01-11T09:19:33.912081+00:00",
+        "round_name": null,
+        "updated_at": "2026-01-11T09:19:33.912081+00:00",
+        "round_number": 6
+      },
+      {
+        "id": 1093588,
+        "game_id": 86805,
+        "created_at": "2026-01-11T09:19:33.999138+00:00",
+        "round_name": null,
+        "updated_at": "2026-01-11T09:19:33.999138+00:00",
+        "round_number": 7
+      },
+      {
+        "id": 1093589,
+        "game_id": 86805,
+        "created_at": "2026-01-11T09:19:34.095408+00:00",
+        "round_name": null,
+        "updated_at": "2026-01-11T09:19:34.095408+00:00",
+        "round_number": 8
+      },
+      {
+        "id": 1093590,
+        "game_id": 86805,
+        "created_at": "2026-01-11T09:19:34.191332+00:00",
+        "round_name": null,
+        "updated_at": "2026-01-11T09:19:34.191332+00:00",
+        "round_number": 9
+      },
+      {
+        "id": 1093591,
+        "game_id": 86805,
+        "created_at": "2026-01-11T09:19:34.28849+00:00",
+        "round_name": null,
+        "updated_at": "2026-01-11T09:19:34.28849+00:00",
+        "round_number": 10
+      }
+    ],
+    "community": null,
+    "opponent_community": null,
+    "hosts": [],
+    "main_host": {
+      "gender": "Male",
+      "username": "mahdika",
+      "profile_url": "https://dnoupmrhnyhcmxyqjzxs.supabase.co/storage/v1/object/public/images/user_uploads/401cf5b6-ad05-4bbc-8f6f-415867edb875/1757754160281.jpg",
+      "display_name": "Mahdi Kemal Assegaf",
+      "host_user_id": "401cf5b6-ad05-4bbc-8f6f-415867edb875"
+    }
+  },
+  "detail_raw": [
+    {
+      "id": 86805,
+      "created_at": "2026-01-11T08:06:00.841496+00:00",
+      "name": "BOC VOL 2  2026",
+      "game_type_id": 2,
+      "court_count": 1,
+      "max_point": 5,
+      "share_url": "",
+      "host_user_id": "401cf5b6-ad05-4bbc-8f6f-415867edb875",
+      "sport": "padel",
+      "is_ended": true,
+      "community_id": null,
+      "opponent_community_id": null,
+      "is_ranked_match": false,
+      "scoring_name": "First to 5",
+      "scoring_code": "race_to",
+      "code": "americano",
+      "is_win_sorted": false,
+      "is_eligible_for_swap": true,
+      "current_round_id": 1093590,
+      "has_third_place": true,
+      "courts": [
+        {
+          "id": 131641,
+          "name": "Court 1",
+          "game_id": 86805,
+          "created_at": "2026-01-11T08:06:00.841496+00:00",
+          "updated_at": "2026-01-11T08:06:00.841496+00:00"
+        }
+      ],
+      "participants": [
+        {
+          "id": 868051,
+          "name": "Kareem Mulachela",
+          "gender": "male",
+          "game_id": 86805,
+          "user_id": "3608b5bd-4050-443c-9eed-218517523d3b",
+          "username": null,
+          "is_joined": true,
+          "created_at": "2026-01-11T08:06:00.923015+00:00",
+          "updated_at": "2026-01-11T08:06:00.923015+00:00",
+          "profile_url": "https://dnoupmrhnyhcmxyqjzxs.supabase.co/storage/v1/object/public/images/user_uploads/3608b5bd-4050-443c-9eed-218517523d3b/1759681296086.jpg",
+          "community_id": 0
+        },
+        {
+          "id": 868052,
+          "name": "Abudy",
+          "gender": "male",
+          "game_id": 86805,
+          "user_id": "60293896-0dc0-40df-891e-80bb81d4fb3d",
+          "username": null,
+          "is_joined": true,
+          "created_at": "2026-01-11T08:06:00.923015+00:00",
+          "updated_at": "2026-01-11T08:06:00.923015+00:00",
+          "profile_url": "https://dnoupmrhnyhcmxyqjzxs.supabase.co/storage/v1/object/public/images/user_uploads/60293896-0dc0-40df-891e-80bb81d4fb3d/1756115457912.jpg",
+          "community_id": 0
+        },
+        {
+          "id": 868053,
+          "name": "Anis",
+          "gender": "male",
+          "game_id": 86805,
+          "user_id": "ba30d1c7-757c-4ae4-97e5-e32eb326611a",
+          "username": null,
+          "is_joined": true,
+          "created_at": "2026-01-11T08:06:00.923015+00:00",
+          "updated_at": "2026-01-11T08:06:00.923015+00:00",
+          "profile_url": "https://dnoupmrhnyhcmxyqjzxs.supabase.co/storage/v1/object/public/images/user_uploads/ba30d1c7-757c-4ae4-97e5-e32eb326611a/1755682967588.jpg",
+          "community_id": 0
+        },
+        {
+          "id": 868054,
+          "name": "adhni",
+          "gender": "male",
+          "game_id": 86805,
+          "user_id": "16ac40e6-8b8a-4207-9139-b10faac277f6",
+          "username": null,
+          "is_joined": true,
+          "created_at": "2026-01-11T08:06:00.923015+00:00",
+          "updated_at": "2026-01-11T08:06:00.923015+00:00",
+          "profile_url": "",
+          "community_id": 0
+        },
+        {
+          "id": 868055,
+          "name": "Mahdi Kemal Assegaf",
+          "gender": "male",
+          "game_id": 86805,
+          "user_id": "401cf5b6-ad05-4bbc-8f6f-415867edb875",
+          "username": null,
+          "is_joined": true,
+          "created_at": "2026-01-11T08:06:00.923015+00:00",
+          "updated_at": "2026-01-11T08:06:00.923015+00:00",
+          "profile_url": "https://dnoupmrhnyhcmxyqjzxs.supabase.co/storage/v1/object/public/images/user_uploads/401cf5b6-ad05-4bbc-8f6f-415867edb875/1757754160281.jpg",
+          "community_id": 0
+        }
+      ],
+      "player_requests": [],
+      "rounds": [
+        {
+          "id": 1092136,
+          "game_id": 86805,
+          "created_at": "2026-01-11T08:06:01.138868+00:00",
+          "round_name": null,
+          "updated_at": "2026-01-11T08:06:01.138868+00:00",
+          "round_number": 1
+        },
+        {
+          "id": 1092137,
+          "game_id": 86805,
+          "created_at": "2026-01-11T08:06:01.245882+00:00",
+          "round_name": null,
+          "updated_at": "2026-01-11T08:06:01.245882+00:00",
+          "round_number": 2
+        },
+        {
+          "id": 1092138,
+          "game_id": 86805,
+          "created_at": "2026-01-11T08:06:01.338917+00:00",
+          "round_name": null,
+          "updated_at": "2026-01-11T08:06:01.338917+00:00",
+          "round_number": 3
+        },
+        {
+          "id": 1092139,
+          "game_id": 86805,
+          "created_at": "2026-01-11T08:06:01.426405+00:00",
+          "round_name": null,
+          "updated_at": "2026-01-11T08:06:01.426405+00:00",
+          "round_number": 4
+        },
+        {
+          "id": 1092140,
+          "game_id": 86805,
+          "created_at": "2026-01-11T08:06:01.518792+00:00",
+          "round_name": null,
+          "updated_at": "2026-01-11T08:06:01.518792+00:00",
+          "round_number": 5
+        },
+        {
+          "id": 1093587,
+          "game_id": 86805,
+          "created_at": "2026-01-11T09:19:33.912081+00:00",
+          "round_name": null,
+          "updated_at": "2026-01-11T09:19:33.912081+00:00",
+          "round_number": 6
+        },
+        {
+          "id": 1093588,
+          "game_id": 86805,
+          "created_at": "2026-01-11T09:19:33.999138+00:00",
+          "round_name": null,
+          "updated_at": "2026-01-11T09:19:33.999138+00:00",
+          "round_number": 7
+        },
+        {
+          "id": 1093589,
+          "game_id": 86805,
+          "created_at": "2026-01-11T09:19:34.095408+00:00",
+          "round_name": null,
+          "updated_at": "2026-01-11T09:19:34.095408+00:00",
+          "round_number": 8
+        },
+        {
+          "id": 1093590,
+          "game_id": 86805,
+          "created_at": "2026-01-11T09:19:34.191332+00:00",
+          "round_name": null,
+          "updated_at": "2026-01-11T09:19:34.191332+00:00",
+          "round_number": 9
+        },
+        {
+          "id": 1093591,
+          "game_id": 86805,
+          "created_at": "2026-01-11T09:19:34.28849+00:00",
+          "round_name": null,
+          "updated_at": "2026-01-11T09:19:34.28849+00:00",
+          "round_number": 10
+        }
+      ],
+      "community": null,
+      "opponent_community": null,
+      "hosts": [],
+      "main_host": {
+        "gender": "Male",
+        "username": "mahdika",
+        "profile_url": "https://dnoupmrhnyhcmxyqjzxs.supabase.co/storage/v1/object/public/images/user_uploads/401cf5b6-ad05-4bbc-8f6f-415867edb875/1757754160281.jpg",
+        "display_name": "Mahdi Kemal Assegaf",
+        "host_user_id": "401cf5b6-ad05-4bbc-8f6f-415867edb875"
+      }
+    }
+  ],
+  "rounds": [
+    {
+      "id": 1092136,
+      "matches": [
+        {
+          "id": 1641304,
+          "team_a": {
+            "score": 3,
+            "participants": [
+              {
+                "id": 868051,
+                "name": "Kareem Mulachela",
+                "gender": "male",
+                "user_id": "3608b5bd-4050-443c-9eed-218517523d3b",
+                "profile_url": "https://dnoupmrhnyhcmxyqjzxs.supabase.co/storage/v1/object/public/images/user_uploads/3608b5bd-4050-443c-9eed-218517523d3b/1759681296086.jpg"
+              },
+              {
+                "id": 868052,
+                "name": "Abudy",
+                "gender": "Male",
+                "user_id": "60293896-0dc0-40df-891e-80bb81d4fb3d",
+                "profile_url": "https://dnoupmrhnyhcmxyqjzxs.supabase.co/storage/v1/object/public/images/user_uploads/60293896-0dc0-40df-891e-80bb81d4fb3d/1756115457912.jpg"
+              }
+            ]
+          },
+          "team_b": {
+            "score": 2,
+            "participants": [
+              {
+                "id": 868053,
+                "name": "Anis",
+                "gender": "male",
+                "user_id": "ba30d1c7-757c-4ae4-97e5-e32eb326611a",
+                "profile_url": "https://dnoupmrhnyhcmxyqjzxs.supabase.co/storage/v1/object/public/images/user_uploads/ba30d1c7-757c-4ae4-97e5-e32eb326611a/1755682967588.jpg"
+              },
+              {
+                "id": 868055,
+                "name": "Mahdi Kemal Assegaf",
+                "gender": "male",
+                "user_id": "401cf5b6-ad05-4bbc-8f6f-415867edb875",
+                "profile_url": "https://dnoupmrhnyhcmxyqjzxs.supabase.co/storage/v1/object/public/images/user_uploads/401cf5b6-ad05-4bbc-8f6f-415867edb875/1757754160281.jpg"
+              }
+            ]
+          },
+          "court_id": 131641,
+          "time_seconds": 0
+        }
+      ],
+      "round_number": 1
+    },
+    {
+      "id": 1092137,
+      "matches": [
+        {
+          "id": 1641305,
+          "team_a": {
+            "score": 2,
+            "participants": [
+              {
+                "id": 868052,
+                "name": "Abudy",
+                "gender": "Male",
+                "user_id": "60293896-0dc0-40df-891e-80bb81d4fb3d",
+                "profile_url": "https://dnoupmrhnyhcmxyqjzxs.supabase.co/storage/v1/object/public/images/user_uploads/60293896-0dc0-40df-891e-80bb81d4fb3d/1756115457912.jpg"
+              },
+              {
+                "id": 868054,
+                "name": "adhni",
+                "gender": "male",
+                "user_id": "16ac40e6-8b8a-4207-9139-b10faac277f6",
+                "profile_url": ""
+              }
+            ]
+          },
+          "team_b": {
+            "score": 3,
+            "participants": [
+              {
+                "id": 868051,
+                "name": "Kareem Mulachela",
+                "gender": "male",
+                "user_id": "3608b5bd-4050-443c-9eed-218517523d3b",
+                "profile_url": "https://dnoupmrhnyhcmxyqjzxs.supabase.co/storage/v1/object/public/images/user_uploads/3608b5bd-4050-443c-9eed-218517523d3b/1759681296086.jpg"
+              },
+              {
+                "id": 868055,
+                "name": "Mahdi Kemal Assegaf",
+                "gender": "male",
+                "user_id": "401cf5b6-ad05-4bbc-8f6f-415867edb875",
+                "profile_url": "https://dnoupmrhnyhcmxyqjzxs.supabase.co/storage/v1/object/public/images/user_uploads/401cf5b6-ad05-4bbc-8f6f-415867edb875/1757754160281.jpg"
+              }
+            ]
+          },
+          "court_id": 131641,
+          "time_seconds": 0
+        }
+      ],
+      "round_number": 2
+    },
+    {
+      "id": 1092138,
+      "matches": [
+        {
+          "id": 1641306,
+          "team_a": {
+            "score": 2,
+            "participants": [
+              {
+                "id": 868053,
+                "name": "Anis",
+                "gender": "male",
+                "user_id": "ba30d1c7-757c-4ae4-97e5-e32eb326611a",
+                "profile_url": "https://dnoupmrhnyhcmxyqjzxs.supabase.co/storage/v1/object/public/images/user_uploads/ba30d1c7-757c-4ae4-97e5-e32eb326611a/1755682967588.jpg"
+              },
+              {
+                "id": 868054,
+                "name": "adhni",
+                "gender": "male",
+                "user_id": "16ac40e6-8b8a-4207-9139-b10faac277f6",
+                "profile_url": ""
+              }
+            ]
+          },
+          "team_b": {
+            "score": 3,
+            "participants": [
+              {
+                "id": 868052,
+                "name": "Abudy",
+                "gender": "Male",
+                "user_id": "60293896-0dc0-40df-891e-80bb81d4fb3d",
+                "profile_url": "https://dnoupmrhnyhcmxyqjzxs.supabase.co/storage/v1/object/public/images/user_uploads/60293896-0dc0-40df-891e-80bb81d4fb3d/1756115457912.jpg"
+              },
+              {
+                "id": 868055,
+                "name": "Mahdi Kemal Assegaf",
+                "gender": "male",
+                "user_id": "401cf5b6-ad05-4bbc-8f6f-415867edb875",
+                "profile_url": "https://dnoupmrhnyhcmxyqjzxs.supabase.co/storage/v1/object/public/images/user_uploads/401cf5b6-ad05-4bbc-8f6f-415867edb875/1757754160281.jpg"
+              }
+            ]
+          },
+          "court_id": 131641,
+          "time_seconds": 0
+        }
+      ],
+      "round_number": 3
+    },
+    {
+      "id": 1092139,
+      "matches": [
+        {
+          "id": 1641307,
+          "team_a": {
+            "score": 5,
+            "participants": [
+              {
+                "id": 868051,
+                "name": "Kareem Mulachela",
+                "gender": "male",
+                "user_id": "3608b5bd-4050-443c-9eed-218517523d3b",
+                "profile_url": "https://dnoupmrhnyhcmxyqjzxs.supabase.co/storage/v1/object/public/images/user_uploads/3608b5bd-4050-443c-9eed-218517523d3b/1759681296086.jpg"
+              },
+              {
+                "id": 868053,
+                "name": "Anis",
+                "gender": "male",
+                "user_id": "ba30d1c7-757c-4ae4-97e5-e32eb326611a",
+                "profile_url": "https://dnoupmrhnyhcmxyqjzxs.supabase.co/storage/v1/object/public/images/user_uploads/ba30d1c7-757c-4ae4-97e5-e32eb326611a/1755682967588.jpg"
+              }
+            ]
+          },
+          "team_b": {
+            "score": 0,
+            "participants": [
+              {
+                "id": 868054,
+                "name": "adhni",
+                "gender": "male",
+                "user_id": "16ac40e6-8b8a-4207-9139-b10faac277f6",
+                "profile_url": ""
+              },
+              {
+                "id": 868055,
+                "name": "Mahdi Kemal Assegaf",
+                "gender": "male",
+                "user_id": "401cf5b6-ad05-4bbc-8f6f-415867edb875",
+                "profile_url": "https://dnoupmrhnyhcmxyqjzxs.supabase.co/storage/v1/object/public/images/user_uploads/401cf5b6-ad05-4bbc-8f6f-415867edb875/1757754160281.jpg"
+              }
+            ]
+          },
+          "court_id": 131641,
+          "time_seconds": 0
+        }
+      ],
+      "round_number": 4
+    },
+    {
+      "id": 1092140,
+      "matches": [
+        {
+          "id": 1641308,
+          "team_a": {
+            "score": 4,
+            "participants": [
+              {
+                "id": 868052,
+                "name": "Abudy",
+                "gender": "Male",
+                "user_id": "60293896-0dc0-40df-891e-80bb81d4fb3d",
+                "profile_url": "https://dnoupmrhnyhcmxyqjzxs.supabase.co/storage/v1/object/public/images/user_uploads/60293896-0dc0-40df-891e-80bb81d4fb3d/1756115457912.jpg"
+              },
+              {
+                "id": 868053,
+                "name": "Anis",
+                "gender": "male",
+                "user_id": "ba30d1c7-757c-4ae4-97e5-e32eb326611a",
+                "profile_url": "https://dnoupmrhnyhcmxyqjzxs.supabase.co/storage/v1/object/public/images/user_uploads/ba30d1c7-757c-4ae4-97e5-e32eb326611a/1755682967588.jpg"
+              }
+            ]
+          },
+          "team_b": {
+            "score": 1,
+            "participants": [
+              {
+                "id": 868051,
+                "name": "Kareem Mulachela",
+                "gender": "male",
+                "user_id": "3608b5bd-4050-443c-9eed-218517523d3b",
+                "profile_url": "https://dnoupmrhnyhcmxyqjzxs.supabase.co/storage/v1/object/public/images/user_uploads/3608b5bd-4050-443c-9eed-218517523d3b/1759681296086.jpg"
+              },
+              {
+                "id": 868054,
+                "name": "adhni",
+                "gender": "male",
+                "user_id": "16ac40e6-8b8a-4207-9139-b10faac277f6",
+                "profile_url": ""
+              }
+            ]
+          },
+          "court_id": 131641,
+          "time_seconds": 0
+        }
+      ],
+      "round_number": 5
+    },
+    {
+      "id": 1093587,
+      "matches": [
+        {
+          "id": 1643368,
+          "team_a": {
+            "score": 1,
+            "participants": [
+              {
+                "id": 868054,
+                "name": "adhni",
+                "gender": "male",
+                "user_id": "16ac40e6-8b8a-4207-9139-b10faac277f6",
+                "profile_url": ""
+              },
+              {
+                "id": 868055,
+                "name": "Mahdi Kemal Assegaf",
+                "gender": "male",
+                "user_id": "401cf5b6-ad05-4bbc-8f6f-415867edb875",
+                "profile_url": "https://dnoupmrhnyhcmxyqjzxs.supabase.co/storage/v1/object/public/images/user_uploads/401cf5b6-ad05-4bbc-8f6f-415867edb875/1757754160281.jpg"
+              }
+            ]
+          },
+          "team_b": {
+            "score": 4,
+            "participants": [
+              {
+                "id": 868052,
+                "name": "Abudy",
+                "gender": "Male",
+                "user_id": "60293896-0dc0-40df-891e-80bb81d4fb3d",
+                "profile_url": "https://dnoupmrhnyhcmxyqjzxs.supabase.co/storage/v1/object/public/images/user_uploads/60293896-0dc0-40df-891e-80bb81d4fb3d/1756115457912.jpg"
+              },
+              {
+                "id": 868053,
+                "name": "Anis",
+                "gender": "male",
+                "user_id": "ba30d1c7-757c-4ae4-97e5-e32eb326611a",
+                "profile_url": "https://dnoupmrhnyhcmxyqjzxs.supabase.co/storage/v1/object/public/images/user_uploads/ba30d1c7-757c-4ae4-97e5-e32eb326611a/1755682967588.jpg"
+              }
+            ]
+          },
+          "court_id": 131641,
+          "time_seconds": 0
+        }
+      ],
+      "round_number": 6
+    },
+    {
+      "id": 1093588,
+      "matches": [
+        {
+          "id": 1643369,
+          "team_a": {
+            "score": 3,
+            "participants": [
+              {
+                "id": 868051,
+                "name": "Kareem Mulachela",
+                "gender": "male",
+                "user_id": "3608b5bd-4050-443c-9eed-218517523d3b",
+                "profile_url": "https://dnoupmrhnyhcmxyqjzxs.supabase.co/storage/v1/object/public/images/user_uploads/3608b5bd-4050-443c-9eed-218517523d3b/1759681296086.jpg"
+              },
+              {
+                "id": 868055,
+                "name": "Mahdi Kemal Assegaf",
+                "gender": "male",
+                "user_id": "401cf5b6-ad05-4bbc-8f6f-415867edb875",
+                "profile_url": "https://dnoupmrhnyhcmxyqjzxs.supabase.co/storage/v1/object/public/images/user_uploads/401cf5b6-ad05-4bbc-8f6f-415867edb875/1757754160281.jpg"
+              }
+            ]
+          },
+          "team_b": {
+            "score": 2,
+            "participants": [
+              {
+                "id": 868053,
+                "name": "Anis",
+                "gender": "male",
+                "user_id": "ba30d1c7-757c-4ae4-97e5-e32eb326611a",
+                "profile_url": "https://dnoupmrhnyhcmxyqjzxs.supabase.co/storage/v1/object/public/images/user_uploads/ba30d1c7-757c-4ae4-97e5-e32eb326611a/1755682967588.jpg"
+              },
+              {
+                "id": 868054,
+                "name": "adhni",
+                "gender": "male",
+                "user_id": "16ac40e6-8b8a-4207-9139-b10faac277f6",
+                "profile_url": ""
+              }
+            ]
+          },
+          "court_id": 131641,
+          "time_seconds": 0
+        }
+      ],
+      "round_number": 7
+    },
+    {
+      "id": 1093589,
+      "matches": [
+        {
+          "id": 1643370,
+          "team_a": {
+            "score": 5,
+            "participants": [
+              {
+                "id": 868051,
+                "name": "Kareem Mulachela",
+                "gender": "male",
+                "user_id": "3608b5bd-4050-443c-9eed-218517523d3b",
+                "profile_url": "https://dnoupmrhnyhcmxyqjzxs.supabase.co/storage/v1/object/public/images/user_uploads/3608b5bd-4050-443c-9eed-218517523d3b/1759681296086.jpg"
+              },
+              {
+                "id": 868052,
+                "name": "Abudy",
+                "gender": "Male",
+                "user_id": "60293896-0dc0-40df-891e-80bb81d4fb3d",
+                "profile_url": "https://dnoupmrhnyhcmxyqjzxs.supabase.co/storage/v1/object/public/images/user_uploads/60293896-0dc0-40df-891e-80bb81d4fb3d/1756115457912.jpg"
+              }
+            ]
+          },
+          "team_b": {
+            "score": 0,
+            "participants": [
+              {
+                "id": 868053,
+                "name": "Anis",
+                "gender": "male",
+                "user_id": "ba30d1c7-757c-4ae4-97e5-e32eb326611a",
+                "profile_url": "https://dnoupmrhnyhcmxyqjzxs.supabase.co/storage/v1/object/public/images/user_uploads/ba30d1c7-757c-4ae4-97e5-e32eb326611a/1755682967588.jpg"
+              },
+              {
+                "id": 868055,
+                "name": "Mahdi Kemal Assegaf",
+                "gender": "male",
+                "user_id": "401cf5b6-ad05-4bbc-8f6f-415867edb875",
+                "profile_url": "https://dnoupmrhnyhcmxyqjzxs.supabase.co/storage/v1/object/public/images/user_uploads/401cf5b6-ad05-4bbc-8f6f-415867edb875/1757754160281.jpg"
+              }
+            ]
+          },
+          "court_id": 131641,
+          "time_seconds": 0
+        }
+      ],
+      "round_number": 8
+    },
+    {
+      "id": 1093590,
+      "matches": [
+        {
+          "id": 1643371,
+          "team_a": {
+            "score": 0,
+            "participants": [
+              {
+                "id": 868052,
+                "name": "Abudy",
+                "gender": "Male",
+                "user_id": "60293896-0dc0-40df-891e-80bb81d4fb3d",
+                "profile_url": "https://dnoupmrhnyhcmxyqjzxs.supabase.co/storage/v1/object/public/images/user_uploads/60293896-0dc0-40df-891e-80bb81d4fb3d/1756115457912.jpg"
+              },
+              {
+                "id": 868054,
+                "name": "adhni",
+                "gender": "male",
+                "user_id": "16ac40e6-8b8a-4207-9139-b10faac277f6",
+                "profile_url": ""
+              }
+            ]
+          },
+          "team_b": {
+            "score": 0,
+            "participants": [
+              {
+                "id": 868051,
+                "name": "Kareem Mulachela",
+                "gender": "male",
+                "user_id": "3608b5bd-4050-443c-9eed-218517523d3b",
+                "profile_url": "https://dnoupmrhnyhcmxyqjzxs.supabase.co/storage/v1/object/public/images/user_uploads/3608b5bd-4050-443c-9eed-218517523d3b/1759681296086.jpg"
+              },
+              {
+                "id": 868053,
+                "name": "Anis",
+                "gender": "male",
+                "user_id": "ba30d1c7-757c-4ae4-97e5-e32eb326611a",
+                "profile_url": "https://dnoupmrhnyhcmxyqjzxs.supabase.co/storage/v1/object/public/images/user_uploads/ba30d1c7-757c-4ae4-97e5-e32eb326611a/1755682967588.jpg"
+              }
+            ]
+          },
+          "court_id": 131641,
+          "time_seconds": 0
+        }
+      ],
+      "round_number": 9
+    },
+    {
+      "id": 1093591,
+      "matches": [
+        {
+          "id": 1643372,
+          "team_a": {
+            "score": 0,
+            "participants": [
+              {
+                "id": 868052,
+                "name": "Abudy",
+                "gender": "Male",
+                "user_id": "60293896-0dc0-40df-891e-80bb81d4fb3d",
+                "profile_url": "https://dnoupmrhnyhcmxyqjzxs.supabase.co/storage/v1/object/public/images/user_uploads/60293896-0dc0-40df-891e-80bb81d4fb3d/1756115457912.jpg"
+              },
+              {
+                "id": 868055,
+                "name": "Mahdi Kemal Assegaf",
+                "gender": "male",
+                "user_id": "401cf5b6-ad05-4bbc-8f6f-415867edb875",
+                "profile_url": "https://dnoupmrhnyhcmxyqjzxs.supabase.co/storage/v1/object/public/images/user_uploads/401cf5b6-ad05-4bbc-8f6f-415867edb875/1757754160281.jpg"
+              }
+            ]
+          },
+          "team_b": {
+            "score": 0,
+            "participants": [
+              {
+                "id": 868051,
+                "name": "Kareem Mulachela",
+                "gender": "male",
+                "user_id": "3608b5bd-4050-443c-9eed-218517523d3b",
+                "profile_url": "https://dnoupmrhnyhcmxyqjzxs.supabase.co/storage/v1/object/public/images/user_uploads/3608b5bd-4050-443c-9eed-218517523d3b/1759681296086.jpg"
+              },
+              {
+                "id": 868054,
+                "name": "adhni",
+                "gender": "male",
+                "user_id": "16ac40e6-8b8a-4207-9139-b10faac277f6",
+                "profile_url": ""
+              }
+            ]
+          },
+          "court_id": 131641,
+          "time_seconds": 0
+        }
+      ],
+      "round_number": 10
+    }
+  ],
+  "leaderboard": [
+    {
+      "id": 868052,
+      "user_id": "60293896-0dc0-40df-891e-80bb81d4fb3d",
+      "name": "Abudy",
+      "gender": "Male",
+      "profile_url": "https://dnoupmrhnyhcmxyqjzxs.supabase.co/storage/v1/object/public/images/user_uploads/60293896-0dc0-40df-891e-80bb81d4fb3d/1756115457912.jpg",
+      "diff": 12,
+      "points": 21,
+      "bench": 4,
+      "total": 25,
+      "win": 5,
+      "lose": 1,
+      "tie": 0,
+      "total_match": 6,
+      "community_id": 0
+    },
+    {
+      "id": 868051,
+      "user_id": "3608b5bd-4050-443c-9eed-218517523d3b",
+      "name": "Kareem Mulachela",
+      "gender": "male",
+      "profile_url": "https://dnoupmrhnyhcmxyqjzxs.supabase.co/storage/v1/object/public/images/user_uploads/3608b5bd-4050-443c-9eed-218517523d3b/1759681296086.jpg",
+      "diff": 10,
+      "points": 20,
+      "bench": 4,
+      "total": 24,
+      "win": 5,
+      "lose": 1,
+      "tie": 0,
+      "total_match": 6,
+      "community_id": 0
+    },
+    {
+      "id": 868053,
+      "user_id": "ba30d1c7-757c-4ae4-97e5-e32eb326611a",
+      "name": "Anis",
+      "gender": "male",
+      "profile_url": "https://dnoupmrhnyhcmxyqjzxs.supabase.co/storage/v1/object/public/images/user_uploads/ba30d1c7-757c-4ae4-97e5-e32eb326611a/1755682967588.jpg",
+      "diff": 3,
+      "points": 19,
+      "bench": 2,
+      "total": 21,
+      "win": 3,
+      "lose": 4,
+      "tie": 0,
+      "total_match": 7,
+      "community_id": 0
+    },
+    {
+      "id": 868055,
+      "user_id": "401cf5b6-ad05-4bbc-8f6f-415867edb875",
+      "name": "Mahdi Kemal Assegaf",
+      "gender": "male",
+      "profile_url": "https://dnoupmrhnyhcmxyqjzxs.supabase.co/storage/v1/object/public/images/user_uploads/401cf5b6-ad05-4bbc-8f6f-415867edb875/1757754160281.jpg",
+      "diff": -11,
+      "points": 12,
+      "bench": 2,
+      "total": 14,
+      "win": 3,
+      "lose": 4,
+      "tie": 0,
+      "total_match": 7,
+      "community_id": 0
+    },
+    {
+      "id": 868054,
+      "user_id": "16ac40e6-8b8a-4207-9139-b10faac277f6",
+      "name": "adhni",
+      "gender": "male",
+      "profile_url": "",
+      "diff": -14,
+      "points": 8,
+      "bench": 4,
+      "total": 12,
+      "win": 0,
+      "lose": 6,
+      "tie": 0,
+      "total_match": 6,
+      "community_id": 0
+    }
+  ]
+}
