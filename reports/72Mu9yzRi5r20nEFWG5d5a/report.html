@@ -1,0 +1,1148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Thurs 2512 24 pax | Skor Report</title>
+  <style>
+    :root {
+      --bg: #180812;
+      --panel: rgba(245, 245, 245, 0.98);
+      --panel-strong: #ffffff;
+      --panel-tint: #e7e7e7;
+      --ink: #0a0a0a;
+      --muted: #747474;
+      --line: rgba(10, 10, 10, 0.12);
+      --accent: #101010;
+      --accent-soft: #dedede;
+      --accent-strong: #1f1f1f;
+      --shadow-soft: 0 18px 44px rgba(0, 0, 0, 0.26);
+      --hero-from: rgba(88,32,62,0.98);
+      --hero-to: rgba(28,9,21,0.98);
+      --hero-stripe: rgba(255,214,235,0.12);
+      --hero-tag-bg: rgba(255,183,222,0.16);
+      --hero-tag-border: rgba(255,216,236,0.18);
+      --hero-action-bg: rgba(255,180,221,0.16);
+      --hero-action-hover: rgba(255,210,233,0.24);
+      --hero-action-border: rgba(255,216,236,0.2);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Avenir Next", "Helvetica Neue", sans-serif;
+      color: #f3f3f3;
+      overflow-x: hidden;
+      background:
+        radial-gradient(circle at top left, rgba(255,176,220,0.24), transparent 18%),
+        radial-gradient(circle at 85% 0%, rgba(203,102,160,0.20), transparent 22%),
+        linear-gradient(180deg, #5b2140 0%, #260d1b 24%, var(--bg) 100%);
+    }
+    .wrap {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 32px 20px 60px;
+    }
+    .hero {
+      background:
+        linear-gradient(135deg, var(--hero-from), var(--hero-to)),
+        linear-gradient(90deg, transparent 0%, transparent 92%, var(--hero-stripe) 92%, var(--hero-stripe) 100%);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 28px;
+      padding: 26px 28px 30px;
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
+    }
+    .hero-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .hero-brand {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      min-width: 0;
+    }
+    .hero-logo {
+      width: 88px;
+      height: 88px;
+      border-radius: 20px;
+      object-fit: cover;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: white;
+      padding: 6px;
+      flex: 0 0 auto;
+    }
+    .logo-fallback {
+      display: grid;
+      place-items: center;
+      font-size: 26px;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      color: #0a0a0a;
+      text-transform: uppercase;
+    }
+    .hero-copy {
+      min-width: 0;
+    }
+    .eyebrow {
+      margin: 0 0 10px;
+      color: #d0d0d0;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 12px;
+      font-weight: 800;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(32px, 5vw, 56px);
+      line-height: 0.95;
+      max-width: 11ch;
+      color: #ffffff;
+    }
+    .sub {
+      margin: 14px 0 0;
+      color: rgba(255,255,255,0.72);
+      max-width: 60ch;
+      line-height: 1.5;
+    }
+    .hero-tags, .chart-legend {
+      display: grid;
+      gap: 16px;
+    }
+    .hero-tags {
+      grid-template-columns: repeat(auto-fit, minmax(120px, max-content));
+      margin-top: 22px;
+      gap: 10px;
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 14px;
+    }
+    .hero-action {
+      display: inline-flex;
+      align-items: center;
+      padding: 12px 16px;
+      border-radius: 999px;
+      background: var(--hero-action-bg);
+      color: #ffffff;
+      border: 1px solid var(--hero-action-border);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      text-decoration: none;
+    }
+    .hero-action:hover {
+      background: var(--hero-action-hover);
+    }
+    .chart-legend {
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      margin-top: 18px;
+    }
+    .card, .rank-card, .round, .table-wrap, .chart-card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      box-shadow: none;
+      overflow: hidden;
+      position: relative;
+      isolation: isolate;
+      color: var(--ink);
+    }
+    .card, .rank-card, .round, .table-wrap, .chart-card {
+      padding: 18px;
+    }
+    .label {
+      color: var(--muted);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .value {
+      margin-top: 8px;
+      font-size: 24px;
+      font-weight: 700;
+    }
+    .value.big {
+      font-size: clamp(30px, 4vw, 46px);
+      line-height: 0.95;
+    }
+    .section {
+      margin-top: 28px;
+    }
+    .section-head {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+    .section h2 {
+      margin: 0;
+      font-size: 24px;
+      color: #ffffff;
+    }
+    .section-note {
+      color: rgba(255,255,255,0.62);
+      font-size: 14px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+    th, td {
+      text-align: left;
+      padding: 12px 10px;
+      border-bottom: 1px solid var(--line);
+    }
+    th {
+      color: var(--muted);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    tr:last-child td {
+      border-bottom: none;
+    }
+    .leader-name {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+    }
+    .desktop-only {
+      display: block;
+    }
+    .mobile-only {
+      display: none;
+    }
+    .total-cell {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .total-main {
+      font-weight: 800;
+    }
+    .total-bonus {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+    }
+    .rank-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 999px;
+      background: var(--accent);
+      color: white;
+      font-weight: 800;
+      font-size: 12px;
+      flex: 0 0 auto;
+    }
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: var(--hero-tag-bg);
+      color: #ffffff;
+      border: 1px solid var(--hero-tag-border);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+    .leaderboard-cards {
+      display: grid;
+      gap: 12px;
+    }
+    .story-grid-links {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+    }
+    .story-link-card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 18px;
+      color: var(--ink);
+    }
+    .story-link-rank {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 44px;
+      height: 32px;
+      padding: 0 12px;
+      border-radius: 999px;
+      background: var(--accent);
+      color: white;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+    }
+    .story-link-name {
+      margin-top: 14px;
+      font-size: 22px;
+      font-weight: 800;
+      line-height: 1;
+    }
+    .story-link-meta {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.45;
+    }
+    .story-link-button {
+      display: inline-flex;
+      align-items: center;
+      margin-top: 14px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: var(--accent);
+      color: white;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      text-decoration: none;
+    }
+    .leaderboard-card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 16px;
+      color: var(--ink);
+    }
+    .leaderboard-card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .leaderboard-card-name {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
+      font-weight: 800;
+    }
+    .leaderboard-card-name-text {
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .leaderboard-card-total {
+      text-align: right;
+      flex: 0 0 auto;
+    }
+    .leaderboard-card-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px 12px;
+      margin-top: 14px;
+    }
+    .leaderboard-card-stat {
+      background: rgba(0,0,0,0.04);
+      border-radius: 14px;
+      padding: 10px 12px;
+    }
+    .leaderboard-card-stat .label {
+      display: block;
+      margin-bottom: 4px;
+    }
+    .rounds { display: block; }
+    .round { margin-top: 18px; }
+    .round:first-child { margin-top: 0; }
+    .round-header {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+    .round-title {
+      margin: 0;
+      font-size: 22px;
+      color: var(--ink);
+    }
+    .round-meta {
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .bench-note {
+      margin: 10px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .match {
+      border-top: 1px solid var(--line);
+      padding-top: 14px;
+      margin-top: 14px;
+      overflow: hidden;
+    }
+    .match:first-of-type {
+      border-top: none;
+      padding-top: 0;
+      margin-top: 0;
+    }
+    .match-grid {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 14px;
+      align-items: center;
+    }
+    .team {
+      background: var(--panel-strong);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 14px;
+      min-width: 0;
+      color: var(--ink);
+    }
+    .team.win {
+      background: #ecfff3;
+      border-color: rgba(29, 125, 70, 0.24);
+    }
+    .score {
+      font-size: 42px;
+      font-weight: 800;
+      line-height: 1;
+      text-align: center;
+      white-space: nowrap;
+      color: var(--ink);
+    }
+    .players {
+      margin: 8px 0 0;
+      padding-left: 18px;
+      color: var(--muted);
+    }
+    .players li {
+      margin: 3px 0;
+    }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent-strong);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .chart-card {
+      padding: 22px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.96), rgba(239,239,239,0.98));
+    }
+    .chart-card .section-head h2 {
+      color: var(--ink);
+    }
+    .chart-card .section-note {
+      color: var(--muted);
+    }
+    .chart-shell {
+      position: relative;
+      margin-top: 16px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 12px;
+      background: rgba(255,255,255,0.58);
+    }
+    .chart-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .chart-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .toolbar-btn, .legend-btn {
+      border: 1px solid var(--line);
+      background: white;
+      color: var(--ink);
+      border-radius: 999px;
+      padding: 9px 12px;
+      font: inherit;
+      cursor: pointer;
+    }
+    .toolbar-btn.active {
+      border-color: rgba(0,0,0,0.35);
+      background: var(--accent);
+      color: white;
+    }
+    .legend-btn {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      width: 100%;
+      text-align: left;
+      border-radius: 14px;
+      padding: 10px 12px;
+      background: rgba(255,255,255,0.78);
+    }
+    .legend-btn.active {
+      border-color: rgba(0,0,0,0.22);
+      background: #f2f2f2;
+    }
+    .legend-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
+    }
+    .legend-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 999px;
+      flex: 0 0 auto;
+    }
+    .legend-name {
+      font-weight: 700;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .legend-rank {
+      color: var(--muted);
+      font-size: 13px;
+      flex: 0 0 auto;
+    }
+    .chart-svg {
+      width: 100%;
+      height: auto;
+      display: block;
+      margin-top: 14px;
+    }
+    .axis-label {
+      fill: var(--muted);
+      font-size: 12px;
+      font-family: "Avenir Next", "Segoe UI", sans-serif;
+    }
+    .grid-line {
+      stroke: rgba(30, 27, 24, 0.08);
+      stroke-width: 1;
+    }
+    .axis-line {
+      stroke: rgba(30, 27, 24, 0.2);
+      stroke-width: 1.5;
+    }
+    .series-line {
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      transition: opacity 120ms ease, stroke-width 120ms ease;
+    }
+    .series-dot {
+      transition: opacity 120ms ease, r 120ms ease;
+    }
+    .chart-tooltip {
+      position: absolute;
+      top: 54px;
+      left: 24px;
+      min-width: 180px;
+      max-width: min(320px, calc(100% - 48px));
+      padding: 12px 14px;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.96);
+      box-shadow: var(--shadow-soft);
+      pointer-events: none;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 120ms ease, transform 120ms ease;
+    }
+    .chart-tooltip.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .tooltip-title {
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+    .tooltip-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      font-size: 13px;
+      margin-top: 5px;
+    }
+    .tooltip-row strong {
+      white-space: nowrap;
+    }
+    .podium-stage {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      align-items: end;
+    }
+    .podium-card {
+      border: 1px solid var(--line);
+      border-radius: 24px 24px 18px 18px;
+      padding: 18px;
+      position: relative;
+      overflow: hidden;
+      min-height: 220px;
+      color: var(--ink);
+    }
+    .podium-card.place-1 {
+      background: linear-gradient(180deg, #fff2a8, #d6a409);
+      min-height: 290px;
+    }
+    .podium-card.place-2 {
+      background: linear-gradient(180deg, #f4f4f6, #b7bcc7);
+      min-height: 245px;
+    }
+    .podium-card.place-3 {
+      background: linear-gradient(180deg, #f2d1bb, #b76b36);
+      min-height: 230px;
+    }
+    .podium-place {
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 800;
+      color: rgba(30, 27, 24, 0.72);
+    }
+    .podium-rank {
+      margin-top: 8px;
+      font-size: 58px;
+      font-weight: 900;
+      line-height: 0.9;
+    }
+    .podium-name {
+      margin-top: 12px;
+      font-size: 26px;
+      font-weight: 900;
+      line-height: 1.02;
+    }
+    .podium-meta {
+      margin-top: 12px;
+      color: rgba(30, 27, 24, 0.78);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    @media (max-width: 760px) {
+      .hero-top {
+        align-items: flex-start;
+      }
+      .hero-brand {
+        align-items: flex-start;
+      }
+      .hero-logo {
+        width: 68px;
+        height: 68px;
+      }
+      .desktop-only {
+        display: none;
+      }
+      .mobile-only {
+        display: block;
+      }
+      .match-grid {
+        grid-template-columns: 1fr;
+      }
+      .score {
+        order: -1;
+      }
+      .chart-toolbar {
+        align-items: stretch;
+      }
+      .podium-stage {
+        grid-template-columns: 1fr;
+      }
+      .podium-card,
+      .podium-card.place-1,
+      .podium-card.place-2,
+      .podium-card.place-3 {
+        min-height: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="hero">
+      <div class="hero-top">
+        <div class="hero-brand">
+          <img class="hero-logo" src="logo.png" alt="Team logo">
+          <div class="hero-copy">
+            <p class="eyebrow">Skor Game Report</p>
+            <h1>Thurs 2512 24 pax</h1>
+            <p class="sub">
+              Mexicano night on 24 Dec 2025. Full player standings, round results, and rank flow in one place.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="hero-tags">
+        <span class="hero-tag">24 players</span><span class="hero-tag">12 rounds</span><span class="hero-tag">5 courts</span><span class="hero-tag">24 Dec 2025</span>
+      </div>
+      <div class="hero-actions"><a class="hero-action" href="player-story-alwi.html">Featured player story: Alwi</a><a class="hero-action" href="stories/index.html">Story image gallery</a></div>
+    </section>
+
+    <section class="section">
+      <div class="chart-card">
+        <div class="section-head">
+          <h2>Rank Progress By Round</h2>
+          <div class="section-note">Y axis is position, so rank 1 stays at the top. Click players below to focus lines.</div>
+        </div>
+        <div class="chart-toolbar">
+          <div class="section-note">Standings use total, wins, diff, then points.</div>
+          <div class="chart-actions">
+            <button class="toolbar-btn active" type="button" data-chart-mode="top">Top 8</button>
+            <button class="toolbar-btn" type="button" data-chart-mode="all">All</button>
+            <button class="toolbar-btn" type="button" data-chart-mode="clear">Clear</button>
+          </div>
+        </div>
+        <div class="chart-shell">
+          <svg id="rank-chart" class="chart-svg" viewBox="0 0 980 560" role="img" aria-label="Player rank progression by round"></svg>
+          <div id="chart-tooltip" class="chart-tooltip"></div>
+        </div>
+        <div class="chart-legend">
+          <button class="legend-btn" type="button" data-player="Bimo"><span class="legend-left"><span class="legend-dot" style="background:hsl(0 68% 44%)"></span><span class="legend-name">Bimo</span></span><span class="legend-rank">#1</span></button>
+<button class="legend-btn" type="button" data-player="Alwi"><span class="legend-left"><span class="legend-dot" style="background:hsl(37 68% 44%)"></span><span class="legend-name">Alwi</span></span><span class="legend-rank">#2</span></button>
+<button class="legend-btn" type="button" data-player="Wahyu"><span class="legend-left"><span class="legend-dot" style="background:hsl(74 68% 44%)"></span><span class="legend-name">Wahyu</span></span><span class="legend-rank">#3</span></button>
+<button class="legend-btn" type="button" data-player="Sandy Bran"><span class="legend-left"><span class="legend-dot" style="background:hsl(111 68% 44%)"></span><span class="legend-name">Sandy Bran</span></span><span class="legend-rank">#4</span></button>
+<button class="legend-btn" type="button" data-player="Jamal"><span class="legend-left"><span class="legend-dot" style="background:hsl(148 68% 44%)"></span><span class="legend-name">Jamal</span></span><span class="legend-rank">#5</span></button>
+<button class="legend-btn" type="button" data-player="Fahmy"><span class="legend-left"><span class="legend-dot" style="background:hsl(185 68% 44%)"></span><span class="legend-name">Fahmy</span></span><span class="legend-rank">#6</span></button>
+<button class="legend-btn" type="button" data-player="Abudy"><span class="legend-left"><span class="legend-dot" style="background:hsl(222 68% 44%)"></span><span class="legend-name">Abudy</span></span><span class="legend-rank">#7</span></button>
+<button class="legend-btn" type="button" data-player="Anis"><span class="legend-left"><span class="legend-dot" style="background:hsl(259 68% 44%)"></span><span class="legend-name">Anis</span></span><span class="legend-rank">#8</span></button>
+<button class="legend-btn" type="button" data-player="Zory"><span class="legend-left"><span class="legend-dot" style="background:hsl(296 68% 44%)"></span><span class="legend-name">Zory</span></span><span class="legend-rank">#9</span></button>
+<button class="legend-btn" type="button" data-player="nizar ijay"><span class="legend-left"><span class="legend-dot" style="background:hsl(333 68% 44%)"></span><span class="legend-name">nizar ijay</span></span><span class="legend-rank">#10</span></button>
+<button class="legend-btn" type="button" data-player="Eky"><span class="legend-left"><span class="legend-dot" style="background:hsl(10 68% 44%)"></span><span class="legend-name">Eky</span></span><span class="legend-rank">#11</span></button>
+<button class="legend-btn" type="button" data-player="Kareem Mulachela"><span class="legend-left"><span class="legend-dot" style="background:hsl(47 68% 44%)"></span><span class="legend-name">Kareem Mulachela</span></span><span class="legend-rank">#12</span></button>
+<button class="legend-btn" type="button" data-player="Heru H"><span class="legend-left"><span class="legend-dot" style="background:hsl(84 68% 44%)"></span><span class="legend-name">Heru H</span></span><span class="legend-rank">#13</span></button>
+<button class="legend-btn" type="button" data-player="RachmatP"><span class="legend-left"><span class="legend-dot" style="background:hsl(121 68% 44%)"></span><span class="legend-name">RachmatP</span></span><span class="legend-rank">#14</span></button>
+<button class="legend-btn" type="button" data-player="Areza"><span class="legend-left"><span class="legend-dot" style="background:hsl(158 68% 44%)"></span><span class="legend-name">Areza</span></span><span class="legend-rank">#15</span></button>
+<button class="legend-btn" type="button" data-player="dewaji"><span class="legend-left"><span class="legend-dot" style="background:hsl(195 68% 44%)"></span><span class="legend-name">dewaji</span></span><span class="legend-rank">#16</span></button>
+<button class="legend-btn" type="button" data-player="Piko"><span class="legend-left"><span class="legend-dot" style="background:hsl(232 68% 44%)"></span><span class="legend-name">Piko</span></span><span class="legend-rank">#17</span></button>
+<button class="legend-btn" type="button" data-player="boncaumaza"><span class="legend-left"><span class="legend-dot" style="background:hsl(269 68% 44%)"></span><span class="legend-name">boncaumaza</span></span><span class="legend-rank">#18</span></button>
+<button class="legend-btn" type="button" data-player="Ariya"><span class="legend-left"><span class="legend-dot" style="background:hsl(306 68% 44%)"></span><span class="legend-name">Ariya</span></span><span class="legend-rank">#19</span></button>
+<button class="legend-btn" type="button" data-player="Echa M"><span class="legend-left"><span class="legend-dot" style="background:hsl(343 68% 44%)"></span><span class="legend-name">Echa M</span></span><span class="legend-rank">#20</span></button>
+<button class="legend-btn" type="button" data-player="rezno"><span class="legend-left"><span class="legend-dot" style="background:hsl(20 68% 44%)"></span><span class="legend-name">rezno</span></span><span class="legend-rank">#21</span></button>
+<button class="legend-btn" type="button" data-player="Aqila"><span class="legend-left"><span class="legend-dot" style="background:hsl(57 68% 44%)"></span><span class="legend-name">Aqila</span></span><span class="legend-rank">#22</span></button>
+<button class="legend-btn" type="button" data-player="Mahdi Kemal Assegaf"><span class="legend-left"><span class="legend-dot" style="background:hsl(94 68% 44%)"></span><span class="legend-name">Mahdi Kemal Assegaf</span></span><span class="legend-rank">#23</span></button>
+<button class="legend-btn" type="button" data-player="adhni"><span class="legend-left"><span class="legend-dot" style="background:hsl(131 68% 44%)"></span><span class="legend-name">adhni</span></span><span class="legend-rank">#24</span></button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <h2>Podium</h2>
+        <div class="section-note">Top 3 final finishers.</div>
+      </div>
+      <div class="podium-stage">
+        <article class="podium-card place-2"><div class="podium-place">Silver</div><div class="podium-rank">2</div><div class="podium-name">Alwi</div><div class="podium-meta">Total 142<br>Record 7-3-0<br>Diff 34</div></article>
+<article class="podium-card place-1"><div class="podium-place">Gold</div><div class="podium-rank">1</div><div class="podium-name">Bimo</div><div class="podium-meta">Total 147<br>Record 7-3-0<br>Diff 44</div></article>
+<article class="podium-card place-3"><div class="podium-place">Bronze</div><div class="podium-rank">3</div><div class="podium-name">Wahyu</div><div class="podium-meta">Total 138<br>Record 7-3-0<br>Diff 26</div></article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <h2>Player Stories</h2>
+        <div class="section-note">Generated locally from the same report bundle.</div>
+      </div>
+      <div class="story-grid-links">
+        <article class="story-link-card"><span class="story-link-rank">#1</span><div class="story-link-name">Bimo</div><div class="story-link-meta">7W-3L · 127 pts</div><a class="story-link-button" href="player-story-bimo.html">Open story</a></article>
+<article class="story-link-card"><span class="story-link-rank">#2</span><div class="story-link-name">Alwi</div><div class="story-link-meta">7W-3L · 122 pts</div><a class="story-link-button" href="player-story-alwi.html">Open story</a></article>
+<article class="story-link-card"><span class="story-link-rank">#3</span><div class="story-link-name">Wahyu</div><div class="story-link-meta">7W-3L · 118 pts</div><a class="story-link-button" href="player-story-wahyu.html">Open story</a></article>
+<article class="story-link-card"><span class="story-link-rank">#4</span><div class="story-link-name">Sandy Bran</div><div class="story-link-meta">6W-4L · 115 pts</div><a class="story-link-button" href="player-story-sandy-bran.html">Open story</a></article>
+<article class="story-link-card"><span class="story-link-rank">#5</span><div class="story-link-name">Jamal</div><div class="story-link-meta">6W-4L · 113 pts</div><a class="story-link-button" href="player-story-jamal.html">Open story</a></article>
+<article class="story-link-card"><span class="story-link-rank">#6</span><div class="story-link-name">Fahmy</div><div class="story-link-meta">6W-4L · 112 pts</div><a class="story-link-button" href="player-story-fahmy.html">Open story</a></article>
+<article class="story-link-card"><span class="story-link-rank">#7</span><div class="story-link-name">Abudy</div><div class="story-link-meta">5W-5L · 112 pts</div><a class="story-link-button" href="player-story-abudy.html">Open story</a></article>
+<article class="story-link-card"><span class="story-link-rank">#8</span><div class="story-link-name">Anis</div><div class="story-link-meta">7W-3L · 110 pts</div><a class="story-link-button" href="player-story-anis.html">Open story</a></article>
+<article class="story-link-card"><span class="story-link-rank">#9</span><div class="story-link-name">Zory</div><div class="story-link-meta">8W-2L · 109 pts</div><a class="story-link-button" href="player-story-zory.html">Open story</a></article>
+<article class="story-link-card"><span class="story-link-rank">#10</span><div class="story-link-name">nizar ijay</div><div class="story-link-meta">5W-5L · 108 pts</div><a class="story-link-button" href="player-story-nizar-ijay.html">Open story</a></article>
+<article class="story-link-card"><span class="story-link-rank">#11</span><div class="story-link-name">Eky</div><div class="story-link-meta">6W-4L · 106 pts</div><a class="story-link-button" href="player-story-eky.html">Open story</a></article>
+<article class="story-link-card"><span class="story-link-rank">#12</span><div class="story-link-name">Kareem Mulachela</div><div class="story-link-meta">5W-5L · 106 pts</div><a class="story-link-button" href="player-story-kareem-mulachela.html">Open story</a></article>
+<article class="story-link-card"><span class="story-link-rank">#13</span><div class="story-link-name">Heru H</div><div class="story-link-meta">4W-6L · 104 pts</div><a class="story-link-button" href="player-story-heru-h.html">Open story</a></article>
+<article class="story-link-card"><span class="story-link-rank">#14</span><div class="story-link-name">RachmatP</div><div class="story-link-meta">5W-5L · 102 pts</div><a class="story-link-button" href="player-story-rachmatp.html">Open story</a></article>
+<article class="story-link-card"><span class="story-link-rank">#15</span><div class="story-link-name">Areza</div><div class="story-link-meta">4W-6L · 102 pts</div><a class="story-link-button" href="player-story-areza.html">Open story</a></article>
+<article class="story-link-card"><span class="story-link-rank">#16</span><div class="story-link-name">dewaji</div><div class="story-link-meta">3W-7L · 101 pts</div><a class="story-link-button" href="player-story-dewaji.html">Open story</a></article>
+<article class="story-link-card"><span class="story-link-rank">#17</span><div class="story-link-name">Piko</div><div class="story-link-meta">4W-6L · 98 pts</div><a class="story-link-button" href="player-story-piko.html">Open story</a></article>
+<article class="story-link-card"><span class="story-link-rank">#18</span><div class="story-link-name">boncaumaza</div><div class="story-link-meta">5W-5L · 97 pts</div><a class="story-link-button" href="player-story-boncaumaza.html">Open story</a></article>
+<article class="story-link-card"><span class="story-link-rank">#19</span><div class="story-link-name">Ariya</div><div class="story-link-meta">5W-5L · 96 pts</div><a class="story-link-button" href="player-story-ariya.html">Open story</a></article>
+<article class="story-link-card"><span class="story-link-rank">#20</span><div class="story-link-name">Echa M</div><div class="story-link-meta">5W-5L · 96 pts</div><a class="story-link-button" href="player-story-echa-m.html">Open story</a></article>
+<article class="story-link-card"><span class="story-link-rank">#21</span><div class="story-link-name">rezno</div><div class="story-link-meta">2W-8L · 94 pts</div><a class="story-link-button" href="player-story-rezno.html">Open story</a></article>
+<article class="story-link-card"><span class="story-link-rank">#22</span><div class="story-link-name">Aqila</div><div class="story-link-meta">3W-7L · 92 pts</div><a class="story-link-button" href="player-story-aqila.html">Open story</a></article>
+<article class="story-link-card"><span class="story-link-rank">#23</span><div class="story-link-name">Mahdi Kemal Assegaf</div><div class="story-link-meta">2W-8L · 91 pts</div><a class="story-link-button" href="player-story-mahdi-kemal-assegaf.html">Open story</a></article>
+<article class="story-link-card"><span class="story-link-rank">#24</span><div class="story-link-name">adhni</div><div class="story-link-meta">3W-7L · 89 pts</div><a class="story-link-button" href="player-story-adhni.html">Open story</a></article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <h2>Final Leaderboard</h2>
+        <div class="section-note">Final positions from the game leaderboard.</div>
+      </div>
+      <div class="table-wrap desktop-only">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Player</th>
+              <th>Total</th>
+              <th>Bench</th>
+              <th>Diff</th>
+              <th>W-L-T</th>
+              <th>Matches</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><span class="rank-badge">1</span></td><td><div class="leader-name">Bimo</div></td><td><span class="total-main">147</span></td><td>20</td><td>44</td><td>7-3-0</td><td>10</td></tr>
+<tr><td><span class="rank-badge">2</span></td><td><div class="leader-name">Alwi</div></td><td><span class="total-main">142</span></td><td>20</td><td>34</td><td>7-3-0</td><td>10</td></tr>
+<tr><td><span class="rank-badge">3</span></td><td><div class="leader-name">Wahyu</div></td><td><span class="total-main">138</span></td><td>20</td><td>26</td><td>7-3-0</td><td>10</td></tr>
+<tr><td><span class="rank-badge">4</span></td><td><div class="leader-name">Sandy Bran</div></td><td><span class="total-main">135</span></td><td>20</td><td>20</td><td>6-4-0</td><td>10</td></tr>
+<tr><td><span class="rank-badge">5</span></td><td><div class="leader-name">Jamal</div></td><td><span class="total-main">133</span></td><td>20</td><td>16</td><td>6-4-0</td><td>10</td></tr>
+<tr><td><span class="rank-badge">6</span></td><td><div class="leader-name">Fahmy</div></td><td><span class="total-main">132</span></td><td>20</td><td>14</td><td>6-4-0</td><td>10</td></tr>
+<tr><td><span class="rank-badge">7</span></td><td><div class="leader-name">Abudy</div></td><td><span class="total-main">132</span></td><td>20</td><td>14</td><td>5-5-0</td><td>10</td></tr>
+<tr><td><span class="rank-badge">8</span></td><td><div class="leader-name">Anis</div></td><td><span class="total-main">130</span></td><td>20</td><td>10</td><td>7-3-0</td><td>10</td></tr>
+<tr><td><span class="rank-badge">9</span></td><td><div class="leader-name">Zory</div></td><td><span class="total-main">129</span></td><td>20</td><td>8</td><td>8-2-0</td><td>10</td></tr>
+<tr><td><span class="rank-badge">10</span></td><td><div class="leader-name">nizar ijay</div></td><td><span class="total-main">128</span></td><td>20</td><td>6</td><td>5-5-0</td><td>10</td></tr>
+<tr><td><span class="rank-badge">11</span></td><td><div class="leader-name">Eky</div></td><td><span class="total-main">126</span></td><td>20</td><td>2</td><td>6-4-0</td><td>10</td></tr>
+<tr><td><span class="rank-badge">12</span></td><td><div class="leader-name">Kareem Mulachela</div></td><td><span class="total-main">126</span></td><td>20</td><td>2</td><td>5-5-0</td><td>10</td></tr>
+<tr><td><span class="rank-badge">13</span></td><td><div class="leader-name">Heru H</div></td><td><span class="total-main">124</span></td><td>20</td><td>-2</td><td>4-6-0</td><td>10</td></tr>
+<tr><td><span class="rank-badge">14</span></td><td><div class="leader-name">RachmatP</div></td><td><span class="total-main">122</span></td><td>20</td><td>-6</td><td>5-5-0</td><td>10</td></tr>
+<tr><td><span class="rank-badge">15</span></td><td><div class="leader-name">Areza</div></td><td><span class="total-main">122</span></td><td>20</td><td>-6</td><td>4-6-0</td><td>10</td></tr>
+<tr><td><span class="rank-badge">16</span></td><td><div class="leader-name">dewaji</div></td><td><span class="total-main">121</span></td><td>20</td><td>-8</td><td>3-7-0</td><td>10</td></tr>
+<tr><td><span class="rank-badge">17</span></td><td><div class="leader-name">Piko</div></td><td><span class="total-main">118</span></td><td>20</td><td>-14</td><td>4-6-0</td><td>10</td></tr>
+<tr><td><span class="rank-badge">18</span></td><td><div class="leader-name">boncaumaza</div></td><td><span class="total-main">117</span></td><td>20</td><td>-16</td><td>5-5-0</td><td>10</td></tr>
+<tr><td><span class="rank-badge">19</span></td><td><div class="leader-name">Ariya</div></td><td><span class="total-main">116</span></td><td>20</td><td>-18</td><td>5-5-0</td><td>10</td></tr>
+<tr><td><span class="rank-badge">20</span></td><td><div class="leader-name">Echa M</div></td><td><span class="total-main">116</span></td><td>20</td><td>-18</td><td>5-5-0</td><td>10</td></tr>
+<tr><td><span class="rank-badge">21</span></td><td><div class="leader-name">rezno</div></td><td><span class="total-main">114</span></td><td>20</td><td>-22</td><td>2-8-0</td><td>10</td></tr>
+<tr><td><span class="rank-badge">22</span></td><td><div class="leader-name">Aqila</div></td><td><span class="total-main">112</span></td><td>20</td><td>-26</td><td>3-7-0</td><td>10</td></tr>
+<tr><td><span class="rank-badge">23</span></td><td><div class="leader-name">Mahdi Kemal Assegaf</div></td><td><span class="total-main">111</span></td><td>20</td><td>-28</td><td>2-8-0</td><td>10</td></tr>
+<tr><td><span class="rank-badge">24</span></td><td><div class="leader-name">adhni</div></td><td><span class="total-main">109</span></td><td>20</td><td>-32</td><td>3-7-0</td><td>10</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="leaderboard-cards mobile-only">
+        <article class="leaderboard-card"><div class="leaderboard-card-top"><div class="leaderboard-card-name"><span class="rank-badge">1</span><span class="leaderboard-card-name-text">Bimo</span></div><div class="leaderboard-card-total"><span class="total-main">147</span></div></div><div class="leaderboard-card-grid"><div class="leaderboard-card-stat"><span class="label">Bench</span><strong>20</strong></div><div class="leaderboard-card-stat"><span class="label">Diff</span><strong>44</strong></div><div class="leaderboard-card-stat"><span class="label">Record</span><strong>7-3-0</strong></div><div class="leaderboard-card-stat"><span class="label">Matches</span><strong>10</strong></div></div></article>
+<article class="leaderboard-card"><div class="leaderboard-card-top"><div class="leaderboard-card-name"><span class="rank-badge">2</span><span class="leaderboard-card-name-text">Alwi</span></div><div class="leaderboard-card-total"><span class="total-main">142</span></div></div><div class="leaderboard-card-grid"><div class="leaderboard-card-stat"><span class="label">Bench</span><strong>20</strong></div><div class="leaderboard-card-stat"><span class="label">Diff</span><strong>34</strong></div><div class="leaderboard-card-stat"><span class="label">Record</span><strong>7-3-0</strong></div><div class="leaderboard-card-stat"><span class="label">Matches</span><strong>10</strong></div></div></article>
+<article class="leaderboard-card"><div class="leaderboard-card-top"><div class="leaderboard-card-name"><span class="rank-badge">3</span><span class="leaderboard-card-name-text">Wahyu</span></div><div class="leaderboard-card-total"><span class="total-main">138</span></div></div><div class="leaderboard-card-grid"><div class="leaderboard-card-stat"><span class="label">Bench</span><strong>20</strong></div><div class="leaderboard-card-stat"><span class="label">Diff</span><strong>26</strong></div><div class="leaderboard-card-stat"><span class="label">Record</span><strong>7-3-0</strong></div><div class="leaderboard-card-stat"><span class="label">Matches</span><strong>10</strong></div></div></article>
+<article class="leaderboard-card"><div class="leaderboard-card-top"><div class="leaderboard-card-name"><span class="rank-badge">4</span><span class="leaderboard-card-name-text">Sandy Bran</span></div><div class="leaderboard-card-total"><span class="total-main">135</span></div></div><div class="leaderboard-card-grid"><div class="leaderboard-card-stat"><span class="label">Bench</span><strong>20</strong></div><div class="leaderboard-card-stat"><span class="label">Diff</span><strong>20</strong></div><div class="leaderboard-card-stat"><span class="label">Record</span><strong>6-4-0</strong></div><div class="leaderboard-card-stat"><span class="label">Matches</span><strong>10</strong></div></div></article>
+<article class="leaderboard-card"><div class="leaderboard-card-top"><div class="leaderboard-card-name"><span class="rank-badge">5</span><span class="leaderboard-card-name-text">Jamal</span></div><div class="leaderboard-card-total"><span class="total-main">133</span></div></div><div class="leaderboard-card-grid"><div class="leaderboard-card-stat"><span class="label">Bench</span><strong>20</strong></div><div class="leaderboard-card-stat"><span class="label">Diff</span><strong>16</strong></div><div class="leaderboard-card-stat"><span class="label">Record</span><strong>6-4-0</strong></div><div class="leaderboard-card-stat"><span class="label">Matches</span><strong>10</strong></div></div></article>
+<article class="leaderboard-card"><div class="leaderboard-card-top"><div class="leaderboard-card-name"><span class="rank-badge">6</span><span class="leaderboard-card-name-text">Fahmy</span></div><div class="leaderboard-card-total"><span class="total-main">132</span></div></div><div class="leaderboard-card-grid"><div class="leaderboard-card-stat"><span class="label">Bench</span><strong>20</strong></div><div class="leaderboard-card-stat"><span class="label">Diff</span><strong>14</strong></div><div class="leaderboard-card-stat"><span class="label">Record</span><strong>6-4-0</strong></div><div class="leaderboard-card-stat"><span class="label">Matches</span><strong>10</strong></div></div></article>
+<article class="leaderboard-card"><div class="leaderboard-card-top"><div class="leaderboard-card-name"><span class="rank-badge">7</span><span class="leaderboard-card-name-text">Abudy</span></div><div class="leaderboard-card-total"><span class="total-main">132</span></div></div><div class="leaderboard-card-grid"><div class="leaderboard-card-stat"><span class="label">Bench</span><strong>20</strong></div><div class="leaderboard-card-stat"><span class="label">Diff</span><strong>14</strong></div><div class="leaderboard-card-stat"><span class="label">Record</span><strong>5-5-0</strong></div><div class="leaderboard-card-stat"><span class="label">Matches</span><strong>10</strong></div></div></article>
+<article class="leaderboard-card"><div class="leaderboard-card-top"><div class="leaderboard-card-name"><span class="rank-badge">8</span><span class="leaderboard-card-name-text">Anis</span></div><div class="leaderboard-card-total"><span class="total-main">130</span></div></div><div class="leaderboard-card-grid"><div class="leaderboard-card-stat"><span class="label">Bench</span><strong>20</strong></div><div class="leaderboard-card-stat"><span class="label">Diff</span><strong>10</strong></div><div class="leaderboard-card-stat"><span class="label">Record</span><strong>7-3-0</strong></div><div class="leaderboard-card-stat"><span class="label">Matches</span><strong>10</strong></div></div></article>
+<article class="leaderboard-card"><div class="leaderboard-card-top"><div class="leaderboard-card-name"><span class="rank-badge">9</span><span class="leaderboard-card-name-text">Zory</span></div><div class="leaderboard-card-total"><span class="total-main">129</span></div></div><div class="leaderboard-card-grid"><div class="leaderboard-card-stat"><span class="label">Bench</span><strong>20</strong></div><div class="leaderboard-card-stat"><span class="label">Diff</span><strong>8</strong></div><div class="leaderboard-card-stat"><span class="label">Record</span><strong>8-2-0</strong></div><div class="leaderboard-card-stat"><span class="label">Matches</span><strong>10</strong></div></div></article>
+<article class="leaderboard-card"><div class="leaderboard-card-top"><div class="leaderboard-card-name"><span class="rank-badge">10</span><span class="leaderboard-card-name-text">nizar ijay</span></div><div class="leaderboard-card-total"><span class="total-main">128</span></div></div><div class="leaderboard-card-grid"><div class="leaderboard-card-stat"><span class="label">Bench</span><strong>20</strong></div><div class="leaderboard-card-stat"><span class="label">Diff</span><strong>6</strong></div><div class="leaderboard-card-stat"><span class="label">Record</span><strong>5-5-0</strong></div><div class="leaderboard-card-stat"><span class="label">Matches</span><strong>10</strong></div></div></article>
+<article class="leaderboard-card"><div class="leaderboard-card-top"><div class="leaderboard-card-name"><span class="rank-badge">11</span><span class="leaderboard-card-name-text">Eky</span></div><div class="leaderboard-card-total"><span class="total-main">126</span></div></div><div class="leaderboard-card-grid"><div class="leaderboard-card-stat"><span class="label">Bench</span><strong>20</strong></div><div class="leaderboard-card-stat"><span class="label">Diff</span><strong>2</strong></div><div class="leaderboard-card-stat"><span class="label">Record</span><strong>6-4-0</strong></div><div class="leaderboard-card-stat"><span class="label">Matches</span><strong>10</strong></div></div></article>
+<article class="leaderboard-card"><div class="leaderboard-card-top"><div class="leaderboard-card-name"><span class="rank-badge">12</span><span class="leaderboard-card-name-text">Kareem Mulachela</span></div><div class="leaderboard-card-total"><span class="total-main">126</span></div></div><div class="leaderboard-card-grid"><div class="leaderboard-card-stat"><span class="label">Bench</span><strong>20</strong></div><div class="leaderboard-card-stat"><span class="label">Diff</span><strong>2</strong></div><div class="leaderboard-card-stat"><span class="label">Record</span><strong>5-5-0</strong></div><div class="leaderboard-card-stat"><span class="label">Matches</span><strong>10</strong></div></div></article>
+<article class="leaderboard-card"><div class="leaderboard-card-top"><div class="leaderboard-card-name"><span class="rank-badge">13</span><span class="leaderboard-card-name-text">Heru H</span></div><div class="leaderboard-card-total"><span class="total-main">124</span></div></div><div class="leaderboard-card-grid"><div class="leaderboard-card-stat"><span class="label">Bench</span><strong>20</strong></div><div class="leaderboard-card-stat"><span class="label">Diff</span><strong>-2</strong></div><div class="leaderboard-card-stat"><span class="label">Record</span><strong>4-6-0</strong></div><div class="leaderboard-card-stat"><span class="label">Matches</span><strong>10</strong></div></div></article>
+<article class="leaderboard-card"><div class="leaderboard-card-top"><div class="leaderboard-card-name"><span class="rank-badge">14</span><span class="leaderboard-card-name-text">RachmatP</span></div><div class="leaderboard-card-total"><span class="total-main">122</span></div></div><div class="leaderboard-card-grid"><div class="leaderboard-card-stat"><span class="label">Bench</span><strong>20</strong></div><div class="leaderboard-card-stat"><span class="label">Diff</span><strong>-6</strong></div><div class="leaderboard-card-stat"><span class="label">Record</span><strong>5-5-0</strong></div><div class="leaderboard-card-stat"><span class="label">Matches</span><strong>10</strong></div></div></article>
+<article class="leaderboard-card"><div class="leaderboard-card-top"><div class="leaderboard-card-name"><span class="rank-badge">15</span><span class="leaderboard-card-name-text">Areza</span></div><div class="leaderboard-card-total"><span class="total-main">122</span></div></div><div class="leaderboard-card-grid"><div class="leaderboard-card-stat"><span class="label">Bench</span><strong>20</strong></div><div class="leaderboard-card-stat"><span class="label">Diff</span><strong>-6</strong></div><div class="leaderboard-card-stat"><span class="label">Record</span><strong>4-6-0</strong></div><div class="leaderboard-card-stat"><span class="label">Matches</span><strong>10</strong></div></div></article>
+<article class="leaderboard-card"><div class="leaderboard-card-top"><div class="leaderboard-card-name"><span class="rank-badge">16</span><span class="leaderboard-card-name-text">dewaji</span></div><div class="leaderboard-card-total"><span class="total-main">121</span></div></div><div class="leaderboard-card-grid"><div class="leaderboard-card-stat"><span class="label">Bench</span><strong>20</strong></div><div class="leaderboard-card-stat"><span class="label">Diff</span><strong>-8</strong></div><div class="leaderboard-card-stat"><span class="label">Record</span><strong>3-7-0</strong></div><div class="leaderboard-card-stat"><span class="label">Matches</span><strong>10</strong></div></div></article>
+<article class="leaderboard-card"><div class="leaderboard-card-top"><div class="leaderboard-card-name"><span class="rank-badge">17</span><span class="leaderboard-card-name-text">Piko</span></div><div class="leaderboard-card-total"><span class="total-main">118</span></div></div><div class="leaderboard-card-grid"><div class="leaderboard-card-stat"><span class="label">Bench</span><strong>20</strong></div><div class="leaderboard-card-stat"><span class="label">Diff</span><strong>-14</strong></div><div class="leaderboard-card-stat"><span class="label">Record</span><strong>4-6-0</strong></div><div class="leaderboard-card-stat"><span class="label">Matches</span><strong>10</strong></div></div></article>
+<article class="leaderboard-card"><div class="leaderboard-card-top"><div class="leaderboard-card-name"><span class="rank-badge">18</span><span class="leaderboard-card-name-text">boncaumaza</span></div><div class="leaderboard-card-total"><span class="total-main">117</span></div></div><div class="leaderboard-card-grid"><div class="leaderboard-card-stat"><span class="label">Bench</span><strong>20</strong></div><div class="leaderboard-card-stat"><span class="label">Diff</span><strong>-16</strong></div><div class="leaderboard-card-stat"><span class="label">Record</span><strong>5-5-0</strong></div><div class="leaderboard-card-stat"><span class="label">Matches</span><strong>10</strong></div></div></article>
+<article class="leaderboard-card"><div class="leaderboard-card-top"><div class="leaderboard-card-name"><span class="rank-badge">19</span><span class="leaderboard-card-name-text">Ariya</span></div><div class="leaderboard-card-total"><span class="total-main">116</span></div></div><div class="leaderboard-card-grid"><div class="leaderboard-card-stat"><span class="label">Bench</span><strong>20</strong></div><div class="leaderboard-card-stat"><span class="label">Diff</span><strong>-18</strong></div><div class="leaderboard-card-stat"><span class="label">Record</span><strong>5-5-0</strong></div><div class="leaderboard-card-stat"><span class="label">Matches</span><strong>10</strong></div></div></article>
+<article class="leaderboard-card"><div class="leaderboard-card-top"><div class="leaderboard-card-name"><span class="rank-badge">20</span><span class="leaderboard-card-name-text">Echa M</span></div><div class="leaderboard-card-total"><span class="total-main">116</span></div></div><div class="leaderboard-card-grid"><div class="leaderboard-card-stat"><span class="label">Bench</span><strong>20</strong></div><div class="leaderboard-card-stat"><span class="label">Diff</span><strong>-18</strong></div><div class="leaderboard-card-stat"><span class="label">Record</span><strong>5-5-0</strong></div><div class="leaderboard-card-stat"><span class="label">Matches</span><strong>10</strong></div></div></article>
+<article class="leaderboard-card"><div class="leaderboard-card-top"><div class="leaderboard-card-name"><span class="rank-badge">21</span><span class="leaderboard-card-name-text">rezno</span></div><div class="leaderboard-card-total"><span class="total-main">114</span></div></div><div class="leaderboard-card-grid"><div class="leaderboard-card-stat"><span class="label">Bench</span><strong>20</strong></div><div class="leaderboard-card-stat"><span class="label">Diff</span><strong>-22</strong></div><div class="leaderboard-card-stat"><span class="label">Record</span><strong>2-8-0</strong></div><div class="leaderboard-card-stat"><span class="label">Matches</span><strong>10</strong></div></div></article>
+<article class="leaderboard-card"><div class="leaderboard-card-top"><div class="leaderboard-card-name"><span class="rank-badge">22</span><span class="leaderboard-card-name-text">Aqila</span></div><div class="leaderboard-card-total"><span class="total-main">112</span></div></div><div class="leaderboard-card-grid"><div class="leaderboard-card-stat"><span class="label">Bench</span><strong>20</strong></div><div class="leaderboard-card-stat"><span class="label">Diff</span><strong>-26</strong></div><div class="leaderboard-card-stat"><span class="label">Record</span><strong>3-7-0</strong></div><div class="leaderboard-card-stat"><span class="label">Matches</span><strong>10</strong></div></div></article>
+<article class="leaderboard-card"><div class="leaderboard-card-top"><div class="leaderboard-card-name"><span class="rank-badge">23</span><span class="leaderboard-card-name-text">Mahdi Kemal Assegaf</span></div><div class="leaderboard-card-total"><span class="total-main">111</span></div></div><div class="leaderboard-card-grid"><div class="leaderboard-card-stat"><span class="label">Bench</span><strong>20</strong></div><div class="leaderboard-card-stat"><span class="label">Diff</span><strong>-28</strong></div><div class="leaderboard-card-stat"><span class="label">Record</span><strong>2-8-0</strong></div><div class="leaderboard-card-stat"><span class="label">Matches</span><strong>10</strong></div></div></article>
+<article class="leaderboard-card"><div class="leaderboard-card-top"><div class="leaderboard-card-name"><span class="rank-badge">24</span><span class="leaderboard-card-name-text">adhni</span></div><div class="leaderboard-card-total"><span class="total-main">109</span></div></div><div class="leaderboard-card-grid"><div class="leaderboard-card-stat"><span class="label">Bench</span><strong>20</strong></div><div class="leaderboard-card-stat"><span class="label">Diff</span><strong>-32</strong></div><div class="leaderboard-card-stat"><span class="label">Record</span><strong>3-7-0</strong></div><div class="leaderboard-card-stat"><span class="label">Matches</span><strong>10</strong></div></div></article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <h2>Round Results</h2>
+        <div class="section-note">Bench players are shown because bench points affect the standings.</div>
+      </div>
+      <div class="rounds">
+        <article class="round"><div class="round-header"><h3 class="round-title">Round 1</h3><div class="round-meta">5 matches</div></div><p class="bench-note">Bench: Eky (=1), Echa M (=1), Jamal (=1), boncaumaza (=1)</p><section class="match"><div class="pill">Court 1</div><div class="match-grid"><div class="team"><strong>Score 9</strong><ul class="players"><li>adhni (=1)</li><li>nizar ijay (=1)</li></ul></div><div class="score">9 : 12</div><div class="team win"><strong>Score 12</strong><ul class="players"><li>Zory (=1)</li><li>Mahdi Kemal Assegaf (=1)</li></ul></div></div></section>
+<section class="match"><div class="pill">Court 2</div><div class="match-grid"><div class="team win"><strong>Score 14</strong><ul class="players"><li>Fahmy (=1)</li><li>Sandy Bran (=1)</li></ul></div><div class="score">14 : 7</div><div class="team"><strong>Score 7</strong><ul class="players"><li>Aqila (=1)</li><li>Areza (=1)</li></ul></div></div></section>
+<section class="match"><div class="pill">Court 3</div><div class="match-grid"><div class="team win"><strong>Score 14</strong><ul class="players"><li>Abudy (=1)</li><li>Anis (=1)</li></ul></div><div class="score">14 : 7</div><div class="team"><strong>Score 7</strong><ul class="players"><li>rezno (=1)</li><li>RachmatP (=1)</li></ul></div></div></section>
+<section class="match"><div class="pill">Court 4</div><div class="match-grid"><div class="team"><strong>Score 8</strong><ul class="players"><li>Ariya (=1)</li><li>Kareem Mulachela (=1)</li></ul></div><div class="score">8 : 13</div><div class="team win"><strong>Score 13</strong><ul class="players"><li>Wahyu (=1)</li><li>Alwi (=1)</li></ul></div></div></section>
+<section class="match"><div class="pill">Court 5</div><div class="match-grid"><div class="team"><strong>Score 6</strong><ul class="players"><li>Heru H (=1)</li><li>Piko (=1)</li></ul></div><div class="score">6 : 15</div><div class="team win"><strong>Score 15</strong><ul class="players"><li>Bimo (=1)</li><li>dewaji (=1)</li></ul></div></div></section></article>
+<article class="round"><div class="round-header"><h3 class="round-title">Round 2</h3><div class="round-meta">5 matches</div></div><p class="bench-note">Bench: adhni (=15), Aqila (=19), Alwi (=7), dewaji (=1)</p><section class="match"><div class="pill">Court 1</div><div class="match-grid"><div class="team win"><strong>Score 11</strong><ul class="players"><li>Bimo (=1)</li><li>Abudy (=3)</li></ul></div><div class="score">11 : 10</div><div class="team"><strong>Score 10</strong><ul class="players"><li>Fahmy (=3)</li><li>Sandy Bran (=3)</li></ul></div></div></section>
+<section class="match"><div class="pill">Court 2</div><div class="match-grid"><div class="team win"><strong>Score 12</strong><ul class="players"><li>Zory (=9)</li><li>Anis (=3)</li></ul></div><div class="score">12 : 9</div><div class="team"><strong>Score 9</strong><ul class="players"><li>Wahyu (=7)</li><li>Mahdi Kemal Assegaf (=9)</li></ul></div></div></section>
+<section class="match"><div class="pill">Court 3</div><div class="match-grid"><div class="team win"><strong>Score 13</strong><ul class="players"><li>Eky (=11)</li><li>Jamal (=11)</li></ul></div><div class="score">13 : 8</div><div class="team"><strong>Score 8</strong><ul class="players"><li>Echa M (=11)</li><li>boncaumaza (=11)</li></ul></div></div></section>
+<section class="match"><div class="pill">Court 4</div><div class="match-grid"><div class="team"><strong>Score 10</strong><ul class="players"><li>nizar ijay (=15)</li><li>Kareem Mulachela (=17)</li></ul></div><div class="score">10 : 11</div><div class="team win"><strong>Score 11</strong><ul class="players"><li>Ariya (=17)</li><li>rezno (=19)</li></ul></div></div></section>
+<section class="match"><div class="pill">Court 5</div><div class="match-grid"><div class="team"><strong>Score 10</strong><ul class="players"><li>Heru H (=23)</li><li>RachmatP (=19)</li></ul></div><div class="score">10 : 11</div><div class="team win"><strong>Score 11</strong><ul class="players"><li>Piko (=23)</li><li>Areza (=19)</li></ul></div></div></section></article>
+<article class="round"><div class="round-header"><h3 class="round-title">Round 3</h3><div class="round-meta">5 matches</div></div><p class="bench-note">Bench: Zory (#4), Ariya (#9), rezno (=11), RachmatP (#15)</p><section class="match"><div class="pill">Court 1</div><div class="match-grid"><div class="team"><strong>Score 10</strong><ul class="players"><li>Bimo (=1)</li><li>Abudy (#3)</li></ul></div><div class="score">10 : 11</div><div class="team win"><strong>Score 11</strong><ul class="players"><li>dewaji (#17)</li><li>Anis (=1)</li></ul></div></div></section>
+<section class="match"><div class="pill">Court 2</div><div class="match-grid"><div class="team"><strong>Score 10</strong><ul class="players"><li>Fahmy (=5)</li><li>Alwi (=18)</li></ul></div><div class="score">10 : 11</div><div class="team win"><strong>Score 11</strong><ul class="players"><li>Eky (=18)</li><li>Sandy Bran (=5)</li></ul></div></div></section>
+<section class="match"><div class="pill">Court 3</div><div class="match-grid"><div class="team"><strong>Score 9</strong><ul class="players"><li>adhni (#21)</li><li>Jamal (=18)</li></ul></div><div class="score">9 : 12</div><div class="team win"><strong>Score 12</strong><ul class="players"><li>Wahyu (#7)</li><li>Mahdi Kemal Assegaf (#8)</li></ul></div></div></section>
+<section class="match"><div class="pill">Court 4</div><div class="match-grid"><div class="team win"><strong>Score 17</strong><ul class="players"><li>nizar ijay (#10)</li><li>Kareem Mulachela (#13)</li></ul></div><div class="score">17 : 4</div><div class="team"><strong>Score 4</strong><ul class="players"><li>Echa M (=22)</li><li>Areza (=11)</li></ul></div></div></section>
+<section class="match"><div class="pill">Court 5</div><div class="match-grid"><div class="team"><strong>Score 7</strong><ul class="players"><li>Heru H (#16)</li><li>boncaumaza (=22)</li></ul></div><div class="score">7 : 14</div><div class="team win"><strong>Score 14</strong><ul class="players"><li>Piko (#14)</li><li>Aqila (#24)</li></ul></div></div></section></article>
+<article class="round"><div class="round-header"><h3 class="round-title">Round 4</h3><div class="round-meta">5 matches</div></div><p class="bench-note">Bench: Heru H (#15), nizar ijay (#3), Areza (#17), Anis (#1)</p><section class="match"><div class="pill">Court 1</div><div class="match-grid"><div class="team"><strong>Score 10</strong><ul class="players"><li>Bimo (#2)</li><li>Abudy (=4)</li></ul></div><div class="score">10 : 11</div><div class="team win"><strong>Score 11</strong><ul class="players"><li>dewaji (#11)</li><li>Kareem Mulachela (#6)</li></ul></div></div></section>
+<section class="match"><div class="pill">Court 2</div><div class="match-grid"><div class="team"><strong>Score 7</strong><ul class="players"><li>Eky (=12)</li><li>Sandy Bran (=4)</li></ul></div><div class="score">7 : 14</div><div class="team win"><strong>Score 14</strong><ul class="players"><li>Zory (=12)</li><li>Wahyu (#7)</li></ul></div></div></section>
+<section class="match"><div class="pill">Court 3</div><div class="match-grid"><div class="team"><strong>Score 10</strong><ul class="players"><li>Fahmy (#8)</li><li>Mahdi Kemal Assegaf (#9)</li></ul></div><div class="score">10 : 11</div><div class="team win"><strong>Score 11</strong><ul class="players"><li>Alwi (#14)</li><li>Jamal (#16)</li></ul></div></div></section>
+<section class="match"><div class="pill">Court 4</div><div class="match-grid"><div class="team win"><strong>Score 16</strong><ul class="players"><li>Piko (#10)</li><li>Ariya (#19)</li></ul></div><div class="score">16 : 5</div><div class="team"><strong>Score 5</strong><ul class="players"><li>adhni (#21)</li><li>Aqila (#18)</li></ul></div></div></section>
+<section class="match"><div class="pill">Court 5</div><div class="match-grid"><div class="team"><strong>Score 9</strong><ul class="players"><li>rezno (#20)</li><li>boncaumaza (#23)</li></ul></div><div class="score">9 : 12</div><div class="team win"><strong>Score 12</strong><ul class="players"><li>Echa M (#24)</li><li>RachmatP (#22)</li></ul></div></div></section></article>
+<article class="round"><div class="round-header"><h3 class="round-title">Round 5</h3><div class="round-meta">5 matches</div></div><p class="bench-note">Bench: Wahyu (#1), Mahdi Kemal Assegaf (#7), Kareem Mulachela (=3), Sandy Bran (#8)</p><section class="match"><div class="pill">Court 1</div><div class="match-grid"><div class="team win"><strong>Score 11</strong><ul class="players"><li>Zory (#9)</li><li>Anis (=10)</li></ul></div><div class="score">11 : 10</div><div class="team"><strong>Score 10</strong><ul class="players"><li>Piko (#2)</li><li>dewaji (=10)</li></ul></div></div></section>
+<section class="match"><div class="pill">Court 2</div><div class="match-grid"><div class="team win"><strong>Score 15</strong><ul class="players"><li>Bimo (=3)</li><li>Abudy (#5)</li></ul></div><div class="score">15 : 6</div><div class="team"><strong>Score 6</strong><ul class="players"><li>Ariya (#13)</li><li>nizar ijay (#12)</li></ul></div></div></section>
+<section class="match"><div class="pill">Court 3</div><div class="match-grid"><div class="team"><strong>Score 6</strong><ul class="players"><li>Eky (#16)</li><li>Fahmy (#6)</li></ul></div><div class="score">6 : 15</div><div class="team win"><strong>Score 15</strong><ul class="players"><li>Alwi (#14)</li><li>Jamal (#15)</li></ul></div></div></section>
+<section class="match"><div class="pill">Court 4</div><div class="match-grid"><div class="team win"><strong>Score 11</strong><ul class="players"><li>Echa M (#20)</li><li>RachmatP (#17)</li></ul></div><div class="score">11 : 10</div><div class="team"><strong>Score 10</strong><ul class="players"><li>Aqila (#19)</li><li>rezno (#18)</li></ul></div></div></section>
+<section class="match"><div class="pill">Court 5</div><div class="match-grid"><div class="team"><strong>Score 10</strong><ul class="players"><li>Areza (#24)</li><li>boncaumaza (#21)</li></ul></div><div class="score">10 : 11</div><div class="team win"><strong>Score 11</strong><ul class="players"><li>Heru H (=22)</li><li>adhni (=22)</li></ul></div></div></section></article>
+<article class="round"><div class="round-header"><h3 class="round-title">Round 6</h3><div class="round-meta">5 matches</div></div><p class="bench-note">Bench: Piko (#3), Bimo (#1), Fahmy (#4), Abudy (#2)</p><section class="match"><div class="pill">Court 1</div><div class="match-grid"><div class="team win"><strong>Score 13</strong><ul class="players"><li>Zory (#5)</li><li>Wahyu (=8)</li></ul></div><div class="score">13 : 8</div><div class="team"><strong>Score 8</strong><ul class="players"><li>Alwi (#6)</li><li>Jamal (=8)</li></ul></div></div></section>
+<section class="match"><div class="pill">Court 2</div><div class="match-grid"><div class="team win"><strong>Score 12</strong><ul class="players"><li>Kareem Mulachela (#11)</li><li>Anis (#7)</li></ul></div><div class="score">12 : 9</div><div class="team"><strong>Score 9</strong><ul class="players"><li>dewaji (#10)</li><li>Mahdi Kemal Assegaf (#12)</li></ul></div></div></section>
+<section class="match"><div class="pill">Court 3</div><div class="match-grid"><div class="team"><strong>Score 7</strong><ul class="players"><li>Ariya (#15)</li><li>nizar ijay (#14)</li></ul></div><div class="score">7 : 14</div><div class="team win"><strong>Score 14</strong><ul class="players"><li>RachmatP (#16)</li><li>Sandy Bran (#13)</li></ul></div></div></section>
+<section class="match"><div class="pill">Court 4</div><div class="match-grid"><div class="team win"><strong>Score 11</strong><ul class="players"><li>Eky (#17)</li><li>Aqila (#19)</li></ul></div><div class="score">11 : 10</div><div class="team"><strong>Score 10</strong><ul class="players"><li>Echa M (#20)</li><li>rezno (#18)</li></ul></div></div></section>
+<section class="match"><div class="pill">Court 5</div><div class="match-grid"><div class="team win"><strong>Score 14</strong><ul class="players"><li>Heru H (=21)</li><li>boncaumaza (#23)</li></ul></div><div class="score">14 : 7</div><div class="team"><strong>Score 7</strong><ul class="players"><li>adhni (=21)</li><li>Areza (#24)</li></ul></div></div></section></article>
+<article class="round"><div class="round-header"><h3 class="round-title">Round 7</h3><div class="round-meta">5 matches</div></div><p class="bench-note">Bench: adhni (#23), Echa M (#22), rezno (#21), Areza (#24)</p><section class="match"><div class="pill">Court 1</div><div class="match-grid"><div class="team"><strong>Score 4</strong><ul class="players"><li>Zory (#1)</li><li>Anis (#4)</li></ul></div><div class="score">4 : 17</div><div class="team win"><strong>Score 17</strong><ul class="players"><li>Wahyu (#2)</li><li>Bimo (#3)</li></ul></div></div></section>
+<section class="match"><div class="pill">Court 2</div><div class="match-grid"><div class="team win"><strong>Score 16</strong><ul class="players"><li>Alwi (=7)</li><li>Abudy (#5)</li></ul></div><div class="score">16 : 5</div><div class="team"><strong>Score 5</strong><ul class="players"><li>Piko (=7)</li><li>Kareem Mulachela (#6)</li></ul></div></div></section>
+<section class="match"><div class="pill">Court 3</div><div class="match-grid"><div class="team"><strong>Score 10</strong><ul class="players"><li>RachmatP (#12)</li><li>dewaji (=9)</li></ul></div><div class="score">10 : 11</div><div class="team win"><strong>Score 11</strong><ul class="players"><li>Jamal (=9)</li><li>Sandy Bran (=9)</li></ul></div></div></section>
+<section class="match"><div class="pill">Court 4</div><div class="match-grid"><div class="team"><strong>Score 9</strong><ul class="players"><li>Eky (#16)</li><li>Mahdi Kemal Assegaf (#13)</li></ul></div><div class="score">9 : 12</div><div class="team win"><strong>Score 12</strong><ul class="players"><li>Fahmy (#14)</li><li>nizar ijay (#15)</li></ul></div></div></section>
+<section class="match"><div class="pill">Court 5</div><div class="match-grid"><div class="team"><strong>Score 10</strong><ul class="players"><li>Heru H (=17)</li><li>Aqila (#20)</li></ul></div><div class="score">10 : 11</div><div class="team win"><strong>Score 11</strong><ul class="players"><li>Ariya (=17)</li><li>boncaumaza (#19)</li></ul></div></div></section></article>
+<article class="round"><div class="round-header"><h3 class="round-title">Round 8</h3><div class="round-meta">5 matches</div></div><p class="bench-note">Bench: Ariya (#16), Wahyu (#1), Bimo (#2), Fahmy (#13)</p><section class="match"><div class="pill">Court 1</div><div class="match-grid"><div class="team"><strong>Score 7</strong><ul class="players"><li>Abudy (#3)</li><li>Jamal (=5)</li></ul></div><div class="score">7 : 14</div><div class="team win"><strong>Score 14</strong><ul class="players"><li>Alwi (#4)</li><li>Sandy Bran (=5)</li></ul></div></div></section>
+<section class="match"><div class="pill">Court 2</div><div class="match-grid"><div class="team win"><strong>Score 12</strong><ul class="players"><li>Zory (#7)</li><li>RachmatP (#10)</li></ul></div><div class="score">12 : 9</div><div class="team"><strong>Score 9</strong><ul class="players"><li>dewaji (#8)</li><li>Anis (#9)</li></ul></div></div></section>
+<section class="match"><div class="pill">Court 3</div><div class="match-grid"><div class="team win"><strong>Score 14</strong><ul class="players"><li>nizar ijay (=14)</li><li>Kareem Mulachela (#11)</li></ul></div><div class="score">14 : 7</div><div class="team"><strong>Score 7</strong><ul class="players"><li>Piko (#12)</li><li>Mahdi Kemal Assegaf (=14)</li></ul></div></div></section>
+<section class="match"><div class="pill">Court 4</div><div class="match-grid"><div class="team win"><strong>Score 11</strong><ul class="players"><li>Eky (#19)</li><li>boncaumaza (#17)</li></ul></div><div class="score">11 : 10</div><div class="team"><strong>Score 10</strong><ul class="players"><li>Heru H (#18)</li><li>Aqila (#20)</li></ul></div></div></section>
+<section class="match"><div class="pill">Court 5</div><div class="match-grid"><div class="team"><strong>Score 6</strong><ul class="players"><li>adhni (#23)</li><li>rezno (#21)</li></ul></div><div class="score">6 : 15</div><div class="team win"><strong>Score 15</strong><ul class="players"><li>Echa M (#22)</li><li>Areza (#24)</li></ul></div></div></section></article>
+<article class="round"><div class="round-header"><h3 class="round-title">Round 9</h3><div class="round-meta">5 matches</div></div><p class="bench-note">Bench: Alwi (#1), dewaji (=9), Jamal (#11), boncaumaza (#13)</p><section class="match"><div class="pill">Court 1</div><div class="match-grid"><div class="team"><strong>Score 9</strong><ul class="players"><li>Wahyu (#5)</li><li>Sandy Bran (#3)</li></ul></div><div class="score">9 : 12</div><div class="team win"><strong>Score 12</strong><ul class="players"><li>Bimo (#6)</li><li>Abudy (#2)</li></ul></div></div></section>
+<section class="match"><div class="pill">Court 2</div><div class="match-grid"><div class="team win"><strong>Score 14</strong><ul class="players"><li>Zory (#4)</li><li>nizar ijay (=9)</li></ul></div><div class="score">14 : 7</div><div class="team"><strong>Score 7</strong><ul class="players"><li>RachmatP (#8)</li><li>Kareem Mulachela (#7)</li></ul></div></div></section>
+<section class="match"><div class="pill">Court 3</div><div class="match-grid"><div class="team"><strong>Score 9</strong><ul class="players"><li>Piko (#14)</li><li>Anis (#12)</li></ul></div><div class="score">9 : 12</div><div class="team win"><strong>Score 12</strong><ul class="players"><li>Echa M (#20)</li><li>Fahmy (#19)</li></ul></div></div></section>
+<section class="match"><div class="pill">Court 4</div><div class="match-grid"><div class="team"><strong>Score 4</strong><ul class="players"><li>Ariya (#21)</li><li>Mahdi Kemal Assegaf (=16)</li></ul></div><div class="score">4 : 17</div><div class="team win"><strong>Score 17</strong><ul class="players"><li>Eky (#15)</li><li>Heru H (=16)</li></ul></div></div></section>
+<section class="match"><div class="pill">Court 5</div><div class="match-grid"><div class="team"><strong>Score 9</strong><ul class="players"><li>adhni (#24)</li><li>Aqila (#18)</li></ul></div><div class="score">9 : 12</div><div class="team win"><strong>Score 12</strong><ul class="players"><li>rezno (#23)</li><li>Areza (#22)</li></ul></div></div></section></article>
+<article class="round"><div class="round-header"><h3 class="round-title">Round 10</h3><div class="round-meta">5 matches</div></div><p class="bench-note">Bench: RachmatP (#11), Abudy (#1), Sandy Bran (#4), Anis (#12)</p><section class="match"><div class="pill">Court 1</div><div class="match-grid"><div class="team win"><strong>Score 15</strong><ul class="players"><li>Bimo (#3)</li><li>Alwi (=6)</li></ul></div><div class="score">15 : 6</div><div class="team"><strong>Score 6</strong><ul class="players"><li>Zory (#2)</li><li>Wahyu (=6)</li></ul></div></div></section>
+<section class="match"><div class="pill">Court 2</div><div class="match-grid"><div class="team win"><strong>Score 13</strong><ul class="players"><li>Heru H (#9)</li><li>nizar ijay (#5)</li></ul></div><div class="score">13 : 8</div><div class="team"><strong>Score 8</strong><ul class="players"><li>Eky (#8)</li><li>dewaji (#15)</li></ul></div></div></section>
+<section class="match"><div class="pill">Court 3</div><div class="match-grid"><div class="team win"><strong>Score 12</strong><ul class="players"><li>Fahmy (#17)</li><li>Kareem Mulachela (#10)</li></ul></div><div class="score">12 : 9</div><div class="team"><strong>Score 9</strong><ul class="players"><li>Echa M (#18)</li><li>Jamal (#16)</li></ul></div></div></section>
+<section class="match"><div class="pill">Court 4</div><div class="match-grid"><div class="team"><strong>Score 5</strong><ul class="players"><li>Aqila (#14)</li><li>boncaumaza (#20)</li></ul></div><div class="score">5 : 16</div><div class="team win"><strong>Score 16</strong><ul class="players"><li>Piko (#13)</li><li>Areza (#21)</li></ul></div></div></section>
+<section class="match"><div class="pill">Court 5</div><div class="match-grid"><div class="team"><strong>Score 9</strong><ul class="players"><li>rezno (#22)</li><li>Mahdi Kemal Assegaf (#19)</li></ul></div><div class="score">9 : 12</div><div class="team win"><strong>Score 12</strong><ul class="players"><li>adhni (#24)</li><li>Ariya (#23)</li></ul></div></div></section></article>
+<article class="round"><div class="round-header"><h3 class="round-title">Round 11</h3><div class="round-meta">5 matches</div></div><p class="bench-note">Bench: Heru H (#5), Piko (#8), Aqila (=19), nizar ijay (#3)</p><section class="match"><div class="pill">Court 1</div><div class="match-grid"><div class="team win"><strong>Score 13</strong><ul class="players"><li>Wahyu (#9)</li><li>Bimo (#1)</li></ul></div><div class="score">13 : 8</div><div class="team"><strong>Score 8</strong><ul class="players"><li>Alwi (#2)</li><li>Abudy (#7)</li></ul></div></div></section>
+<section class="match"><div class="pill">Court 2</div><div class="match-grid"><div class="team"><strong>Score 10</strong><ul class="players"><li>Kareem Mulachela (#6)</li><li>Sandy Bran (#11)</li></ul></div><div class="score">10 : 11</div><div class="team win"><strong>Score 11</strong><ul class="players"><li>Zory (#4)</li><li>Fahmy (#12)</li></ul></div></div></section>
+<section class="match"><div class="pill">Court 3</div><div class="match-grid"><div class="team win"><strong>Score 13</strong><ul class="players"><li>Eky (#10)</li><li>Jamal (=13)</li></ul></div><div class="score">13 : 8</div><div class="team"><strong>Score 8</strong><ul class="players"><li>RachmatP (=13)</li><li>dewaji (#15)</li></ul></div></div></section>
+<section class="match"><div class="pill">Court 4</div><div class="match-grid"><div class="team"><strong>Score 10</strong><ul class="players"><li>Ariya (#21)</li><li>Areza (#17)</li></ul></div><div class="score">10 : 11</div><div class="team win"><strong>Score 11</strong><ul class="players"><li>Echa M (#18)</li><li>Anis (#16)</li></ul></div></div></section>
+<section class="match"><div class="pill">Court 5</div><div class="match-grid"><div class="team win"><strong>Score 11</strong><ul class="players"><li>adhni (#24)</li><li>boncaumaza (#22)</li></ul></div><div class="score">11 : 10</div><div class="team"><strong>Score 10</strong><ul class="players"><li>rezno (#23)</li><li>Mahdi Kemal Assegaf (=19)</li></ul></div></div></section></article>
+<article class="round"><div class="round-header"><h3 class="round-title">Round 12</h3><div class="round-meta">5 matches</div></div><p class="bench-note">Bench: Zory (#3), Eky (#5), Mahdi Kemal Assegaf (#19), Kareem Mulachela (#6)</p><section class="match"><div class="pill">Court 1</div><div class="match-grid"><div class="team"><strong>Score 9</strong><ul class="players"><li>Bimo (#1)</li><li>Abudy (#7)</li></ul></div><div class="score">9 : 12</div><div class="team win"><strong>Score 12</strong><ul class="players"><li>Wahyu (#4)</li><li>Alwi (#2)</li></ul></div></div></section>
+<section class="match"><div class="pill">Court 2</div><div class="match-grid"><div class="team"><strong>Score 6</strong><ul class="players"><li>Heru H (#10)</li><li>nizar ijay (#8)</li></ul></div><div class="score">6 : 15</div><div class="team win"><strong>Score 15</strong><ul class="players"><li>Fahmy (#11)</li><li>Sandy Bran (#9)</li></ul></div></div></section>
+<section class="match"><div class="pill">Court 3</div><div class="match-grid"><div class="team win"><strong>Score 17</strong><ul class="players"><li>Jamal (#12)</li><li>Anis (#14)</li></ul></div><div class="score">17 : 4</div><div class="team"><strong>Score 4</strong><ul class="players"><li>Echa M (#15)</li><li>Piko (#13)</li></ul></div></div></section>
+<section class="match"><div class="pill">Court 4</div><div class="match-grid"><div class="team"><strong>Score 10</strong><ul class="players"><li>dewaji (#18)</li><li>Areza (#16)</li></ul></div><div class="score">10 : 11</div><div class="team win"><strong>Score 11</strong><ul class="players"><li>RachmatP (#17)</li><li>boncaumaza (#20)</li></ul></div></div></section>
+<section class="match"><div class="pill">Court 5</div><div class="match-grid"><div class="team win"><strong>Score 11</strong><ul class="players"><li>Ariya (#21)</li><li>Aqila (#23)</li></ul></div><div class="score">11 : 10</div><div class="team"><strong>Score 10</strong><ul class="players"><li>adhni (#24)</li><li>rezno (#22)</li></ul></div></div></section></article>
+      </div>
+    </section>
+  </main>
+  <script id="chart-data" type="application/json">{"rounds":[1,2,3,4,5,6,7,8,9,10,11,12],"player_count":24,"series":[{"name":"Bimo","final_rank":1,"color":"hsl(0 68% 44%)","points":[{"round":1,"rank":1,"total":15,"raw_total":15,"extra_bench":0,"points":15,"bench":0,"diff":9,"win":1,"lose":0,"tie":0},{"round":2,"rank":2,"total":26,"raw_total":26,"extra_bench":0,"points":26,"bench":0,"diff":10,"win":2,"lose":0,"tie":0},{"round":3,"rank":2,"total":36,"raw_total":36,"extra_bench":0,"points":36,"bench":0,"diff":9,"win":2,"lose":1,"tie":0},{"round":4,"rank":3,"total":46,"raw_total":46,"extra_bench":0,"points":46,"bench":0,"diff":8,"win":2,"lose":2,"tie":0},{"round":5,"rank":1,"total":61,"raw_total":61,"extra_bench":0,"points":61,"bench":0,"diff":17,"win":3,"lose":2,"tie":0},{"round":6,"rank":3,"total":71,"raw_total":71,"extra_bench":0,"points":61,"bench":10,"diff":17,"win":3,"lose":2,"tie":0},{"round":7,"rank":2,"total":88,"raw_total":88,"extra_bench":0,"points":78,"bench":10,"diff":30,"win":4,"lose":2,"tie":0},{"round":8,"rank":6,"total":88,"raw_total":98,"extra_bench":10,"points":78,"bench":20,"diff":30,"win":4,"lose":2,"tie":0},{"round":9,"rank":3,"total":100,"raw_total":110,"extra_bench":10,"points":90,"bench":20,"diff":33,"win":5,"lose":2,"tie":0},{"round":10,"rank":1,"total":115,"raw_total":125,"extra_bench":10,"points":105,"bench":20,"diff":42,"win":6,"lose":2,"tie":0},{"round":11,"rank":1,"total":128,"raw_total":138,"extra_bench":10,"points":118,"bench":20,"diff":47,"win":7,"lose":2,"tie":0},{"round":12,"rank":1,"total":147,"raw_total":147,"extra_bench":0,"points":127,"bench":20,"diff":44,"win":7,"lose":3,"tie":0}]},{"name":"Alwi","final_rank":2,"color":"hsl(37 68% 44%)","points":[{"round":1,"rank":7,"total":13,"raw_total":13,"extra_bench":0,"points":13,"bench":0,"diff":5,"win":1,"lose":0,"tie":0},{"round":2,"rank":18,"total":13,"raw_total":23,"extra_bench":10,"points":13,"bench":10,"diff":5,"win":1,"lose":0,"tie":0},{"round":3,"rank":14,"total":23,"raw_total":33,"extra_bench":10,"points":23,"bench":10,"diff":4,"win":1,"lose":1,"tie":0},{"round":4,"rank":14,"total":34,"raw_total":44,"extra_bench":10,"points":34,"bench":10,"diff":5,"win":2,"lose":1,"tie":0},{"round":5,"rank":6,"total":49,"raw_total":59,"extra_bench":10,"points":49,"bench":10,"diff":14,"win":3,"lose":1,"tie":0},{"round":6,"rank":7,"total":67,"raw_total":67,"extra_bench":0,"points":57,"bench":10,"diff":9,"win":3,"lose":2,"tie":0},{"round":7,"rank":4,"total":83,"raw_total":83,"extra_bench":0,"points":73,"bench":10,"diff":20,"win":4,"lose":2,"tie":0},{"round":8,"rank":1,"total":97,"raw_total":97,"extra_bench":0,"points":87,"bench":10,"diff":27,"win":5,"lose":2,"tie":0},{"round":9,"rank":6,"total":97,"raw_total":107,"extra_bench":10,"points":87,"bench":20,"diff":27,"win":5,"lose":2,"tie":0},{"round":10,"rank":2,"total":112,"raw_total":122,"extra_bench":10,"points":102,"bench":20,"diff":36,"win":6,"lose":2,"tie":0},{"round":11,"rank":2,"total":120,"raw_total":130,"extra_bench":10,"points":110,"bench":20,"diff":31,"win":6,"lose":3,"tie":0},{"round":12,"rank":2,"total":142,"raw_total":142,"extra_bench":0,"points":122,"bench":20,"diff":34,"win":7,"lose":3,"tie":0}]},{"name":"Wahyu","final_rank":3,"color":"hsl(74 68% 44%)","points":[{"round":1,"rank":8,"total":13,"raw_total":13,"extra_bench":0,"points":13,"bench":0,"diff":5,"win":1,"lose":0,"tie":0},{"round":2,"rank":7,"total":22,"raw_total":22,"extra_bench":0,"points":22,"bench":0,"diff":2,"win":1,"lose":1,"tie":0},{"round":3,"rank":7,"total":34,"raw_total":34,"extra_bench":0,"points":34,"bench":0,"diff":5,"win":2,"lose":1,"tie":0},{"round":4,"rank":1,"total":48,"raw_total":48,"extra_bench":0,"points":48,"bench":0,"diff":12,"win":3,"lose":1,"tie":0},{"round":5,"rank":9,"total":48,"raw_total":58,"extra_bench":10,"points":48,"bench":10,"diff":12,"win":3,"lose":1,"tie":0},{"round":6,"rank":2,"total":71,"raw_total":71,"extra_bench":0,"points":61,"bench":10,"diff":17,"win":4,"lose":1,"tie":0},{"round":7,"rank":1,"total":88,"raw_total":88,"extra_bench":0,"points":78,"bench":10,"diff":30,"win":5,"lose":1,"tie":0},{"round":8,"rank":5,"total":88,"raw_total":98,"extra_bench":10,"points":78,"bench":20,"diff":30,"win":5,"lose":1,"tie":0},{"round":9,"rank":7,"total":97,"raw_total":107,"extra_bench":10,"points":87,"bench":20,"diff":27,"win":5,"lose":2,"tie":0},{"round":10,"rank":9,"total":103,"raw_total":113,"extra_bench":10,"points":93,"bench":20,"diff":18,"win":5,"lose":3,"tie":0},{"round":11,"rank":4,"total":116,"raw_total":126,"extra_bench":10,"points":106,"bench":20,"diff":23,"win":6,"lose":3,"tie":0},{"round":12,"rank":3,"total":138,"raw_total":138,"extra_bench":0,"points":118,"bench":20,"diff":26,"win":7,"lose":3,"tie":0}]},{"name":"Sandy Bran","final_rank":4,"color":"hsl(111 68% 44%)","points":[{"round":1,"rank":6,"total":14,"raw_total":14,"extra_bench":0,"points":14,"bench":0,"diff":7,"win":1,"lose":0,"tie":0},{"round":2,"rank":6,"total":24,"raw_total":24,"extra_bench":0,"points":24,"bench":0,"diff":6,"win":1,"lose":1,"tie":0},{"round":3,"rank":5,"total":35,"raw_total":35,"extra_bench":0,"points":35,"bench":0,"diff":7,"win":2,"lose":1,"tie":0},{"round":4,"rank":8,"total":42,"raw_total":42,"extra_bench":0,"points":42,"bench":0,"diff":0,"win":2,"lose":2,"tie":0},{"round":5,"rank":13,"total":42,"raw_total":52,"extra_bench":10,"points":42,"bench":10,"diff":0,"win":2,"lose":2,"tie":0},{"round":6,"rank":11,"total":66,"raw_total":66,"extra_bench":0,"points":56,"bench":10,"diff":7,"win":3,"lose":2,"tie":0},{"round":7,"rank":6,"total":77,"raw_total":77,"extra_bench":0,"points":67,"bench":10,"diff":8,"win":4,"lose":2,"tie":0},{"round":8,"rank":3,"total":91,"raw_total":91,"extra_bench":0,"points":81,"bench":10,"diff":15,"win":5,"lose":2,"tie":0},{"round":9,"rank":4,"total":100,"raw_total":100,"extra_bench":0,"points":90,"bench":10,"diff":12,"win":5,"lose":3,"tie":0},{"round":10,"rank":11,"total":100,"raw_total":110,"extra_bench":10,"points":90,"bench":20,"diff":12,"win":5,"lose":3,"tie":0},{"round":11,"rank":9,"total":110,"raw_total":120,"extra_bench":10,"points":100,"bench":20,"diff":11,"win":5,"lose":4,"tie":0},{"round":12,"rank":4,"total":135,"raw_total":135,"extra_bench":0,"points":115,"bench":20,"diff":20,"win":6,"lose":4,"tie":0}]},{"name":"Jamal","final_rank":5,"color":"hsl(148 68% 44%)","points":[{"round":1,"rank":14,"total":0,"raw_total":10,"extra_bench":10,"points":0,"bench":10,"diff":0,"win":0,"lose":0,"tie":0},{"round":2,"rank":20,"total":13,"raw_total":23,"extra_bench":10,"points":13,"bench":10,"diff":5,"win":1,"lose":0,"tie":0},{"round":3,"rank":16,"total":22,"raw_total":32,"extra_bench":10,"points":22,"bench":10,"diff":2,"win":1,"lose":1,"tie":0},{"round":4,"rank":15,"total":33,"raw_total":43,"extra_bench":10,"points":33,"bench":10,"diff":3,"win":2,"lose":1,"tie":0},{"round":5,"rank":8,"total":48,"raw_total":58,"extra_bench":10,"points":48,"bench":10,"diff":12,"win":3,"lose":1,"tie":0},{"round":6,"rank":10,"total":66,"raw_total":66,"extra_bench":0,"points":56,"bench":10,"diff":7,"win":3,"lose":2,"tie":0},{"round":7,"rank":5,"total":77,"raw_total":77,"extra_bench":0,"points":67,"bench":10,"diff":8,"win":4,"lose":2,"tie":0},{"round":8,"rank":11,"total":84,"raw_total":84,"extra_bench":0,"points":74,"bench":10,"diff":1,"win":4,"lose":3,"tie":0},{"round":9,"rank":16,"total":84,"raw_total":94,"extra_bench":10,"points":74,"bench":20,"diff":1,"win":4,"lose":3,"tie":0},{"round":10,"rank":13,"total":93,"raw_total":103,"extra_bench":10,"points":83,"bench":20,"diff":-2,"win":4,"lose":4,"tie":0},{"round":11,"rank":12,"total":106,"raw_total":116,"extra_bench":10,"points":96,"bench":20,"diff":3,"win":5,"lose":4,"tie":0},{"round":12,"rank":5,"total":133,"raw_total":133,"extra_bench":0,"points":113,"bench":20,"diff":16,"win":6,"lose":4,"tie":0}]},{"name":"Fahmy","final_rank":6,"color":"hsl(185 68% 44%)","points":[{"round":1,"rank":5,"total":14,"raw_total":14,"extra_bench":0,"points":14,"bench":0,"diff":7,"win":1,"lose":0,"tie":0},{"round":2,"rank":5,"total":24,"raw_total":24,"extra_bench":0,"points":24,"bench":0,"diff":6,"win":1,"lose":1,"tie":0},{"round":3,"rank":8,"total":34,"raw_total":34,"extra_bench":0,"points":34,"bench":0,"diff":5,"win":1,"lose":2,"tie":0},{"round":4,"rank":6,"total":44,"raw_total":44,"extra_bench":0,"points":44,"bench":0,"diff":4,"win":1,"lose":3,"tie":0},{"round":5,"rank":4,"total":50,"raw_total":50,"extra_bench":0,"points":50,"bench":0,"diff":-5,"win":1,"lose":4,"tie":0},{"round":6,"rank":14,"total":60,"raw_total":60,"extra_bench":0,"points":50,"bench":10,"diff":-5,"win":1,"lose":4,"tie":0},{"round":7,"rank":13,"total":72,"raw_total":72,"extra_bench":0,"points":62,"bench":10,"diff":-2,"win":2,"lose":4,"tie":0},{"round":8,"rank":19,"total":72,"raw_total":82,"extra_bench":10,"points":62,"bench":20,"diff":-2,"win":2,"lose":4,"tie":0},{"round":9,"rank":17,"total":84,"raw_total":94,"extra_bench":10,"points":74,"bench":20,"diff":1,"win":3,"lose":4,"tie":0},{"round":10,"rank":12,"total":96,"raw_total":106,"extra_bench":10,"points":86,"bench":20,"diff":4,"win":4,"lose":4,"tie":0},{"round":11,"rank":11,"total":107,"raw_total":117,"extra_bench":10,"points":97,"bench":20,"diff":5,"win":5,"lose":4,"tie":0},{"round":12,"rank":6,"total":132,"raw_total":132,"extra_bench":0,"points":112,"bench":20,"diff":14,"win":6,"lose":4,"tie":0}]},{"name":"Abudy","final_rank":7,"color":"hsl(222 68% 44%)","points":[{"round":1,"rank":3,"total":14,"raw_total":14,"extra_bench":0,"points":14,"bench":0,"diff":7,"win":1,"lose":0,"tie":0},{"round":2,"rank":3,"total":25,"raw_total":25,"extra_bench":0,"points":25,"bench":0,"diff":8,"win":2,"lose":0,"tie":0},{"round":3,"rank":4,"total":35,"raw_total":35,"extra_bench":0,"points":35,"bench":0,"diff":7,"win":2,"lose":1,"tie":0},{"round":4,"rank":5,"total":45,"raw_total":45,"extra_bench":0,"points":45,"bench":0,"diff":6,"win":2,"lose":2,"tie":0},{"round":5,"rank":2,"total":60,"raw_total":60,"extra_bench":0,"points":60,"bench":0,"diff":15,"win":3,"lose":2,"tie":0},{"round":6,"rank":5,"total":70,"raw_total":70,"extra_bench":0,"points":60,"bench":10,"diff":15,"win":3,"lose":2,"tie":0},{"round":7,"rank":3,"total":86,"raw_total":86,"extra_bench":0,"points":76,"bench":10,"diff":26,"win":4,"lose":2,"tie":0},{"round":8,"rank":2,"total":93,"raw_total":93,"extra_bench":0,"points":83,"bench":10,"diff":19,"win":4,"lose":3,"tie":0},{"round":9,"rank":1,"total":105,"raw_total":105,"extra_bench":0,"points":95,"bench":10,"diff":22,"win":5,"lose":3,"tie":0},{"round":10,"rank":7,"total":105,"raw_total":115,"extra_bench":10,"points":95,"bench":20,"diff":22,"win":5,"lose":3,"tie":0},{"round":11,"rank":7,"total":113,"raw_total":123,"extra_bench":10,"points":103,"bench":20,"diff":17,"win":5,"lose":4,"tie":0},{"round":12,"rank":7,"total":132,"raw_total":132,"extra_bench":0,"points":112,"bench":20,"diff":14,"win":5,"lose":5,"tie":0}]},{"name":"Anis","final_rank":8,"color":"hsl(259 68% 44%)","points":[{"round":1,"rank":4,"total":14,"raw_total":14,"extra_bench":0,"points":14,"bench":0,"diff":7,"win":1,"lose":0,"tie":0},{"round":2,"rank":1,"total":26,"raw_total":26,"extra_bench":0,"points":26,"bench":0,"diff":10,"win":2,"lose":0,"tie":0},{"round":3,"rank":1,"total":37,"raw_total":37,"extra_bench":0,"points":37,"bench":0,"diff":11,"win":3,"lose":0,"tie":0},{"round":4,"rank":10,"total":37,"raw_total":47,"extra_bench":10,"points":37,"bench":10,"diff":11,"win":3,"lose":0,"tie":0},{"round":5,"rank":7,"total":48,"raw_total":58,"extra_bench":10,"points":48,"bench":10,"diff":12,"win":4,"lose":0,"tie":0},{"round":6,"rank":4,"total":70,"raw_total":70,"extra_bench":0,"points":60,"bench":10,"diff":15,"win":5,"lose":0,"tie":0},{"round":7,"rank":9,"total":74,"raw_total":74,"extra_bench":0,"points":64,"bench":10,"diff":2,"win":5,"lose":1,"tie":0},{"round":8,"rank":12,"total":83,"raw_total":83,"extra_bench":0,"points":73,"bench":10,"diff":-1,"win":5,"lose":2,"tie":0},{"round":9,"rank":12,"total":92,"raw_total":92,"extra_bench":0,"points":82,"bench":10,"diff":-4,"win":5,"lose":3,"tie":0},{"round":10,"rank":16,"total":92,"raw_total":102,"extra_bench":10,"points":82,"bench":20,"diff":-4,"win":5,"lose":3,"tie":0},{"round":11,"rank":14,"total":103,"raw_total":113,"extra_bench":10,"points":93,"bench":20,"diff":-3,"win":6,"lose":3,"tie":0},{"round":12,"rank":8,"total":130,"raw_total":130,"extra_bench":0,"points":110,"bench":20,"diff":10,"win":7,"lose":3,"tie":0}]},{"name":"Zory","final_rank":9,"color":"hsl(296 68% 44%)","points":[{"round":1,"rank":10,"total":12,"raw_total":12,"extra_bench":0,"points":12,"bench":0,"diff":3,"win":1,"lose":0,"tie":0},{"round":2,"rank":4,"total":24,"raw_total":24,"extra_bench":0,"points":24,"bench":0,"diff":6,"win":2,"lose":0,"tie":0},{"round":3,"rank":13,"total":24,"raw_total":34,"extra_bench":10,"points":24,"bench":10,"diff":6,"win":2,"lose":0,"tie":0},{"round":4,"rank":9,"total":38,"raw_total":48,"extra_bench":10,"points":38,"bench":10,"diff":13,"win":3,"lose":0,"tie":0},{"round":5,"rank":5,"total":49,"raw_total":59,"extra_bench":10,"points":49,"bench":10,"diff":14,"win":4,"lose":0,"tie":0},{"round":6,"rank":1,"total":72,"raw_total":72,"extra_bench":0,"points":62,"bench":10,"diff":19,"win":5,"lose":0,"tie":0},{"round":7,"rank":7,"total":76,"raw_total":76,"extra_bench":0,"points":66,"bench":10,"diff":6,"win":5,"lose":1,"tie":0},{"round":8,"rank":4,"total":88,"raw_total":88,"extra_bench":0,"points":78,"bench":10,"diff":9,"win":6,"lose":1,"tie":0},{"round":9,"rank":2,"total":102,"raw_total":102,"extra_bench":0,"points":92,"bench":10,"diff":16,"win":7,"lose":1,"tie":0},{"round":10,"rank":4,"total":108,"raw_total":108,"extra_bench":0,"points":98,"bench":10,"diff":7,"win":7,"lose":2,"tie":0},{"round":11,"rank":3,"total":119,"raw_total":119,"extra_bench":0,"points":109,"bench":10,"diff":8,"win":8,"lose":2,"tie":0},{"round":12,"rank":9,"total":129,"raw_total":129,"extra_bench":0,"points":109,"bench":20,"diff":8,"win":8,"lose":2,"tie":0}]},{"name":"nizar ijay","final_rank":10,"color":"hsl(333 68% 44%)","points":[{"round":1,"rank":16,"total":9,"raw_total":9,"extra_bench":0,"points":9,"bench":0,"diff":-3,"win":0,"lose":1,"tie":0},{"round":2,"rank":10,"total":19,"raw_total":19,"extra_bench":0,"points":19,"bench":0,"diff":-4,"win":0,"lose":2,"tie":0},{"round":3,"rank":3,"total":36,"raw_total":36,"extra_bench":0,"points":36,"bench":0,"diff":9,"win":1,"lose":2,"tie":0},{"round":4,"rank":12,"total":36,"raw_total":46,"extra_bench":10,"points":36,"bench":10,"diff":9,"win":1,"lose":2,"tie":0},{"round":5,"rank":14,"total":42,"raw_total":52,"extra_bench":10,"points":42,"bench":10,"diff":0,"win":1,"lose":3,"tie":0},{"round":6,"rank":15,"total":59,"raw_total":59,"extra_bench":0,"points":49,"bench":10,"diff":-7,"win":1,"lose":4,"tie":0},{"round":7,"rank":15,"total":71,"raw_total":71,"extra_bench":0,"points":61,"bench":10,"diff":-4,"win":2,"lose":4,"tie":0},{"round":8,"rank":10,"total":85,"raw_total":85,"extra_bench":0,"points":75,"bench":10,"diff":3,"win":3,"lose":4,"tie":0},{"round":9,"rank":5,"total":99,"raw_total":99,"extra_bench":0,"points":89,"bench":10,"diff":10,"win":4,"lose":4,"tie":0},{"round":10,"rank":3,"total":112,"raw_total":112,"extra_bench":0,"points":102,"bench":10,"diff":15,"win":5,"lose":4,"tie":0},{"round":11,"rank":8,"total":112,"raw_total":122,"extra_bench":10,"points":102,"bench":20,"diff":15,"win":5,"lose":4,"tie":0},{"round":12,"rank":10,"total":128,"raw_total":128,"extra_bench":0,"points":108,"bench":20,"diff":6,"win":5,"lose":5,"tie":0}]},{"name":"Eky","final_rank":11,"color":"hsl(10 68% 44%)","points":[{"round":1,"rank":13,"total":0,"raw_total":10,"extra_bench":10,"points":0,"bench":10,"diff":0,"win":0,"lose":0,"tie":0},{"round":2,"rank":19,"total":13,"raw_total":23,"extra_bench":10,"points":13,"bench":10,"diff":5,"win":1,"lose":0,"tie":0},{"round":3,"rank":12,"total":24,"raw_total":34,"extra_bench":10,"points":24,"bench":10,"diff":6,"win":2,"lose":0,"tie":0},{"round":4,"rank":16,"total":31,"raw_total":41,"extra_bench":10,"points":31,"bench":10,"diff":-1,"win":2,"lose":1,"tie":0},{"round":5,"rank":17,"total":37,"raw_total":47,"extra_bench":10,"points":37,"bench":10,"diff":-10,"win":2,"lose":2,"tie":0},{"round":6,"rank":16,"total":58,"raw_total":58,"extra_bench":0,"points":48,"bench":10,"diff":-9,"win":3,"lose":2,"tie":0},{"round":7,"rank":19,"total":67,"raw_total":67,"extra_bench":0,"points":57,"bench":10,"diff":-12,"win":3,"lose":3,"tie":0},{"round":8,"rank":15,"total":78,"raw_total":78,"extra_bench":0,"points":68,"bench":10,"diff":-11,"win":4,"lose":3,"tie":0},{"round":9,"rank":8,"total":95,"raw_total":95,"extra_bench":0,"points":85,"bench":10,"diff":2,"win":5,"lose":3,"tie":0},{"round":10,"rank":10,"total":103,"raw_total":103,"extra_bench":0,"points":93,"bench":10,"diff":-3,"win":5,"lose":4,"tie":0},{"round":11,"rank":5,"total":116,"raw_total":116,"extra_bench":0,"points":106,"bench":10,"diff":2,"win":6,"lose":4,"tie":0},{"round":12,"rank":11,"total":126,"raw_total":126,"extra_bench":0,"points":106,"bench":20,"diff":2,"win":6,"lose":4,"tie":0}]},{"name":"Kareem Mulachela","final_rank":12,"color":"hsl(47 68% 44%)","points":[{"round":1,"rank":18,"total":8,"raw_total":8,"extra_bench":0,"points":8,"bench":0,"diff":-5,"win":0,"lose":1,"tie":0},{"round":2,"rank":13,"total":18,"raw_total":18,"extra_bench":0,"points":18,"bench":0,"diff":-6,"win":0,"lose":2,"tie":0},{"round":3,"rank":6,"total":35,"raw_total":35,"extra_bench":0,"points":35,"bench":0,"diff":7,"win":1,"lose":2,"tie":0},{"round":4,"rank":4,"total":46,"raw_total":46,"extra_bench":0,"points":46,"bench":0,"diff":8,"win":2,"lose":2,"tie":0},{"round":5,"rank":11,"total":46,"raw_total":56,"extra_bench":10,"points":46,"bench":10,"diff":8,"win":2,"lose":2,"tie":0},{"round":6,"rank":6,"total":68,"raw_total":68,"extra_bench":0,"points":58,"bench":10,"diff":11,"win":3,"lose":2,"tie":0},{"round":7,"rank":11,"total":73,"raw_total":73,"extra_bench":0,"points":63,"bench":10,"diff":0,"win":3,"lose":3,"tie":0},{"round":8,"rank":7,"total":87,"raw_total":87,"extra_bench":0,"points":77,"bench":10,"diff":7,"win":4,"lose":3,"tie":0},{"round":9,"rank":10,"total":94,"raw_total":94,"extra_bench":0,"points":84,"bench":10,"diff":0,"win":4,"lose":4,"tie":0},{"round":10,"rank":6,"total":106,"raw_total":106,"extra_bench":0,"points":96,"bench":10,"diff":3,"win":5,"lose":4,"tie":0},{"round":11,"rank":6,"total":116,"raw_total":116,"extra_bench":0,"points":106,"bench":10,"diff":2,"win":5,"lose":5,"tie":0},{"round":12,"rank":12,"total":126,"raw_total":126,"extra_bench":0,"points":106,"bench":20,"diff":2,"win":5,"lose":5,"tie":0}]},{"name":"Heru H","final_rank":13,"color":"hsl(84 68% 44%)","points":[{"round":1,"rank":23,"total":6,"raw_total":6,"extra_bench":0,"points":6,"bench":0,"diff":-9,"win":0,"lose":1,"tie":0},{"round":2,"rank":16,"total":16,"raw_total":16,"extra_bench":0,"points":16,"bench":0,"diff":-10,"win":0,"lose":2,"tie":0},{"round":3,"rank":15,"total":23,"raw_total":23,"extra_bench":0,"points":23,"bench":0,"diff":-17,"win":0,"lose":3,"tie":0},{"round":4,"rank":23,"total":23,"raw_total":33,"extra_bench":10,"points":23,"bench":10,"diff":-17,"win":0,"lose":3,"tie":0},{"round":5,"rank":22,"total":34,"raw_total":44,"extra_bench":10,"points":34,"bench":10,"diff":-16,"win":1,"lose":3,"tie":0},{"round":6,"rank":18,"total":58,"raw_total":58,"extra_bench":0,"points":48,"bench":10,"diff":-9,"win":2,"lose":3,"tie":0},{"round":7,"rank":18,"total":68,"raw_total":68,"extra_bench":0,"points":58,"bench":10,"diff":-10,"win":2,"lose":4,"tie":0},{"round":8,"rank":16,"total":78,"raw_total":78,"extra_bench":0,"points":68,"bench":10,"diff":-11,"win":2,"lose":5,"tie":0},{"round":9,"rank":9,"total":95,"raw_total":95,"extra_bench":0,"points":85,"bench":10,"diff":2,"win":3,"lose":5,"tie":0},{"round":10,"rank":5,"total":108,"raw_total":108,"extra_bench":0,"points":98,"bench":10,"diff":7,"win":4,"lose":5,"tie":0},{"round":11,"rank":10,"total":108,"raw_total":118,"extra_bench":10,"points":98,"bench":20,"diff":7,"win":4,"lose":5,"tie":0},{"round":12,"rank":13,"total":124,"raw_total":124,"extra_bench":0,"points":104,"bench":20,"diff":-2,"win":4,"lose":6,"tie":0}]},{"name":"RachmatP","final_rank":14,"color":"hsl(121 68% 44%)","points":[{"round":1,"rank":21,"total":7,"raw_total":7,"extra_bench":0,"points":7,"bench":0,"diff":-7,"win":0,"lose":1,"tie":0},{"round":2,"rank":15,"total":17,"raw_total":17,"extra_bench":0,"points":17,"bench":0,"diff":-8,"win":0,"lose":2,"tie":0},{"round":3,"rank":22,"total":17,"raw_total":27,"extra_bench":10,"points":17,"bench":10,"diff":-8,"win":0,"lose":2,"tie":0},{"round":4,"rank":17,"total":29,"raw_total":39,"extra_bench":10,"points":29,"bench":10,"diff":-5,"win":1,"lose":2,"tie":0},{"round":5,"rank":16,"total":40,"raw_total":50,"extra_bench":10,"points":40,"bench":10,"diff":-4,"win":2,"lose":2,"tie":0},{"round":6,"rank":12,"total":64,"raw_total":64,"extra_bench":0,"points":54,"bench":10,"diff":3,"win":3,"lose":2,"tie":0},{"round":7,"rank":10,"total":74,"raw_total":74,"extra_bench":0,"points":64,"bench":10,"diff":2,"win":3,"lose":3,"tie":0},{"round":8,"rank":8,"total":86,"raw_total":86,"extra_bench":0,"points":76,"bench":10,"diff":5,"win":4,"lose":3,"tie":0},{"round":9,"rank":11,"total":93,"raw_total":93,"extra_bench":0,"points":83,"bench":10,"diff":-2,"win":4,"lose":4,"tie":0},{"round":10,"rank":14,"total":93,"raw_total":103,"extra_bench":10,"points":83,"bench":20,"diff":-2,"win":4,"lose":4,"tie":0},{"round":11,"rank":17,"total":101,"raw_total":111,"extra_bench":10,"points":91,"bench":20,"diff":-7,"win":4,"lose":5,"tie":0},{"round":12,"rank":14,"total":122,"raw_total":122,"extra_bench":0,"points":102,"bench":20,"diff":-6,"win":5,"lose":5,"tie":0}]},{"name":"Areza","final_rank":15,"color":"hsl(158 68% 44%)","points":[{"round":1,"rank":20,"total":7,"raw_total":7,"extra_bench":0,"points":7,"bench":0,"diff":-7,"win":0,"lose":1,"tie":0},{"round":2,"rank":11,"total":18,"raw_total":18,"extra_bench":0,"points":18,"bench":0,"diff":-6,"win":1,"lose":1,"tie":0},{"round":3,"rank":17,"total":22,"raw_total":22,"extra_bench":0,"points":22,"bench":0,"diff":-19,"win":1,"lose":2,"tie":0},{"round":4,"rank":24,"total":22,"raw_total":32,"extra_bench":10,"points":22,"bench":10,"diff":-19,"win":1,"lose":2,"tie":0},{"round":5,"rank":24,"total":32,"raw_total":42,"extra_bench":10,"points":32,"bench":10,"diff":-20,"win":1,"lose":3,"tie":0},{"round":6,"rank":24,"total":49,"raw_total":49,"extra_bench":0,"points":39,"bench":10,"diff":-27,"win":1,"lose":4,"tie":0},{"round":7,"rank":24,"total":49,"raw_total":59,"extra_bench":10,"points":39,"bench":20,"diff":-27,"win":1,"lose":4,"tie":0},{"round":8,"rank":22,"total":64,"raw_total":74,"extra_bench":10,"points":54,"bench":20,"diff":-18,"win":2,"lose":4,"tie":0},{"round":9,"rank":21,"total":76,"raw_total":86,"extra_bench":10,"points":66,"bench":20,"diff":-15,"win":3,"lose":4,"tie":0},{"round":10,"rank":17,"total":92,"raw_total":102,"extra_bench":10,"points":82,"bench":20,"diff":-4,"win":4,"lose":4,"tie":0},{"round":11,"rank":16,"total":102,"raw_total":112,"extra_bench":10,"points":92,"bench":20,"diff":-5,"win":4,"lose":5,"tie":0},{"round":12,"rank":15,"total":122,"raw_total":122,"extra_bench":0,"points":102,"bench":20,"diff":-6,"win":4,"lose":6,"tie":0}]},{"name":"dewaji","final_rank":16,"color":"hsl(195 68% 44%)","points":[{"round":1,"rank":2,"total":15,"raw_total":15,"extra_bench":0,"points":15,"bench":0,"diff":9,"win":1,"lose":0,"tie":0},{"round":2,"rank":17,"total":15,"raw_total":25,"extra_bench":10,"points":15,"bench":10,"diff":9,"win":1,"lose":0,"tie":0},{"round":3,"rank":11,"total":26,"raw_total":36,"extra_bench":10,"points":26,"bench":10,"diff":10,"win":2,"lose":0,"tie":0},{"round":4,"rank":11,"total":37,"raw_total":47,"extra_bench":10,"points":37,"bench":10,"diff":11,"win":3,"lose":0,"tie":0},{"round":5,"rank":10,"total":47,"raw_total":57,"extra_bench":10,"points":47,"bench":10,"diff":10,"win":3,"lose":1,"tie":0},{"round":6,"rank":9,"total":66,"raw_total":66,"extra_bench":0,"points":56,"bench":10,"diff":7,"win":3,"lose":2,"tie":0},{"round":7,"rank":8,"total":76,"raw_total":76,"extra_bench":0,"points":66,"bench":10,"diff":6,"win":3,"lose":3,"tie":0},{"round":8,"rank":9,"total":85,"raw_total":85,"extra_bench":0,"points":75,"bench":10,"diff":3,"win":3,"lose":4,"tie":0},{"round":9,"rank":15,"total":85,"raw_total":95,"extra_bench":10,"points":75,"bench":20,"diff":3,"win":3,"lose":4,"tie":0},{"round":10,"rank":15,"total":93,"raw_total":103,"extra_bench":10,"points":83,"bench":20,"diff":-2,"win":3,"lose":5,"tie":0},{"round":11,"rank":18,"total":101,"raw_total":111,"extra_bench":10,"points":91,"bench":20,"diff":-7,"win":3,"lose":6,"tie":0},{"round":12,"rank":16,"total":121,"raw_total":121,"extra_bench":0,"points":101,"bench":20,"diff":-8,"win":3,"lose":7,"tie":0}]},{"name":"Piko","final_rank":17,"color":"hsl(232 68% 44%)","points":[{"round":1,"rank":24,"total":6,"raw_total":6,"extra_bench":0,"points":6,"bench":0,"diff":-9,"win":0,"lose":1,"tie":0},{"round":2,"rank":14,"total":17,"raw_total":17,"extra_bench":0,"points":17,"bench":0,"diff":-8,"win":1,"lose":1,"tie":0},{"round":3,"rank":10,"total":31,"raw_total":31,"extra_bench":0,"points":31,"bench":0,"diff":-1,"win":2,"lose":1,"tie":0},{"round":4,"rank":2,"total":47,"raw_total":47,"extra_bench":0,"points":47,"bench":0,"diff":10,"win":3,"lose":1,"tie":0},{"round":5,"rank":3,"total":57,"raw_total":57,"extra_bench":0,"points":57,"bench":0,"diff":9,"win":3,"lose":2,"tie":0},{"round":6,"rank":8,"total":67,"raw_total":67,"extra_bench":0,"points":57,"bench":10,"diff":9,"win":3,"lose":2,"tie":0},{"round":7,"rank":12,"total":72,"raw_total":72,"extra_bench":0,"points":62,"bench":10,"diff":-2,"win":3,"lose":3,"tie":0},{"round":8,"rank":14,"total":79,"raw_total":79,"extra_bench":0,"points":69,"bench":10,"diff":-9,"win":3,"lose":4,"tie":0},{"round":9,"rank":13,"total":88,"raw_total":88,"extra_bench":0,"points":78,"bench":10,"diff":-12,"win":3,"lose":5,"tie":0},{"round":10,"rank":8,"total":104,"raw_total":104,"extra_bench":0,"points":94,"bench":10,"diff":-1,"win":4,"lose":5,"tie":0},{"round":11,"rank":13,"total":104,"raw_total":114,"extra_bench":10,"points":94,"bench":20,"diff":-1,"win":4,"lose":5,"tie":0},{"round":12,"rank":17,"total":118,"raw_total":118,"extra_bench":0,"points":98,"bench":20,"diff":-14,"win":4,"lose":6,"tie":0}]},{"name":"boncaumaza","final_rank":18,"color":"hsl(269 68% 44%)","points":[{"round":1,"rank":11,"total":0,"raw_total":10,"extra_bench":10,"points":0,"bench":10,"diff":0,"win":0,"lose":0,"tie":0},{"round":2,"rank":22,"total":8,"raw_total":18,"extra_bench":10,"points":8,"bench":10,"diff":-5,"win":0,"lose":1,"tie":0},{"round":3,"rank":23,"total":15,"raw_total":25,"extra_bench":10,"points":15,"bench":10,"diff":-12,"win":0,"lose":2,"tie":0},{"round":4,"rank":21,"total":24,"raw_total":34,"extra_bench":10,"points":24,"bench":10,"diff":-15,"win":0,"lose":3,"tie":0},{"round":5,"rank":23,"total":34,"raw_total":44,"extra_bench":10,"points":34,"bench":10,"diff":-16,"win":0,"lose":4,"tie":0},{"round":6,"rank":19,"total":58,"raw_total":58,"extra_bench":0,"points":48,"bench":10,"diff":-9,"win":1,"lose":4,"tie":0},{"round":7,"rank":17,"total":69,"raw_total":69,"extra_bench":0,"points":59,"bench":10,"diff":-8,"win":2,"lose":4,"tie":0},{"round":8,"rank":13,"total":80,"raw_total":80,"extra_bench":0,"points":70,"bench":10,"diff":-7,"win":3,"lose":4,"tie":0},{"round":9,"rank":20,"total":80,"raw_total":90,"extra_bench":10,"points":70,"bench":20,"diff":-7,"win":3,"lose":4,"tie":0},{"round":10,"rank":22,"total":85,"raw_total":95,"extra_bench":10,"points":75,"bench":20,"diff":-18,"win":3,"lose":5,"tie":0},{"round":11,"rank":20,"total":96,"raw_total":106,"extra_bench":10,"points":86,"bench":20,"diff":-17,"win":4,"lose":5,"tie":0},{"round":12,"rank":18,"total":117,"raw_total":117,"extra_bench":0,"points":97,"bench":20,"diff":-16,"win":5,"lose":5,"tie":0}]},{"name":"Ariya","final_rank":19,"color":"hsl(306 68% 44%)","points":[{"round":1,"rank":17,"total":8,"raw_total":8,"extra_bench":0,"points":8,"bench":0,"diff":-5,"win":0,"lose":1,"tie":0},{"round":2,"rank":9,"total":19,"raw_total":19,"extra_bench":0,"points":19,"bench":0,"diff":-4,"win":1,"lose":1,"tie":0},{"round":3,"rank":19,"total":19,"raw_total":29,"extra_bench":10,"points":19,"bench":10,"diff":-4,"win":1,"lose":1,"tie":0},{"round":4,"rank":13,"total":35,"raw_total":45,"extra_bench":10,"points":35,"bench":10,"diff":7,"win":2,"lose":1,"tie":0},{"round":5,"rank":15,"total":41,"raw_total":51,"extra_bench":10,"points":41,"bench":10,"diff":-2,"win":2,"lose":2,"tie":0},{"round":6,"rank":17,"total":58,"raw_total":58,"extra_bench":0,"points":48,"bench":10,"diff":-9,"win":2,"lose":3,"tie":0},{"round":7,"rank":16,"total":69,"raw_total":69,"extra_bench":0,"points":59,"bench":10,"diff":-8,"win":3,"lose":3,"tie":0},{"round":8,"rank":21,"total":69,"raw_total":79,"extra_bench":10,"points":59,"bench":20,"diff":-8,"win":3,"lose":3,"tie":0},{"round":9,"rank":23,"total":73,"raw_total":83,"extra_bench":10,"points":63,"bench":20,"diff":-21,"win":3,"lose":4,"tie":0},{"round":10,"rank":21,"total":85,"raw_total":95,"extra_bench":10,"points":75,"bench":20,"diff":-18,"win":4,"lose":4,"tie":0},{"round":11,"rank":21,"total":95,"raw_total":105,"extra_bench":10,"points":85,"bench":20,"diff":-19,"win":4,"lose":5,"tie":0},{"round":12,"rank":19,"total":116,"raw_total":116,"extra_bench":0,"points":96,"bench":20,"diff":-18,"win":5,"lose":5,"tie":0}]},{"name":"Echa M","final_rank":20,"color":"hsl(343 68% 44%)","points":[{"round":1,"rank":12,"total":0,"raw_total":10,"extra_bench":10,"points":0,"bench":10,"diff":0,"win":0,"lose":0,"tie":0},{"round":2,"rank":23,"total":8,"raw_total":18,"extra_bench":10,"points":8,"bench":10,"diff":-5,"win":0,"lose":1,"tie":0},{"round":3,"rank":24,"total":12,"raw_total":22,"extra_bench":10,"points":12,"bench":10,"diff":-18,"win":0,"lose":2,"tie":0},{"round":4,"rank":20,"total":24,"raw_total":34,"extra_bench":10,"points":24,"bench":10,"diff":-15,"win":1,"lose":2,"tie":0},{"round":5,"rank":20,"total":35,"raw_total":45,"extra_bench":10,"points":35,"bench":10,"diff":-14,"win":2,"lose":2,"tie":0},{"round":6,"rank":22,"total":55,"raw_total":55,"extra_bench":0,"points":45,"bench":10,"diff":-15,"win":2,"lose":3,"tie":0},{"round":7,"rank":22,"total":55,"raw_total":65,"extra_bench":10,"points":45,"bench":20,"diff":-15,"win":2,"lose":3,"tie":0},{"round":8,"rank":20,"total":70,"raw_total":80,"extra_bench":10,"points":60,"bench":20,"diff":-6,"win":3,"lose":3,"tie":0},{"round":9,"rank":18,"total":82,"raw_total":92,"extra_bench":10,"points":72,"bench":20,"diff":-3,"win":4,"lose":3,"tie":0},{"round":10,"rank":18,"total":91,"raw_total":101,"extra_bench":10,"points":81,"bench":20,"diff":-6,"win":4,"lose":4,"tie":0},{"round":11,"rank":15,"total":102,"raw_total":112,"extra_bench":10,"points":92,"bench":20,"diff":-5,"win":5,"lose":4,"tie":0},{"round":12,"rank":20,"total":116,"raw_total":116,"extra_bench":0,"points":96,"bench":20,"diff":-18,"win":5,"lose":5,"tie":0}]},{"name":"rezno","final_rank":21,"color":"hsl(20 68% 44%)","points":[{"round":1,"rank":22,"total":7,"raw_total":7,"extra_bench":0,"points":7,"bench":0,"diff":-7,"win":0,"lose":1,"tie":0},{"round":2,"rank":12,"total":18,"raw_total":18,"extra_bench":0,"points":18,"bench":0,"diff":-6,"win":1,"lose":1,"tie":0},{"round":3,"rank":20,"total":18,"raw_total":28,"extra_bench":10,"points":18,"bench":10,"diff":-6,"win":1,"lose":1,"tie":0},{"round":4,"rank":18,"total":27,"raw_total":37,"extra_bench":10,"points":27,"bench":10,"diff":-9,"win":1,"lose":2,"tie":0},{"round":5,"rank":18,"total":37,"raw_total":47,"extra_bench":10,"points":37,"bench":10,"diff":-10,"win":1,"lose":3,"tie":0},{"round":6,"rank":21,"total":57,"raw_total":57,"extra_bench":0,"points":47,"bench":10,"diff":-11,"win":1,"lose":4,"tie":0},{"round":7,"rank":21,"total":57,"raw_total":67,"extra_bench":10,"points":47,"bench":20,"diff":-11,"win":1,"lose":4,"tie":0},{"round":8,"rank":23,"total":63,"raw_total":73,"extra_bench":10,"points":53,"bench":20,"diff":-20,"win":1,"lose":5,"tie":0},{"round":9,"rank":22,"total":75,"raw_total":85,"extra_bench":10,"points":65,"bench":20,"diff":-17,"win":2,"lose":5,"tie":0},{"round":10,"rank":23,"total":84,"raw_total":94,"extra_bench":10,"points":74,"bench":20,"diff":-20,"win":2,"lose":6,"tie":0},{"round":11,"rank":22,"total":94,"raw_total":104,"extra_bench":10,"points":84,"bench":20,"diff":-21,"win":2,"lose":7,"tie":0},{"round":12,"rank":21,"total":114,"raw_total":114,"extra_bench":0,"points":94,"bench":20,"diff":-22,"win":2,"lose":8,"tie":0}]},{"name":"Aqila","final_rank":22,"color":"hsl(57 68% 44%)","points":[{"round":1,"rank":19,"total":7,"raw_total":7,"extra_bench":0,"points":7,"bench":0,"diff":-7,"win":0,"lose":1,"tie":0},{"round":2,"rank":24,"total":7,"raw_total":17,"extra_bench":10,"points":7,"bench":10,"diff":-7,"win":0,"lose":1,"tie":0},{"round":3,"rank":18,"total":21,"raw_total":31,"extra_bench":10,"points":21,"bench":10,"diff":0,"win":1,"lose":1,"tie":0},{"round":4,"rank":19,"total":26,"raw_total":36,"extra_bench":10,"points":26,"bench":10,"diff":-11,"win":1,"lose":2,"tie":0},{"round":5,"rank":19,"total":36,"raw_total":46,"extra_bench":10,"points":36,"bench":10,"diff":-12,"win":1,"lose":3,"tie":0},{"round":6,"rank":20,"total":57,"raw_total":57,"extra_bench":0,"points":47,"bench":10,"diff":-11,"win":2,"lose":3,"tie":0},{"round":7,"rank":20,"total":67,"raw_total":67,"extra_bench":0,"points":57,"bench":10,"diff":-12,"win":2,"lose":4,"tie":0},{"round":8,"rank":18,"total":77,"raw_total":77,"extra_bench":0,"points":67,"bench":10,"diff":-13,"win":2,"lose":5,"tie":0},{"round":9,"rank":14,"total":86,"raw_total":86,"extra_bench":0,"points":76,"bench":10,"diff":-16,"win":2,"lose":6,"tie":0},{"round":10,"rank":19,"total":91,"raw_total":91,"extra_bench":0,"points":81,"bench":10,"diff":-27,"win":2,"lose":7,"tie":0},{"round":11,"rank":23,"total":91,"raw_total":101,"extra_bench":10,"points":81,"bench":20,"diff":-27,"win":2,"lose":7,"tie":0},{"round":12,"rank":22,"total":112,"raw_total":112,"extra_bench":0,"points":92,"bench":20,"diff":-26,"win":3,"lose":7,"tie":0}]},{"name":"Mahdi Kemal Assegaf","final_rank":23,"color":"hsl(94 68% 44%)","points":[{"round":1,"rank":9,"total":12,"raw_total":12,"extra_bench":0,"points":12,"bench":0,"diff":3,"win":1,"lose":0,"tie":0},{"round":2,"rank":8,"total":21,"raw_total":21,"extra_bench":0,"points":21,"bench":0,"diff":0,"win":1,"lose":1,"tie":0},{"round":3,"rank":9,"total":33,"raw_total":33,"extra_bench":0,"points":33,"bench":0,"diff":3,"win":2,"lose":1,"tie":0},{"round":4,"rank":7,"total":43,"raw_total":43,"extra_bench":0,"points":43,"bench":0,"diff":2,"win":2,"lose":2,"tie":0},{"round":5,"rank":12,"total":43,"raw_total":53,"extra_bench":10,"points":43,"bench":10,"diff":2,"win":2,"lose":2,"tie":0},{"round":6,"rank":13,"total":62,"raw_total":62,"extra_bench":0,"points":52,"bench":10,"diff":-1,"win":2,"lose":3,"tie":0},{"round":7,"rank":14,"total":71,"raw_total":71,"extra_bench":0,"points":61,"bench":10,"diff":-4,"win":2,"lose":4,"tie":0},{"round":8,"rank":17,"total":78,"raw_total":78,"extra_bench":0,"points":68,"bench":10,"diff":-11,"win":2,"lose":5,"tie":0},{"round":9,"rank":19,"total":82,"raw_total":82,"extra_bench":0,"points":72,"bench":10,"diff":-24,"win":2,"lose":6,"tie":0},{"round":10,"rank":20,"total":91,"raw_total":91,"extra_bench":0,"points":81,"bench":10,"diff":-27,"win":2,"lose":7,"tie":0},{"round":11,"rank":19,"total":101,"raw_total":101,"extra_bench":0,"points":91,"bench":10,"diff":-28,"win":2,"lose":8,"tie":0},{"round":12,"rank":23,"total":111,"raw_total":111,"extra_bench":0,"points":91,"bench":20,"diff":-28,"win":2,"lose":8,"tie":0}]},{"name":"adhni","final_rank":24,"color":"hsl(131 68% 44%)","points":[{"round":1,"rank":15,"total":9,"raw_total":9,"extra_bench":0,"points":9,"bench":0,"diff":-3,"win":0,"lose":1,"tie":0},{"round":2,"rank":21,"total":9,"raw_total":19,"extra_bench":10,"points":9,"bench":10,"diff":-3,"win":0,"lose":1,"tie":0},{"round":3,"rank":21,"total":18,"raw_total":28,"extra_bench":10,"points":18,"bench":10,"diff":-6,"win":0,"lose":2,"tie":0},{"round":4,"rank":22,"total":23,"raw_total":33,"extra_bench":10,"points":23,"bench":10,"diff":-17,"win":0,"lose":3,"tie":0},{"round":5,"rank":21,"total":34,"raw_total":44,"extra_bench":10,"points":34,"bench":10,"diff":-16,"win":1,"lose":3,"tie":0},{"round":6,"rank":23,"total":51,"raw_total":51,"extra_bench":0,"points":41,"bench":10,"diff":-23,"win":1,"lose":4,"tie":0},{"round":7,"rank":23,"total":51,"raw_total":61,"extra_bench":10,"points":41,"bench":20,"diff":-23,"win":1,"lose":4,"tie":0},{"round":8,"rank":24,"total":57,"raw_total":67,"extra_bench":10,"points":47,"bench":20,"diff":-32,"win":1,"lose":5,"tie":0},{"round":9,"rank":24,"total":66,"raw_total":76,"extra_bench":10,"points":56,"bench":20,"diff":-35,"win":1,"lose":6,"tie":0},{"round":10,"rank":24,"total":78,"raw_total":88,"extra_bench":10,"points":68,"bench":20,"diff":-32,"win":2,"lose":6,"tie":0},{"round":11,"rank":24,"total":89,"raw_total":99,"extra_bench":10,"points":79,"bench":20,"diff":-31,"win":3,"lose":6,"tie":0},{"round":12,"rank":24,"total":109,"raw_total":109,"extra_bench":0,"points":89,"bench":20,"diff":-32,"win":3,"lose":7,"tie":0}]}]}</script>
+  <script>
+    (() => {
+      const data = JSON.parse(document.getElementById("chart-data").textContent);
+      const svg = document.getElementById("rank-chart");
+      const tooltip = document.getElementById("chart-tooltip");
+      const modeButtons = [...document.querySelectorAll("[data-chart-mode]")];
+      const legendButtons = [...document.querySelectorAll("[data-player]")];
+      const width = 980;
+      const height = 560;
+      const padding = { top: 24, right: 26, bottom: 40, left: 48 };
+      const topNames = new Set(data.series.filter((series) => series.final_rank <= 8).map((series) => series.name));
+      let activeNames = new Set(topNames);
+      let hoverName = null;
+
+      const plotWidth = width - padding.left - padding.right;
+      const plotHeight = height - padding.top - padding.bottom;
+      const rounds = data.rounds;
+      const playerCount = Math.max(data.player_count, 1);
+      const roundCount = Math.max(rounds.length, 1);
+
+      function xForRound(round) {
+        if (roundCount === 1) return padding.left + plotWidth / 2;
+        return padding.left + ((round - 1) / (roundCount - 1)) * plotWidth;
+      }
+
+      function yForRank(rank) {
+        if (playerCount === 1) return padding.top + plotHeight / 2;
+        return padding.top + ((rank - 1) / (playerCount - 1)) * plotHeight;
+      }
+
+      function linePath(points) {
+        return points.map((point, index) => `${index === 0 ? "M" : "L"} ${xForRound(point.round)} ${yForRank(point.rank)}`).join(" ");
+      }
+
+      function escapeHtml(value) {
+        return String(value)
+          .replaceAll("&", "&amp;")
+          .replaceAll("<", "&lt;")
+          .replaceAll(">", "&gt;")
+          .replaceAll('"', "&quot;");
+      }
+
+      function setMode(mode) {
+        if (mode === "all") activeNames = new Set(data.series.map((series) => series.name));
+        if (mode === "top") activeNames = new Set(topNames);
+        if (mode === "clear") activeNames = new Set();
+        modeButtons.forEach((button) => {
+          button.classList.toggle("active", button.dataset.chartMode === mode);
+        });
+        render();
+      }
+
+      function isEmphasized(name) {
+        return activeNames.has(name) || hoverName === name;
+      }
+
+      function legendState() {
+        legendButtons.forEach((button) => {
+          button.classList.toggle("active", isEmphasized(button.dataset.player));
+        });
+      }
+
+      function tooltipRows(round) {
+        const rows = data.series
+          .map((series) => {
+            const point = series.points.find((item) => item.round === round);
+            return point ? { ...point, name: series.name, color: series.color } : null;
+          })
+          .filter(Boolean)
+          .sort((left, right) => left.rank - right.rank);
+        const visible = rows.filter((row) => isEmphasized(row.name));
+        return (visible.length ? visible : rows.slice(0, 6)).slice(0, 8);
+      }
+
+      function showTooltip(round, clientX, clientY) {
+        const rows = tooltipRows(round);
+        const body = rows.map((row) => `
+          <div class="tooltip-row">
+            <strong style="color:${row.color}">#${row.rank} ${escapeHtml(row.name)}</strong>
+            <span>${row.total} pts</span>
+          </div>
+        `).join("");
+        tooltip.innerHTML = `<div class="tooltip-title">Round ${round}</div>${body}`;
+        const bounds = svg.getBoundingClientRect();
+        const left = Math.min(bounds.width - tooltip.offsetWidth - 12, Math.max(12, clientX - bounds.left + 14));
+        const top = Math.min(bounds.height - tooltip.offsetHeight - 12, Math.max(12, clientY - bounds.top + 14));
+        tooltip.style.left = `${left}px`;
+        tooltip.style.top = `${top}px`;
+        tooltip.classList.add("visible");
+      }
+
+      function hideTooltip() {
+        tooltip.classList.remove("visible");
+      }
+
+      function render() {
+        const rankTicks = Array.from({ length: playerCount }, (_, index) => index + 1);
+
+        const horizontalGrid = rankTicks.map((rank) => `
+          <g>
+            <line class="grid-line" x1="${padding.left}" x2="${width - padding.right}" y1="${yForRank(rank)}" y2="${yForRank(rank)}" />
+            <text class="axis-label" x="${padding.left - 10}" y="${yForRank(rank) + 4}" text-anchor="end">${rank}</text>
+          </g>
+        `).join("");
+
+        const verticalGrid = rounds.map((round) => `
+          <g>
+            <line class="grid-line" x1="${xForRound(round)}" x2="${xForRound(round)}" y1="${padding.top}" y2="${height - padding.bottom}" />
+            <text class="axis-label" x="${xForRound(round)}" y="${height - 12}" text-anchor="middle">R${round}</text>
+          </g>
+        `).join("");
+
+        const seriesMarkup = data.series.map((series) => {
+          const emphasized = isEmphasized(series.name);
+          const opacity = emphasized ? 0.95 : 0.16;
+          const strokeWidth = emphasized ? 3.6 : 1.8;
+          const dots = emphasized
+            ? series.points.map((point) => `
+                <circle
+                  class="series-dot"
+                  cx="${xForRound(point.round)}"
+                  cy="${yForRank(point.rank)}"
+                  r="4"
+                  fill="${series.color}"
+                  opacity="0.95"
+                  data-round="${point.round}"
+                  data-player="${escapeHtml(series.name)}"
+                />
+              `).join("")
+            : "";
+          return `
+            <g>
+              <path
+                class="series-line"
+                d="${linePath(series.points)}"
+                stroke="${series.color}"
+                stroke-width="${strokeWidth}"
+                opacity="${opacity}"
+                data-player="${escapeHtml(series.name)}"
+              />
+              ${dots}
+            </g>
+          `;
+        }).join("");
+
+        svg.innerHTML = `
+          <line class="axis-line" x1="${padding.left}" x2="${padding.left}" y1="${padding.top}" y2="${height - padding.bottom}" />
+          <line class="axis-line" x1="${padding.left}" x2="${width - padding.right}" y1="${height - padding.bottom}" y2="${height - padding.bottom}" />
+          ${horizontalGrid}
+          ${verticalGrid}
+          ${seriesMarkup}
+          <text class="axis-label" x="${padding.left}" y="14">Rank</text>
+          <text class="axis-label" x="${width - padding.right}" y="${height - 12}" text-anchor="end">Rounds</text>
+        `;
+
+        [...svg.querySelectorAll("[data-player]")].forEach((node) => {
+          node.addEventListener("mouseenter", () => {
+            hoverName = node.dataset.player;
+            render();
+          });
+          node.addEventListener("mouseleave", () => {
+            hoverName = null;
+            render();
+          });
+        });
+
+        legendState();
+      }
+
+      modeButtons.forEach((button) => {
+        button.addEventListener("click", () => setMode(button.dataset.chartMode));
+      });
+
+      legendButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const name = button.dataset.player;
+          if (activeNames.has(name)) activeNames.delete(name);
+          else activeNames.add(name);
+          modeButtons.forEach((item) => item.classList.remove("active"));
+          render();
+        });
+        button.addEventListener("mouseenter", () => {
+          hoverName = button.dataset.player;
+          render();
+        });
+        button.addEventListener("mouseleave", () => {
+          hoverName = null;
+          render();
+        });
+      });
+
+      svg.addEventListener("mousemove", (event) => {
+        const bounds = svg.getBoundingClientRect();
+        const ratio = (event.clientX - bounds.left - padding.left) / plotWidth;
+        const nearestIndex = Math.max(0, Math.min(rounds.length - 1, Math.round(ratio * (rounds.length - 1))));
+        const round = rounds[nearestIndex];
+        showTooltip(round, event.clientX, event.clientY);
+      });
+
+      svg.addEventListener("mouseleave", () => {
+        hideTooltip();
+        hoverName = null;
+        render();
+      });
+
+      render();
+    })();
+  </script>
+</body>
+</html>
