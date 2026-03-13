@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Create Match Report</title>
+  <title>Padel Scorecard | Create Match Report</title>
   <style>
     :root {
       --paper: #f6efe4;
@@ -13,9 +13,9 @@
       --panel: rgba(255,255,255,0.8);
       --panel-strong: rgba(255,255,255,0.94);
       --shadow: 0 24px 56px rgba(43, 33, 17, 0.14);
-      --gold: #d49a2f;
+      --gold: #bddf3c;
       --gold-soft: rgba(212,154,47,0.18);
-      --navy: #183b68;
+      --navy: #0b4678;
       --forest: #154734;
       --rose: #a04573;
       --radius: 28px;
@@ -34,6 +34,34 @@
       max-width: 1180px;
       margin: 0 auto;
       padding: 28px 18px 56px;
+    }
+    .brand-lockup {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 0;
+    }
+    .brand-lockup.compact {
+      gap: 12px;
+    }
+    .brand-mark {
+      display: block;
+      flex: 0 0 auto;
+    }
+    .brand-wording {
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+    }
+    .brand-name {
+      font-weight: 900;
+      letter-spacing: 0.02em;
+    }
+    .brand-sub {
+      margin-top: 4px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      font-weight: 800;
     }
     .topbar {
       display: flex;
@@ -645,19 +673,34 @@
 <body>
   <main class="shell">
     <div class="topbar">
-      <a href="../">Browse Reports</a>
+      <a href="../">
+    <div class="brand-lockup compact">
+      <svg class="brand-mark" viewBox="0 0 96 96" aria-hidden="true" role="img" width="40" height="40">
+        <circle cx="51" cy="14" r="10" fill="#bddf3c" stroke="#0b4678" stroke-width="6"></circle>
+        <path d="M31 82V60c0-7 5-12 12-12h10c7 0 12 5 12 12v22c0 6-4 10-10 10H41c-6 0-10-4-10-10Z" fill="none" stroke="#0b4678" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"></path>
+        <path d="M25 76V58c0-8 4-15 10-19" fill="none" stroke="#0b4678" stroke-width="6" stroke-linecap="round"></path>
+        <path d="M69 39c6-6 10-15 10-25" fill="none" stroke="#0b4678" stroke-width="6" stroke-linecap="round"></path>
+        <path d="M16 60L44 32c3-3 7-3 10 0l9 9c3 3 7 3 10 0L89 25" fill="none" stroke="#0b4678" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"></path>
+        <path d="M77 24l12-2-2 12" fill="none" stroke="#0b4678" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"></path>
+      </svg>
+      <div class="brand-wording">
+        <div class="brand-name" style="font-size:22px; color:#0b4678;">PADEL</div>
+        <div class="brand-sub" style="font-size:11px; color:rgba(11,70,120,0.7);">SCORECARD</div>
+      </div>
+    </div>
+    </a>
       <a href="../latest-report.html">See Latest Example</a>
     </div>
     <section class="hero">
       <div class="hero-copy">
-        <div class="eyebrow">Branded Match Reports</div>
-        <h1>Match recap pages that feel ready to publish.</h1>
-        <p class="sub">Paste a match link, choose a look, add your club logo, and generate a polished report plus a story pack in about a minute.</p>
+        <div class="eyebrow">Padel Scorecard</div>
+        <h1>Padel match recaps that look ready to publish.</h1>
+        <p class="sub">Paste a match link, choose a look, add your club logo, and generate a polished padel report plus a story pack in about a minute.</p>
         <div class="hero-notes">
           <span class="hero-note">Ready in about 1 minute</span>
           <span class="hero-note">Custom club logo supported</span>
           <span class="hero-note">Instagram story pack included</span>
-          <span class="hero-note">Built for clubs and communities</span>
+          <span class="hero-note">Made for padel clubs</span>
         </div>
         <div class="hero-audience">
           <div class="hero-audience-card">
@@ -676,7 +719,7 @@
       </div>
       <aside class="hero-panel">
         <h2>What you get</h2>
-        <p>Create a presentation-ready match recap without building graphics from scratch after every event.</p>
+        <p>Create a presentation-ready padel match recap without building graphics from scratch after every event.</p>
         <ul>
           <li>A branded report page for the full match</li>
           <li>A story pack for player rankings and highlights</li>
@@ -704,7 +747,7 @@
       <section class="panel">
         <div class="panel-head">
           <h2 class="panel-title">Create Match Report</h2>
-          <div class="panel-note">Paste the link, brand it, and publish.</div>
+          <div class="panel-note">Paste the link, brand it, and publish with Padel Scorecard.</div>
         </div>
         
         <form id="generate-form" enctype="multipart/form-data">
@@ -738,7 +781,7 @@
             <ul class="help-list">
               <li>Paste the full public match link from Skor.</li>
               <li>Use PNG or JPG for the safest logo upload.</li>
-              <li>Story cards are included automatically with every report.</li>
+              <li>Story cards are included automatically with every padel scorecard report.</li>
               <li>Most reports are ready in about 1 minute.</li>
             </ul>
           </div>

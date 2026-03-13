@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Skor Reports</title>
+  <title>Padel Scorecard</title>
   <style>
     :root {
       --paper: #f3ecdf;
@@ -13,9 +13,9 @@
       --line: rgba(24, 19, 13, 0.12);
       --panel: rgba(255,255,255,0.66);
       --panel-strong: rgba(255,255,255,0.84);
-      --gold: #c78a25;
+      --gold: #bddf3c;
       --forest: #154734;
-      --cobalt: #163d72;
+      --cobalt: #0b4678;
       --shadow: 0 26px 56px rgba(61, 43, 19, 0.14);
     }
     * { box-sizing: border-box; }
@@ -32,6 +32,35 @@
       max-width: 1160px;
       margin: 0 auto;
       padding: 28px 18px 64px;
+    }
+    .brand-lockup {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+    .brand-lockup.compact {
+      gap: 12px;
+      margin-bottom: 0;
+    }
+    .brand-mark {
+      display: block;
+      flex: 0 0 auto;
+    }
+    .brand-wording {
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+    }
+    .brand-name {
+      font-weight: 900;
+      letter-spacing: 0.02em;
+    }
+    .brand-sub {
+      margin-top: 4px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      font-weight: 800;
     }
     .hero {
       display: grid;
@@ -286,10 +315,26 @@
   <main class="wrap">
     <section class="hero">
       <div class="hero-copy">
-        <div class="eyebrow">For Clubs, Communities, and Tournaments</div>
-        <h1>Branded match reports in one link.</h1>
-        <p class="sub">Turn a match link into a polished recap page, ready-to-post player stories, and downloadable social assets without building each update by hand.</p>
-        <div class="hero-actions"><a class="button" href="generate.html">Create Match Report</a><a class="button button-secondary" href="reports/72Mu9yzRi5r20nEFWG5d5a/report.html">View Latest Report</a><a class="button button-secondary" href="reports/72Mu9yzRi5r20nEFWG5d5a/stories/index.html">View Story Pack</a></div>
+        
+    <div class="brand-lockup">
+      <svg class="brand-mark" viewBox="0 0 96 96" aria-hidden="true" role="img" width="54" height="54">
+        <circle cx="51" cy="14" r="10" fill="#bddf3c" stroke="#0b4678" stroke-width="6"></circle>
+        <path d="M31 82V60c0-7 5-12 12-12h10c7 0 12 5 12 12v22c0 6-4 10-10 10H41c-6 0-10-4-10-10Z" fill="none" stroke="#0b4678" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"></path>
+        <path d="M25 76V58c0-8 4-15 10-19" fill="none" stroke="#0b4678" stroke-width="6" stroke-linecap="round"></path>
+        <path d="M69 39c6-6 10-15 10-25" fill="none" stroke="#0b4678" stroke-width="6" stroke-linecap="round"></path>
+        <path d="M16 60L44 32c3-3 7-3 10 0l9 9c3 3 7 3 10 0L89 25" fill="none" stroke="#0b4678" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"></path>
+        <path d="M77 24l12-2-2 12" fill="none" stroke="#0b4678" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"></path>
+      </svg>
+      <div class="brand-wording">
+        <div class="brand-name" style="font-size:28px; color:#0b4678;">PADEL</div>
+        <div class="brand-sub" style="font-size:12px; color:rgba(11,70,120,0.7);">SCORECARD</div>
+      </div>
+    </div>
+    
+        <div class="eyebrow">For Padel Clubs, Communities, and Tournaments</div>
+        <h1>Padel results that look ready to share.</h1>
+        <p class="sub">Turn a padel match link into a polished recap page, branded scorecards, and ready-to-post story assets without building each update by hand.</p>
+        <div class="hero-actions"><a class="button" href="generate.html">Create Match Report</a><a class="button button-secondary" href="reports/5gPfD1QD4GikarmjllEeT3/report.html">View Latest Report</a><a class="button button-secondary" href="reports/5gPfD1QD4GikarmjllEeT3/stories/index.html">View Story Pack</a></div>
         <div class="audiences">
           <span class="audience-chip">Clubs</span>
           <span class="audience-chip">Community nights</span>
@@ -297,9 +342,9 @@
         </div>
       </div>
       <aside class="hero-showcase">
-        <div class="showcase-kicker">What makes it useful</div>
-        <h2 class="showcase-title">A faster way to package every result.</h2>
-        <p class="showcase-sub">Keep the match energy high after the final point. Share the full report, post the story pack, and keep your branding consistent from one event to the next.</p>
+        <div class="showcase-kicker">Padel Scorecard</div>
+        <h2 class="showcase-title">A faster way to package every padel result.</h2>
+        <p class="showcase-sub">Keep the momentum high after the last point. Share the full recap, post the story pack, and keep your branding consistent from one session to the next.</p>
         <div class="showcase-stack">
           <div class="showcase-card">
             <div class="showcase-label">Public Report</div>
@@ -317,7 +362,7 @@
     <section class="feature-grid">
       <article class="feature">
         <h2 class="feature-title">Built for match nights</h2>
-        <p class="feature-copy">Useful when you need a recap fast after league play, club ladders, or a one-night tournament session.</p>
+        <p class="feature-copy">Useful when you need a recap fast after league play, club ladders, or a one-night padel tournament session.</p>
       </article>
       <article class="feature">
         <h2 class="feature-title">Looks branded by default</h2>
@@ -331,24 +376,11 @@
     <section class="section-head">
       <div>
         <h2 class="section-title">Latest Published Reports</h2>
-        <p class="section-copy">Use the generator for new matches, or browse recent examples to see the output format clubs and communities receive.</p>
+        <p class="section-copy">Use Padel Scorecard for new matches, or browse recent examples to see the public output clubs and communities receive.</p>
       </div>
     </section>
     <section class="grid">
       
-    <article class="card">
-      <div class="card-copy">
-        <div class="report-badge">Published Report</div>
-        <div class="title">Thurs 2512 24 pax</div>
-        <div class="meta">Played 24 Dec 2025 · 24 players · 12 rounds</div>
-      </div>
-      <div class="card-actions">
-        <a class="button button-secondary" href="reports/72Mu9yzRi5r20nEFWG5d5a/stories/index.html">Story Pack</a>
-        <a class="button" href="reports/72Mu9yzRi5r20nEFWG5d5a/report.html">View Report</a>
-      </div>
-    </article>
-    
-
     <article class="card">
       <div class="card-copy">
         <div class="report-badge">Published Report</div>
@@ -358,6 +390,19 @@
       <div class="card-actions">
         <a class="button button-secondary" href="reports/5gPfD1QD4GikarmjllEeT3/stories/index.html">Story Pack</a>
         <a class="button" href="reports/5gPfD1QD4GikarmjllEeT3/report.html">View Report</a>
+      </div>
+    </article>
+    
+
+    <article class="card">
+      <div class="card-copy">
+        <div class="report-badge">Published Report</div>
+        <div class="title">Thurs 2512 24 pax</div>
+        <div class="meta">Played 24 Dec 2025 · 24 players · 12 rounds</div>
+      </div>
+      <div class="card-actions">
+        <a class="button button-secondary" href="reports/72Mu9yzRi5r20nEFWG5d5a/stories/index.html">Story Pack</a>
+        <a class="button" href="reports/72Mu9yzRi5r20nEFWG5d5a/report.html">View Report</a>
       </div>
     </article>
     
