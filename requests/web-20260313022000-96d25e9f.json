@@ -1,12 +1,15 @@
 {
   "request_id": "web-20260313022000-96d25e9f",
-  "status": "running",
+  "status": "published",
   "request_source": "web_form",
   "input_value": "https://the.skorapp.id/game?id=5gPfD1QD4GikarmjllEeT3",
   "theme_id": "forest",
   "theme_label": "Forest",
   "submitted_at_utc": "2026-03-13T02:20:33Z",
-  "updated_at_utc": "2026-03-13T02:20:33Z",
-  "message": "Workflow started. Generating report files now.",
+  "updated_at_utc": "2026-03-13T02:20:56Z",
+  "message": "Report published successfully.",
+  "report_folder": "5gPfD1QD4GikarmjllEeT3",
+  "report_url": "https://adhni.github.io/skor-reports/reports/5gPfD1QD4GikarmjllEeT3/report.html",
+  "stories_url": "https://adhni.github.io/skor-reports/reports/5gPfD1QD4GikarmjllEeT3/stories/index.html",
   "run_url": "https://github.com/adhni/skor-scrape/actions/runs/23033286326"
 }
