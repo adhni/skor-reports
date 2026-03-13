@@ -180,6 +180,16 @@
       color: var(--ink);
       font: inherit;
     }
+    .file-input {
+      width: 100%;
+      margin-top: 8px;
+      padding: 14px 16px;
+      border-radius: 18px;
+      border: 1px solid rgba(19,17,12,0.16);
+      background: var(--panel-strong);
+      color: var(--ink);
+      font: inherit;
+    }
     .theme-grid {
       margin-top: 10px;
       display: grid;
@@ -245,6 +255,29 @@
       color: var(--ink);
       font-size: 15px;
       line-height: 1.45;
+    }
+    .logo-preview {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 132px;
+      margin-top: 10px;
+      padding: 18px;
+      border-radius: 18px;
+      border: 1px dashed rgba(19,17,12,0.16);
+      background: rgba(255,255,255,0.66);
+    }
+    .logo-preview img {
+      max-width: 100%;
+      max-height: 104px;
+      object-fit: contain;
+      display: block;
+    }
+    .logo-preview-note {
+      color: var(--muted);
+      text-align: center;
+      font-size: 14px;
+      line-height: 1.5;
     }
     .notice {
       margin-top: 18px;
@@ -363,10 +396,11 @@
       <div class="hero-copy">
         <div class="eyebrow">Hosted Generator</div>
         <h1>Generate a fresh report.</h1>
-        <p class="sub">Paste a public Skor link, choose a background swatch, and let the same GitHub Actions publishing pipeline produce the report and story gallery. The public site updates automatically when the run finishes.</p>
+        <p class="sub">Paste a public Skor link, choose a background swatch, optionally upload a logo, and let the same GitHub Actions publishing pipeline produce the report and story gallery. The public site updates automatically when the run finishes.</p>
         <div class="hero-notes">
           <span class="hero-note">Same workflow as manual Actions</span>
           <span class="hero-note">Theme selection included</span>
+          <span class="hero-note">Custom logo upload included</span>
           <span class="hero-note">Publishes into the public archive</span>
         </div>
       </div>
@@ -376,6 +410,7 @@
         <ul>
           <li>Paste a Skor share link, token, or game ID</li>
           <li>Pick one of the preset background swatches</li>
+          <li>Optionally upload a custom club logo</li>
           <li>Submit the request and watch status update here</li>
           <li>Open the report and story gallery when the run finishes</li>
         </ul>
@@ -386,10 +421,10 @@
       <section class="panel">
         <div class="panel-head">
           <h2 class="panel-title">Create report</h2>
-          <div class="panel-note">Hosted swatch selection is live. Custom logo upload still stays in the local dashboard for now.</div>
+          <div class="panel-note">Hosted swatch selection and logo upload are both live.</div>
         </div>
         
-        <form id="generate-form">
+        <form id="generate-form" enctype="multipart/form-data">
           <div class="field">
             <label for="input_value">Skor Link</label>
             <textarea class="text-input" id="input_value" name="input_value" placeholder="https://the.skorapp.id/game?id=..." required></textarea>
@@ -407,12 +442,20 @@
             </div>
           </div>
 
+          <div class="field">
+            <label for="logo">Logo Upload</label>
+            <input class="file-input" id="logo" type="file" name="logo" accept=".png,.jpg,.jpeg,.webp,.gif,.svg,image/*">
+            <div class="logo-preview" id="logo-preview">
+              <div class="logo-preview-note">Optional. Supported formats: JPG, PNG, WEBP, GIF, or SVG. Max 5 MB.</div>
+            </div>
+          </div>
+
           <label class="checkbox-row">
             <input type="checkbox" id="export_story_images" name="export_story_images" checked>
             <span class="checkbox-copy">Export Instagram-ready story JPGs along with the HTML story gallery.</span>
           </label>
 
-          <div class="notice">If you need a custom uploaded logo right now, keep using the local dashboard. The hosted flow in this MVP focuses on link submission and theme selection first.</div>
+          <div class="notice">Uploaded logos are stored temporarily behind the hosted trigger so GitHub Actions can fetch them during the run, then the final report is published into the same public archive.</div>
 
           <div class="button-row">
             <button id="submit-button" type="submit">Generate report</button>
@@ -439,6 +482,8 @@
     const statusCopy = document.getElementById("status-copy");
     const statusMeta = document.getElementById("status-meta");
     const statusActions = document.getElementById("status-actions");
+    const logoInput = document.getElementById("logo");
+    const logoPreview = document.getElementById("logo-preview");
 
     function escapeHtml(value) {
       return String(value)
@@ -458,6 +503,22 @@
       statusCopy.textContent = copy;
       statusMeta.innerHTML = metaHtml;
       statusActions.innerHTML = actionsHtml;
+    }
+
+    function resetLogoPreview() {
+      logoPreview.innerHTML = '<div class="logo-preview-note">Optional. Supported formats: JPG, PNG, WEBP, GIF, or SVG. Max 5 MB.</div>';
+    }
+
+    function updateLogoPreview(file) {
+      if (!file) {
+        resetLogoPreview();
+        return;
+      }
+      const reader = new FileReader();
+      reader.onload = () => {
+        logoPreview.innerHTML = `<img src="${reader.result}" alt="Logo preview">`;
+      };
+      reader.readAsDataURL(file);
     }
 
     function renderRequestDetails(data, statusUrl) {
@@ -547,10 +608,18 @@
       );
     }
 
+    logoInput.addEventListener("change", () => {
+      const [file] = logoInput.files || [];
+      updateLogoPreview(file || null);
+    });
+
+    resetLogoPreview();
+
     form.addEventListener("submit", async (event) => {
       event.preventDefault();
       const inputValue = form.input_value.value.trim();
       const selectedTheme = form.querySelector('input[name="theme_id"]:checked');
+      const logoFile = (logoInput.files || [])[0] || null;
       if (!inputValue) {
         renderStatus("Link required", "Paste a Skor link, share token, or numeric game ID before submitting.");
         return;
@@ -561,19 +630,23 @@
       }
 
       submitButton.disabled = true;
-      renderStatus("Submitting request", "Sending the request to the hosted trigger service...");
+      renderStatus(
+        "Submitting request",
+        logoFile ? "Uploading the logo and sending the request to the hosted trigger service..." : "Sending the request to the hosted trigger service..."
+      );
 
       try {
+        const formData = new FormData();
+        formData.set("input_value", inputValue);
+        formData.set("theme_id", selectedTheme ? selectedTheme.value : "cobalt");
+        formData.set("export_story_images", form.export_story_images.checked ? "true" : "false");
+        if (logoFile) {
+          formData.set("logo", logoFile, logoFile.name);
+        }
+
         const response = await fetch(triggerEndpoint, {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            input_value: inputValue,
-            theme_id: selectedTheme ? selectedTheme.value : "cobalt",
-            export_story_images: form.export_story_images.checked,
-          }),
+          body: formData,
         });
 
         const data = await response.json().catch(() => ({}));
