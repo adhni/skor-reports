@@ -1,12 +1,15 @@
 {
   "request_id": "web-20260314014405-378112f8",
-  "status": "running",
+  "status": "published",
   "request_source": "web_form",
   "input_value": "https://the.skorapp.id/game?id=3krE8OXdV4zgHqGGKnjfjN",
   "theme_id": "rose",
   "theme_label": "Rose",
   "submitted_at_utc": "2026-03-14T01:44:32Z",
-  "updated_at_utc": "2026-03-14T01:44:32Z",
-  "message": "Workflow started. Generating report files now.",
+  "updated_at_utc": "2026-03-14T01:44:48Z",
+  "message": "Report published successfully.",
+  "report_folder": "3krE8OXdV4zgHqGGKnjfjN",
+  "report_url": "https://adhni.github.io/skor-reports/reports/3krE8OXdV4zgHqGGKnjfjN/report.html",
+  "stories_url": "https://adhni.github.io/skor-reports/reports/3krE8OXdV4zgHqGGKnjfjN/stories/index.html",
   "run_url": "https://github.com/adhni/skor-scrape/actions/runs/23077565467"
 }
