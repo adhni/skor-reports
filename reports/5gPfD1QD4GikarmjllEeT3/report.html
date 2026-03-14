@@ -6,7 +6,7 @@
   <title>2201 smash padel | Skor Report</title>
   <style>
     :root {
-      --bg: #05101c;
+      --bg: #050505;
       --panel: rgba(245, 245, 245, 0.98);
       --panel-strong: #ffffff;
       --panel-tint: #e7e7e7;
@@ -17,14 +17,6 @@
       --accent-soft: #dedede;
       --accent-strong: #1f1f1f;
       --shadow-soft: 0 18px 44px rgba(0, 0, 0, 0.26);
-      --hero-from: rgba(22,48,76,0.98);
-      --hero-to: rgba(6,16,30,0.98);
-      --hero-stripe: rgba(145,205,255,0.12);
-      --hero-tag-bg: rgba(125,193,255,0.16);
-      --hero-tag-border: rgba(158,211,255,0.18);
-      --hero-action-bg: rgba(135,198,255,0.16);
-      --hero-action-hover: rgba(153,210,255,0.24);
-      --hero-action-border: rgba(158,211,255,0.2);
     }
     * { box-sizing: border-box; }
     body {
@@ -33,9 +25,9 @@
       color: #f3f3f3;
       overflow-x: hidden;
       background:
-        radial-gradient(circle at top left, rgba(121,191,255,0.20), transparent 18%),
-        radial-gradient(circle at 85% 0%, rgba(88,139,223,0.18), transparent 22%),
-        linear-gradient(180deg, #16304c 0%, #081423 24%, var(--bg) 100%);
+        radial-gradient(circle at top left, rgba(255,255,255,0.08), transparent 18%),
+        radial-gradient(circle at 85% 0%, rgba(255,255,255,0.06), transparent 22%),
+        linear-gradient(180deg, #161616 0%, #090909 24%, var(--bg) 100%);
     }
     .wrap {
       max-width: 1320px;
@@ -44,8 +36,8 @@
     }
     .hero {
       background:
-        linear-gradient(135deg, var(--hero-from), var(--hero-to)),
-        linear-gradient(90deg, transparent 0%, transparent 92%, var(--hero-stripe) 92%, var(--hero-stripe) 100%);
+        linear-gradient(135deg, rgba(28,28,28,0.98), rgba(8,8,8,0.98)),
+        linear-gradient(90deg, transparent 0%, transparent 92%, rgba(255,255,255,0.05) 92%, rgba(255,255,255,0.05) 100%);
       border: 1px solid rgba(255,255,255,0.08);
       border-radius: 28px;
       padding: 26px 28px 30px;
@@ -73,15 +65,6 @@
       background: white;
       padding: 6px;
       flex: 0 0 auto;
-    }
-    .logo-fallback {
-      display: grid;
-      place-items: center;
-      font-size: 26px;
-      font-weight: 900;
-      letter-spacing: 0.08em;
-      color: #0a0a0a;
-      text-transform: uppercase;
     }
     .hero-copy {
       min-width: 0;
@@ -127,16 +110,16 @@
       align-items: center;
       padding: 12px 16px;
       border-radius: 999px;
-      background: var(--hero-action-bg);
+      background: rgba(255,255,255,0.12);
       color: #ffffff;
-      border: 1px solid var(--hero-action-border);
+      border: 1px solid rgba(255,255,255,0.14);
       font-size: 13px;
       font-weight: 800;
       letter-spacing: 0.02em;
       text-decoration: none;
     }
     .hero-action:hover {
-      background: var(--hero-action-hover);
+      background: rgba(255,255,255,0.18);
     }
     .chart-legend {
       grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
@@ -254,9 +237,9 @@
       align-items: center;
       padding: 10px 14px;
       border-radius: 999px;
-      background: var(--hero-tag-bg);
+      background: rgba(255,255,255,0.1);
       color: #ffffff;
-      border: 1px solid var(--hero-tag-border);
+      border: 1px solid rgba(255,255,255,0.12);
       font-size: 13px;
       font-weight: 700;
       letter-spacing: 0.02em;
@@ -689,13 +672,13 @@
             <p class="eyebrow">Skor Game Report</p>
             <h1>2201 smash padel</h1>
             <p class="sub">
-              Mexicano night on 21 Jan 2026. Full player standings, round results, and rank flow in one place.
+              Mexicano night on 22 Jan 2026. Full player standings, round results, and rank flow in one place.
             </p>
           </div>
         </div>
       </div>
       <div class="hero-tags">
-        <span class="hero-tag">10 players</span><span class="hero-tag">10 rounds</span><span class="hero-tag">2 courts</span><span class="hero-tag">21 Jan 2026</span>
+        <span class="hero-tag">10 players</span><span class="hero-tag">10 rounds</span><span class="hero-tag">2 courts</span><span class="hero-tag">22 Jan 2026</span>
       </div>
       <div class="hero-actions"><a class="hero-action" href="player-story-kareem-mulachela.html">Featured player story: Kareem Mulachela</a><a class="hero-action" href="stories/index.html">Story image gallery</a></div>
     </section>
