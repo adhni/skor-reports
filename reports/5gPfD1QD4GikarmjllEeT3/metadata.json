@@ -4,5 +4,11 @@
   "share_token": "5gPfD1QD4GikarmjllEeT3",
   "game_id": 96430,
   "folder_name": "5gPfD1QD4GikarmjllEeT3",
-  "generated_at_utc": "2026-03-11T02:09:04.299939+00:00"
+  "public_report_base_url": "https://adhni.github.io/skor-reports/reports",
+  "branding": {
+    "theme_id": "cobalt",
+    "theme_label": "Cobalt",
+    "logo_filename": "logo.jpg"
+  },
+  "generated_at_utc": "2026-03-19T02:34:46.013153+00:00"
 }
