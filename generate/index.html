@@ -3,19 +3,21 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Generate Skor Report</title>
+  <title>Padel Scorecard | Create Match Report</title>
   <style>
     :root {
-      --paper: #f7f3eb;
+      --paper: #f6efe4;
       --ink: #13110c;
       --muted: #645b4d;
       --line: rgba(19, 17, 12, 0.14);
-      --panel: rgba(255,255,255,0.82);
+      --panel: rgba(255,255,255,0.8);
       --panel-strong: rgba(255,255,255,0.94);
-      --shadow: 0 22px 52px rgba(43, 33, 17, 0.14);
-      --gold: #d49a2f;
+      --shadow: 0 24px 56px rgba(43, 33, 17, 0.14);
+      --gold: #bddf3c;
       --gold-soft: rgba(212,154,47,0.18);
-      --navy: #183b68;
+      --navy: #0b4678;
+      --forest: #154734;
+      --rose: #a04573;
       --radius: 28px;
     }
     * { box-sizing: border-box; }
@@ -32,6 +34,34 @@
       max-width: 1180px;
       margin: 0 auto;
       padding: 28px 18px 56px;
+    }
+    .brand-lockup {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 0;
+    }
+    .brand-lockup.compact {
+      gap: 12px;
+    }
+    .brand-mark {
+      display: block;
+      flex: 0 0 auto;
+    }
+    .brand-wording {
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+    }
+    .brand-name {
+      font-weight: 900;
+      letter-spacing: 0.02em;
+    }
+    .brand-sub {
+      margin-top: 4px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      font-weight: 800;
     }
     .topbar {
       display: flex;
@@ -51,7 +81,7 @@
       gap: 20px;
       align-items: stretch;
     }
-    .hero-copy, .hero-panel, .panel, .status-panel {
+    .hero-copy, .hero-panel, .panel, .status-panel, .proof-strip {
       border-radius: var(--radius);
       border: 1px solid var(--line);
       box-shadow: var(--shadow);
@@ -103,9 +133,37 @@
       font-weight: 800;
       color: var(--ink);
     }
+    .hero-audience {
+      margin-top: 24px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+    }
+    .hero-audience-card {
+      padding: 14px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.62);
+      border: 1px solid rgba(19,17,12,0.08);
+    }
+    .hero-audience-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+      font-weight: 900;
+    }
+    .hero-audience-copy {
+      margin-top: 8px;
+      font-size: 14px;
+      line-height: 1.5;
+      color: var(--ink);
+      font-weight: 800;
+    }
     .hero-panel {
       padding: 22px;
-      background: linear-gradient(180deg, rgba(18,17,16,0.96), rgba(8,8,8,0.98));
+      background:
+        radial-gradient(circle at 18% 12%, rgba(212,154,47,0.14), transparent 26%),
+        linear-gradient(180deg, rgba(18,17,16,0.96), rgba(8,8,8,0.98));
       color: #f7f3eb;
     }
     .hero-panel h2 {
@@ -124,6 +182,35 @@
       padding-left: 18px;
       color: rgba(247,243,235,0.88);
       line-height: 1.7;
+    }
+    .proof-strip {
+      margin-top: 20px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0;
+      background: rgba(255,255,255,0.7);
+      backdrop-filter: blur(10px);
+    }
+    .proof-item {
+      padding: 18px 20px;
+      border-right: 1px solid rgba(19,17,12,0.08);
+    }
+    .proof-item:last-child {
+      border-right: 0;
+    }
+    .proof-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-weight: 900;
+      color: var(--muted);
+    }
+    .proof-value {
+      margin-top: 8px;
+      font-size: 16px;
+      line-height: 1.45;
+      font-weight: 800;
+      color: var(--ink);
     }
     .grid {
       display: grid;
@@ -180,6 +267,16 @@
       color: var(--ink);
       font: inherit;
     }
+    .file-input {
+      width: 100%;
+      margin-top: 8px;
+      padding: 14px 16px;
+      border-radius: 18px;
+      border: 1px solid rgba(19,17,12,0.16);
+      background: var(--panel-strong);
+      color: var(--ink);
+      font: inherit;
+    }
     .theme-grid {
       margin-top: 10px;
       display: grid;
@@ -196,7 +293,7 @@
     }
     .theme-card {
       display: block;
-      border-radius: 24px;
+      border-radius: 26px;
       border: 1px solid rgba(19,17,12,0.12);
       background: rgba(255,255,255,0.76);
       overflow: hidden;
@@ -209,7 +306,7 @@
     }
     .theme-input:checked + .theme-card {
       border-color: rgba(24,59,104,0.42);
-      box-shadow: 0 0 0 2px rgba(24,59,104,0.18);
+      box-shadow: 0 0 0 2px rgba(24,59,104,0.18), 0 18px 30px rgba(31,24,14,0.08);
     }
     .theme-preview {
       display: block;
@@ -226,25 +323,28 @@
       white-space: nowrap;
       border: 0;
     }
-    .checkbox-row {
-      margin-top: 18px;
+    .logo-preview {
       display: flex;
       align-items: center;
-      gap: 12px;
-      padding: 14px 16px;
+      justify-content: center;
+      min-height: 132px;
+      margin-top: 10px;
+      padding: 18px;
       border-radius: 18px;
+      border: 1px dashed rgba(19,17,12,0.16);
       background: rgba(255,255,255,0.66);
-      border: 1px solid rgba(19,17,12,0.08);
     }
-    .checkbox-row input {
-      width: 18px;
-      height: 18px;
-      margin: 0;
+    .logo-preview img {
+      max-width: 100%;
+      max-height: 104px;
+      object-fit: contain;
+      display: block;
     }
-    .checkbox-copy {
-      color: var(--ink);
-      font-size: 15px;
-      line-height: 1.45;
+    .logo-preview-note {
+      color: var(--muted);
+      text-align: center;
+      font-size: 14px;
+      line-height: 1.5;
     }
     .notice {
       margin-top: 18px;
@@ -254,6 +354,52 @@
       background: rgba(255,255,255,0.68);
       color: var(--muted);
       line-height: 1.55;
+      font-size: 14px;
+    }
+    .help-card {
+      margin-top: 18px;
+      padding: 16px 18px;
+      border-radius: 20px;
+      border: 1px solid rgba(19,17,12,0.08);
+      background: rgba(255,255,255,0.72);
+    }
+    .trust-grid {
+      margin-top: 18px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+    }
+    .trust-card {
+      padding: 14px;
+      border-radius: 20px;
+      border: 1px solid rgba(19,17,12,0.08);
+      background: rgba(255,255,255,0.64);
+    }
+    .trust-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+      font-weight: 900;
+    }
+    .trust-copy {
+      margin-top: 8px;
+      font-size: 14px;
+      line-height: 1.5;
+      color: var(--ink);
+      font-weight: 800;
+    }
+    .help-title {
+      margin: 0;
+      font-size: 16px;
+      font-weight: 900;
+      color: var(--ink);
+    }
+    .help-list {
+      margin: 10px 0 0;
+      padding-left: 18px;
+      color: var(--muted);
+      line-height: 1.6;
       font-size: 14px;
     }
     .warning {
@@ -293,6 +439,10 @@
     .status-panel[hidden] {
       display: none;
     }
+    .status-panel {
+      position: sticky;
+      top: 18px;
+    }
     .status-kicker {
       margin: 0;
       font-size: 12px;
@@ -306,11 +456,43 @@
       font-size: 32px;
       letter-spacing: -0.04em;
     }
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      padding: 0 12px;
+      border-radius: 999px;
+      background: rgba(21,71,52,0.08);
+      border: 1px solid rgba(21,71,52,0.12);
+      color: var(--forest);
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 900;
+    }
     .status-copy {
       margin: 12px 0 0;
       color: var(--muted);
       line-height: 1.6;
       font-size: 15px;
+    }
+    .status-highlight {
+      margin-top: 16px;
+      padding: 16px;
+      border-radius: 20px;
+      background: linear-gradient(145deg, rgba(255,255,255,0.88), rgba(255,248,236,0.78));
+      border: 1px solid rgba(19,17,12,0.08);
+    }
+    .status-highlight-title {
+      margin: 0;
+      font-size: 16px;
+      letter-spacing: -0.02em;
+    }
+    .status-highlight-copy {
+      margin: 8px 0 0;
+      color: var(--muted);
+      line-height: 1.55;
+      font-size: 14px;
     }
     .status-meta {
       margin-top: 14px;
@@ -324,25 +506,157 @@
       flex-wrap: wrap;
       margin-top: 18px;
     }
+    .result-summary[hidden] {
+      display: none;
+    }
+    .result-summary {
+      margin-top: 18px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+    }
+    .result-card {
+      padding: 14px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.72);
+      border: 1px solid rgba(19,17,12,0.08);
+    }
+    .result-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+      font-weight: 900;
+    }
+    .result-value {
+      margin-top: 8px;
+      font-size: 14px;
+      line-height: 1.5;
+      color: var(--ink);
+      font-weight: 800;
+    }
+    .status-pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      padding: 0 12px;
+      border-radius: 999px;
+      background: rgba(24,59,104,0.08);
+      border: 1px solid rgba(24,59,104,0.12);
+      color: var(--ink);
+      font-size: 13px;
+      font-weight: 800;
+    }
+    .status-pill.active {
+      background: rgba(24,59,104,0.14);
+      border-color: rgba(24,59,104,0.24);
+    }
+    details {
+      margin-top: 18px;
+      border-top: 1px solid rgba(19,17,12,0.08);
+      padding-top: 14px;
+    }
+    summary {
+      cursor: pointer;
+      font-weight: 800;
+      color: var(--muted);
+    }
+    .details-body {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+    }
     code {
       font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
       font-size: 0.95em;
     }
     @media (max-width: 860px) {
-      .hero, .grid {
+      .hero, .grid, .proof-strip, .hero-audience, .trust-grid, .result-summary {
         grid-template-columns: 1fr;
+      }
+      .proof-item {
+        border-right: 0;
+        border-bottom: 1px solid rgba(19,17,12,0.08);
+      }
+      .proof-item:last-child {
+        border-bottom: 0;
       }
     }
     @media (max-width: 620px) {
       .shell {
-        padding: 18px 14px 32px;
+        padding: 14px 14px 28px;
+      }
+      .topbar {
+        align-items: flex-start;
+        flex-direction: column;
+        margin-bottom: 12px;
       }
       .hero-copy, .hero-panel, .panel, .status-panel {
-        border-radius: 24px;
-        padding: 18px;
+        border-radius: 22px;
+        padding: 16px;
       }
       h1 {
-        font-size: clamp(34px, 14vw, 52px);
+        font-size: clamp(32px, 13vw, 46px);
+      }
+      .sub {
+        font-size: 15px;
+        margin-top: 12px;
+      }
+      .hero-notes {
+        gap: 8px;
+        margin-top: 16px;
+      }
+      .hero-note {
+        width: 100%;
+        justify-content: center;
+      }
+      .hero-note:nth-child(n+3) {
+        display: none;
+      }
+      .hero-audience,
+      .hero-panel,
+      .proof-strip,
+      .trust-grid {
+        display: none;
+      }
+      .panel-head {
+        margin-bottom: 14px;
+      }
+      .panel-note {
+        display: none;
+      }
+      .field {
+        margin-top: 14px;
+      }
+      .theme-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+      }
+      .text-input {
+        min-height: 74px;
+      }
+      .logo-preview {
+        min-height: 108px;
+      }
+      .help-card {
+        margin-top: 14px;
+        padding: 14px;
+      }
+      .help-list {
+        margin-top: 8px;
+      }
+      .help-list li:nth-child(n+3) {
+        display: none;
+      }
+      .status-panel {
+        position: static;
       }
       button, .button {
         width: 100%;
@@ -350,53 +664,100 @@
       .button-row, .status-actions {
         flex-direction: column;
       }
+      .button-row {
+        margin-top: 16px;
+      }
     }
   </style>
 </head>
 <body>
   <main class="shell">
     <div class="topbar">
-      <a href="../">Back to published reports</a>
-      <a href="../latest-report.html">Latest report shortcut</a>
+      <a href="../">
+    <div class="brand-lockup compact">
+      <svg class="brand-mark" viewBox="0 0 96 96" aria-hidden="true" role="img" width="40" height="40">
+        <circle cx="51" cy="14" r="10" fill="#bddf3c" stroke="#0b4678" stroke-width="6"></circle>
+        <path d="M31 82V60c0-7 5-12 12-12h10c7 0 12 5 12 12v22c0 6-4 10-10 10H41c-6 0-10-4-10-10Z" fill="none" stroke="#0b4678" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"></path>
+        <path d="M25 76V58c0-8 4-15 10-19" fill="none" stroke="#0b4678" stroke-width="6" stroke-linecap="round"></path>
+        <path d="M69 39c6-6 10-15 10-25" fill="none" stroke="#0b4678" stroke-width="6" stroke-linecap="round"></path>
+        <path d="M16 60L44 32c3-3 7-3 10 0l9 9c3 3 7 3 10 0L89 25" fill="none" stroke="#0b4678" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"></path>
+        <path d="M77 24l12-2-2 12" fill="none" stroke="#0b4678" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"></path>
+      </svg>
+      <div class="brand-wording">
+        <div class="brand-name" style="font-size:22px; color:#0b4678;">PADEL</div>
+        <div class="brand-sub" style="font-size:11px; color:rgba(11,70,120,0.7);">SCORECARD</div>
+      </div>
+    </div>
+    </a>
+      <a href="../latest-report.html">See Latest Example</a>
     </div>
     <section class="hero">
       <div class="hero-copy">
-        <div class="eyebrow">Hosted Generator</div>
-        <h1>Generate a fresh report.</h1>
-        <p class="sub">Paste a public Skor link, choose a background swatch, and let the same GitHub Actions publishing pipeline produce the report and story gallery. The public site updates automatically when the run finishes.</p>
+        <div class="eyebrow">Padel Scorecard</div>
+        <h1>Padel match recaps that look ready to publish.</h1>
+        <p class="sub">Paste a match link, choose a look, add your club logo, and generate a polished padel report plus a story pack in about a minute.</p>
         <div class="hero-notes">
-          <span class="hero-note">Same workflow as manual Actions</span>
-          <span class="hero-note">Theme selection included</span>
-          <span class="hero-note">Publishes into the public archive</span>
+          <span class="hero-note">Ready in about 1 minute</span>
+          <span class="hero-note">Custom club logo supported</span>
+          <span class="hero-note">Instagram story pack included</span>
+          <span class="hero-note">Made for padel clubs</span>
+        </div>
+        <div class="hero-audience">
+          <div class="hero-audience-card">
+            <div class="hero-audience-label">Clubs</div>
+            <div class="hero-audience-copy">Keep your weekly match updates looking consistent.</div>
+          </div>
+          <div class="hero-audience-card">
+            <div class="hero-audience-label">Organizers</div>
+            <div class="hero-audience-copy">Turn results into something shareable right after play ends.</div>
+          </div>
+          <div class="hero-audience-card">
+            <div class="hero-audience-label">Communities</div>
+            <div class="hero-audience-copy">Make recaps easier to post, browse, and revisit later.</div>
+          </div>
         </div>
       </div>
       <aside class="hero-panel">
-        <h2>How this flow works</h2>
-        <p>The hosted form is only a trigger layer. GitHub Actions still fetches the Skor data, renders the report, exports story JPGs, and publishes everything into the public pages repo.</p>
+        <h2>What you get</h2>
+        <p>Create a presentation-ready padel match recap without building graphics from scratch after every event.</p>
         <ul>
-          <li>Paste a Skor share link, token, or game ID</li>
-          <li>Pick one of the preset background swatches</li>
-          <li>Submit the request and watch status update here</li>
-          <li>Open the report and story gallery when the run finishes</li>
+          <li>A branded report page for the full match</li>
+          <li>A story pack for player rankings and highlights</li>
+          <li>Downloadable JPG story cards for posting</li>
+          <li>A reusable setup for your next event</li>
         </ul>
       </aside>
+    </section>
+    <section class="proof-strip">
+      <div class="proof-item">
+        <div class="proof-label">Fast Setup</div>
+        <div class="proof-value">One link, one theme, one logo, and the pack builds itself.</div>
+      </div>
+      <div class="proof-item">
+        <div class="proof-label">Better Output</div>
+        <div class="proof-value">You get a full report page plus social story assets from the same match.</div>
+      </div>
+      <div class="proof-item">
+        <div class="proof-label">Public Ready</div>
+        <div class="proof-value">Share the report link immediately or download the stories for posting.</div>
+      </div>
     </section>
 
     <section class="grid">
       <section class="panel">
         <div class="panel-head">
-          <h2 class="panel-title">Create report</h2>
-          <div class="panel-note">Hosted swatch selection is live. Custom logo upload still stays in the local dashboard for now.</div>
+          <h2 class="panel-title">Create Match Report</h2>
+          <div class="panel-note">Paste the link, brand it, and publish with Padel Scorecard.</div>
         </div>
         
-        <form id="generate-form">
+        <form id="generate-form" enctype="multipart/form-data">
           <div class="field">
-            <label for="input_value">Skor Link</label>
+            <label for="input_value">Match Link</label>
             <textarea class="text-input" id="input_value" name="input_value" placeholder="https://the.skorapp.id/game?id=..." required></textarea>
           </div>
 
           <div class="field">
-            <label>Theme</label>
+            <label>Choose A Look</label>
             <div class="theme-grid">
               <label class="theme-option" title="Obsidian"><input class="theme-input" type="radio" name="theme_id" value="obsidian" aria-label="Obsidian"><span class="theme-card"><span class="theme-preview" style="background: radial-gradient(circle at 18% 20%, rgba(255,255,255,0.08), transparent 24%), linear-gradient(180deg, #141414 0%, #0a0a0a 46%, #030303 100%);"></span><span class="visually-hidden">Obsidian</span></span></label>
 <label class="theme-option" title="Forest"><input class="theme-input" type="radio" name="theme_id" value="forest" aria-label="Forest"><span class="theme-card"><span class="theme-preview" style="background: radial-gradient(circle at 18% 20%, rgba(112,191,143,0.22), transparent 24%), linear-gradient(180deg, #17412d 0%, #0b241a 46%, #04110c 100%);"></span><span class="visually-hidden">Forest</span></span></label>
@@ -407,26 +768,61 @@
             </div>
           </div>
 
-          <label class="checkbox-row">
-            <input type="checkbox" id="export_story_images" name="export_story_images" checked>
-            <span class="checkbox-copy">Export Instagram-ready story JPGs along with the HTML story gallery.</span>
-          </label>
+          <div class="field">
+            <label for="logo">Club Logo</label>
+            <input class="file-input" id="logo" type="file" name="logo" accept=".png,.jpg,.jpeg,.webp,.gif,.svg,image/*">
+            <div class="logo-preview" id="logo-preview">
+              <div class="logo-preview-note">Optional. Best result: a square or transparent PNG. Supported formats: JPG, PNG, WEBP, GIF, or SVG. Max 5 MB.</div>
+            </div>
+          </div>
 
-          <div class="notice">If you need a custom uploaded logo right now, keep using the local dashboard. The hosted flow in this MVP focuses on link submission and theme selection first.</div>
+          <div class="help-card">
+            <h3 class="help-title">Need help?</h3>
+            <ul class="help-list">
+              <li>Paste the full public match link from Skor.</li>
+              <li>Use PNG or JPG for the safest logo upload.</li>
+              <li>Story cards are included automatically with every padel scorecard report.</li>
+              <li>Most reports are ready in about 1 minute.</li>
+            </ul>
+          </div>
+          <div class="trust-grid">
+            <div class="trust-card">
+              <div class="trust-label">Fast</div>
+              <div class="trust-copy">Most reports finish in about a minute.</div>
+            </div>
+            <div class="trust-card">
+              <div class="trust-label">Private Branding</div>
+              <div class="trust-copy">Uploaded logos are kept temporarily for report generation, then expire automatically.</div>
+            </div>
+            <div class="trust-card">
+              <div class="trust-label">See Example</div>
+              <div class="trust-copy">Want to preview the output first? Open the latest example above before submitting.</div>
+            </div>
+          </div>
 
           <div class="button-row">
-            <button id="submit-button" type="submit">Generate report</button>
-            <a class="button secondary" href="../">View published reports</a>
+            <button id="submit-button" type="submit">Create Match Report</button>
+            <a class="button secondary" href="../">Browse Reports</a>
           </div>
         </form>
       </section>
 
       <aside class="status-panel" id="status-panel" hidden>
-        <p class="status-kicker">Request Status</p>
-        <h2 class="status-title" id="status-title">Waiting for submission</h2>
-        <p class="status-copy" id="status-copy">Submit a link to create a request and watch the hosted workflow move from queued to published.</p>
-        <div class="status-meta" id="status-meta"></div>
+        <p class="status-kicker">Live Progress</p>
+        <div class="status-badge" id="status-badge">In Progress</div>
+        <h2 class="status-title" id="status-title">Ready when you are</h2>
+        <p class="status-copy" id="status-copy">Create a report to see progress here and open the finished result as soon as it is ready.</p>
+        <div class="status-highlight" id="status-highlight">
+          <h3 class="status-highlight-title" id="status-highlight-title">What happens next</h3>
+          <p class="status-highlight-copy" id="status-highlight-copy">Once you submit, the report build starts automatically and this panel updates until the final pages are ready.</p>
+        </div>
+        <div class="status-pill-row" id="status-pill-row"></div>
         <div class="status-actions" id="status-actions"></div>
+        <div class="result-summary" id="result-summary" hidden></div>
+        <details id="technical-details" hidden>
+          <summary>Technical details</summary>
+          <div class="details-body" id="status-meta"></div>
+        </details>
       </aside>
     </section>
   </main>
@@ -435,10 +831,19 @@
     const form = document.getElementById("generate-form");
     const submitButton = document.getElementById("submit-button");
     const statusPanel = document.getElementById("status-panel");
+    const statusBadge = document.getElementById("status-badge");
     const statusTitle = document.getElementById("status-title");
     const statusCopy = document.getElementById("status-copy");
+    const statusHighlightTitle = document.getElementById("status-highlight-title");
+    const statusHighlightCopy = document.getElementById("status-highlight-copy");
+    const statusPillRow = document.getElementById("status-pill-row");
     const statusMeta = document.getElementById("status-meta");
     const statusActions = document.getElementById("status-actions");
+    const resultSummary = document.getElementById("result-summary");
+    const technicalDetails = document.getElementById("technical-details");
+    const logoInput = document.getElementById("logo");
+    const logoPreview = document.getElementById("logo-preview");
+    const defaultThemeId = "cobalt";
 
     function escapeHtml(value) {
       return String(value)
@@ -452,12 +857,64 @@
       return new URL(`../requests/${encodeURIComponent(requestId)}.json`, window.location.href).toString();
     }
 
-    function renderStatus(title, copy, metaHtml = "", actionsHtml = "") {
+    function renderProgress(step) {
+      const steps = [
+        ["upload", "Uploading logo"],
+        ["build", "Building report"],
+        ["stories", "Preparing story pack"],
+        ["done", "Done"],
+      ];
+      statusPillRow.innerHTML = steps
+        .map(([key, label]) => `<span class="status-pill${key === step ? " active" : ""}">${label}</span>`)
+        .join("");
+    }
+
+    function renderResultSummary(data) {
+      const cards = [
+        ["Report Page", "Full match recap page is live and ready to share."],
+        ["Story Pack", "Ranking stories and highlights are published together."],
+        ["Branding", data.theme_label ? `Built with the ${escapeHtml(data.theme_label)} look and your uploaded club logo if provided.` : "Built with your selected look and logo if provided."],
+      ];
+      resultSummary.hidden = false;
+      resultSummary.innerHTML = cards
+        .map(([label, value]) => `<div class="result-card"><div class="result-label">${label}</div><div class="result-value">${value}</div></div>`)
+        .join("");
+    }
+
+    function renderStatus(title, copy, actionsHtml = "", metaHtml = "", progressStep = "build", badgeLabel = "In Progress", highlightTitle = "What happens next", highlightCopy = "Once you submit, the report build starts automatically and this panel updates until the final pages are ready.") {
       statusPanel.hidden = false;
+      statusBadge.textContent = badgeLabel;
       statusTitle.textContent = title;
       statusCopy.textContent = copy;
-      statusMeta.innerHTML = metaHtml;
+      statusHighlightTitle.textContent = highlightTitle;
+      statusHighlightCopy.textContent = highlightCopy;
+      renderProgress(progressStep);
       statusActions.innerHTML = actionsHtml;
+      resultSummary.hidden = true;
+      resultSummary.innerHTML = "";
+      if (metaHtml) {
+        technicalDetails.hidden = false;
+        statusMeta.innerHTML = metaHtml;
+      } else {
+        technicalDetails.hidden = true;
+        statusMeta.innerHTML = "";
+      }
+    }
+
+    function resetLogoPreview() {
+      logoPreview.innerHTML = '<div class="logo-preview-note">Optional. Best result: a square or transparent PNG. Supported formats: JPG, PNG, WEBP, GIF, or SVG. Max 5 MB.</div>';
+    }
+
+    function updateLogoPreview(file) {
+      if (!file) {
+        resetLogoPreview();
+        return;
+      }
+      const reader = new FileReader();
+      reader.onload = () => {
+        logoPreview.innerHTML = `<img src="${reader.result}" alt="Logo preview">`;
+      };
+      reader.readAsDataURL(file);
     }
 
     function renderRequestDetails(data, statusUrl) {
@@ -477,103 +934,195 @@
     function renderRequestActions(data) {
       const actions = [];
       if (data.report_url) {
-        actions.push(`<a class="button" href="${escapeHtml(data.report_url)}">Open report</a>`);
+        actions.push(`<a class="button" href="${escapeHtml(data.report_url)}">Open Report</a>`);
       }
       if (data.stories_url) {
-        actions.push(`<a class="button secondary" href="${escapeHtml(data.stories_url)}">Open story gallery</a>`);
+        actions.push(`<a class="button secondary" href="${escapeHtml(data.stories_url)}">Open Story Pack</a>`);
+        actions.push(`<a class="button secondary" href="${escapeHtml(data.stories_url)}">Download Story Images</a>`);
       }
-      if (data.run_url) {
-        actions.push(`<a class="button secondary" href="${escapeHtml(data.run_url)}">Open workflow run</a>`);
-      }
+      actions.push('<button class="button secondary" type="button" data-reset>Create Another</button>');
       return actions.join("");
     }
 
-    function applyStatusPayload(data, statusUrl) {
+    function applyStatusPayload(data, statusUrl, context) {
       const metaHtml = renderRequestDetails(data, statusUrl);
       const actionsHtml = renderRequestActions(data);
       if (data.status === "published") {
-        renderStatus("Report published", data.message || "The report is live on the public site.", metaHtml, actionsHtml);
+        renderStatus(
+          "Done",
+          "Your branded report and story pack are ready.",
+          actionsHtml,
+          metaHtml,
+          "done",
+          "Ready",
+          "Your assets are live",
+          "Open the full report, share the story pack, or start another match while this one is fresh."
+        );
+        renderResultSummary(data);
         return true;
       }
       if (data.status === "failed") {
-        renderStatus("Generation failed", data.error_message || data.message || "The workflow did not finish successfully.", metaHtml, actionsHtml);
+        renderStatus(
+          "Something went wrong",
+          data.error_message || "We could not finish that report. Try again with the same link or a different logo file.",
+          '<button class="button secondary" type="button" data-reset>Try Again</button>',
+          metaHtml,
+          "build",
+          "Needs Attention",
+          "The build did not finish",
+          "Most failures are fixed by retrying the same link or using a smaller PNG or JPG logo file."
+        );
         return true;
       }
       if (data.status === "running") {
-        renderStatus("Generating report", data.message || "GitHub Actions is generating and publishing the report.", metaHtml, actionsHtml);
+        const elapsedSeconds = Math.max(0, Math.round((Date.now() - context.startedAt) / 1000));
+        if (context.hasLogo && elapsedSeconds < 8) {
+          renderStatus("Uploading your logo", "Getting your branding ready before the report build starts.", "", metaHtml, "upload", "In Progress", "Checking your brand assets", "We are storing the uploaded logo and preparing it for the final report layout.");
+        } else if (elapsedSeconds < 28) {
+          renderStatus("Building your report", "Pulling the match data together and laying out the full report.", "", metaHtml, "build", "In Progress", "Shaping the recap", "We are combining scores, player positions, and the chosen theme into the final report page.");
+        } else {
+          renderStatus("Preparing your story pack", "Finishing the story images and publishing the final pages.", "", metaHtml, "stories", "Almost Ready", "Packaging the social assets", "The report is nearly done. We are exporting story cards and publishing the final pages now.");
+        }
         return false;
       }
-      renderStatus("Request queued", data.message || "The request is waiting for a workflow runner.", metaHtml, actionsHtml);
+      renderStatus("Getting things ready", "Your request has been accepted and is about to start.", "", metaHtml, context.hasLogo ? "upload" : "build", "In Progress", "Queue confirmed", "Your request is in line and the build should begin in a few seconds.");
       return false;
     }
 
-    async function pollRequest(requestId, initialStatusUrl) {
+    async function pollRequest(requestId, initialStatusUrl, context) {
       const statusUrl = initialStatusUrl || requestStatusUrl(requestId);
-      const startedAt = Date.now();
-      while (Date.now() - startedAt < 15 * 60 * 1000) {
+      while (Date.now() - context.startedAt < 15 * 60 * 1000) {
         try {
           const response = await fetch(statusUrl, { cache: "no-store" });
           if (response.status === 404) {
             renderStatus(
-              "Request queued",
-              "The request was accepted. Waiting for the workflow to publish its first status update.",
-              `Request ID: <code>${escapeHtml(requestId)}</code><br>Status JSON: <a href="${escapeHtml(statusUrl)}">${escapeHtml(statusUrl)}</a>`
+              context.hasLogo ? "Uploading your logo" : "Getting things ready",
+              context.hasLogo ? "Your upload was received. Starting the report build now." : "Your match link was received. Starting the report build now.",
+              "",
+              `Request ID: <code>${escapeHtml(requestId)}</code><br>Status JSON: <a href="${escapeHtml(statusUrl)}">${escapeHtml(statusUrl)}</a>`,
+              context.hasLogo ? "upload" : "build",
+              "In Progress",
+              "Queue confirmed",
+              "Your request is accepted. The final pages will appear here as soon as publishing finishes."
             );
           } else if (response.ok) {
             const data = await response.json();
-            if (applyStatusPayload(data, statusUrl)) {
+            if (applyStatusPayload(data, statusUrl, context)) {
               return;
             }
           } else {
             renderStatus(
-              "Waiting for status",
-              `Status polling returned HTTP ${response.status}. Retrying automatically.`,
-              `Request ID: <code>${escapeHtml(requestId)}</code>`
+              "Still working on it",
+              "We are waiting for the latest update. This usually resolves on its own in a few seconds.",
+              "",
+              `Request ID: <code>${escapeHtml(requestId)}</code><br>HTTP status: <code>${response.status}</code>`,
+              "build",
+              "In Progress",
+              "Waiting for the latest update",
+              "The report build is still underway. This usually clears itself after the next status refresh."
             );
           }
         } catch (error) {
           renderStatus(
-            "Waiting for status",
-            "Could not reach the request status file yet. Retrying automatically.",
-            `Request ID: <code>${escapeHtml(requestId)}</code>`
+            "Still working on it",
+            "We are waiting for the latest update. This usually resolves on its own in a few seconds.",
+            "",
+            `Request ID: <code>${escapeHtml(requestId)}</code>`,
+            "build",
+            "In Progress",
+            "Waiting for the latest update",
+            "The report build is still underway. This usually clears itself after the next status refresh."
           );
         }
         await new Promise((resolve) => setTimeout(resolve, 4000));
       }
       renderStatus(
-        "Still processing",
-        "This request is taking longer than expected. Open the workflow run if you need live logs, or refresh this page in a minute.",
-        `Request ID: <code>${escapeHtml(requestId)}</code>`
+        "Still working on it",
+        "This one is taking longer than expected. Give it another minute and refresh this page.",
+        '<button class="button secondary" type="button" data-reset>Start Another</button>',
+        `Request ID: <code>${escapeHtml(requestId)}</code>`,
+        "stories",
+        "Delayed",
+        "Taking longer than usual",
+        "This request is still active, but slower than normal. Give it another minute before trying again."
       );
     }
+
+    function resetExperience() {
+      form.reset();
+      statusPanel.hidden = true;
+      technicalDetails.hidden = true;
+      statusMeta.innerHTML = "";
+      statusActions.innerHTML = "";
+      statusPillRow.innerHTML = "";
+      resultSummary.hidden = true;
+      resultSummary.innerHTML = "";
+      resetLogoPreview();
+      const defaultTheme = form.querySelector(`input[name="theme_id"][value="${defaultThemeId}"]`);
+      if (defaultTheme) {
+        defaultTheme.checked = true;
+      }
+      form.input_value.focus();
+    }
+
+    logoInput.addEventListener("change", () => {
+      const [file] = logoInput.files || [];
+      updateLogoPreview(file || null);
+    });
+
+    statusActions.addEventListener("click", (event) => {
+      const trigger = event.target.closest("[data-reset]");
+      if (!trigger) {
+        return;
+      }
+      event.preventDefault();
+      resetExperience();
+    });
+
+    resetLogoPreview();
 
     form.addEventListener("submit", async (event) => {
       event.preventDefault();
       const inputValue = form.input_value.value.trim();
       const selectedTheme = form.querySelector('input[name="theme_id"]:checked');
+      const logoFile = (logoInput.files || [])[0] || null;
       if (!inputValue) {
-        renderStatus("Link required", "Paste a Skor link, share token, or numeric game ID before submitting.");
+        renderStatus("Add your match link", "Paste the public match link before creating the report.", "", "", "build", "Needs Input", "A match link is required", "Use the public Skor match URL so the report builder can pull the event details.");
         return;
       }
       if (!triggerEndpoint) {
-        renderStatus("Hosted trigger not configured", "This site build does not know where to send web submissions yet. Use GitHub Actions or configure the trigger endpoint first.");
+        renderStatus("Not ready yet", "This page is not accepting public submissions right now.", "", "", "build", "Offline", "Public submissions are paused", "The page is visible, but the report endpoint is not configured right now.");
         return;
       }
 
       submitButton.disabled = true;
-      renderStatus("Submitting request", "Sending the request to the hosted trigger service...");
+      const context = {
+        hasLogo: Boolean(logoFile),
+        startedAt: Date.now(),
+      };
+      renderStatus(
+        logoFile ? "Uploading your logo" : "Starting your report",
+        logoFile ? "Sending your match link and logo for processing." : "Sending your match link for processing.",
+        "",
+        "",
+        logoFile ? "upload" : "build",
+        "In Progress",
+        logoFile ? "Preparing the brand assets" : "Submitting your match",
+        logoFile ? "Your match link and logo are on the way. The final pages will appear here as soon as the build begins." : "Your match link is on the way. The final pages will appear here as soon as the build begins."
+      );
 
       try {
+        const formData = new FormData();
+        formData.set("input_value", inputValue);
+        formData.set("theme_id", selectedTheme ? selectedTheme.value : defaultThemeId);
+        formData.set("export_story_images", "true");
+        if (logoFile) {
+          formData.set("logo", logoFile, logoFile.name);
+        }
+
         const response = await fetch(triggerEndpoint, {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            input_value: inputValue,
-            theme_id: selectedTheme ? selectedTheme.value : "cobalt",
-            export_story_images: form.export_story_images.checked,
-          }),
+          body: formData,
         });
 
         const data = await response.json().catch(() => ({}));
@@ -584,14 +1133,27 @@
         const requestId = data.request_id;
         const statusUrl = data.status_url || requestStatusUrl(requestId);
         renderStatus(
-          "Request accepted",
-          data.message || "The GitHub Actions workflow was triggered successfully. Status updates will appear below as soon as the workflow publishes them.",
+          "Building your report",
+          "Your request was accepted. We are now creating the report and story pack.",
+          "",
           `Request ID: <code>${escapeHtml(requestId)}</code><br>Status JSON: <a href="${escapeHtml(statusUrl)}">${escapeHtml(statusUrl)}</a>`,
-          data.run_url ? `<a class="button secondary" href="${escapeHtml(data.run_url)}">Open workflow run</a>` : ""
+          logoFile ? "upload" : "build",
+          "In Progress",
+          "Build confirmed",
+          "Your report is officially in progress. Keep this page open and the result links will appear here."
         );
-        await pollRequest(requestId, statusUrl);
+        await pollRequest(requestId, statusUrl, context);
       } catch (error) {
-        renderStatus("Submission failed", error.message || "The hosted trigger could not accept the request.");
+        renderStatus(
+          "Could not start that report",
+          error.message || "Try again with the same match link, or use a smaller PNG or JPG logo file.",
+          '<button class="button secondary" type="button" data-reset>Try Again</button>',
+          "",
+          "build",
+          "Needs Attention",
+          "The request was not accepted",
+          "Try again with the same match link. If you uploaded a logo, switch to a smaller PNG or JPG file."
+        );
       } finally {
         submitButton.disabled = false;
       }
