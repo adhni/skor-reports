@@ -1,0 +1,14 @@
+{
+  "input": "https://the.skorapp.id/game?id=62Uzj4Bh7eKTcUdqKjcv9g",
+  "source": "share_link",
+  "share_token": "62Uzj4Bh7eKTcUdqKjcv9g",
+  "game_id": 163313,
+  "folder_name": "62Uzj4Bh7eKTcUdqKjcv9g",
+  "public_report_base_url": "https://adhni.github.io/skor-reports/reports",
+  "branding": {
+    "theme_id": "obsidian",
+    "theme_label": "Obsidian",
+    "logo_filename": "logo.jpg"
+  },
+  "generated_at_utc": "2026-04-04T07:36:53.266720+00:00"
+}

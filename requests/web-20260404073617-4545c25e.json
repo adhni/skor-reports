@@ -1,12 +1,15 @@
 {
   "request_id": "web-20260404073617-4545c25e",
-  "status": "running",
+  "status": "published",
   "request_source": "web_form",
   "input_value": "\ud83c\udfc6 Check out the SkorApp Long Weekend Leaderboard!: https://the.skorapp.id/game?id=62Uzj4Bh7eKTcUdqKjcv9g",
   "theme_id": "obsidian",
   "theme_label": "Obsidian",
   "submitted_at_utc": "2026-04-04T07:36:48Z",
-  "updated_at_utc": "2026-04-04T07:36:48Z",
-  "message": "Workflow started. Generating report files now.",
+  "updated_at_utc": "2026-04-04T07:37:02Z",
+  "message": "Report published successfully.",
+  "report_folder": "62Uzj4Bh7eKTcUdqKjcv9g",
+  "report_url": "https://adhni.github.io/skor-reports/reports/62Uzj4Bh7eKTcUdqKjcv9g/report.html",
+  "stories_url": "https://adhni.github.io/skor-reports/reports/62Uzj4Bh7eKTcUdqKjcv9g/stories/index.html",
   "run_url": "https://github.com/adhni/skor-scrape/actions/runs/23974350074"
 }
