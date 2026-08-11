@@ -58,6 +58,21 @@
       justify-content: space-between;
       gap: 20px;
     }
+    .hero-winner {
+      flex: 0 0 270px;
+      min-height: 178px;
+      padding: 18px;
+      border-radius: 24px;
+      text-align: right;
+      background:
+        radial-gradient(circle at 82% 18%, rgba(189,223,60,0.18), transparent 34%),
+        rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .hero-winner-label { color: rgba(255,255,255,0.58); font-size: 11px; font-weight: 900; letter-spacing: 0.13em; text-transform: uppercase; }
+    .hero-winner-rank { margin-top: 12px; color: #bddf3c; font-size: 54px; line-height: 0.88; font-weight: 900; letter-spacing: -0.06em; }
+    .hero-winner-name { margin-top: 8px; color: #fff; font-size: 22px; line-height: 1; font-weight: 900; }
+    .hero-winner-meta { margin-top: 8px; color: rgba(255,255,255,0.64); font-size: 12px; }
     .hero-brand {
       display: flex;
       align-items: center;
@@ -644,7 +659,9 @@
     @media (max-width: 760px) {
       .hero-top {
         align-items: flex-start;
+        flex-direction: column;
       }
+      .hero-winner { width: 100%; min-height: 0; flex-basis: auto; text-align: left; }
       .hero-brand {
         align-items: flex-start;
       }
@@ -693,43 +710,12 @@
             </p>
           </div>
         </div>
+        <aside class="hero-winner"><div class="hero-winner-label">Match champion</div><div class="hero-winner-rank">#1</div><div class="hero-winner-name">Toha As</div><div class="hero-winner-meta">25 ranking total · 5 wins</div></aside>
       </div>
       <div class="hero-tags">
         <span class="hero-tag">9 players</span><span class="hero-tag">9 rounds</span><span class="hero-tag">2 courts</span><span class="hero-tag">04 Jan 2026</span>
       </div>
       <div class="hero-actions"><a class="hero-action" href="player-story-toha-as.html">Featured player story: Toha As</a><a class="hero-action" href="stories/index.html">Story image gallery</a></div>
-    </section>
-
-    <section class="section">
-      <div class="chart-card">
-        <div class="section-head">
-          <h2>Rank Progress By Round</h2>
-          <div class="section-note">Y axis is position, so rank 1 stays at the top. Click players below to focus lines.</div>
-        </div>
-        <div class="chart-toolbar">
-          <div class="section-note">Standings use total, wins, diff, then points.</div>
-          <div class="chart-actions">
-            <button class="toolbar-btn active" type="button" data-chart-mode="top">Top 8</button>
-            <button class="toolbar-btn" type="button" data-chart-mode="all">All</button>
-            <button class="toolbar-btn" type="button" data-chart-mode="clear">Clear</button>
-          </div>
-        </div>
-        <div class="chart-shell">
-          <svg id="rank-chart" class="chart-svg" viewBox="0 0 980 560" role="img" aria-label="Player rank progression by round"></svg>
-          <div id="chart-tooltip" class="chart-tooltip"></div>
-        </div>
-        <div class="chart-legend">
-          <button class="legend-btn" type="button" data-player="Toha As"><span class="legend-left"><span class="legend-dot" style="background:hsl(0 68% 44%)"></span><span class="legend-name">Toha As</span></span><span class="legend-rank">#1</span></button>
-<button class="legend-btn" type="button" data-player="Kareem Mulachela"><span class="legend-left"><span class="legend-dot" style="background:hsl(37 68% 44%)"></span><span class="legend-name">Kareem Mulachela</span></span><span class="legend-rank">#2</span></button>
-<button class="legend-btn" type="button" data-player="Haidar"><span class="legend-left"><span class="legend-dot" style="background:hsl(74 68% 44%)"></span><span class="legend-name">Haidar</span></span><span class="legend-rank">#3</span></button>
-<button class="legend-btn" type="button" data-player="Areza"><span class="legend-left"><span class="legend-dot" style="background:hsl(111 68% 44%)"></span><span class="legend-name">Areza</span></span><span class="legend-rank">#4</span></button>
-<button class="legend-btn" type="button" data-player="Nico"><span class="legend-left"><span class="legend-dot" style="background:hsl(148 68% 44%)"></span><span class="legend-name">Nico</span></span><span class="legend-rank">#5</span></button>
-<button class="legend-btn" type="button" data-player="adhni"><span class="legend-left"><span class="legend-dot" style="background:hsl(185 68% 44%)"></span><span class="legend-name">adhni</span></span><span class="legend-rank">#6</span></button>
-<button class="legend-btn" type="button" data-player="Imam"><span class="legend-left"><span class="legend-dot" style="background:hsl(222 68% 44%)"></span><span class="legend-name">Imam</span></span><span class="legend-rank">#7</span></button>
-<button class="legend-btn" type="button" data-player="Oky"><span class="legend-left"><span class="legend-dot" style="background:hsl(259 68% 44%)"></span><span class="legend-name">Oky</span></span><span class="legend-rank">#8</span></button>
-<button class="legend-btn" type="button" data-player="Mahdi Kemal Assegaf"><span class="legend-left"><span class="legend-dot" style="background:hsl(296 68% 44%)"></span><span class="legend-name">Mahdi Kemal Assegaf</span></span><span class="legend-rank">#9</span></button>
-        </div>
-      </div>
     </section>
 
     <section class="section">
@@ -741,24 +727,6 @@
         <article class="podium-card place-2"><div class="podium-place">Silver</div><div class="podium-rank">2</div><div class="podium-name">Kareem Mulachela</div><div class="podium-meta">Total 21<br>Record 4-2-2<br>Diff 6</div></article>
 <article class="podium-card place-1"><div class="podium-place">Gold</div><div class="podium-rank">1</div><div class="podium-name">Toha As</div><div class="podium-meta">Total 25<br>Record 5-1-2<br>Diff 14</div></article>
 <article class="podium-card place-3"><div class="podium-place">Bronze</div><div class="podium-rank">3</div><div class="podium-name">Haidar</div><div class="podium-meta">Total 20<br>Record 3-2-3<br>Diff 4</div></article>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="section-head">
-        <h2>Player Stories</h2>
-        <div class="section-note">Generated locally from the same report bundle.</div>
-      </div>
-      <div class="story-grid-links">
-        <article class="story-link-card"><span class="story-link-rank">#1</span><div class="story-link-name">Toha As</div><div class="story-link-meta">5W-1L-2T · 23 pts</div><a class="story-link-button" href="player-story-toha-as.html">Open story</a></article>
-<article class="story-link-card"><span class="story-link-rank">#2</span><div class="story-link-name">Kareem Mulachela</div><div class="story-link-meta">4W-2L-2T · 19 pts</div><a class="story-link-button" href="player-story-kareem-mulachela.html">Open story</a></article>
-<article class="story-link-card"><span class="story-link-rank">#3</span><div class="story-link-name">Haidar</div><div class="story-link-meta">3W-2L-3T · 18 pts</div><a class="story-link-button" href="player-story-haidar.html">Open story</a></article>
-<article class="story-link-card"><span class="story-link-rank">#4</span><div class="story-link-name">Areza</div><div class="story-link-meta">1W-1L-6T · 17 pts</div><a class="story-link-button" href="player-story-areza.html">Open story</a></article>
-<article class="story-link-card"><span class="story-link-rank">#5</span><div class="story-link-name">Nico</div><div class="story-link-meta">2W-2L-4T · 16 pts</div><a class="story-link-button" href="player-story-nico.html">Open story</a></article>
-<article class="story-link-card"><span class="story-link-rank">#6</span><div class="story-link-name">adhni</div><div class="story-link-meta">1W-2L-5T · 15 pts</div><a class="story-link-button" href="player-story-adhni.html">Open story</a></article>
-<article class="story-link-card"><span class="story-link-rank">#7</span><div class="story-link-name">Imam</div><div class="story-link-meta">2W-3L-3T · 13 pts</div><a class="story-link-button" href="player-story-imam.html">Open story</a></article>
-<article class="story-link-card"><span class="story-link-rank">#8</span><div class="story-link-name">Oky</div><div class="story-link-meta">2W-3L-3T · 12 pts</div><a class="story-link-button" href="player-story-oky.html">Open story</a></article>
-<article class="story-link-card"><span class="story-link-rank">#9</span><div class="story-link-name">Mahdi Kemal Assegaf</div><div class="story-link-meta">0W-4L-4T · 11 pts</div><a class="story-link-button" href="player-story-mahdi-kemal-assegaf.html">Open story</a></article>
       </div>
     </section>
 
@@ -803,6 +771,56 @@
 <article class="leaderboard-card"><div class="leaderboard-card-top"><div class="leaderboard-card-name"><span class="rank-badge">7</span><span class="leaderboard-card-name-text">Imam</span></div><div class="leaderboard-card-total"><span class="total-main">15</span></div></div><div class="leaderboard-card-grid"><div class="leaderboard-card-stat"><span class="label">Bench</span><strong>2</strong></div><div class="leaderboard-card-stat"><span class="label">Diff</span><strong>-6</strong></div><div class="leaderboard-card-stat"><span class="label">Record</span><strong>2-3-3</strong></div><div class="leaderboard-card-stat"><span class="label">Matches</span><strong>8</strong></div></div></article>
 <article class="leaderboard-card"><div class="leaderboard-card-top"><div class="leaderboard-card-name"><span class="rank-badge">8</span><span class="leaderboard-card-name-text">Oky</span></div><div class="leaderboard-card-total"><span class="total-main">14</span></div></div><div class="leaderboard-card-grid"><div class="leaderboard-card-stat"><span class="label">Bench</span><strong>2</strong></div><div class="leaderboard-card-stat"><span class="label">Diff</span><strong>-8</strong></div><div class="leaderboard-card-stat"><span class="label">Record</span><strong>2-3-3</strong></div><div class="leaderboard-card-stat"><span class="label">Matches</span><strong>8</strong></div></div></article>
 <article class="leaderboard-card"><div class="leaderboard-card-top"><div class="leaderboard-card-name"><span class="rank-badge">9</span><span class="leaderboard-card-name-text">Mahdi Kemal Assegaf</span></div><div class="leaderboard-card-total"><span class="total-main">13</span></div></div><div class="leaderboard-card-grid"><div class="leaderboard-card-stat"><span class="label">Bench</span><strong>2</strong></div><div class="leaderboard-card-stat"><span class="label">Diff</span><strong>-10</strong></div><div class="leaderboard-card-stat"><span class="label">Record</span><strong>0-4-4</strong></div><div class="leaderboard-card-stat"><span class="label">Matches</span><strong>8</strong></div></div></article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <h2>Player Stories</h2>
+        <div class="section-note">Open any player card or browse the complete social pack.</div>
+      </div>
+      <div class="story-grid-links">
+        <article class="story-link-card"><span class="story-link-rank">#1</span><div class="story-link-name">Toha As</div><div class="story-link-meta">5W-1L-2T · 23 pts</div><a class="story-link-button" href="player-story-toha-as.html">Open story</a></article>
+<article class="story-link-card"><span class="story-link-rank">#2</span><div class="story-link-name">Kareem Mulachela</div><div class="story-link-meta">4W-2L-2T · 19 pts</div><a class="story-link-button" href="player-story-kareem-mulachela.html">Open story</a></article>
+<article class="story-link-card"><span class="story-link-rank">#3</span><div class="story-link-name">Haidar</div><div class="story-link-meta">3W-2L-3T · 18 pts</div><a class="story-link-button" href="player-story-haidar.html">Open story</a></article>
+<article class="story-link-card"><span class="story-link-rank">#4</span><div class="story-link-name">Areza</div><div class="story-link-meta">1W-1L-6T · 17 pts</div><a class="story-link-button" href="player-story-areza.html">Open story</a></article>
+<article class="story-link-card"><span class="story-link-rank">#5</span><div class="story-link-name">Nico</div><div class="story-link-meta">2W-2L-4T · 16 pts</div><a class="story-link-button" href="player-story-nico.html">Open story</a></article>
+<article class="story-link-card"><span class="story-link-rank">#6</span><div class="story-link-name">adhni</div><div class="story-link-meta">1W-2L-5T · 15 pts</div><a class="story-link-button" href="player-story-adhni.html">Open story</a></article>
+<article class="story-link-card"><span class="story-link-rank">#7</span><div class="story-link-name">Imam</div><div class="story-link-meta">2W-3L-3T · 13 pts</div><a class="story-link-button" href="player-story-imam.html">Open story</a></article>
+<article class="story-link-card"><span class="story-link-rank">#8</span><div class="story-link-name">Oky</div><div class="story-link-meta">2W-3L-3T · 12 pts</div><a class="story-link-button" href="player-story-oky.html">Open story</a></article>
+<article class="story-link-card"><span class="story-link-rank">#9</span><div class="story-link-name">Mahdi Kemal Assegaf</div><div class="story-link-meta">0W-4L-4T · 11 pts</div><a class="story-link-button" href="player-story-mahdi-kemal-assegaf.html">Open story</a></article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="chart-card">
+        <div class="section-head">
+          <h2>Rank Progress By Round</h2>
+          <div class="section-note">Y axis is position, so rank 1 stays at the top. Click players below to focus lines.</div>
+        </div>
+        <div class="chart-toolbar">
+          <div class="section-note">Standings use total, wins, diff, then points.</div>
+          <div class="chart-actions">
+            <button class="toolbar-btn active" type="button" data-chart-mode="top">Top 8</button>
+            <button class="toolbar-btn" type="button" data-chart-mode="all">All</button>
+            <button class="toolbar-btn" type="button" data-chart-mode="clear">Clear</button>
+          </div>
+        </div>
+        <div class="chart-shell">
+          <svg id="rank-chart" class="chart-svg" viewBox="0 0 980 560" role="img" aria-label="Player rank progression by round"></svg>
+          <div id="chart-tooltip" class="chart-tooltip"></div>
+        </div>
+        <div class="chart-legend">
+          <button class="legend-btn" type="button" data-player="Toha As"><span class="legend-left"><span class="legend-dot" style="background:hsl(0 68% 44%)"></span><span class="legend-name">Toha As</span></span><span class="legend-rank">#1</span></button>
+<button class="legend-btn" type="button" data-player="Kareem Mulachela"><span class="legend-left"><span class="legend-dot" style="background:hsl(37 68% 44%)"></span><span class="legend-name">Kareem Mulachela</span></span><span class="legend-rank">#2</span></button>
+<button class="legend-btn" type="button" data-player="Haidar"><span class="legend-left"><span class="legend-dot" style="background:hsl(74 68% 44%)"></span><span class="legend-name">Haidar</span></span><span class="legend-rank">#3</span></button>
+<button class="legend-btn" type="button" data-player="Areza"><span class="legend-left"><span class="legend-dot" style="background:hsl(111 68% 44%)"></span><span class="legend-name">Areza</span></span><span class="legend-rank">#4</span></button>
+<button class="legend-btn" type="button" data-player="Nico"><span class="legend-left"><span class="legend-dot" style="background:hsl(148 68% 44%)"></span><span class="legend-name">Nico</span></span><span class="legend-rank">#5</span></button>
+<button class="legend-btn" type="button" data-player="adhni"><span class="legend-left"><span class="legend-dot" style="background:hsl(185 68% 44%)"></span><span class="legend-name">adhni</span></span><span class="legend-rank">#6</span></button>
+<button class="legend-btn" type="button" data-player="Imam"><span class="legend-left"><span class="legend-dot" style="background:hsl(222 68% 44%)"></span><span class="legend-name">Imam</span></span><span class="legend-rank">#7</span></button>
+<button class="legend-btn" type="button" data-player="Oky"><span class="legend-left"><span class="legend-dot" style="background:hsl(259 68% 44%)"></span><span class="legend-name">Oky</span></span><span class="legend-rank">#8</span></button>
+<button class="legend-btn" type="button" data-player="Mahdi Kemal Assegaf"><span class="legend-left"><span class="legend-dot" style="background:hsl(296 68% 44%)"></span><span class="legend-name">Mahdi Kemal Assegaf</span></span><span class="legend-rank">#9</span></button>
+        </div>
       </div>
     </section>
 
