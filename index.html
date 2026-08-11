@@ -130,6 +130,9 @@
       background:
         linear-gradient(180deg, rgba(20,17,12,0.96), rgba(10,10,10,0.98));
       color: #f8f2e8;
+      display: flex;
+      flex-direction: column;
+      min-height: 610px;
     }
     .showcase-kicker {
       font-size: 12px;
@@ -149,37 +152,65 @@
       line-height: 1.6;
       font-size: 15px;
     }
-    .showcase-stack {
+    .showcase-visual {
+      position: relative;
+      flex: 1;
+      min-height: 430px;
       margin-top: 18px;
-      display: grid;
-      gap: 12px;
+      display: block;
+      color: inherit;
+      text-decoration: none;
     }
-    .showcase-card {
-      padding: 16px;
+    .report-mock {
+      position: absolute;
+      inset: 14px 72px auto 0;
+      min-height: 286px;
+      padding: 18px;
+      border-radius: 24px;
+      background: #f7f4ed;
+      color: #13110d;
+      transform: rotate(-2deg);
+      box-shadow: 0 26px 54px rgba(0,0,0,0.34);
+      border: 1px solid rgba(255,255,255,0.3);
+    }
+    .mock-browser { display: flex; gap: 5px; margin-bottom: 30px; }
+    .mock-browser span { width: 7px; height: 7px; border-radius: 50%; background: rgba(19,17,13,0.2); }
+    .mock-kicker { color: var(--cobalt); font-size: 10px; font-weight: 900; letter-spacing: 0.14em; text-transform: uppercase; }
+    .mock-title { margin-top: 8px; font-size: 26px; font-weight: 900; line-height: 0.96; letter-spacing: -0.05em; max-width: 8ch; }
+    .mock-meta { margin-top: 10px; color: var(--muted); font-size: 12px; }
+    .mock-podium { height: 76px; margin-top: 18px; display: flex; align-items: end; justify-content: center; gap: 5px; }
+    .mock-place { width: 46px; display: grid; place-items: center; border-radius: 10px 10px 4px 4px; color: #fff; font-weight: 900; background: #45617b; }
+    .mock-place.first { height: 76px; background: var(--cobalt); font-size: 25px; }
+    .mock-place.second { height: 58px; }
+    .mock-place.third { height: 46px; background: #758d48; }
+    .story-poster {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      width: 49%;
+      aspect-ratio: 9 / 16;
+      object-fit: cover;
       border-radius: 22px;
-      background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.04));
-      border: 1px solid rgba(255,255,255,0.08);
+      border: 2px solid rgba(255,255,255,0.2);
+      box-shadow: 0 28px 58px rgba(0,0,0,0.48);
+      transform: rotate(3deg);
     }
-    .showcase-label {
-      color: rgba(248,242,232,0.56);
-      font-size: 12px;
+    .preview-label {
+      position: absolute;
+      left: 12px;
+      bottom: 10px;
+      z-index: 2;
+      padding: 10px 13px;
+      border-radius: 999px;
+      background: var(--gold);
+      color: #102f52;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      letter-spacing: 0.12em;
-      font-weight: 900;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.28);
     }
-    .showcase-value {
-      margin-top: 8px;
-      font-size: 24px;
-      line-height: 1.05;
-      font-weight: 900;
-      letter-spacing: -0.04em;
-    }
-    .showcase-copy {
-      margin-top: 8px;
-      color: rgba(248,242,232,0.76);
-      line-height: 1.5;
-      font-size: 14px;
-    }
+    .empty-preview { border: 1px dashed rgba(255,255,255,0.18); border-radius: 24px; }
     .feature-grid {
       margin-top: 20px;
       display: grid;
@@ -298,6 +329,7 @@
         padding: 18px;
         border-radius: 22px;
       }
+      .hero-showcase { min-height: 540px; }
       .card {
         align-items: flex-start;
         flex-direction: column;
@@ -334,7 +366,7 @@
         <div class="eyebrow">For Padel Clubs, Communities, and Tournaments</div>
         <h1>Padel results that look ready to share.</h1>
         <p class="sub">Turn a padel match link into a polished recap page, branded scorecards, and ready-to-post story assets without building each update by hand.</p>
-        <div class="hero-actions"><a class="button" href="generate.html">Create Match Report</a><a class="button button-secondary" href="reports/3ou64bhIlELlZjqTaPob8w/report.html">View Latest Report</a><a class="button button-secondary" href="reports/3ou64bhIlELlZjqTaPob8w/stories/index.html">View Story Pack</a></div>
+        <div class="hero-actions"><a class="button" href="generate.html">Create Match Report</a><a class="button button-secondary" href="reports/62Uzj4Bh7eKTcUdqKjcv9g/report.html">View Latest Report</a><a class="button button-secondary" href="reports/62Uzj4Bh7eKTcUdqKjcv9g/stories/index.html">View Story Pack</a></div>
         <div class="audiences">
           <span class="audience-chip">Clubs</span>
           <span class="audience-chip">Community nights</span>
@@ -343,20 +375,25 @@
       </div>
       <aside class="hero-showcase">
         <div class="showcase-kicker">Padel Scorecard</div>
-        <h2 class="showcase-title">A faster way to package every padel result.</h2>
-        <p class="showcase-sub">Keep the momentum high after the last point. Share the full recap, post the story pack, and keep your branding consistent from one session to the next.</p>
-        <div class="showcase-stack">
-          <div class="showcase-card">
-            <div class="showcase-label">Public Report</div>
-            <div class="showcase-value">One clean recap page for the full match</div>
-            <div class="showcase-copy">Good for WhatsApp groups, club recaps, player follow-up, and website archives.</div>
+        <h2 class="showcase-title">One match. A complete visual pack.</h2>
+        <p class="showcase-sub">See the report and social story together—already branded, ranked, and ready to share.</p>
+        
+        <a class="showcase-visual" href="reports/62Uzj4Bh7eKTcUdqKjcv9g/report.html" aria-label="Open latest report">
+          <div class="report-mock">
+            <div class="mock-browser"><span></span><span></span><span></span></div>
+            <div class="mock-kicker">Latest match report</div>
+            <div class="mock-title">Long Weekend</div>
+            <div class="mock-meta">6 players · 12 rounds</div>
+            <div class="mock-podium">
+              <span class="mock-place second">2</span>
+              <span class="mock-place first">1</span>
+              <span class="mock-place third">3</span>
+            </div>
           </div>
-          <div class="showcase-card">
-            <div class="showcase-label">Story Pack</div>
-            <div class="showcase-value">Ranking cards already formatted for social</div>
-            <div class="showcase-copy">No manual resizing, no graphic templates, no extra design pass after the event.</div>
-          </div>
-        </div>
+          <img class="story-poster" src="reports/62Uzj4Bh7eKTcUdqKjcv9g/stories/player-story-adhni.jpg" alt="Latest player story preview">
+          <span class="preview-label">Report + story pack</span>
+        </a>
+        
       </aside>
     </section>
     <section class="feature-grid">
@@ -381,6 +418,19 @@
     </section>
     <section class="grid">
       
+    <article class="card">
+      <div class="card-copy">
+        <div class="report-badge">Published Report</div>
+        <div class="title">Long Weekend</div>
+        <div class="meta">Played 04 Apr 2026 · 6 players · 12 rounds</div>
+      </div>
+      <div class="card-actions">
+        <a class="button button-secondary" href="reports/62Uzj4Bh7eKTcUdqKjcv9g/stories/index.html">Story Pack</a>
+        <a class="button" href="reports/62Uzj4Bh7eKTcUdqKjcv9g/report.html">View Report</a>
+      </div>
+    </article>
+    
+
     <article class="card">
       <div class="card-copy">
         <div class="report-badge">Published Report</div>
@@ -481,19 +531,6 @@
       <div class="card-actions">
         <a class="button button-secondary" href="reports/5gPfD1QD4GikarmjllEeT3/stories/index.html">Story Pack</a>
         <a class="button" href="reports/5gPfD1QD4GikarmjllEeT3/report.html">View Report</a>
-      </div>
-    </article>
-    
-
-    <article class="card">
-      <div class="card-copy">
-        <div class="report-badge">Published Report</div>
-        <div class="title">Long Weekend</div>
-        <div class="meta">Played 04 Apr 2026 · 6 players · 12 rounds</div>
-      </div>
-      <div class="card-actions">
-        <a class="button button-secondary" href="reports/62Uzj4Bh7eKTcUdqKjcv9g/stories/index.html">Story Pack</a>
-        <a class="button" href="reports/62Uzj4Bh7eKTcUdqKjcv9g/report.html">View Report</a>
       </div>
     </article>
     

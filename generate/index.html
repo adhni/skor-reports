@@ -81,7 +81,7 @@
       gap: 20px;
       align-items: stretch;
     }
-    .hero-copy, .hero-panel, .panel, .status-panel, .proof-strip {
+    .hero-copy, .hero-panel, .panel, .preview-panel, .status-panel, .proof-strip {
       border-radius: var(--radius);
       border: 1px solid var(--line);
       box-shadow: var(--shadow);
@@ -224,6 +224,114 @@
       padding: 22px;
       backdrop-filter: blur(14px);
     }
+    .create-intro {
+      padding-bottom: 20px;
+      margin-bottom: 18px;
+      border-bottom: 1px solid rgba(19,17,12,0.08);
+    }
+    .create-title {
+      margin: 0;
+      font-size: clamp(38px, 5vw, 58px);
+      line-height: 0.94;
+      letter-spacing: -0.055em;
+      max-width: 10ch;
+    }
+    .create-copy {
+      margin: 14px 0 0;
+      color: var(--muted);
+      line-height: 1.55;
+      max-width: 56ch;
+    }
+    .create-steps {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 16px;
+    }
+    .create-step {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      min-height: 34px;
+      padding: 0 11px;
+      border-radius: 999px;
+      background: rgba(11,70,120,0.07);
+      color: var(--navy);
+      font-size: 12px;
+      font-weight: 900;
+    }
+    .create-step strong {
+      display: grid;
+      place-items: center;
+      width: 19px;
+      height: 19px;
+      border-radius: 50%;
+      background: var(--navy);
+      color: #fff;
+      font-size: 10px;
+    }
+    .preview-panel {
+      position: sticky;
+      top: 20px;
+      min-height: 700px;
+      padding: 22px;
+      color: #f7f3eb;
+      background:
+        radial-gradient(circle at 20% 12%, rgba(189,223,60,0.13), transparent 25%),
+        linear-gradient(180deg, #142c43 0%, #08131f 100%);
+    }
+    .preview-kicker {
+      color: rgba(255,255,255,0.58);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+    .preview-title { margin: 8px 0 0; font-size: 27px; line-height: 1.02; letter-spacing: -0.04em; }
+    .preview-copy { margin: 10px 0 0; color: rgba(255,255,255,0.68); font-size: 14px; line-height: 1.5; }
+    .preview-stage { position: relative; height: 500px; margin-top: 24px; }
+    .preview-report {
+      position: absolute;
+      inset: 8px 54px auto 0;
+      min-height: 316px;
+      padding: 17px;
+      border-radius: 22px;
+      color: #111;
+      background: #f7f6f2;
+      transform: rotate(-2deg);
+      box-shadow: 0 28px 58px rgba(0,0,0,0.36);
+    }
+    .preview-report-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+    .preview-club { display: flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 900; }
+    .preview-club-mark { width: 26px; height: 26px; border-radius: 8px; background: var(--navy); box-shadow: inset 0 0 0 5px var(--gold); }
+    .preview-date { color: #777; font-size: 9px; font-weight: 800; }
+    .preview-event { margin-top: 24px; font-size: 26px; line-height: 0.96; font-weight: 900; letter-spacing: -0.05em; max-width: 7ch; }
+    .preview-stat-row { display: flex; gap: 6px; margin-top: 11px; }
+    .preview-stat { padding: 6px 8px; border-radius: 999px; background: #e9e8e3; font-size: 8px; font-weight: 900; }
+    .preview-podium { display: flex; align-items: end; justify-content: center; gap: 5px; height: 100px; margin-top: 18px; }
+    .preview-podium span { width: 52px; display: grid; place-items: center; border-radius: 9px 9px 4px 4px; color: #fff; font-weight: 900; background: #45617b; }
+    .preview-podium .one { height: 94px; background: var(--navy); font-size: 28px; }
+    .preview-podium .two { height: 68px; }
+    .preview-podium .three { height: 52px; background: #6e8742; }
+    .preview-story {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      width: 49%;
+      aspect-ratio: 9 / 16;
+      padding: 14px;
+      border-radius: 24px;
+      background:
+        repeating-linear-gradient(90deg, transparent 0, transparent 34px, rgba(255,255,255,0.04) 34px, rgba(255,255,255,0.04) 35px),
+        linear-gradient(180deg, #183852, #07111c);
+      border: 1px solid rgba(255,255,255,0.18);
+      transform: rotate(3deg);
+      box-shadow: 0 28px 58px rgba(0,0,0,0.46);
+    }
+    .preview-story-rank { margin-top: 48px; color: var(--gold); font-size: 11px; font-weight: 900; text-transform: uppercase; }
+    .preview-story-name { margin-top: 5px; font-size: 25px; font-weight: 900; line-height: 0.94; }
+    .preview-story-number { margin-top: 18px; font-size: 88px; line-height: 0.9; font-weight: 900; color: var(--gold); }
+    .preview-story-chart { height: 64px; margin-top: 20px; border-radius: 12px; background: linear-gradient(165deg, transparent 45%, var(--gold) 46%, var(--gold) 49%, transparent 50%); border: 1px solid rgba(255,255,255,0.1); }
     .panel-head {
       display: flex;
       align-items: baseline;
@@ -280,7 +388,7 @@
     .theme-grid {
       margin-top: 10px;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(112px, 1fr));
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 12px;
     }
     .theme-option {
@@ -311,7 +419,24 @@
     .theme-preview {
       display: block;
       aspect-ratio: 1 / 0.92;
+      position: relative;
+      padding: 10px;
     }
+    .theme-mini-report {
+      display: block;
+      height: 100%;
+      padding: 7px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.92);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.2);
+    }
+    .theme-mini-title { display: block; width: 58%; height: 8px; border-radius: 999px; background: #111; }
+    .theme-mini-meta { display: block; width: 38%; height: 4px; margin-top: 5px; border-radius: 999px; background: #aaa; }
+    .theme-mini-podium { display: flex; align-items: end; justify-content: center; gap: 3px; height: 42px; margin-top: 8px; }
+    .theme-mini-podium i { display: block; width: 18px; height: 24px; border-radius: 4px 4px 2px 2px; background: #47627b; }
+    .theme-mini-podium i:nth-child(2) { height: 38px; background: #152f48; }
+    .theme-mini-podium i:nth-child(3) { height: 18px; background: #78924b; }
+    .theme-name { display: block; padding: 9px 10px; color: var(--ink); font-size: 12px; font-weight: 900; text-align: center; }
     .visually-hidden {
       position: absolute;
       width: 1px;
@@ -598,7 +723,7 @@
         flex-direction: column;
         margin-bottom: 12px;
       }
-      .hero-copy, .hero-panel, .panel, .status-panel {
+      .hero-copy, .hero-panel, .panel, .preview-panel, .status-panel {
         border-radius: 22px;
         padding: 16px;
       }
@@ -626,6 +751,7 @@
       .trust-grid {
         display: none;
       }
+      .preview-panel { position: static; min-height: 620px; }
       .panel-head {
         margin-bottom: 14px;
       }
@@ -691,63 +817,17 @@
     </a>
       <a href="../latest-report.html">See Latest Example</a>
     </div>
-    <section class="hero">
-      <div class="hero-copy">
-        <div class="eyebrow">Padel Scorecard</div>
-        <h1>Padel match recaps that look ready to publish.</h1>
-        <p class="sub">Paste a match link, choose a look, add your club logo, and generate a polished padel report plus a story pack in about a minute.</p>
-        <div class="hero-notes">
-          <span class="hero-note">Ready in about 1 minute</span>
-          <span class="hero-note">Custom club logo supported</span>
-          <span class="hero-note">Instagram story pack included</span>
-          <span class="hero-note">Made for padel clubs</span>
-        </div>
-        <div class="hero-audience">
-          <div class="hero-audience-card">
-            <div class="hero-audience-label">Clubs</div>
-            <div class="hero-audience-copy">Keep your weekly match updates looking consistent.</div>
-          </div>
-          <div class="hero-audience-card">
-            <div class="hero-audience-label">Organizers</div>
-            <div class="hero-audience-copy">Turn results into something shareable right after play ends.</div>
-          </div>
-          <div class="hero-audience-card">
-            <div class="hero-audience-label">Communities</div>
-            <div class="hero-audience-copy">Make recaps easier to post, browse, and revisit later.</div>
-          </div>
-        </div>
-      </div>
-      <aside class="hero-panel">
-        <h2>What you get</h2>
-        <p>Create a presentation-ready padel match recap without building graphics from scratch after every event.</p>
-        <ul>
-          <li>A branded report page for the full match</li>
-          <li>A story pack for player rankings and highlights</li>
-          <li>Downloadable JPG story cards for posting</li>
-          <li>A reusable setup for your next event</li>
-        </ul>
-      </aside>
-    </section>
-    <section class="proof-strip">
-      <div class="proof-item">
-        <div class="proof-label">Fast Setup</div>
-        <div class="proof-value">One link, one theme, one logo, and the pack builds itself.</div>
-      </div>
-      <div class="proof-item">
-        <div class="proof-label">Better Output</div>
-        <div class="proof-value">You get a full report page plus social story assets from the same match.</div>
-      </div>
-      <div class="proof-item">
-        <div class="proof-label">Public Ready</div>
-        <div class="proof-value">Share the report link immediately or download the stories for posting.</div>
-      </div>
-    </section>
-
     <section class="grid">
       <section class="panel">
-        <div class="panel-head">
-          <h2 class="panel-title">Create Match Report</h2>
-          <div class="panel-note">Paste the link, brand it, and publish with Padel Scorecard.</div>
+        <div class="create-intro">
+          <div class="eyebrow">Create Match Report</div>
+          <h1 class="create-title">Your match, ready to publish.</h1>
+          <p class="create-copy">Paste the Skor link, choose a visual direction, and get a branded report plus player stories in about a minute.</p>
+          <div class="create-steps">
+            <span class="create-step"><strong>1</strong> Match link</span>
+            <span class="create-step"><strong>2</strong> Look + logo</span>
+            <span class="create-step"><strong>3</strong> Publish</span>
+          </div>
         </div>
         
         <form id="generate-form" enctype="multipart/form-data">
@@ -759,12 +839,12 @@
           <div class="field">
             <label>Choose A Look</label>
             <div class="theme-grid">
-              <label class="theme-option" title="Obsidian"><input class="theme-input" type="radio" name="theme_id" value="obsidian" aria-label="Obsidian"><span class="theme-card"><span class="theme-preview" style="background: radial-gradient(circle at 18% 20%, rgba(255,255,255,0.08), transparent 24%), linear-gradient(180deg, #141414 0%, #0a0a0a 46%, #030303 100%);"></span><span class="visually-hidden">Obsidian</span></span></label>
-<label class="theme-option" title="Forest"><input class="theme-input" type="radio" name="theme_id" value="forest" aria-label="Forest"><span class="theme-card"><span class="theme-preview" style="background: radial-gradient(circle at 18% 20%, rgba(112,191,143,0.22), transparent 24%), linear-gradient(180deg, #17412d 0%, #0b241a 46%, #04110c 100%);"></span><span class="visually-hidden">Forest</span></span></label>
-<label class="theme-option" title="Cobalt"><input class="theme-input" type="radio" name="theme_id" value="cobalt" aria-label="Cobalt" checked><span class="theme-card"><span class="theme-preview" style="background: radial-gradient(circle at 18% 20%, rgba(121,191,255,0.20), transparent 24%), linear-gradient(180deg, #1a3b68 0%, #0d2038 46%, #05101c 100%);"></span><span class="visually-hidden">Cobalt</span></span></label>
-<label class="theme-option" title="Sunset"><input class="theme-input" type="radio" name="theme_id" value="sunset" aria-label="Sunset"><span class="theme-card"><span class="theme-preview" style="background: radial-gradient(circle at 18% 20%, rgba(255,180,124,0.22), transparent 24%), linear-gradient(180deg, #5a221c 0%, #2b100d 46%, #180807 100%);"></span><span class="visually-hidden">Sunset</span></span></label>
-<label class="theme-option" title="Sand"><input class="theme-input" type="radio" name="theme_id" value="sand" aria-label="Sand"><span class="theme-card"><span class="theme-preview" style="background: radial-gradient(circle at 18% 20%, rgba(235,211,167,0.22), transparent 24%), linear-gradient(180deg, #5f4a28 0%, #302313 46%, #17110a 100%);"></span><span class="visually-hidden">Sand</span></span></label>
-<label class="theme-option" title="Rose"><input class="theme-input" type="radio" name="theme_id" value="rose" aria-label="Rose"><span class="theme-card"><span class="theme-preview" style="background: radial-gradient(circle at 18% 20%, rgba(255,176,220,0.24), transparent 24%), linear-gradient(180deg, #6a2950 0%, #321127 46%, #180812 100%);"></span><span class="visually-hidden">Rose</span></span></label>
+              <label class="theme-option" title="Obsidian"><input class="theme-input" type="radio" name="theme_id" value="obsidian" aria-label="Obsidian"><span class="theme-card"><span class="theme-preview" style="background: radial-gradient(circle at 18% 20%, rgba(255,255,255,0.08), transparent 24%), linear-gradient(180deg, #141414 0%, #0a0a0a 46%, #030303 100%);"><span class="theme-mini-report"><span class="theme-mini-title"></span><span class="theme-mini-meta"></span><span class="theme-mini-podium"><i></i><i></i><i></i></span></span></span><span class="theme-name">Obsidian</span></span></label>
+<label class="theme-option" title="Forest"><input class="theme-input" type="radio" name="theme_id" value="forest" aria-label="Forest"><span class="theme-card"><span class="theme-preview" style="background: radial-gradient(circle at 18% 20%, rgba(112,191,143,0.22), transparent 24%), linear-gradient(180deg, #17412d 0%, #0b241a 46%, #04110c 100%);"><span class="theme-mini-report"><span class="theme-mini-title"></span><span class="theme-mini-meta"></span><span class="theme-mini-podium"><i></i><i></i><i></i></span></span></span><span class="theme-name">Forest</span></span></label>
+<label class="theme-option" title="Cobalt"><input class="theme-input" type="radio" name="theme_id" value="cobalt" aria-label="Cobalt" checked><span class="theme-card"><span class="theme-preview" style="background: radial-gradient(circle at 18% 20%, rgba(121,191,255,0.20), transparent 24%), linear-gradient(180deg, #1a3b68 0%, #0d2038 46%, #05101c 100%);"><span class="theme-mini-report"><span class="theme-mini-title"></span><span class="theme-mini-meta"></span><span class="theme-mini-podium"><i></i><i></i><i></i></span></span></span><span class="theme-name">Cobalt</span></span></label>
+<label class="theme-option" title="Sunset"><input class="theme-input" type="radio" name="theme_id" value="sunset" aria-label="Sunset"><span class="theme-card"><span class="theme-preview" style="background: radial-gradient(circle at 18% 20%, rgba(255,180,124,0.22), transparent 24%), linear-gradient(180deg, #5a221c 0%, #2b100d 46%, #180807 100%);"><span class="theme-mini-report"><span class="theme-mini-title"></span><span class="theme-mini-meta"></span><span class="theme-mini-podium"><i></i><i></i><i></i></span></span></span><span class="theme-name">Sunset</span></span></label>
+<label class="theme-option" title="Sand"><input class="theme-input" type="radio" name="theme_id" value="sand" aria-label="Sand"><span class="theme-card"><span class="theme-preview" style="background: radial-gradient(circle at 18% 20%, rgba(235,211,167,0.22), transparent 24%), linear-gradient(180deg, #5f4a28 0%, #302313 46%, #17110a 100%);"><span class="theme-mini-report"><span class="theme-mini-title"></span><span class="theme-mini-meta"></span><span class="theme-mini-podium"><i></i><i></i><i></i></span></span></span><span class="theme-name">Sand</span></span></label>
+<label class="theme-option" title="Rose"><input class="theme-input" type="radio" name="theme_id" value="rose" aria-label="Rose"><span class="theme-card"><span class="theme-preview" style="background: radial-gradient(circle at 18% 20%, rgba(255,176,220,0.24), transparent 24%), linear-gradient(180deg, #6a2950 0%, #321127 46%, #180812 100%);"><span class="theme-mini-report"><span class="theme-mini-title"></span><span class="theme-mini-meta"></span><span class="theme-mini-podium"><i></i><i></i><i></i></span></span></span><span class="theme-name">Rose</span></span></label>
             </div>
           </div>
 
@@ -807,6 +887,29 @@
         </form>
       </section>
 
+      <aside class="preview-panel" id="preview-panel">
+        <div class="preview-kicker">Live-style preview</div>
+        <h2 class="preview-title">One match becomes a complete visual pack.</h2>
+        <p class="preview-copy">Your chosen theme and club logo carry through the report and every player story.</p>
+        <div class="preview-stage" aria-hidden="true">
+          <div class="preview-report">
+            <div class="preview-report-head">
+              <div class="preview-club"><span class="preview-club-mark"></span> Your Club</div>
+              <div class="preview-date">MATCH NIGHT</div>
+            </div>
+            <div class="preview-event">Friday Padel League</div>
+            <div class="preview-stat-row"><span class="preview-stat">12 players</span><span class="preview-stat">9 rounds</span></div>
+            <div class="preview-podium"><span class="two">2</span><span class="one">1</span><span class="three">3</span></div>
+          </div>
+          <div class="preview-story">
+            <div class="preview-story-rank">Gold finish</div>
+            <div class="preview-story-name">Player Story</div>
+            <div class="preview-story-number">1</div>
+            <div class="preview-story-chart"></div>
+          </div>
+        </div>
+      </aside>
+
       <aside class="status-panel" id="status-panel" hidden>
         <p class="status-kicker">Live Progress</p>
         <div class="status-badge" id="status-badge">In Progress</div>
@@ -831,6 +934,7 @@
     const form = document.getElementById("generate-form");
     const submitButton = document.getElementById("submit-button");
     const statusPanel = document.getElementById("status-panel");
+    const previewPanel = document.getElementById("preview-panel");
     const statusBadge = document.getElementById("status-badge");
     const statusTitle = document.getElementById("status-title");
     const statusCopy = document.getElementById("status-copy");
@@ -943,6 +1047,7 @@
     }
 
     function renderStatus(title, copy, actionsHtml = "", metaHtml = "", progressStep = "build", badgeLabel = "In Progress", highlightTitle = "What happens next", highlightCopy = "Once you submit, the report build starts automatically and this panel updates until the final pages are ready.") {
+      previewPanel.hidden = true;
       statusPanel.hidden = false;
       statusBadge.textContent = badgeLabel;
       statusTitle.textContent = title;
@@ -1123,6 +1228,7 @@
       clearActiveRequest();
       form.reset();
       statusPanel.hidden = true;
+      previewPanel.hidden = false;
       technicalDetails.hidden = true;
       statusMeta.innerHTML = "";
       statusActions.innerHTML = "";
