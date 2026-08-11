@@ -1,14 +1,11 @@
 {
-  "input": "https://the.skorapp.id/game?id=3krE8OXdV4zgHqGGKnjfjN",
-  "source": "share_link",
-  "share_token": "3krE8OXdV4zgHqGGKnjfjN",
-  "game_id": 86805,
+  "game_key": "41898a438bf5f26e6782",
   "folder_name": "3krE8OXdV4zgHqGGKnjfjN",
   "public_report_base_url": "https://adhni.github.io/skor-reports/reports",
   "branding": {
     "theme_id": "rose",
     "theme_label": "Rose",
-    "logo_filename": "logo.png"
+    "logo_filename": "logo.jpg"
   },
-  "generated_at_utc": "2026-03-14T01:44:36.658763+00:00"
+  "generated_at_utc": "2026-08-11T13:43:54.319009+00:00"
 }
