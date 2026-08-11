@@ -844,6 +844,8 @@
     const logoInput = document.getElementById("logo");
     const logoPreview = document.getElementById("logo-preview");
     const defaultThemeId = "cobalt";
+    const activeRequestStorageKey = "skor-report-active-request";
+    let pollGeneration = 0;
 
     function escapeHtml(value) {
       return String(value)
@@ -855,6 +857,65 @@
 
     function requestStatusUrl(requestId) {
       return new URL(`../requests/${encodeURIComponent(requestId)}.json`, window.location.href).toString();
+    }
+
+    function safeLinkUrl(value) {
+      try {
+        const url = new URL(String(value), window.location.href);
+        return url.protocol === "https:" || url.protocol === "http:" ? url.toString() : "";
+      } catch (error) {
+        return "";
+      }
+    }
+
+    function persistActiveRequest(requestId, context) {
+      const value = {
+        requestId,
+        hasLogo: Boolean(context.hasLogo),
+        startedAt: Number(context.startedAt) || Date.now(),
+      };
+      try {
+        window.localStorage.setItem(activeRequestStorageKey, JSON.stringify(value));
+      } catch (error) {
+        // URL state below still makes refresh recovery work when storage is unavailable.
+      }
+      const url = new URL(window.location.href);
+      url.searchParams.set("request", requestId);
+      window.history.replaceState(null, "", url);
+    }
+
+    function readActiveRequest() {
+      const requestIdFromUrl = new URL(window.location.href).searchParams.get("request") || "";
+      let stored = null;
+      try {
+        stored = JSON.parse(window.localStorage.getItem(activeRequestStorageKey) || "null");
+      } catch (error) {
+        stored = null;
+      }
+      const requestId = requestIdFromUrl || (stored && stored.requestId) || "";
+      if (!/^[A-Za-z0-9._-]+$/.test(requestId)) {
+        return null;
+      }
+      const matchesStoredRequest = stored && stored.requestId === requestId;
+      return {
+        requestId,
+        context: {
+          hasLogo: Boolean(matchesStoredRequest && stored.hasLogo),
+          startedAt: matchesStoredRequest ? Number(stored.startedAt) || Date.now() : Date.now(),
+          pollStartedAt: Date.now(),
+        },
+      };
+    }
+
+    function clearActiveRequest() {
+      try {
+        window.localStorage.removeItem(activeRequestStorageKey);
+      } catch (error) {
+        // Ignore storage restrictions.
+      }
+      const url = new URL(window.location.href);
+      url.searchParams.delete("request");
+      window.history.replaceState(null, "", url);
     }
 
     function renderProgress(step) {
@@ -926,19 +987,23 @@
         lines.push(`Theme: <strong>${escapeHtml(data.theme_label)}</strong>`);
       }
       if (statusUrl) {
-        lines.push(`Status JSON: <a href="${escapeHtml(statusUrl)}">${escapeHtml(statusUrl)}</a>`);
+        const safeStatusUrl = safeLinkUrl(statusUrl);
+        if (safeStatusUrl) {
+          lines.push(`Status JSON: <a href="${escapeHtml(safeStatusUrl)}">${escapeHtml(safeStatusUrl)}</a>`);
+        }
       }
       return lines.join("<br>");
     }
 
     function renderRequestActions(data) {
       const actions = [];
-      if (data.report_url) {
-        actions.push(`<a class="button" href="${escapeHtml(data.report_url)}">Open Report</a>`);
+      const reportUrl = safeLinkUrl(data.report_url || "");
+      const storiesUrl = safeLinkUrl(data.stories_url || "");
+      if (reportUrl) {
+        actions.push(`<a class="button" href="${escapeHtml(reportUrl)}">Open Report</a>`);
       }
-      if (data.stories_url) {
-        actions.push(`<a class="button secondary" href="${escapeHtml(data.stories_url)}">Open Story Pack</a>`);
-        actions.push(`<a class="button secondary" href="${escapeHtml(data.stories_url)}">Download Story Images</a>`);
+      if (storiesUrl) {
+        actions.push(`<a class="button secondary" href="${escapeHtml(storiesUrl)}">Open Story Pack</a>`);
       }
       actions.push('<button class="button secondary" type="button" data-reset>Create Another</button>');
       return actions.join("");
@@ -991,7 +1056,9 @@
 
     async function pollRequest(requestId, initialStatusUrl, context) {
       const statusUrl = initialStatusUrl || requestStatusUrl(requestId);
-      while (Date.now() - context.startedAt < 15 * 60 * 1000) {
+      const generation = ++pollGeneration;
+      const pollStartedAt = context.pollStartedAt || Date.now();
+      while (generation === pollGeneration && Date.now() - pollStartedAt < 15 * 60 * 1000) {
         try {
           const response = await fetch(statusUrl, { cache: "no-store" });
           if (response.status === 404) {
@@ -999,7 +1066,7 @@
               context.hasLogo ? "Uploading your logo" : "Getting things ready",
               context.hasLogo ? "Your upload was received. Starting the report build now." : "Your match link was received. Starting the report build now.",
               "",
-              `Request ID: <code>${escapeHtml(requestId)}</code><br>Status JSON: <a href="${escapeHtml(statusUrl)}">${escapeHtml(statusUrl)}</a>`,
+              renderRequestDetails({ request_id: requestId }, statusUrl),
               context.hasLogo ? "upload" : "build",
               "In Progress",
               "Queue confirmed",
@@ -1036,6 +1103,9 @@
         }
         await new Promise((resolve) => setTimeout(resolve, 4000));
       }
+      if (generation !== pollGeneration) {
+        return;
+      }
       renderStatus(
         "Still working on it",
         "This one is taking longer than expected. Give it another minute and refresh this page.",
@@ -1049,6 +1119,8 @@
     }
 
     function resetExperience() {
+      pollGeneration += 1;
+      clearActiveRequest();
       form.reset();
       statusPanel.hidden = true;
       technicalDetails.hidden = true;
@@ -1081,6 +1153,21 @@
 
     resetLogoPreview();
 
+    const activeRequest = readActiveRequest();
+    if (activeRequest) {
+      renderStatus(
+        "Checking your report",
+        "Restoring the latest build status after the page was reopened.",
+        "",
+        `Request ID: <code>${escapeHtml(activeRequest.requestId)}</code>`,
+        "build",
+        "In Progress",
+        "Request restored",
+        "This page will keep checking until the report and story pack are ready."
+      );
+      pollRequest(activeRequest.requestId, requestStatusUrl(activeRequest.requestId), activeRequest.context);
+    }
+
     form.addEventListener("submit", async (event) => {
       event.preventDefault();
       const inputValue = form.input_value.value.trim();
@@ -1099,6 +1186,7 @@
       const context = {
         hasLogo: Boolean(logoFile),
         startedAt: Date.now(),
+        pollStartedAt: Date.now(),
       };
       renderStatus(
         logoFile ? "Uploading your logo" : "Starting your report",
@@ -1132,11 +1220,12 @@
 
         const requestId = data.request_id;
         const statusUrl = data.status_url || requestStatusUrl(requestId);
+        persistActiveRequest(requestId, context);
         renderStatus(
           "Building your report",
           "Your request was accepted. We are now creating the report and story pack.",
           "",
-          `Request ID: <code>${escapeHtml(requestId)}</code><br>Status JSON: <a href="${escapeHtml(statusUrl)}">${escapeHtml(statusUrl)}</a>`,
+          renderRequestDetails({ request_id: requestId }, statusUrl),
           logoFile ? "upload" : "build",
           "In Progress",
           "Build confirmed",
