@@ -4,6 +4,16 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>BOC End of Year | Skor Report</title>
+  <meta name="description" content="BOC End of Year: Areza finished first across 8 rounds.">
+  <meta property="og:title" content="BOC End of Year | Padel Scorecard">
+  <meta property="og:description" content="BOC End of Year: Areza finished first across 8 rounds.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://adhni.github.io/skor-reports/reports/3ou64bhIlELlZjqTaPob8w/report.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta property="og:image" content="https://adhni.github.io/skor-reports/reports/3ou64bhIlELlZjqTaPob8w/stories/player-story-areza.jpg">
+  <meta name="twitter:image" content="https://adhni.github.io/skor-reports/reports/3ou64bhIlELlZjqTaPob8w/stories/player-story-areza.jpg">
+  <link rel="canonical" href="https://adhni.github.io/skor-reports/reports/3ou64bhIlELlZjqTaPob8w/report.html">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230b4678'/%3E%3Ccircle cx='42' cy='16' r='8' fill='%23bddf3c'/%3E%3Cpath d='M18 52V37c0-6 4-10 10-10h6c6 0 10 4 10 10v15' fill='none' stroke='white' stroke-width='6' stroke-linecap='round'/%3E%3C/svg%3E">
   <style>
     :root {
       --bg: #05101c;
@@ -27,6 +37,7 @@
       --hero-action-border: rgba(158,211,255,0.2);
     }
     * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
       margin: 0;
       font-family: "Avenir Next", "Helvetica Neue", sans-serif;
@@ -149,10 +160,65 @@
       font-weight: 800;
       letter-spacing: 0.02em;
       text-decoration: none;
+      font-family: inherit;
+      cursor: pointer;
+      transition: transform 140ms ease, background 140ms ease, border-color 140ms ease;
     }
     .hero-action:hover {
       background: var(--hero-action-hover);
+      transform: translateY(-2px);
     }
+    .hero-action:active { transform: translateY(0) scale(0.98); }
+    .hero-action-primary { background: #bddf3c; color: #10233a; border-color: #bddf3c; }
+    .hero-action-primary:hover { background: #d2ef64; }
+    .section-nav {
+      position: sticky;
+      top: 10px;
+      z-index: 20;
+      display: flex;
+      gap: 8px;
+      margin-top: 16px;
+      padding: 8px;
+      overflow-x: auto;
+      border-radius: 999px;
+      background: rgba(5,10,16,0.82);
+      border: 1px solid rgba(255,255,255,0.1);
+      backdrop-filter: blur(16px);
+      scrollbar-width: none;
+    }
+    .section-nav::-webkit-scrollbar { display: none; }
+    .section-nav a {
+      flex: 0 0 auto;
+      min-height: 38px;
+      display: inline-flex;
+      align-items: center;
+      padding: 0 14px;
+      border-radius: 999px;
+      color: rgba(255,255,255,0.76);
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 900;
+    }
+    .section-nav a:hover { background: rgba(255,255,255,0.1); color: #fff; }
+    .share-toast {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      z-index: 50;
+      max-width: 320px;
+      padding: 13px 16px;
+      border-radius: 16px;
+      background: #bddf3c;
+      color: #10233a;
+      font-size: 13px;
+      font-weight: 900;
+      box-shadow: 0 18px 44px rgba(0,0,0,0.3);
+      opacity: 0;
+      transform: translateY(12px);
+      pointer-events: none;
+      transition: opacity 160ms ease, transform 160ms ease;
+    }
+    .share-toast.visible { opacity: 1; transform: translateY(0); }
     .chart-legend {
       grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
       margin-top: 18px;
@@ -187,7 +253,12 @@
     }
     .section {
       margin-top: 28px;
+      scroll-margin-top: 76px;
+      animation: section-rise 420ms ease both;
     }
+    .section:nth-of-type(3) { animation-delay: 40ms; }
+    .section:nth-of-type(4) { animation-delay: 80ms; }
+    @keyframes section-rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
     .section-head {
       display: flex;
       flex-wrap: wrap;
@@ -618,7 +689,9 @@
       overflow: hidden;
       min-height: 220px;
       color: var(--ink);
+      transition: transform 160ms ease, box-shadow 160ms ease;
     }
+    .podium-card:hover { transform: translateY(-4px); box-shadow: 0 18px 34px rgba(0,0,0,0.16); }
     .podium-card.place-1 {
       background: linear-gradient(180deg, #fff2a8, #d6a409);
       min-height: 290px;
@@ -656,6 +729,10 @@
       font-size: 14px;
       line-height: 1.5;
     }
+    button:focus-visible, a:focus-visible { outline: 3px solid #bddf3c; outline-offset: 3px; }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+    }
     @media (max-width: 760px) {
       .hero-top {
         align-items: flex-start;
@@ -685,14 +762,19 @@
         align-items: stretch;
       }
       .podium-stage {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 8px;
       }
-      .podium-card,
-      .podium-card.place-1,
-      .podium-card.place-2,
-      .podium-card.place-3 {
-        min-height: 0;
-      }
+      .podium-card { padding: 12px 10px; border-radius: 18px 18px 14px 14px; min-width: 0; }
+      .podium-card.place-1 { min-height: 188px; }
+      .podium-card.place-2 { min-height: 164px; }
+      .podium-card.place-3 { min-height: 150px; }
+      .podium-rank { font-size: 38px; }
+      .podium-name { margin-top: 8px; font-size: 15px; overflow-wrap: anywhere; }
+      .podium-meta { margin-top: 8px; font-size: 11px; line-height: 1.35; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+      .podium-place { font-size: 9px; }
+      .section-nav { margin-inline: -4px; }
+      .share-toast { left: 16px; right: 16px; bottom: 16px; max-width: none; text-align: center; }
     }
   </style>
 </head>
@@ -715,10 +797,19 @@
       <div class="hero-tags">
         <span class="hero-tag">5 players</span><span class="hero-tag">8 rounds</span><span class="hero-tag">1 courts</span><span class="hero-tag">31 Dec 2025</span>
       </div>
-      <div class="hero-actions"><a class="hero-action" href="player-story-areza.html">Featured player story: Areza</a><a class="hero-action" href="stories/index.html">Story image gallery</a></div>
+      <div class="hero-actions"><a class="hero-action" href="player-story-areza.html">Featured player story: Areza</a><a class="hero-action" href="stories/index.html">Download story pack</a><button class="hero-action" type="button" data-copy-report>Copy report link</button><button class="hero-action hero-action-primary" type="button" data-share-report>Share report</button></div>
     </section>
 
-    <section class="section">
+    <nav class="section-nav" aria-label="Report sections">
+      <a href="#podium">Podium</a>
+      <a href="#leaderboard">Leaderboard</a>
+      <a href="#stories">Stories</a>
+      <a href="#rank-flow">Rank flow</a>
+      <a href="#rounds">Rounds</a>
+    </nav>
+    <div class="share-toast" id="share-toast" role="status" aria-live="polite"></div>
+
+    <section class="section" id="podium">
       <div class="section-head">
         <h2>Podium</h2>
         <div class="section-note">Top 3 final finishers.</div>
@@ -730,7 +821,7 @@
       </div>
     </section>
 
-    <section class="section">
+    <section class="section" id="leaderboard">
       <div class="section-head">
         <h2>Final Leaderboard</h2>
         <div class="section-note">Final positions from the game leaderboard.</div>
@@ -766,7 +857,7 @@
       </div>
     </section>
 
-    <section class="section">
+    <section class="section" id="stories">
       <div class="section-head">
         <h2>Player Stories</h2>
         <div class="section-note">Open any player card or browse the complete social pack.</div>
@@ -780,7 +871,7 @@
       </div>
     </section>
 
-    <section class="section">
+    <section class="section" id="rank-flow">
       <div class="chart-card">
         <div class="section-head">
           <h2>Rank Progress By Round</h2>
@@ -808,7 +899,7 @@
       </div>
     </section>
 
-    <section class="section">
+    <section class="section" id="rounds">
       <div class="section-head">
         <h2>Round Results</h2>
         <div class="section-note">Bench players are shown because bench points affect the standings.</div>
@@ -922,7 +1013,9 @@
       }
 
       function render() {
-        const rankTicks = Array.from({ length: playerCount }, (_, index) => index + 1);
+        const rankTicks = playerCount <= 12
+          ? Array.from({ length: playerCount }, (_, index) => index + 1)
+          : [...new Set([1, playerCount, ...Array.from({ length: Math.floor(playerCount / 5) }, (_, index) => (index + 1) * 5)])].sort((a, b) => a - b);
 
         const horizontalGrid = rankTicks.map((rank) => `
           <g>
@@ -1032,6 +1125,52 @@
       });
 
       render();
+    })();
+
+    (() => {
+      const copyButton = document.querySelector("[data-copy-report]");
+      const shareButton = document.querySelector("[data-share-report]");
+      const toast = document.getElementById("share-toast");
+      let toastTimer = null;
+
+      function showToast(message) {
+        toast.textContent = message;
+        toast.classList.add("visible");
+        window.clearTimeout(toastTimer);
+        toastTimer = window.setTimeout(() => toast.classList.remove("visible"), 2200);
+      }
+
+      async function copyReportLink() {
+        const url = window.location.href.split("#")[0];
+        try {
+          await navigator.clipboard.writeText(url);
+        } catch (error) {
+          const field = document.createElement("textarea");
+          field.value = url;
+          field.setAttribute("readonly", "");
+          field.style.position = "fixed";
+          field.style.opacity = "0";
+          document.body.appendChild(field);
+          field.select();
+          document.execCommand("copy");
+          field.remove();
+        }
+        showToast("Report link copied");
+      }
+
+      copyButton.addEventListener("click", copyReportLink);
+      shareButton.addEventListener("click", async () => {
+        const shareData = { title: "BOC End of Year", text: "BOC End of Year: Areza finished first across 8 rounds.", url: window.location.href.split("#")[0] };
+        if (navigator.share) {
+          try {
+            await navigator.share(shareData);
+            return;
+          } catch (error) {
+            if (error && error.name === "AbortError") return;
+          }
+        }
+        await copyReportLink();
+      });
     })();
   </script>
 </body>

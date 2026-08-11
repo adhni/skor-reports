@@ -4,6 +4,16 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>BOC End of Year Story Images</title>
+  <meta name="description" content="Download 5 player story cards from BOC End of Year.">
+  <meta property="og:title" content="BOC End of Year | Player Story Pack">
+  <meta property="og:description" content="Download 5 player story cards from BOC End of Year.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://adhni.github.io/skor-reports/reports/3ou64bhIlELlZjqTaPob8w/stories/">
+  <meta property="og:image" content="https://adhni.github.io/skor-reports/reports/3ou64bhIlELlZjqTaPob8w/stories/player-story-areza.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://adhni.github.io/skor-reports/reports/3ou64bhIlELlZjqTaPob8w/stories/player-story-areza.jpg">
+  <link rel="canonical" href="https://adhni.github.io/skor-reports/reports/3ou64bhIlELlZjqTaPob8w/stories/">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230b4678'/%3E%3Ccircle cx='42' cy='16' r='8' fill='%23bddf3c'/%3E%3Cpath d='M18 52V37c0-6 4-10 10-10h6c6 0 10 4 10 10v15' fill='none' stroke='white' stroke-width='6' stroke-linecap='round'/%3E%3C/svg%3E">
   <style>
     :root {
       --bg: #040d17;
@@ -76,7 +86,14 @@
       text-decoration: none;
       font-weight: 700;
       background: rgba(255, 255, 255, 0.05);
+      font-family: inherit;
+      cursor: pointer;
+      transition: transform 140ms ease, background 140ms ease;
     }
+    .hero-action:hover { transform: translateY(-2px); background: rgba(255,255,255,0.12); }
+    .hero-action:active { transform: translateY(0) scale(0.98); }
+    .hero-action-primary { background: #bddf3c; color: #10233a; border-color: #bddf3c; }
+    .hero-action-primary:hover { background: #d2ef64; }
     .section-note {
       margin: 18px 0 0;
       font-size: 17px;
@@ -94,7 +111,9 @@
       border: 1px solid var(--line);
       background: var(--panel);
       box-shadow: 0 18px 40px rgba(0, 0, 0, 0.2);
+      transition: transform 180ms ease, box-shadow 180ms ease;
     }
+    .card:hover { transform: translateY(-5px); box-shadow: 0 26px 52px rgba(0,0,0,0.28); }
     .preview {
       position: relative;
       display: block;
@@ -162,8 +181,10 @@
       min-height: 42px;
       border-radius: 999px;
       text-decoration: none;
-      font-size: 15px;
+      padding: 0 10px;
+      font-size: 13px;
       font-weight: 800;
+      white-space: nowrap;
     }
     .card-action.primary {
       background: var(--accent);
@@ -173,6 +194,27 @@
       border: 1px solid var(--line);
       color: var(--text);
       background: rgba(255, 255, 255, 0.04);
+    }
+    .download-toast {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      z-index: 30;
+      padding: 13px 16px;
+      border-radius: 16px;
+      background: #bddf3c;
+      color: #10233a;
+      font-size: 13px;
+      font-weight: 900;
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 160ms ease, transform 160ms ease;
+      pointer-events: none;
+    }
+    .download-toast.visible { opacity: 1; transform: translateY(0); }
+    button:focus-visible, a:focus-visible { outline: 3px solid #bddf3c; outline-offset: 3px; }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
     }
     @media (max-width: 720px) {
       .hero {
@@ -199,16 +241,56 @@
       </div>
       <div class="hero-actions">
         <a class="hero-action" href="../report.html">Open main report</a>
+        <button class="hero-action" type="button" data-copy-gallery>Copy gallery link</button>
+        <button class="hero-action hero-action-primary" type="button" data-download-all>Download all JPGs</button>
       </div>
     </section>
 
     <section class="grid">
-      <article class="card"><a class="preview" href="player-story-areza.jpg"><span class="rank-pill">#1</span><img src="player-story-areza.jpg" alt="Areza story image" loading="lazy"></a><div class="card-body"><div class="card-name">Areza</div><div class="card-meta">4W-3L · 19 pts</div><div class="card-actions"><a class="card-action primary" href="../report.html">Open scorecard</a><a class="card-action secondary" href="player-story-areza.jpg" download>Download JPG</a></div></div></article>
-<article class="card"><a class="preview" href="player-story-kareem-mulachela.jpg"><span class="rank-pill">#2</span><img src="player-story-kareem-mulachela.jpg" alt="Kareem Mulachela story image" loading="lazy"></a><div class="card-body"><div class="card-name">Kareem Mulachela</div><div class="card-meta">3W-4L · 18 pts</div><div class="card-actions"><a class="card-action primary" href="../report.html">Open scorecard</a><a class="card-action secondary" href="player-story-kareem-mulachela.jpg" download>Download JPG</a></div></div></article>
-<article class="card"><a class="preview" href="player-story-toha-as.jpg"><span class="rank-pill">#3</span><img src="player-story-toha-as.jpg" alt="Toha As story image" loading="lazy"></a><div class="card-body"><div class="card-name">Toha As</div><div class="card-meta">5W-1L · 17 pts</div><div class="card-actions"><a class="card-action primary" href="../report.html">Open scorecard</a><a class="card-action secondary" href="player-story-toha-as.jpg" download>Download JPG</a></div></div></article>
-<article class="card"><a class="preview" href="player-story-adhni.jpg"><span class="rank-pill">#4</span><img src="player-story-adhni.jpg" alt="adhni story image" loading="lazy"></a><div class="card-body"><div class="card-name">adhni</div><div class="card-meta">3W-3L · 14 pts</div><div class="card-actions"><a class="card-action primary" href="../report.html">Open scorecard</a><a class="card-action secondary" href="player-story-adhni.jpg" download>Download JPG</a></div></div></article>
-<article class="card"><a class="preview" href="player-story-mahdi-kemal-assegaf.jpg"><span class="rank-pill">#5</span><img src="player-story-mahdi-kemal-assegaf.jpg" alt="Mahdi Kemal Assegaf story image" loading="lazy"></a><div class="card-body"><div class="card-name">Mahdi Kemal Assegaf</div><div class="card-meta">1W-5L · 12 pts</div><div class="card-actions"><a class="card-action primary" href="../report.html">Open scorecard</a><a class="card-action secondary" href="player-story-mahdi-kemal-assegaf.jpg" download>Download JPG</a></div></div></article>
+      <article class="card"><a class="preview" href="player-story-areza.jpg"><span class="rank-pill">#1</span><img src="player-story-areza.jpg" alt="Areza story image" loading="lazy"></a><div class="card-body"><div class="card-name">Areza</div><div class="card-meta">4W-3L · 19 pts</div><div class="card-actions"><a class="card-action primary" href="../report.html">Open report</a><a class="card-action secondary" href="player-story-areza.jpg" download>Download JPG</a></div></div></article>
+<article class="card"><a class="preview" href="player-story-kareem-mulachela.jpg"><span class="rank-pill">#2</span><img src="player-story-kareem-mulachela.jpg" alt="Kareem Mulachela story image" loading="lazy"></a><div class="card-body"><div class="card-name">Kareem Mulachela</div><div class="card-meta">3W-4L · 18 pts</div><div class="card-actions"><a class="card-action primary" href="../report.html">Open report</a><a class="card-action secondary" href="player-story-kareem-mulachela.jpg" download>Download JPG</a></div></div></article>
+<article class="card"><a class="preview" href="player-story-toha-as.jpg"><span class="rank-pill">#3</span><img src="player-story-toha-as.jpg" alt="Toha As story image" loading="lazy"></a><div class="card-body"><div class="card-name">Toha As</div><div class="card-meta">5W-1L · 17 pts</div><div class="card-actions"><a class="card-action primary" href="../report.html">Open report</a><a class="card-action secondary" href="player-story-toha-as.jpg" download>Download JPG</a></div></div></article>
+<article class="card"><a class="preview" href="player-story-adhni.jpg"><span class="rank-pill">#4</span><img src="player-story-adhni.jpg" alt="adhni story image" loading="lazy"></a><div class="card-body"><div class="card-name">adhni</div><div class="card-meta">3W-3L · 14 pts</div><div class="card-actions"><a class="card-action primary" href="../report.html">Open report</a><a class="card-action secondary" href="player-story-adhni.jpg" download>Download JPG</a></div></div></article>
+<article class="card"><a class="preview" href="player-story-mahdi-kemal-assegaf.jpg"><span class="rank-pill">#5</span><img src="player-story-mahdi-kemal-assegaf.jpg" alt="Mahdi Kemal Assegaf story image" loading="lazy"></a><div class="card-body"><div class="card-name">Mahdi Kemal Assegaf</div><div class="card-meta">1W-5L · 12 pts</div><div class="card-actions"><a class="card-action primary" href="../report.html">Open report</a><a class="card-action secondary" href="player-story-mahdi-kemal-assegaf.jpg" download>Download JPG</a></div></div></article>
     </section>
+    <div class="download-toast" id="download-toast" role="status" aria-live="polite"></div>
   </main>
+  <script>
+    (() => {
+      const imageHrefs = ["player-story-areza.jpg","player-story-kareem-mulachela.jpg","player-story-toha-as.jpg","player-story-adhni.jpg","player-story-mahdi-kemal-assegaf.jpg"];
+      const toast = document.getElementById("download-toast");
+      let toastTimer = null;
+      const showToast = (message) => {
+        toast.textContent = message;
+        toast.classList.add("visible");
+        window.clearTimeout(toastTimer);
+        toastTimer = window.setTimeout(() => toast.classList.remove("visible"), 2400);
+      };
+      document.querySelector("[data-copy-gallery]").addEventListener("click", async () => {
+        try {
+          await navigator.clipboard.writeText(window.location.href.split("#")[0]);
+          showToast("Gallery link copied");
+        } catch (error) {
+          showToast("Copy the link from your address bar");
+        }
+      });
+      const downloadAll = document.querySelector("[data-download-all]");
+      if (downloadAll) {
+        downloadAll.addEventListener("click", () => {
+          imageHrefs.forEach((href, index) => {
+            window.setTimeout(() => {
+              const link = document.createElement("a");
+              link.href = href;
+              link.download = "";
+              document.body.appendChild(link);
+              link.click();
+              link.remove();
+            }, index * 140);
+          });
+          showToast(`Starting ${imageHrefs.length} downloads`);
+        });
+      }
+    })();
+  </script>
 </body>
 </html>
