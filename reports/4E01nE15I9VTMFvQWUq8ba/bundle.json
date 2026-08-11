@@ -1,9 +1,6 @@
 {
   "metadata": {
-    "input": "https://the.skorapp.id/game?id=4E01nE15I9VTMFvQWUq8ba",
-    "source": "share_link",
-    "share_token": "4E01nE15I9VTMFvQWUq8ba",
-    "game_id": 80409,
+    "game_key": "531a9be9340f375ff35d",
     "folder_name": "4E01nE15I9VTMFvQWUq8ba",
     "public_report_base_url": "https://adhni.github.io/skor-reports/reports",
     "branding": {
@@ -11,532 +8,79 @@
       "theme_label": "Sand",
       "logo_filename": "logo.jpg"
     },
-    "generated_at_utc": "2026-03-13T13:54:32.099567+00:00"
+    "generated_at_utc": "2026-08-11T13:45:02.952677+00:00"
   },
   "detail": {
-    "id": 80409,
-    "created_at": "2026-01-04T03:08:59.68428+00:00",
     "name": "BOYZ KEMANG x x x",
-    "game_type_id": 3,
+    "created_at": "2026-01-04T03:08:59.68428+00:00",
     "court_count": 2,
     "max_point": 4,
-    "share_url": "",
-    "host_user_id": "401cf5b6-ad05-4bbc-8f6f-415867edb875",
     "sport": "padel",
     "is_ended": true,
-    "community_id": null,
-    "opponent_community_id": null,
-    "is_ranked_match": false,
     "scoring_name": "Total of 4",
     "scoring_code": "best_of",
     "code": "mexicano",
-    "is_win_sorted": false,
-    "is_eligible_for_swap": true,
-    "current_round_id": 1011334,
-    "has_third_place": true,
     "courts": [
       {
-        "id": 121884,
-        "name": "Court 4",
-        "game_id": 80409,
-        "created_at": "2026-01-04T03:08:59.68428+00:00",
-        "updated_at": "2026-01-04T03:08:59.68428+00:00"
+        "name": "Court 4"
       },
       {
-        "id": 121885,
-        "name": "Court 5",
-        "game_id": 80409,
-        "created_at": "2026-01-04T03:08:59.68428+00:00",
-        "updated_at": "2026-01-04T03:08:59.68428+00:00"
+        "name": "Court 5"
       }
     ],
     "participants": [
       {
-        "id": 804630,
         "name": "Nico",
-        "gender": "",
-        "game_id": 80409,
-        "user_id": null,
-        "username": null,
-        "is_joined": false,
-        "created_at": "2026-01-04T03:08:59.769621+00:00",
-        "updated_at": "2026-01-04T03:08:59.769621+00:00",
-        "profile_url": "",
-        "community_id": 0
+        "gender": ""
       },
       {
-        "id": 804631,
         "name": "Mahdi Kemal Assegaf",
-        "gender": "male",
-        "game_id": 80409,
-        "user_id": "401cf5b6-ad05-4bbc-8f6f-415867edb875",
-        "username": null,
-        "is_joined": true,
-        "created_at": "2026-01-04T03:08:59.769621+00:00",
-        "updated_at": "2026-01-04T03:08:59.769621+00:00",
-        "profile_url": "https://dnoupmrhnyhcmxyqjzxs.supabase.co/storage/v1/object/public/images/user_uploads/401cf5b6-ad05-4bbc-8f6f-415867edb875/1757754160281.jpg",
-        "community_id": 0
+        "gender": "male"
       },
       {
-        "id": 804632,
         "name": "adhni",
-        "gender": "male",
-        "game_id": 80409,
-        "user_id": "16ac40e6-8b8a-4207-9139-b10faac277f6",
-        "username": null,
-        "is_joined": true,
-        "created_at": "2026-01-04T03:08:59.769621+00:00",
-        "updated_at": "2026-01-04T03:08:59.769621+00:00",
-        "profile_url": "",
-        "community_id": 0
+        "gender": "male"
       },
       {
-        "id": 804633,
         "name": "Haidar",
-        "gender": "male",
-        "game_id": 80409,
-        "user_id": "f088cc3a-7c63-4840-9934-ec408bfdf40d",
-        "username": null,
-        "is_joined": true,
-        "created_at": "2026-01-04T03:08:59.769621+00:00",
-        "updated_at": "2026-01-04T03:08:59.769621+00:00",
-        "profile_url": "",
-        "community_id": 0
+        "gender": "male"
       },
       {
-        "id": 804634,
         "name": "Imam",
-        "gender": "",
-        "game_id": 80409,
-        "user_id": null,
-        "username": null,
-        "is_joined": false,
-        "created_at": "2026-01-04T03:08:59.769621+00:00",
-        "updated_at": "2026-01-04T03:08:59.769621+00:00",
-        "profile_url": "",
-        "community_id": 0
+        "gender": ""
       },
       {
-        "id": 804635,
         "name": "Oky",
-        "gender": "",
-        "game_id": 80409,
-        "user_id": null,
-        "username": null,
-        "is_joined": false,
-        "created_at": "2026-01-04T03:08:59.769621+00:00",
-        "updated_at": "2026-01-04T03:08:59.769621+00:00",
-        "profile_url": "",
-        "community_id": 0
+        "gender": ""
       },
       {
-        "id": 804636,
         "name": "Areza",
-        "gender": "male",
-        "game_id": 80409,
-        "user_id": "62647ced-499e-4912-8fd1-d8368e3d8f9d",
-        "username": null,
-        "is_joined": true,
-        "created_at": "2026-01-04T03:08:59.769621+00:00",
-        "updated_at": "2026-01-04T03:08:59.769621+00:00",
-        "profile_url": "https://dnoupmrhnyhcmxyqjzxs.supabase.co/storage/v1/object/public/images/user_uploads/62647ced-499e-4912-8fd1-d8368e3d8f9d/1756305147535.jpg",
-        "community_id": 0
+        "gender": "male"
       },
       {
-        "id": 804637,
         "name": "Toha As",
-        "gender": "male",
-        "game_id": 80409,
-        "user_id": "74286b5e-52c0-442e-a220-5415ab1895ab",
-        "username": null,
-        "is_joined": true,
-        "created_at": "2026-01-04T03:08:59.769621+00:00",
-        "updated_at": "2026-01-04T03:08:59.769621+00:00",
-        "profile_url": "https://dnoupmrhnyhcmxyqjzxs.supabase.co/storage/v1/object/public/images/user_uploads/74286b5e-52c0-442e-a220-5415ab1895ab/1758292414783.jpg",
-        "community_id": 0
+        "gender": "male"
       },
       {
-        "id": 804638,
         "name": "Kareem Mulachela",
-        "gender": "male",
-        "game_id": 80409,
-        "user_id": "3608b5bd-4050-443c-9eed-218517523d3b",
-        "username": null,
-        "is_joined": true,
-        "created_at": "2026-01-04T03:08:59.769621+00:00",
-        "updated_at": "2026-01-04T03:08:59.769621+00:00",
-        "profile_url": "https://dnoupmrhnyhcmxyqjzxs.supabase.co/storage/v1/object/public/images/user_uploads/3608b5bd-4050-443c-9eed-218517523d3b/1759681296086.jpg",
-        "community_id": 0
+        "gender": "male"
       }
-    ],
-    "player_requests": [],
-    "rounds": [
-      {
-        "id": 1009623,
-        "game_id": 80409,
-        "created_at": "2026-01-04T03:08:59.953599+00:00",
-        "round_name": null,
-        "updated_at": "2026-01-04T03:08:59.953599+00:00",
-        "round_number": 1
-      },
-      {
-        "id": 1009856,
-        "game_id": 80409,
-        "created_at": "2026-01-04T03:20:27.678899+00:00",
-        "round_name": null,
-        "updated_at": "2026-01-04T03:20:27.678899+00:00",
-        "round_number": 2
-      },
-      {
-        "id": 1010124,
-        "game_id": 80409,
-        "created_at": "2026-01-04T03:32:40.99862+00:00",
-        "round_name": null,
-        "updated_at": "2026-01-04T03:32:40.99862+00:00",
-        "round_number": 3
-      },
-      {
-        "id": 1010240,
-        "game_id": 80409,
-        "created_at": "2026-01-04T03:46:03.602246+00:00",
-        "round_name": null,
-        "updated_at": "2026-01-04T03:46:03.602246+00:00",
-        "round_number": 4
-      },
-      {
-        "id": 1010388,
-        "game_id": 80409,
-        "created_at": "2026-01-04T03:58:33.715701+00:00",
-        "round_name": null,
-        "updated_at": "2026-01-04T03:58:33.715701+00:00",
-        "round_number": 5
-      },
-      {
-        "id": 1010621,
-        "game_id": 80409,
-        "created_at": "2026-01-04T04:10:16.243528+00:00",
-        "round_name": null,
-        "updated_at": "2026-01-04T04:10:16.243528+00:00",
-        "round_number": 6
-      },
-      {
-        "id": 1010788,
-        "game_id": 80409,
-        "created_at": "2026-01-04T04:24:10.368648+00:00",
-        "round_name": null,
-        "updated_at": "2026-01-04T04:24:10.368648+00:00",
-        "round_number": 7
-      },
-      {
-        "id": 1010937,
-        "game_id": 80409,
-        "created_at": "2026-01-04T04:38:27.371109+00:00",
-        "round_name": null,
-        "updated_at": "2026-01-04T04:38:27.371109+00:00",
-        "round_number": 8
-      },
-      {
-        "id": 1011112,
-        "game_id": 80409,
-        "created_at": "2026-01-04T04:50:24.987792+00:00",
-        "round_name": null,
-        "updated_at": "2026-01-04T04:50:24.987792+00:00",
-        "round_number": 9
-      },
-      {
-        "id": 1011334,
-        "game_id": 80409,
-        "created_at": "2026-01-04T05:06:45.18898+00:00",
-        "round_name": null,
-        "updated_at": "2026-01-04T05:06:45.18898+00:00",
-        "round_number": 10
-      }
-    ],
-    "community": null,
-    "opponent_community": null,
-    "hosts": [],
-    "main_host": {
-      "gender": "Male",
-      "username": "mahdika",
-      "profile_url": "https://dnoupmrhnyhcmxyqjzxs.supabase.co/storage/v1/object/public/images/user_uploads/401cf5b6-ad05-4bbc-8f6f-415867edb875/1757754160281.jpg",
-      "display_name": "Mahdi Kemal Assegaf",
-      "host_user_id": "401cf5b6-ad05-4bbc-8f6f-415867edb875"
-    }
+    ]
   },
-  "detail_raw": [
-    {
-      "id": 80409,
-      "created_at": "2026-01-04T03:08:59.68428+00:00",
-      "name": "BOYZ KEMANG x x x",
-      "game_type_id": 3,
-      "court_count": 2,
-      "max_point": 4,
-      "share_url": "",
-      "host_user_id": "401cf5b6-ad05-4bbc-8f6f-415867edb875",
-      "sport": "padel",
-      "is_ended": true,
-      "community_id": null,
-      "opponent_community_id": null,
-      "is_ranked_match": false,
-      "scoring_name": "Total of 4",
-      "scoring_code": "best_of",
-      "code": "mexicano",
-      "is_win_sorted": false,
-      "is_eligible_for_swap": true,
-      "current_round_id": 1011334,
-      "has_third_place": true,
-      "courts": [
-        {
-          "id": 121884,
-          "name": "Court 4",
-          "game_id": 80409,
-          "created_at": "2026-01-04T03:08:59.68428+00:00",
-          "updated_at": "2026-01-04T03:08:59.68428+00:00"
-        },
-        {
-          "id": 121885,
-          "name": "Court 5",
-          "game_id": 80409,
-          "created_at": "2026-01-04T03:08:59.68428+00:00",
-          "updated_at": "2026-01-04T03:08:59.68428+00:00"
-        }
-      ],
-      "participants": [
-        {
-          "id": 804630,
-          "name": "Nico",
-          "gender": "",
-          "game_id": 80409,
-          "user_id": null,
-          "username": null,
-          "is_joined": false,
-          "created_at": "2026-01-04T03:08:59.769621+00:00",
-          "updated_at": "2026-01-04T03:08:59.769621+00:00",
-          "profile_url": "",
-          "community_id": 0
-        },
-        {
-          "id": 804631,
-          "name": "Mahdi Kemal Assegaf",
-          "gender": "male",
-          "game_id": 80409,
-          "user_id": "401cf5b6-ad05-4bbc-8f6f-415867edb875",
-          "username": null,
-          "is_joined": true,
-          "created_at": "2026-01-04T03:08:59.769621+00:00",
-          "updated_at": "2026-01-04T03:08:59.769621+00:00",
-          "profile_url": "https://dnoupmrhnyhcmxyqjzxs.supabase.co/storage/v1/object/public/images/user_uploads/401cf5b6-ad05-4bbc-8f6f-415867edb875/1757754160281.jpg",
-          "community_id": 0
-        },
-        {
-          "id": 804632,
-          "name": "adhni",
-          "gender": "male",
-          "game_id": 80409,
-          "user_id": "16ac40e6-8b8a-4207-9139-b10faac277f6",
-          "username": null,
-          "is_joined": true,
-          "created_at": "2026-01-04T03:08:59.769621+00:00",
-          "updated_at": "2026-01-04T03:08:59.769621+00:00",
-          "profile_url": "",
-          "community_id": 0
-        },
-        {
-          "id": 804633,
-          "name": "Haidar",
-          "gender": "male",
-          "game_id": 80409,
-          "user_id": "f088cc3a-7c63-4840-9934-ec408bfdf40d",
-          "username": null,
-          "is_joined": true,
-          "created_at": "2026-01-04T03:08:59.769621+00:00",
-          "updated_at": "2026-01-04T03:08:59.769621+00:00",
-          "profile_url": "",
-          "community_id": 0
-        },
-        {
-          "id": 804634,
-          "name": "Imam",
-          "gender": "",
-          "game_id": 80409,
-          "user_id": null,
-          "username": null,
-          "is_joined": false,
-          "created_at": "2026-01-04T03:08:59.769621+00:00",
-          "updated_at": "2026-01-04T03:08:59.769621+00:00",
-          "profile_url": "",
-          "community_id": 0
-        },
-        {
-          "id": 804635,
-          "name": "Oky",
-          "gender": "",
-          "game_id": 80409,
-          "user_id": null,
-          "username": null,
-          "is_joined": false,
-          "created_at": "2026-01-04T03:08:59.769621+00:00",
-          "updated_at": "2026-01-04T03:08:59.769621+00:00",
-          "profile_url": "",
-          "community_id": 0
-        },
-        {
-          "id": 804636,
-          "name": "Areza",
-          "gender": "male",
-          "game_id": 80409,
-          "user_id": "62647ced-499e-4912-8fd1-d8368e3d8f9d",
-          "username": null,
-          "is_joined": true,
-          "created_at": "2026-01-04T03:08:59.769621+00:00",
-          "updated_at": "2026-01-04T03:08:59.769621+00:00",
-          "profile_url": "https://dnoupmrhnyhcmxyqjzxs.supabase.co/storage/v1/object/public/images/user_uploads/62647ced-499e-4912-8fd1-d8368e3d8f9d/1756305147535.jpg",
-          "community_id": 0
-        },
-        {
-          "id": 804637,
-          "name": "Toha As",
-          "gender": "male",
-          "game_id": 80409,
-          "user_id": "74286b5e-52c0-442e-a220-5415ab1895ab",
-          "username": null,
-          "is_joined": true,
-          "created_at": "2026-01-04T03:08:59.769621+00:00",
-          "updated_at": "2026-01-04T03:08:59.769621+00:00",
-          "profile_url": "https://dnoupmrhnyhcmxyqjzxs.supabase.co/storage/v1/object/public/images/user_uploads/74286b5e-52c0-442e-a220-5415ab1895ab/1758292414783.jpg",
-          "community_id": 0
-        },
-        {
-          "id": 804638,
-          "name": "Kareem Mulachela",
-          "gender": "male",
-          "game_id": 80409,
-          "user_id": "3608b5bd-4050-443c-9eed-218517523d3b",
-          "username": null,
-          "is_joined": true,
-          "created_at": "2026-01-04T03:08:59.769621+00:00",
-          "updated_at": "2026-01-04T03:08:59.769621+00:00",
-          "profile_url": "https://dnoupmrhnyhcmxyqjzxs.supabase.co/storage/v1/object/public/images/user_uploads/3608b5bd-4050-443c-9eed-218517523d3b/1759681296086.jpg",
-          "community_id": 0
-        }
-      ],
-      "player_requests": [],
-      "rounds": [
-        {
-          "id": 1009623,
-          "game_id": 80409,
-          "created_at": "2026-01-04T03:08:59.953599+00:00",
-          "round_name": null,
-          "updated_at": "2026-01-04T03:08:59.953599+00:00",
-          "round_number": 1
-        },
-        {
-          "id": 1009856,
-          "game_id": 80409,
-          "created_at": "2026-01-04T03:20:27.678899+00:00",
-          "round_name": null,
-          "updated_at": "2026-01-04T03:20:27.678899+00:00",
-          "round_number": 2
-        },
-        {
-          "id": 1010124,
-          "game_id": 80409,
-          "created_at": "2026-01-04T03:32:40.99862+00:00",
-          "round_name": null,
-          "updated_at": "2026-01-04T03:32:40.99862+00:00",
-          "round_number": 3
-        },
-        {
-          "id": 1010240,
-          "game_id": 80409,
-          "created_at": "2026-01-04T03:46:03.602246+00:00",
-          "round_name": null,
-          "updated_at": "2026-01-04T03:46:03.602246+00:00",
-          "round_number": 4
-        },
-        {
-          "id": 1010388,
-          "game_id": 80409,
-          "created_at": "2026-01-04T03:58:33.715701+00:00",
-          "round_name": null,
-          "updated_at": "2026-01-04T03:58:33.715701+00:00",
-          "round_number": 5
-        },
-        {
-          "id": 1010621,
-          "game_id": 80409,
-          "created_at": "2026-01-04T04:10:16.243528+00:00",
-          "round_name": null,
-          "updated_at": "2026-01-04T04:10:16.243528+00:00",
-          "round_number": 6
-        },
-        {
-          "id": 1010788,
-          "game_id": 80409,
-          "created_at": "2026-01-04T04:24:10.368648+00:00",
-          "round_name": null,
-          "updated_at": "2026-01-04T04:24:10.368648+00:00",
-          "round_number": 7
-        },
-        {
-          "id": 1010937,
-          "game_id": 80409,
-          "created_at": "2026-01-04T04:38:27.371109+00:00",
-          "round_name": null,
-          "updated_at": "2026-01-04T04:38:27.371109+00:00",
-          "round_number": 8
-        },
-        {
-          "id": 1011112,
-          "game_id": 80409,
-          "created_at": "2026-01-04T04:50:24.987792+00:00",
-          "round_name": null,
-          "updated_at": "2026-01-04T04:50:24.987792+00:00",
-          "round_number": 9
-        },
-        {
-          "id": 1011334,
-          "game_id": 80409,
-          "created_at": "2026-01-04T05:06:45.18898+00:00",
-          "round_name": null,
-          "updated_at": "2026-01-04T05:06:45.18898+00:00",
-          "round_number": 10
-        }
-      ],
-      "community": null,
-      "opponent_community": null,
-      "hosts": [],
-      "main_host": {
-        "gender": "Male",
-        "username": "mahdika",
-        "profile_url": "https://dnoupmrhnyhcmxyqjzxs.supabase.co/storage/v1/object/public/images/user_uploads/401cf5b6-ad05-4bbc-8f6f-415867edb875/1757754160281.jpg",
-        "display_name": "Mahdi Kemal Assegaf",
-        "host_user_id": "401cf5b6-ad05-4bbc-8f6f-415867edb875"
-      }
-    }
-  ],
   "rounds": [
     {
-      "id": 1009623,
+      "round_number": 1,
       "matches": [
         {
-          "id": 1518803,
+          "court": "Court 4",
           "team_a": {
             "score": 4,
             "participants": [
               {
-                "id": 804637,
-                "name": "Toha As",
-                "gender": "male",
-                "user_id": "74286b5e-52c0-442e-a220-5415ab1895ab",
-                "profile_url": "https://dnoupmrhnyhcmxyqjzxs.supabase.co/storage/v1/object/public/images/user_uploads/74286b5e-52c0-442e-a220-5415ab1895ab/1758292414783.jpg"
+                "name": "Toha As"
               },
               {
-                "id": 804638,
-                "name": "Kareem Mulachela",
-                "gender": "male",
-                "user_id": "3608b5bd-4050-443c-9eed-218517523d3b",
-                "profile_url": "https://dnoupmrhnyhcmxyqjzxs.supabase.co/storage/v1/object/public/images/user_uploads/3608b5bd-4050-443c-9eed-218517523d3b/1759681296086.jpg"
+                "name": "Kareem Mulachela"
               }
             ]
           },
@@ -544,40 +88,24 @@
             "score": 0,
             "participants": [
               {
-                "id": 804632,
-                "name": "adhni",
-                "gender": "male",
-                "user_id": "16ac40e6-8b8a-4207-9139-b10faac277f6",
-                "profile_url": ""
+                "name": "adhni"
               },
               {
-                "id": 804635,
-                "name": "Oky",
-                "gender": "",
-                "profile_url": ""
+                "name": "Oky"
               }
             ]
-          },
-          "court_id": 121884,
-          "time_seconds": 0
+          }
         },
         {
-          "id": 1518804,
+          "court": "Court 5",
           "team_a": {
             "score": 2,
             "participants": [
               {
-                "id": 804630,
-                "name": "Nico",
-                "gender": "",
-                "profile_url": ""
+                "name": "Nico"
               },
               {
-                "id": 804636,
-                "name": "Areza",
-                "gender": "male",
-                "user_id": "62647ced-499e-4912-8fd1-d8368e3d8f9d",
-                "profile_url": "https://dnoupmrhnyhcmxyqjzxs.supabase.co/storage/v1/object/public/images/user_uploads/62647ced-499e-4912-8fd1-d8368e3d8f9d/1756305147535.jpg"
+                "name": "Areza"
               }
             ]
           },
@@ -585,46 +113,29 @@
             "score": 2,
             "participants": [
               {
-                "id": 804631,
-                "name": "Mahdi Kemal Assegaf",
-                "gender": "male",
-                "user_id": "401cf5b6-ad05-4bbc-8f6f-415867edb875",
-                "profile_url": "https://dnoupmrhnyhcmxyqjzxs.supabase.co/storage/v1/object/public/images/user_uploads/401cf5b6-ad05-4bbc-8f6f-415867edb875/1757754160281.jpg"
+                "name": "Mahdi Kemal Assegaf"
               },
               {
-                "id": 804634,
-                "name": "Imam",
-                "gender": "",
-                "profile_url": ""
+                "name": "Imam"
               }
             ]
-          },
-          "court_id": 121885,
-          "time_seconds": 0
+          }
         }
-      ],
-      "round_number": 1
+      ]
     },
     {
-      "id": 1009856,
+      "round_number": 2,
       "matches": [
         {
-          "id": 1519168,
+          "court": "Court 4",
           "team_a": {
             "score": 3,
             "participants": [
               {
-                "id": 804630,
-                "name": "Nico",
-                "gender": "",
-                "profile_url": ""
+                "name": "Nico"
               },
               {
-                "id": 804637,
-                "name": "Toha As",
-                "gender": "male",
-                "user_id": "74286b5e-52c0-442e-a220-5415ab1895ab",
-                "profile_url": "https://dnoupmrhnyhcmxyqjzxs.supabase.co/storage/v1/object/public/images/user_uploads/74286b5e-52c0-442e-a220-5415ab1895ab/1758292414783.jpg"
+                "name": "Toha As"
               }
             ]
           },
@@ -632,42 +143,24 @@
             "score": 1,
             "participants": [
               {
-                "id": 804631,
-                "name": "Mahdi Kemal Assegaf",
-                "gender": "male",
-                "user_id": "401cf5b6-ad05-4bbc-8f6f-415867edb875",
-                "profile_url": "https://dnoupmrhnyhcmxyqjzxs.supabase.co/storage/v1/object/public/images/user_uploads/401cf5b6-ad05-4bbc-8f6f-415867edb875/1757754160281.jpg"
+                "name": "Mahdi Kemal Assegaf"
               },
               {
-                "id": 804638,
-                "name": "Kareem Mulachela",
-                "gender": "male",
-                "user_id": "3608b5bd-4050-443c-9eed-218517523d3b",
-                "profile_url": "https://dnoupmrhnyhcmxyqjzxs.supabase.co/storage/v1/object/public/images/user_uploads/3608b5bd-4050-443c-9eed-218517523d3b/1759681296086.jpg"
+                "name": "Kareem Mulachela"
               }
             ]
-          },
-          "court_id": 121884,
-          "time_seconds": 0
+          }
         },
         {
-          "id": 1519169,
+          "court": "Court 5",
           "team_a": {
             "score": 2,
             "participants": [
               {
-                "id": 804632,
-                "name": "adhni",
-                "gender": "male",
-                "user_id": "16ac40e6-8b8a-4207-9139-b10faac277f6",
-                "profile_url": ""
+                "name": "adhni"
               },
               {
-                "id": 804633,
-                "name": "Haidar",
-                "gender": "Male",
-                "user_id": "f088cc3a-7c63-4840-9934-ec408bfdf40d",
-                "profile_url": ""
+                "name": "Haidar"
               }
             ]
           },
@@ -675,47 +168,29 @@
             "score": 2,
             "participants": [
               {
-                "id": 804635,
-                "name": "Oky",
-                "gender": "",
-                "profile_url": ""
+                "name": "Oky"
               },
               {
-                "id": 804636,
-                "name": "Areza",
-                "gender": "male",
-                "user_id": "62647ced-499e-4912-8fd1-d8368e3d8f9d",
-                "profile_url": "https://dnoupmrhnyhcmxyqjzxs.supabase.co/storage/v1/object/public/images/user_uploads/62647ced-499e-4912-8fd1-d8368e3d8f9d/1756305147535.jpg"
+                "name": "Areza"
               }
             ]
-          },
-          "court_id": 121885,
-          "time_seconds": 0
+          }
         }
-      ],
-      "round_number": 2
+      ]
     },
     {
-      "id": 1010124,
+      "round_number": 3,
       "matches": [
         {
-          "id": 1519505,
+          "court": "Court 4",
           "team_a": {
             "score": 4,
             "participants": [
               {
-                "id": 804633,
-                "name": "Haidar",
-                "gender": "Male",
-                "user_id": "f088cc3a-7c63-4840-9934-ec408bfdf40d",
-                "profile_url": ""
+                "name": "Haidar"
               },
               {
-                "id": 804637,
-                "name": "Toha As",
-                "gender": "male",
-                "user_id": "74286b5e-52c0-442e-a220-5415ab1895ab",
-                "profile_url": "https://dnoupmrhnyhcmxyqjzxs.supabase.co/storage/v1/object/public/images/user_uploads/74286b5e-52c0-442e-a220-5415ab1895ab/1758292414783.jpg"
+                "name": "Toha As"
               }
             ]
           },
@@ -723,39 +198,24 @@
             "score": 0,
             "participants": [
               {
-                "id": 804630,
-                "name": "Nico",
-                "gender": "",
-                "profile_url": ""
+                "name": "Nico"
               },
               {
-                "id": 804638,
-                "name": "Kareem Mulachela",
-                "gender": "male",
-                "user_id": "3608b5bd-4050-443c-9eed-218517523d3b",
-                "profile_url": "https://dnoupmrhnyhcmxyqjzxs.supabase.co/storage/v1/object/public/images/user_uploads/3608b5bd-4050-443c-9eed-218517523d3b/1759681296086.jpg"
+                "name": "Kareem Mulachela"
               }
             ]
-          },
-          "court_id": 121884,
-          "time_seconds": 0
+          }
         },
         {
-          "id": 1519506,
+          "court": "Court 5",
           "team_a": {
             "score": 3,
             "participants": [
               {
-                "id": 804634,
-                "name": "Imam",
-                "gender": "",
-                "profile_url": ""
+                "name": "Imam"
               },
               {
-                "id": 804635,
-                "name": "Oky",
-                "gender": "",
-                "profile_url": ""
+                "name": "Oky"
               }
             ]
           },
@@ -763,47 +223,29 @@
             "score": 1,
             "participants": [
               {
-                "id": 804631,
-                "name": "Mahdi Kemal Assegaf",
-                "gender": "male",
-                "user_id": "401cf5b6-ad05-4bbc-8f6f-415867edb875",
-                "profile_url": "https://dnoupmrhnyhcmxyqjzxs.supabase.co/storage/v1/object/public/images/user_uploads/401cf5b6-ad05-4bbc-8f6f-415867edb875/1757754160281.jpg"
+                "name": "Mahdi Kemal Assegaf"
               },
               {
-                "id": 804632,
-                "name": "adhni",
-                "gender": "male",
-                "user_id": "16ac40e6-8b8a-4207-9139-b10faac277f6",
-                "profile_url": ""
+                "name": "adhni"
               }
             ]
-          },
-          "court_id": 121885,
-          "time_seconds": 0
+          }
         }
-      ],
-      "round_number": 3
+      ]
     },
     {
-      "id": 1010240,
+      "round_number": 4,
       "matches": [
         {
-          "id": 1519666,
+          "court": "Court 4",
           "team_a": {
             "score": 3,
             "participants": [
               {
-                "id": 804634,
-                "name": "Imam",
-                "gender": "",
-                "profile_url": ""
+                "name": "Imam"
               },
               {
-                "id": 804637,
-                "name": "Toha As",
-                "gender": "male",
-                "user_id": "74286b5e-52c0-442e-a220-5415ab1895ab",
-                "profile_url": "https://dnoupmrhnyhcmxyqjzxs.supabase.co/storage/v1/object/public/images/user_uploads/74286b5e-52c0-442e-a220-5415ab1895ab/1758292414783.jpg"
+                "name": "Toha As"
               }
             ]
           },
@@ -811,41 +253,24 @@
             "score": 1,
             "participants": [
               {
-                "id": 804633,
-                "name": "Haidar",
-                "gender": "Male",
-                "user_id": "f088cc3a-7c63-4840-9934-ec408bfdf40d",
-                "profile_url": ""
+                "name": "Haidar"
               },
               {
-                "id": 804636,
-                "name": "Areza",
-                "gender": "male",
-                "user_id": "62647ced-499e-4912-8fd1-d8368e3d8f9d",
-                "profile_url": "https://dnoupmrhnyhcmxyqjzxs.supabase.co/storage/v1/object/public/images/user_uploads/62647ced-499e-4912-8fd1-d8368e3d8f9d/1756305147535.jpg"
+                "name": "Areza"
               }
             ]
-          },
-          "court_id": 121884,
-          "time_seconds": 0
+          }
         },
         {
-          "id": 1519667,
+          "court": "Court 5",
           "team_a": {
             "score": 2,
             "participants": [
               {
-                "id": 804630,
-                "name": "Nico",
-                "gender": "",
-                "profile_url": ""
+                "name": "Nico"
               },
               {
-                "id": 804631,
-                "name": "Mahdi Kemal Assegaf",
-                "gender": "male",
-                "user_id": "401cf5b6-ad05-4bbc-8f6f-415867edb875",
-                "profile_url": "https://dnoupmrhnyhcmxyqjzxs.supabase.co/storage/v1/object/public/images/user_uploads/401cf5b6-ad05-4bbc-8f6f-415867edb875/1757754160281.jpg"
+                "name": "Mahdi Kemal Assegaf"
               }
             ]
           },
@@ -853,45 +278,29 @@
             "score": 2,
             "participants": [
               {
-                "id": 804632,
-                "name": "adhni",
-                "gender": "male",
-                "user_id": "16ac40e6-8b8a-4207-9139-b10faac277f6",
-                "profile_url": ""
+                "name": "adhni"
               },
               {
-                "id": 804635,
-                "name": "Oky",
-                "gender": "",
-                "profile_url": ""
+                "name": "Oky"
               }
             ]
-          },
-          "court_id": 121885,
-          "time_seconds": 0
+          }
         }
-      ],
-      "round_number": 4
+      ]
     },
     {
-      "id": 1010388,
+      "round_number": 5,
       "matches": [
         {
-          "id": 1519852,
+          "court": "Court 4",
           "team_a": {
             "score": 0,
             "participants": [
               {
-                "id": 804634,
-                "name": "Imam",
-                "gender": "",
-                "profile_url": ""
+                "name": "Imam"
               },
               {
-                "id": 804635,
-                "name": "Oky",
-                "gender": "",
-                "profile_url": ""
+                "name": "Oky"
               }
             ]
           },
@@ -899,41 +308,24 @@
             "score": 4,
             "participants": [
               {
-                "id": 804630,
-                "name": "Nico",
-                "gender": "",
-                "profile_url": ""
+                "name": "Nico"
               },
               {
-                "id": 804633,
-                "name": "Haidar",
-                "gender": "Male",
-                "user_id": "f088cc3a-7c63-4840-9934-ec408bfdf40d",
-                "profile_url": ""
+                "name": "Haidar"
               }
             ]
-          },
-          "court_id": 121884,
-          "time_seconds": 0
+          }
         },
         {
-          "id": 1519853,
+          "court": "Court 5",
           "team_a": {
             "score": 2,
             "participants": [
               {
-                "id": 804632,
-                "name": "adhni",
-                "gender": "male",
-                "user_id": "16ac40e6-8b8a-4207-9139-b10faac277f6",
-                "profile_url": ""
+                "name": "adhni"
               },
               {
-                "id": 804636,
-                "name": "Areza",
-                "gender": "male",
-                "user_id": "62647ced-499e-4912-8fd1-d8368e3d8f9d",
-                "profile_url": "https://dnoupmrhnyhcmxyqjzxs.supabase.co/storage/v1/object/public/images/user_uploads/62647ced-499e-4912-8fd1-d8368e3d8f9d/1756305147535.jpg"
+                "name": "Areza"
               }
             ]
           },
@@ -941,48 +333,29 @@
             "score": 2,
             "participants": [
               {
-                "id": 804631,
-                "name": "Mahdi Kemal Assegaf",
-                "gender": "male",
-                "user_id": "401cf5b6-ad05-4bbc-8f6f-415867edb875",
-                "profile_url": "https://dnoupmrhnyhcmxyqjzxs.supabase.co/storage/v1/object/public/images/user_uploads/401cf5b6-ad05-4bbc-8f6f-415867edb875/1757754160281.jpg"
+                "name": "Mahdi Kemal Assegaf"
               },
               {
-                "id": 804638,
-                "name": "Kareem Mulachela",
-                "gender": "male",
-                "user_id": "3608b5bd-4050-443c-9eed-218517523d3b",
-                "profile_url": "https://dnoupmrhnyhcmxyqjzxs.supabase.co/storage/v1/object/public/images/user_uploads/3608b5bd-4050-443c-9eed-218517523d3b/1759681296086.jpg"
+                "name": "Kareem Mulachela"
               }
             ]
-          },
-          "court_id": 121885,
-          "time_seconds": 0
+          }
         }
-      ],
-      "round_number": 5
+      ]
     },
     {
-      "id": 1010621,
+      "round_number": 6,
       "matches": [
         {
-          "id": 1520134,
+          "court": "Court 4",
           "team_a": {
             "score": 4,
             "participants": [
               {
-                "id": 804636,
-                "name": "Areza",
-                "gender": "male",
-                "user_id": "62647ced-499e-4912-8fd1-d8368e3d8f9d",
-                "profile_url": "https://dnoupmrhnyhcmxyqjzxs.supabase.co/storage/v1/object/public/images/user_uploads/62647ced-499e-4912-8fd1-d8368e3d8f9d/1756305147535.jpg"
+                "name": "Areza"
               },
               {
-                "id": 804637,
-                "name": "Toha As",
-                "gender": "male",
-                "user_id": "74286b5e-52c0-442e-a220-5415ab1895ab",
-                "profile_url": "https://dnoupmrhnyhcmxyqjzxs.supabase.co/storage/v1/object/public/images/user_uploads/74286b5e-52c0-442e-a220-5415ab1895ab/1758292414783.jpg"
+                "name": "Toha As"
               }
             ]
           },
@@ -990,41 +363,24 @@
             "score": 0,
             "participants": [
               {
-                "id": 804633,
-                "name": "Haidar",
-                "gender": "Male",
-                "user_id": "f088cc3a-7c63-4840-9934-ec408bfdf40d",
-                "profile_url": ""
+                "name": "Haidar"
               },
               {
-                "id": 804634,
-                "name": "Imam",
-                "gender": "",
-                "profile_url": ""
+                "name": "Imam"
               }
             ]
-          },
-          "court_id": 121884,
-          "time_seconds": 0
+          }
         },
         {
-          "id": 1520135,
+          "court": "Court 5",
           "team_a": {
             "score": 4,
             "participants": [
               {
-                "id": 804632,
-                "name": "adhni",
-                "gender": "male",
-                "user_id": "16ac40e6-8b8a-4207-9139-b10faac277f6",
-                "profile_url": ""
+                "name": "adhni"
               },
               {
-                "id": 804638,
-                "name": "Kareem Mulachela",
-                "gender": "male",
-                "user_id": "3608b5bd-4050-443c-9eed-218517523d3b",
-                "profile_url": "https://dnoupmrhnyhcmxyqjzxs.supabase.co/storage/v1/object/public/images/user_uploads/3608b5bd-4050-443c-9eed-218517523d3b/1759681296086.jpg"
+                "name": "Kareem Mulachela"
               }
             ]
           },
@@ -1032,47 +388,29 @@
             "score": 0,
             "participants": [
               {
-                "id": 804631,
-                "name": "Mahdi Kemal Assegaf",
-                "gender": "male",
-                "user_id": "401cf5b6-ad05-4bbc-8f6f-415867edb875",
-                "profile_url": "https://dnoupmrhnyhcmxyqjzxs.supabase.co/storage/v1/object/public/images/user_uploads/401cf5b6-ad05-4bbc-8f6f-415867edb875/1757754160281.jpg"
+                "name": "Mahdi Kemal Assegaf"
               },
               {
-                "id": 804635,
-                "name": "Oky",
-                "gender": "",
-                "profile_url": ""
+                "name": "Oky"
               }
             ]
-          },
-          "court_id": 121885,
-          "time_seconds": 0
+          }
         }
-      ],
-      "round_number": 6
+      ]
     },
     {
-      "id": 1010788,
+      "round_number": 7,
       "matches": [
         {
-          "id": 1520369,
+          "court": "Court 4",
           "team_a": {
             "score": 2,
             "participants": [
               {
-                "id": 804636,
-                "name": "Areza",
-                "gender": "male",
-                "user_id": "62647ced-499e-4912-8fd1-d8368e3d8f9d",
-                "profile_url": "https://dnoupmrhnyhcmxyqjzxs.supabase.co/storage/v1/object/public/images/user_uploads/62647ced-499e-4912-8fd1-d8368e3d8f9d/1756305147535.jpg"
+                "name": "Areza"
               },
               {
-                "id": 804637,
-                "name": "Toha As",
-                "gender": "male",
-                "user_id": "74286b5e-52c0-442e-a220-5415ab1895ab",
-                "profile_url": "https://dnoupmrhnyhcmxyqjzxs.supabase.co/storage/v1/object/public/images/user_uploads/74286b5e-52c0-442e-a220-5415ab1895ab/1758292414783.jpg"
+                "name": "Toha As"
               }
             ]
           },
@@ -1080,40 +418,24 @@
             "score": 2,
             "participants": [
               {
-                "id": 804630,
-                "name": "Nico",
-                "gender": "",
-                "profile_url": ""
+                "name": "Nico"
               },
               {
-                "id": 804633,
-                "name": "Haidar",
-                "gender": "Male",
-                "user_id": "f088cc3a-7c63-4840-9934-ec408bfdf40d",
-                "profile_url": ""
+                "name": "Haidar"
               }
             ]
-          },
-          "court_id": 121884,
-          "time_seconds": 0
+          }
         },
         {
-          "id": 1520370,
+          "court": "Court 5",
           "team_a": {
             "score": 3,
             "participants": [
               {
-                "id": 804635,
-                "name": "Oky",
-                "gender": "",
-                "profile_url": ""
+                "name": "Oky"
               },
               {
-                "id": 804638,
-                "name": "Kareem Mulachela",
-                "gender": "male",
-                "user_id": "3608b5bd-4050-443c-9eed-218517523d3b",
-                "profile_url": "https://dnoupmrhnyhcmxyqjzxs.supabase.co/storage/v1/object/public/images/user_uploads/3608b5bd-4050-443c-9eed-218517523d3b/1759681296086.jpg"
+                "name": "Kareem Mulachela"
               }
             ]
           },
@@ -1121,46 +443,29 @@
             "score": 1,
             "participants": [
               {
-                "id": 804631,
-                "name": "Mahdi Kemal Assegaf",
-                "gender": "male",
-                "user_id": "401cf5b6-ad05-4bbc-8f6f-415867edb875",
-                "profile_url": "https://dnoupmrhnyhcmxyqjzxs.supabase.co/storage/v1/object/public/images/user_uploads/401cf5b6-ad05-4bbc-8f6f-415867edb875/1757754160281.jpg"
+                "name": "Mahdi Kemal Assegaf"
               },
               {
-                "id": 804634,
-                "name": "Imam",
-                "gender": "",
-                "profile_url": ""
+                "name": "Imam"
               }
             ]
-          },
-          "court_id": 121885,
-          "time_seconds": 0
+          }
         }
-      ],
-      "round_number": 7
+      ]
     },
     {
-      "id": 1010937,
+      "round_number": 8,
       "matches": [
         {
-          "id": 1520616,
+          "court": "Court 4",
           "team_a": {
             "score": 1,
             "participants": [
               {
-                "id": 804630,
-                "name": "Nico",
-                "gender": "",
-                "profile_url": ""
+                "name": "Nico"
               },
               {
-                "id": 804637,
-                "name": "Toha As",
-                "gender": "male",
-                "user_id": "74286b5e-52c0-442e-a220-5415ab1895ab",
-                "profile_url": "https://dnoupmrhnyhcmxyqjzxs.supabase.co/storage/v1/object/public/images/user_uploads/74286b5e-52c0-442e-a220-5415ab1895ab/1758292414783.jpg"
+                "name": "Toha As"
               }
             ]
           },
@@ -1168,41 +473,24 @@
             "score": 3,
             "participants": [
               {
-                "id": 804633,
-                "name": "Haidar",
-                "gender": "Male",
-                "user_id": "f088cc3a-7c63-4840-9934-ec408bfdf40d",
-                "profile_url": ""
+                "name": "Haidar"
               },
               {
-                "id": 804638,
-                "name": "Kareem Mulachela",
-                "gender": "male",
-                "user_id": "3608b5bd-4050-443c-9eed-218517523d3b",
-                "profile_url": "https://dnoupmrhnyhcmxyqjzxs.supabase.co/storage/v1/object/public/images/user_uploads/3608b5bd-4050-443c-9eed-218517523d3b/1759681296086.jpg"
+                "name": "Kareem Mulachela"
               }
             ]
-          },
-          "court_id": 121884,
-          "time_seconds": 0
+          }
         },
         {
-          "id": 1520617,
+          "court": "Court 5",
           "team_a": {
             "score": 2,
             "participants": [
               {
-                "id": 804634,
-                "name": "Imam",
-                "gender": "",
-                "profile_url": ""
+                "name": "Imam"
               },
               {
-                "id": 804636,
-                "name": "Areza",
-                "gender": "male",
-                "user_id": "62647ced-499e-4912-8fd1-d8368e3d8f9d",
-                "profile_url": "https://dnoupmrhnyhcmxyqjzxs.supabase.co/storage/v1/object/public/images/user_uploads/62647ced-499e-4912-8fd1-d8368e3d8f9d/1756305147535.jpg"
+                "name": "Areza"
               }
             ]
           },
@@ -1210,47 +498,29 @@
             "score": 2,
             "participants": [
               {
-                "id": 804632,
-                "name": "adhni",
-                "gender": "male",
-                "user_id": "16ac40e6-8b8a-4207-9139-b10faac277f6",
-                "profile_url": ""
+                "name": "adhni"
               },
               {
-                "id": 804635,
-                "name": "Oky",
-                "gender": "",
-                "profile_url": ""
+                "name": "Oky"
               }
             ]
-          },
-          "court_id": 121885,
-          "time_seconds": 0
+          }
         }
-      ],
-      "round_number": 8
+      ]
     },
     {
-      "id": 1011112,
+      "round_number": 9,
       "matches": [
         {
-          "id": 1520889,
+          "court": "Court 4",
           "team_a": {
             "score": 2,
             "participants": [
               {
-                "id": 804636,
-                "name": "Areza",
-                "gender": "male",
-                "user_id": "62647ced-499e-4912-8fd1-d8368e3d8f9d",
-                "profile_url": "https://dnoupmrhnyhcmxyqjzxs.supabase.co/storage/v1/object/public/images/user_uploads/62647ced-499e-4912-8fd1-d8368e3d8f9d/1756305147535.jpg"
+                "name": "Areza"
               },
               {
-                "id": 804637,
-                "name": "Toha As",
-                "gender": "male",
-                "user_id": "74286b5e-52c0-442e-a220-5415ab1895ab",
-                "profile_url": "https://dnoupmrhnyhcmxyqjzxs.supabase.co/storage/v1/object/public/images/user_uploads/74286b5e-52c0-442e-a220-5415ab1895ab/1758292414783.jpg"
+                "name": "Toha As"
               }
             ]
           },
@@ -1258,41 +528,24 @@
             "score": 2,
             "participants": [
               {
-                "id": 804633,
-                "name": "Haidar",
-                "gender": "Male",
-                "user_id": "f088cc3a-7c63-4840-9934-ec408bfdf40d",
-                "profile_url": ""
+                "name": "Haidar"
               },
               {
-                "id": 804638,
-                "name": "Kareem Mulachela",
-                "gender": "male",
-                "user_id": "3608b5bd-4050-443c-9eed-218517523d3b",
-                "profile_url": "https://dnoupmrhnyhcmxyqjzxs.supabase.co/storage/v1/object/public/images/user_uploads/3608b5bd-4050-443c-9eed-218517523d3b/1759681296086.jpg"
+                "name": "Kareem Mulachela"
               }
             ]
-          },
-          "court_id": 121884,
-          "time_seconds": 0
+          }
         },
         {
-          "id": 1520890,
+          "court": "Court 5",
           "team_a": {
             "score": 2,
             "participants": [
               {
-                "id": 804630,
-                "name": "Nico",
-                "gender": "",
-                "profile_url": ""
+                "name": "Nico"
               },
               {
-                "id": 804631,
-                "name": "Mahdi Kemal Assegaf",
-                "gender": "male",
-                "user_id": "401cf5b6-ad05-4bbc-8f6f-415867edb875",
-                "profile_url": "https://dnoupmrhnyhcmxyqjzxs.supabase.co/storage/v1/object/public/images/user_uploads/401cf5b6-ad05-4bbc-8f6f-415867edb875/1757754160281.jpg"
+                "name": "Mahdi Kemal Assegaf"
               }
             ]
           },
@@ -1300,123 +553,20 @@
             "score": 2,
             "participants": [
               {
-                "id": 804632,
-                "name": "adhni",
-                "gender": "male",
-                "user_id": "16ac40e6-8b8a-4207-9139-b10faac277f6",
-                "profile_url": ""
+                "name": "adhni"
               },
               {
-                "id": 804634,
-                "name": "Imam",
-                "gender": "",
-                "profile_url": ""
+                "name": "Imam"
               }
             ]
-          },
-          "court_id": 121885,
-          "time_seconds": 0
+          }
         }
-      ],
-      "round_number": 9
-    },
-    {
-      "id": 1011334,
-      "matches": [
-        {
-          "id": 1521194,
-          "team_a": {
-            "score": 0,
-            "participants": [
-              {
-                "id": 804633,
-                "name": "Haidar",
-                "gender": "Male",
-                "user_id": "f088cc3a-7c63-4840-9934-ec408bfdf40d",
-                "profile_url": ""
-              },
-              {
-                "id": 804637,
-                "name": "Toha As",
-                "gender": "male",
-                "user_id": "74286b5e-52c0-442e-a220-5415ab1895ab",
-                "profile_url": "https://dnoupmrhnyhcmxyqjzxs.supabase.co/storage/v1/object/public/images/user_uploads/74286b5e-52c0-442e-a220-5415ab1895ab/1758292414783.jpg"
-              }
-            ]
-          },
-          "team_b": {
-            "score": 0,
-            "participants": [
-              {
-                "id": 804636,
-                "name": "Areza",
-                "gender": "male",
-                "user_id": "62647ced-499e-4912-8fd1-d8368e3d8f9d",
-                "profile_url": "https://dnoupmrhnyhcmxyqjzxs.supabase.co/storage/v1/object/public/images/user_uploads/62647ced-499e-4912-8fd1-d8368e3d8f9d/1756305147535.jpg"
-              },
-              {
-                "id": 804638,
-                "name": "Kareem Mulachela",
-                "gender": "male",
-                "user_id": "3608b5bd-4050-443c-9eed-218517523d3b",
-                "profile_url": "https://dnoupmrhnyhcmxyqjzxs.supabase.co/storage/v1/object/public/images/user_uploads/3608b5bd-4050-443c-9eed-218517523d3b/1759681296086.jpg"
-              }
-            ]
-          },
-          "court_id": 121884,
-          "time_seconds": 0
-        },
-        {
-          "id": 1521195,
-          "team_a": {
-            "score": 0,
-            "participants": [
-              {
-                "id": 804630,
-                "name": "Nico",
-                "gender": "",
-                "profile_url": ""
-              },
-              {
-                "id": 804634,
-                "name": "Imam",
-                "gender": "",
-                "profile_url": ""
-              }
-            ]
-          },
-          "team_b": {
-            "score": 0,
-            "participants": [
-              {
-                "id": 804632,
-                "name": "adhni",
-                "gender": "male",
-                "user_id": "16ac40e6-8b8a-4207-9139-b10faac277f6",
-                "profile_url": ""
-              },
-              {
-                "id": 804635,
-                "name": "Oky",
-                "gender": "",
-                "profile_url": ""
-              }
-            ]
-          },
-          "court_id": 121885,
-          "time_seconds": 0
-        }
-      ],
-      "round_number": 10
+      ]
     }
   ],
   "leaderboard": [
     {
-      "id": 804637,
-      "user_id": "74286b5e-52c0-442e-a220-5415ab1895ab",
       "name": "Toha As",
-      "gender": "male",
-      "profile_url": "https://dnoupmrhnyhcmxyqjzxs.supabase.co/storage/v1/object/public/images/user_uploads/74286b5e-52c0-442e-a220-5415ab1895ab/1758292414783.jpg",
       "diff": 14,
       "points": 23,
       "bench": 2,
@@ -1424,15 +574,10 @@
       "win": 5,
       "lose": 1,
       "tie": 2,
-      "total_match": 8,
-      "community_id": 0
+      "total_match": 8
     },
     {
-      "id": 804638,
-      "user_id": "3608b5bd-4050-443c-9eed-218517523d3b",
       "name": "Kareem Mulachela",
-      "gender": "male",
-      "profile_url": "https://dnoupmrhnyhcmxyqjzxs.supabase.co/storage/v1/object/public/images/user_uploads/3608b5bd-4050-443c-9eed-218517523d3b/1759681296086.jpg",
       "diff": 6,
       "points": 19,
       "bench": 2,
@@ -1440,15 +585,10 @@
       "win": 4,
       "lose": 2,
       "tie": 2,
-      "total_match": 8,
-      "community_id": 0
+      "total_match": 8
     },
     {
-      "id": 804633,
-      "user_id": "f088cc3a-7c63-4840-9934-ec408bfdf40d",
       "name": "Haidar",
-      "gender": "Male",
-      "profile_url": "",
       "diff": 4,
       "points": 18,
       "bench": 2,
@@ -1456,15 +596,10 @@
       "win": 3,
       "lose": 2,
       "tie": 3,
-      "total_match": 8,
-      "community_id": 0
+      "total_match": 8
     },
     {
-      "id": 804636,
-      "user_id": "62647ced-499e-4912-8fd1-d8368e3d8f9d",
       "name": "Areza",
-      "gender": "male",
-      "profile_url": "https://dnoupmrhnyhcmxyqjzxs.supabase.co/storage/v1/object/public/images/user_uploads/62647ced-499e-4912-8fd1-d8368e3d8f9d/1756305147535.jpg",
       "diff": 2,
       "points": 17,
       "bench": 2,
@@ -1472,15 +607,10 @@
       "win": 1,
       "lose": 1,
       "tie": 6,
-      "total_match": 8,
-      "community_id": 0
+      "total_match": 8
     },
     {
-      "id": 804630,
-      "user_id": null,
       "name": "Nico",
-      "gender": "",
-      "profile_url": "",
       "diff": 0,
       "points": 16,
       "bench": 2,
@@ -1488,15 +618,10 @@
       "win": 2,
       "lose": 2,
       "tie": 4,
-      "total_match": 8,
-      "community_id": 0
+      "total_match": 8
     },
     {
-      "id": 804632,
-      "user_id": "16ac40e6-8b8a-4207-9139-b10faac277f6",
       "name": "adhni",
-      "gender": "male",
-      "profile_url": "",
       "diff": -2,
       "points": 15,
       "bench": 2,
@@ -1504,15 +629,10 @@
       "win": 1,
       "lose": 2,
       "tie": 5,
-      "total_match": 8,
-      "community_id": 0
+      "total_match": 8
     },
     {
-      "id": 804634,
-      "user_id": null,
       "name": "Imam",
-      "gender": "",
-      "profile_url": "",
       "diff": -6,
       "points": 13,
       "bench": 2,
@@ -1520,15 +640,10 @@
       "win": 2,
       "lose": 3,
       "tie": 3,
-      "total_match": 8,
-      "community_id": 0
+      "total_match": 8
     },
     {
-      "id": 804635,
-      "user_id": null,
       "name": "Oky",
-      "gender": "",
-      "profile_url": "",
       "diff": -8,
       "points": 12,
       "bench": 2,
@@ -1536,15 +651,10 @@
       "win": 2,
       "lose": 3,
       "tie": 3,
-      "total_match": 8,
-      "community_id": 0
+      "total_match": 8
     },
     {
-      "id": 804631,
-      "user_id": "401cf5b6-ad05-4bbc-8f6f-415867edb875",
       "name": "Mahdi Kemal Assegaf",
-      "gender": "male",
-      "profile_url": "https://dnoupmrhnyhcmxyqjzxs.supabase.co/storage/v1/object/public/images/user_uploads/401cf5b6-ad05-4bbc-8f6f-415867edb875/1757754160281.jpg",
       "diff": -10,
       "points": 11,
       "bench": 2,
@@ -1552,8 +662,7 @@
       "win": 0,
       "lose": 4,
       "tie": 4,
-      "total_match": 8,
-      "community_id": 0
+      "total_match": 8
     }
   ]
 }
