@@ -4,6 +4,16 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Thiurs 502 16 Story Images</title>
+  <meta name="description" content="Download 16 player story cards from Thiurs 502 16.">
+  <meta property="og:title" content="Thiurs 502 16 | Player Story Pack">
+  <meta property="og:description" content="Download 16 player story cards from Thiurs 502 16.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://adhni.github.io/skor-reports/reports/tnfNxH9ZCLyWvU4KBcmGH/stories/">
+  <meta property="og:image" content="https://adhni.github.io/skor-reports/reports/tnfNxH9ZCLyWvU4KBcmGH/stories/player-story-adrian.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://adhni.github.io/skor-reports/reports/tnfNxH9ZCLyWvU4KBcmGH/stories/player-story-adrian.jpg">
+  <link rel="canonical" href="https://adhni.github.io/skor-reports/reports/tnfNxH9ZCLyWvU4KBcmGH/stories/">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230b4678'/%3E%3Ccircle cx='42' cy='16' r='8' fill='%23bddf3c'/%3E%3Cpath d='M18 52V37c0-6 4-10 10-10h6c6 0 10 4 10 10v15' fill='none' stroke='white' stroke-width='6' stroke-linecap='round'/%3E%3C/svg%3E">
   <style>
     :root {
       --bg: #040d17;
@@ -76,7 +86,14 @@
       text-decoration: none;
       font-weight: 700;
       background: rgba(255, 255, 255, 0.05);
+      font-family: inherit;
+      cursor: pointer;
+      transition: transform 140ms ease, background 140ms ease;
     }
+    .hero-action:hover { transform: translateY(-2px); background: rgba(255,255,255,0.12); }
+    .hero-action:active { transform: translateY(0) scale(0.98); }
+    .hero-action-primary { background: #bddf3c; color: #10233a; border-color: #bddf3c; }
+    .hero-action-primary:hover { background: #d2ef64; }
     .section-note {
       margin: 18px 0 0;
       font-size: 17px;
@@ -94,7 +111,9 @@
       border: 1px solid var(--line);
       background: var(--panel);
       box-shadow: 0 18px 40px rgba(0, 0, 0, 0.2);
+      transition: transform 180ms ease, box-shadow 180ms ease;
     }
+    .card:hover { transform: translateY(-5px); box-shadow: 0 26px 52px rgba(0,0,0,0.28); }
     .preview {
       position: relative;
       display: block;
@@ -162,8 +181,10 @@
       min-height: 42px;
       border-radius: 999px;
       text-decoration: none;
-      font-size: 15px;
+      padding: 0 10px;
+      font-size: 13px;
       font-weight: 800;
+      white-space: nowrap;
     }
     .card-action.primary {
       background: var(--accent);
@@ -173,6 +194,27 @@
       border: 1px solid var(--line);
       color: var(--text);
       background: rgba(255, 255, 255, 0.04);
+    }
+    .download-toast {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      z-index: 30;
+      padding: 13px 16px;
+      border-radius: 16px;
+      background: #bddf3c;
+      color: #10233a;
+      font-size: 13px;
+      font-weight: 900;
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 160ms ease, transform 160ms ease;
+      pointer-events: none;
+    }
+    .download-toast.visible { opacity: 1; transform: translateY(0); }
+    button:focus-visible, a:focus-visible { outline: 3px solid #bddf3c; outline-offset: 3px; }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
     }
     @media (max-width: 720px) {
       .hero {
@@ -199,27 +241,67 @@
       </div>
       <div class="hero-actions">
         <a class="hero-action" href="../report.html">Open main report</a>
+        <button class="hero-action" type="button" data-copy-gallery>Copy gallery link</button>
+        <button class="hero-action hero-action-primary" type="button" data-download-all>Download all JPGs</button>
       </div>
     </section>
 
     <section class="grid">
-      <article class="card"><a class="preview" href="player-story-adrian.jpg"><span class="rank-pill">#1</span><img src="player-story-adrian.jpg" alt="adrian story image" loading="lazy"></a><div class="card-body"><div class="card-name">adrian</div><div class="card-meta">6W-3L · 30 pts</div><div class="card-actions"><a class="card-action primary" href="../report.html">Open scorecard</a><a class="card-action secondary" href="player-story-adrian.jpg" download>Download JPG</a></div></div></article>
-<article class="card"><a class="preview" href="player-story-jamal.jpg"><span class="rank-pill">#2</span><img src="player-story-jamal.jpg" alt="Jamal story image" loading="lazy"></a><div class="card-body"><div class="card-name">Jamal</div><div class="card-meta">7W-2L · 28 pts</div><div class="card-actions"><a class="card-action primary" href="../report.html">Open scorecard</a><a class="card-action secondary" href="player-story-jamal.jpg" download>Download JPG</a></div></div></article>
-<article class="card"><a class="preview" href="player-story-sandy-bran.jpg"><span class="rank-pill">#3</span><img src="player-story-sandy-bran.jpg" alt="Sandy Bran story image" loading="lazy"></a><div class="card-body"><div class="card-name">Sandy Bran</div><div class="card-meta">6W-3L · 28 pts</div><div class="card-actions"><a class="card-action primary" href="../report.html">Open scorecard</a><a class="card-action secondary" href="player-story-sandy-bran.jpg" download>Download JPG</a></div></div></article>
-<article class="card"><a class="preview" href="player-story-fauzan.jpg"><span class="rank-pill">#4</span><img src="player-story-fauzan.jpg" alt="Fauzan story image" loading="lazy"></a><div class="card-body"><div class="card-name">Fauzan</div><div class="card-meta">6W-3L · 26 pts</div><div class="card-actions"><a class="card-action primary" href="../report.html">Open scorecard</a><a class="card-action secondary" href="player-story-fauzan.jpg" download>Download JPG</a></div></div></article>
-<article class="card"><a class="preview" href="player-story-bima.jpg"><span class="rank-pill">#5</span><img src="player-story-bima.jpg" alt="Bima story image" loading="lazy"></a><div class="card-body"><div class="card-name">Bima</div><div class="card-meta">5W-4L · 25 pts</div><div class="card-actions"><a class="card-action primary" href="../report.html">Open scorecard</a><a class="card-action secondary" href="player-story-bima.jpg" download>Download JPG</a></div></div></article>
-<article class="card"><a class="preview" href="player-story-vs.jpg"><span class="rank-pill">#6</span><img src="player-story-vs.jpg" alt="VS story image" loading="lazy"></a><div class="card-body"><div class="card-name">VS</div><div class="card-meta">5W-4L · 24 pts</div><div class="card-actions"><a class="card-action primary" href="../report.html">Open scorecard</a><a class="card-action secondary" href="player-story-vs.jpg" download>Download JPG</a></div></div></article>
-<article class="card"><a class="preview" href="player-story-rachmatp.jpg"><span class="rank-pill">#7</span><img src="player-story-rachmatp.jpg" alt="RachmatP story image" loading="lazy"></a><div class="card-body"><div class="card-name">RachmatP</div><div class="card-meta">5W-4L · 23 pts</div><div class="card-actions"><a class="card-action primary" href="../report.html">Open scorecard</a><a class="card-action secondary" href="player-story-rachmatp.jpg" download>Download JPG</a></div></div></article>
-<article class="card"><a class="preview" href="player-story-rezno.jpg"><span class="rank-pill">#8</span><img src="player-story-rezno.jpg" alt="rezno story image" loading="lazy"></a><div class="card-body"><div class="card-name">rezno</div><div class="card-meta">4W-5L · 23 pts</div><div class="card-actions"><a class="card-action primary" href="../report.html">Open scorecard</a><a class="card-action secondary" href="player-story-rezno.jpg" download>Download JPG</a></div></div></article>
-<article class="card"><a class="preview" href="player-story-ib.jpg"><span class="rank-pill">#9</span><img src="player-story-ib.jpg" alt="IB story image" loading="lazy"></a><div class="card-body"><div class="card-name">IB</div><div class="card-meta">3W-6L · 23 pts</div><div class="card-actions"><a class="card-action primary" href="../report.html">Open scorecard</a><a class="card-action secondary" href="player-story-ib.jpg" download>Download JPG</a></div></div></article>
-<article class="card"><a class="preview" href="player-story-anis.jpg"><span class="rank-pill">#10</span><img src="player-story-anis.jpg" alt="Anis story image" loading="lazy"></a><div class="card-body"><div class="card-name">Anis</div><div class="card-meta">6W-3L · 22 pts</div><div class="card-actions"><a class="card-action primary" href="../report.html">Open scorecard</a><a class="card-action secondary" href="player-story-anis.jpg" download>Download JPG</a></div></div></article>
-<article class="card"><a class="preview" href="player-story-os.jpg"><span class="rank-pill">#11</span><img src="player-story-os.jpg" alt="OS story image" loading="lazy"></a><div class="card-body"><div class="card-name">OS</div><div class="card-meta">5W-4L · 21 pts</div><div class="card-actions"><a class="card-action primary" href="../report.html">Open scorecard</a><a class="card-action secondary" href="player-story-os.jpg" download>Download JPG</a></div></div></article>
-<article class="card"><a class="preview" href="player-story-dewaji.jpg"><span class="rank-pill">#12</span><img src="player-story-dewaji.jpg" alt="dewaji story image" loading="lazy"></a><div class="card-body"><div class="card-name">dewaji</div><div class="card-meta">4W-5L · 20 pts</div><div class="card-actions"><a class="card-action primary" href="../report.html">Open scorecard</a><a class="card-action secondary" href="player-story-dewaji.jpg" download>Download JPG</a></div></div></article>
-<article class="card"><a class="preview" href="player-story-abudy.jpg"><span class="rank-pill">#13</span><img src="player-story-abudy.jpg" alt="Abudy story image" loading="lazy"></a><div class="card-body"><div class="card-name">Abudy</div><div class="card-meta">4W-5L · 19 pts</div><div class="card-actions"><a class="card-action primary" href="../report.html">Open scorecard</a><a class="card-action secondary" href="player-story-abudy.jpg" download>Download JPG</a></div></div></article>
-<article class="card"><a class="preview" href="player-story-kareem-mulachela.jpg"><span class="rank-pill">#14</span><img src="player-story-kareem-mulachela.jpg" alt="Kareem Mulachela story image" loading="lazy"></a><div class="card-body"><div class="card-name">Kareem Mulachela</div><div class="card-meta">3W-6L · 18 pts</div><div class="card-actions"><a class="card-action primary" href="../report.html">Open scorecard</a><a class="card-action secondary" href="player-story-kareem-mulachela.jpg" download>Download JPG</a></div></div></article>
-<article class="card"><a class="preview" href="player-story-vallen-bs.jpg"><span class="rank-pill">#15</span><img src="player-story-vallen-bs.jpg" alt="Vallen BS story image" loading="lazy"></a><div class="card-body"><div class="card-name">Vallen BS</div><div class="card-meta">3W-6L · 18 pts</div><div class="card-actions"><a class="card-action primary" href="../report.html">Open scorecard</a><a class="card-action secondary" href="player-story-vallen-bs.jpg" download>Download JPG</a></div></div></article>
-<article class="card"><a class="preview" href="player-story-bary.jpg"><span class="rank-pill">#16</span><img src="player-story-bary.jpg" alt="Bary story image" loading="lazy"></a><div class="card-body"><div class="card-name">Bary</div><div class="card-meta">0W-9L · 12 pts</div><div class="card-actions"><a class="card-action primary" href="../report.html">Open scorecard</a><a class="card-action secondary" href="player-story-bary.jpg" download>Download JPG</a></div></div></article>
+      <article class="card"><a class="preview" href="player-story-adrian.jpg"><span class="rank-pill">#1</span><img src="player-story-adrian.jpg" alt="adrian story image" loading="lazy"></a><div class="card-body"><div class="card-name">adrian</div><div class="card-meta">6W-3L · 30 pts</div><div class="card-actions"><a class="card-action primary" href="../report.html">Open report</a><a class="card-action secondary" href="player-story-adrian.jpg" download>Download JPG</a></div></div></article>
+<article class="card"><a class="preview" href="player-story-jamal.jpg"><span class="rank-pill">#2</span><img src="player-story-jamal.jpg" alt="Jamal story image" loading="lazy"></a><div class="card-body"><div class="card-name">Jamal</div><div class="card-meta">7W-2L · 28 pts</div><div class="card-actions"><a class="card-action primary" href="../report.html">Open report</a><a class="card-action secondary" href="player-story-jamal.jpg" download>Download JPG</a></div></div></article>
+<article class="card"><a class="preview" href="player-story-sandy-bran.jpg"><span class="rank-pill">#3</span><img src="player-story-sandy-bran.jpg" alt="Sandy Bran story image" loading="lazy"></a><div class="card-body"><div class="card-name">Sandy Bran</div><div class="card-meta">6W-3L · 28 pts</div><div class="card-actions"><a class="card-action primary" href="../report.html">Open report</a><a class="card-action secondary" href="player-story-sandy-bran.jpg" download>Download JPG</a></div></div></article>
+<article class="card"><a class="preview" href="player-story-fauzan.jpg"><span class="rank-pill">#4</span><img src="player-story-fauzan.jpg" alt="Fauzan story image" loading="lazy"></a><div class="card-body"><div class="card-name">Fauzan</div><div class="card-meta">6W-3L · 26 pts</div><div class="card-actions"><a class="card-action primary" href="../report.html">Open report</a><a class="card-action secondary" href="player-story-fauzan.jpg" download>Download JPG</a></div></div></article>
+<article class="card"><a class="preview" href="player-story-bima.jpg"><span class="rank-pill">#5</span><img src="player-story-bima.jpg" alt="Bima story image" loading="lazy"></a><div class="card-body"><div class="card-name">Bima</div><div class="card-meta">5W-4L · 25 pts</div><div class="card-actions"><a class="card-action primary" href="../report.html">Open report</a><a class="card-action secondary" href="player-story-bima.jpg" download>Download JPG</a></div></div></article>
+<article class="card"><a class="preview" href="player-story-vs.jpg"><span class="rank-pill">#6</span><img src="player-story-vs.jpg" alt="VS story image" loading="lazy"></a><div class="card-body"><div class="card-name">VS</div><div class="card-meta">5W-4L · 24 pts</div><div class="card-actions"><a class="card-action primary" href="../report.html">Open report</a><a class="card-action secondary" href="player-story-vs.jpg" download>Download JPG</a></div></div></article>
+<article class="card"><a class="preview" href="player-story-rachmatp.jpg"><span class="rank-pill">#7</span><img src="player-story-rachmatp.jpg" alt="RachmatP story image" loading="lazy"></a><div class="card-body"><div class="card-name">RachmatP</div><div class="card-meta">5W-4L · 23 pts</div><div class="card-actions"><a class="card-action primary" href="../report.html">Open report</a><a class="card-action secondary" href="player-story-rachmatp.jpg" download>Download JPG</a></div></div></article>
+<article class="card"><a class="preview" href="player-story-rezno.jpg"><span class="rank-pill">#8</span><img src="player-story-rezno.jpg" alt="rezno story image" loading="lazy"></a><div class="card-body"><div class="card-name">rezno</div><div class="card-meta">4W-5L · 23 pts</div><div class="card-actions"><a class="card-action primary" href="../report.html">Open report</a><a class="card-action secondary" href="player-story-rezno.jpg" download>Download JPG</a></div></div></article>
+<article class="card"><a class="preview" href="player-story-ib.jpg"><span class="rank-pill">#9</span><img src="player-story-ib.jpg" alt="IB story image" loading="lazy"></a><div class="card-body"><div class="card-name">IB</div><div class="card-meta">3W-6L · 23 pts</div><div class="card-actions"><a class="card-action primary" href="../report.html">Open report</a><a class="card-action secondary" href="player-story-ib.jpg" download>Download JPG</a></div></div></article>
+<article class="card"><a class="preview" href="player-story-anis.jpg"><span class="rank-pill">#10</span><img src="player-story-anis.jpg" alt="Anis story image" loading="lazy"></a><div class="card-body"><div class="card-name">Anis</div><div class="card-meta">6W-3L · 22 pts</div><div class="card-actions"><a class="card-action primary" href="../report.html">Open report</a><a class="card-action secondary" href="player-story-anis.jpg" download>Download JPG</a></div></div></article>
+<article class="card"><a class="preview" href="player-story-os.jpg"><span class="rank-pill">#11</span><img src="player-story-os.jpg" alt="OS story image" loading="lazy"></a><div class="card-body"><div class="card-name">OS</div><div class="card-meta">5W-4L · 21 pts</div><div class="card-actions"><a class="card-action primary" href="../report.html">Open report</a><a class="card-action secondary" href="player-story-os.jpg" download>Download JPG</a></div></div></article>
+<article class="card"><a class="preview" href="player-story-dewaji.jpg"><span class="rank-pill">#12</span><img src="player-story-dewaji.jpg" alt="dewaji story image" loading="lazy"></a><div class="card-body"><div class="card-name">dewaji</div><div class="card-meta">4W-5L · 20 pts</div><div class="card-actions"><a class="card-action primary" href="../report.html">Open report</a><a class="card-action secondary" href="player-story-dewaji.jpg" download>Download JPG</a></div></div></article>
+<article class="card"><a class="preview" href="player-story-abudy.jpg"><span class="rank-pill">#13</span><img src="player-story-abudy.jpg" alt="Abudy story image" loading="lazy"></a><div class="card-body"><div class="card-name">Abudy</div><div class="card-meta">4W-5L · 19 pts</div><div class="card-actions"><a class="card-action primary" href="../report.html">Open report</a><a class="card-action secondary" href="player-story-abudy.jpg" download>Download JPG</a></div></div></article>
+<article class="card"><a class="preview" href="player-story-kareem-mulachela.jpg"><span class="rank-pill">#14</span><img src="player-story-kareem-mulachela.jpg" alt="Kareem Mulachela story image" loading="lazy"></a><div class="card-body"><div class="card-name">Kareem Mulachela</div><div class="card-meta">3W-6L · 18 pts</div><div class="card-actions"><a class="card-action primary" href="../report.html">Open report</a><a class="card-action secondary" href="player-story-kareem-mulachela.jpg" download>Download JPG</a></div></div></article>
+<article class="card"><a class="preview" href="player-story-vallen-bs.jpg"><span class="rank-pill">#15</span><img src="player-story-vallen-bs.jpg" alt="Vallen BS story image" loading="lazy"></a><div class="card-body"><div class="card-name">Vallen BS</div><div class="card-meta">3W-6L · 18 pts</div><div class="card-actions"><a class="card-action primary" href="../report.html">Open report</a><a class="card-action secondary" href="player-story-vallen-bs.jpg" download>Download JPG</a></div></div></article>
+<article class="card"><a class="preview" href="player-story-bary.jpg"><span class="rank-pill">#16</span><img src="player-story-bary.jpg" alt="Bary story image" loading="lazy"></a><div class="card-body"><div class="card-name">Bary</div><div class="card-meta">0W-9L · 12 pts</div><div class="card-actions"><a class="card-action primary" href="../report.html">Open report</a><a class="card-action secondary" href="player-story-bary.jpg" download>Download JPG</a></div></div></article>
     </section>
+    <div class="download-toast" id="download-toast" role="status" aria-live="polite"></div>
   </main>
+  <script>
+    (() => {
+      const imageHrefs = ["player-story-adrian.jpg","player-story-jamal.jpg","player-story-sandy-bran.jpg","player-story-fauzan.jpg","player-story-bima.jpg","player-story-vs.jpg","player-story-rachmatp.jpg","player-story-rezno.jpg","player-story-ib.jpg","player-story-anis.jpg","player-story-os.jpg","player-story-dewaji.jpg","player-story-abudy.jpg","player-story-kareem-mulachela.jpg","player-story-vallen-bs.jpg","player-story-bary.jpg"];
+      const toast = document.getElementById("download-toast");
+      let toastTimer = null;
+      const showToast = (message) => {
+        toast.textContent = message;
+        toast.classList.add("visible");
+        window.clearTimeout(toastTimer);
+        toastTimer = window.setTimeout(() => toast.classList.remove("visible"), 2400);
+      };
+      document.querySelector("[data-copy-gallery]").addEventListener("click", async () => {
+        try {
+          await navigator.clipboard.writeText(window.location.href.split("#")[0]);
+          showToast("Gallery link copied");
+        } catch (error) {
+          showToast("Copy the link from your address bar");
+        }
+      });
+      const downloadAll = document.querySelector("[data-download-all]");
+      if (downloadAll) {
+        downloadAll.addEventListener("click", () => {
+          imageHrefs.forEach((href, index) => {
+            window.setTimeout(() => {
+              const link = document.createElement("a");
+              link.href = href;
+              link.download = "";
+              document.body.appendChild(link);
+              link.click();
+              link.remove();
+            }, index * 140);
+          });
+          showToast(`Starting ${imageHrefs.length} downloads`);
+        });
+      }
+    })();
+  </script>
 </body>
 </html>
