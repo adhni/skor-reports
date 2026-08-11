@@ -1,8 +1,11 @@
 {
-  "input": "https://the.skorapp.id/game?id=tnfNxH9ZCLyWvU4KBcmGH",
-  "source": "share_link",
-  "share_token": "tnfNxH9ZCLyWvU4KBcmGH",
-  "game_id": 109610,
+  "game_key": "a39644fb41b0c78758f4",
   "folder_name": "tnfNxH9ZCLyWvU4KBcmGH",
-  "generated_at_utc": "2026-03-11T03:32:48.294554+00:00"
+  "public_report_base_url": "https://adhni.github.io/skor-reports/reports",
+  "branding": {
+    "theme_id": "cobalt",
+    "theme_label": "Cobalt",
+    "logo_filename": "logo.jpg"
+  },
+  "generated_at_utc": "2026-08-11T13:49:16.457718+00:00"
 }
