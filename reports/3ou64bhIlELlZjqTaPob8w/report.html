@@ -6,7 +6,7 @@
   <title>BOC End of Year | Skor Report</title>
   <style>
     :root {
-      --bg: #050505;
+      --bg: #05101c;
       --panel: rgba(245, 245, 245, 0.98);
       --panel-strong: #ffffff;
       --panel-tint: #e7e7e7;
@@ -17,6 +17,14 @@
       --accent-soft: #dedede;
       --accent-strong: #1f1f1f;
       --shadow-soft: 0 18px 44px rgba(0, 0, 0, 0.26);
+      --hero-from: rgba(22,48,76,0.98);
+      --hero-to: rgba(6,16,30,0.98);
+      --hero-stripe: rgba(145,205,255,0.12);
+      --hero-tag-bg: rgba(125,193,255,0.16);
+      --hero-tag-border: rgba(158,211,255,0.18);
+      --hero-action-bg: rgba(135,198,255,0.16);
+      --hero-action-hover: rgba(153,210,255,0.24);
+      --hero-action-border: rgba(158,211,255,0.2);
     }
     * { box-sizing: border-box; }
     body {
@@ -25,9 +33,9 @@
       color: #f3f3f3;
       overflow-x: hidden;
       background:
-        radial-gradient(circle at top left, rgba(255,255,255,0.08), transparent 18%),
-        radial-gradient(circle at 85% 0%, rgba(255,255,255,0.06), transparent 22%),
-        linear-gradient(180deg, #161616 0%, #090909 24%, var(--bg) 100%);
+        radial-gradient(circle at top left, rgba(121,191,255,0.20), transparent 18%),
+        radial-gradient(circle at 85% 0%, rgba(88,139,223,0.18), transparent 22%),
+        linear-gradient(180deg, #16304c 0%, #081423 24%, var(--bg) 100%);
     }
     .wrap {
       max-width: 1320px;
@@ -36,8 +44,8 @@
     }
     .hero {
       background:
-        linear-gradient(135deg, rgba(28,28,28,0.98), rgba(8,8,8,0.98)),
-        linear-gradient(90deg, transparent 0%, transparent 92%, rgba(255,255,255,0.05) 92%, rgba(255,255,255,0.05) 100%);
+        linear-gradient(135deg, var(--hero-from), var(--hero-to)),
+        linear-gradient(90deg, transparent 0%, transparent 92%, var(--hero-stripe) 92%, var(--hero-stripe) 100%);
       border: 1px solid rgba(255,255,255,0.08);
       border-radius: 28px;
       padding: 26px 28px 30px;
@@ -65,6 +73,15 @@
       background: white;
       padding: 6px;
       flex: 0 0 auto;
+    }
+    .logo-fallback {
+      display: grid;
+      place-items: center;
+      font-size: 26px;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      color: #0a0a0a;
+      text-transform: uppercase;
     }
     .hero-copy {
       min-width: 0;
@@ -110,16 +127,16 @@
       align-items: center;
       padding: 12px 16px;
       border-radius: 999px;
-      background: rgba(255,255,255,0.12);
+      background: var(--hero-action-bg);
       color: #ffffff;
-      border: 1px solid rgba(255,255,255,0.14);
+      border: 1px solid var(--hero-action-border);
       font-size: 13px;
       font-weight: 800;
       letter-spacing: 0.02em;
       text-decoration: none;
     }
     .hero-action:hover {
-      background: rgba(255,255,255,0.18);
+      background: var(--hero-action-hover);
     }
     .chart-legend {
       grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
@@ -237,9 +254,9 @@
       align-items: center;
       padding: 10px 14px;
       border-radius: 999px;
-      background: rgba(255,255,255,0.1);
+      background: var(--hero-tag-bg);
       color: #ffffff;
-      border: 1px solid rgba(255,255,255,0.12);
+      border: 1px solid var(--hero-tag-border);
       font-size: 13px;
       font-weight: 700;
       letter-spacing: 0.02em;
@@ -678,7 +695,7 @@
         </div>
       </div>
       <div class="hero-tags">
-        <span class="hero-tag">5 players</span><span class="hero-tag">10 rounds</span><span class="hero-tag">1 courts</span><span class="hero-tag">31 Dec 2025</span>
+        <span class="hero-tag">5 players</span><span class="hero-tag">8 rounds</span><span class="hero-tag">1 courts</span><span class="hero-tag">31 Dec 2025</span>
       </div>
       <div class="hero-actions"><a class="hero-action" href="player-story-areza.html">Featured player story: Areza</a><a class="hero-action" href="stories/index.html">Story image gallery</a></div>
     </section>
@@ -780,19 +797,17 @@
       </div>
       <div class="rounds">
         <article class="round"><div class="round-header"><h3 class="round-title">Round 1</h3><div class="round-meta">1 matches</div></div><p class="bench-note">Bench: Mahdi Kemal Assegaf (=1)</p><section class="match"><div class="pill">Court 1</div><div class="match-grid"><div class="team win"><strong>Score 3</strong><ul class="players"><li>Areza (=1)</li><li>Toha As (=1)</li></ul></div><div class="score">3 : 2</div><div class="team"><strong>Score 2</strong><ul class="players"><li>Kareem Mulachela (=1)</li><li>adhni (=1)</li></ul></div></div></section></article>
-<article class="round"><div class="round-header"><h3 class="round-title">Round 2</h3><div class="round-meta">1 matches</div></div><p class="bench-note">Bench: Kareem Mulachela (=4)</p><section class="match"><div class="pill">Court 1</div><div class="match-grid"><div class="team"><strong>Score 2</strong><ul class="players"><li>Mahdi Kemal Assegaf (#1)</li><li>Toha As (=2)</li></ul></div><div class="score">2 : 3</div><div class="team win"><strong>Score 3</strong><ul class="players"><li>Areza (=2)</li><li>adhni (=4)</li></ul></div></div></section></article>
+<article class="round"><div class="round-header"><h3 class="round-title">Round 2</h3><div class="round-meta">1 matches</div></div><p class="bench-note">Bench: Kareem Mulachela (=4)</p><section class="match"><div class="pill">Court 1</div><div class="match-grid"><div class="team"><strong>Score 2</strong><ul class="players"><li>Mahdi Kemal Assegaf (#3)</li><li>Toha As (=1)</li></ul></div><div class="score">2 : 3</div><div class="team win"><strong>Score 3</strong><ul class="players"><li>Areza (=1)</li><li>adhni (=4)</li></ul></div></div></section></article>
 <article class="round"><div class="round-header"><h3 class="round-title">Round 3</h3><div class="round-meta">1 matches</div></div><p class="bench-note">Bench: Areza (#1)</p><section class="match"><div class="pill">Court 1</div><div class="match-grid"><div class="team"><strong>Score 2</strong><ul class="players"><li>Mahdi Kemal Assegaf (=4)</li><li>Kareem Mulachela (=4)</li></ul></div><div class="score">2 : 3</div><div class="team win"><strong>Score 3</strong><ul class="players"><li>adhni (=2)</li><li>Toha As (=2)</li></ul></div></div></section></article>
 <article class="round"><div class="round-header"><h3 class="round-title">Round 4</h3><div class="round-meta">1 matches</div></div><p class="bench-note">Bench: Toha As (=1)</p><section class="match"><div class="pill">Court 1</div><div class="match-grid"><div class="team win"><strong>Score 4</strong><ul class="players"><li>Kareem Mulachela (=4)</li><li>Areza (#3)</li></ul></div><div class="score">4 : 1</div><div class="team"><strong>Score 1</strong><ul class="players"><li>Mahdi Kemal Assegaf (=4)</li><li>adhni (=1)</li></ul></div></div></section></article>
 <article class="round"><div class="round-header"><h3 class="round-title">Round 5</h3><div class="round-meta">1 matches</div></div><p class="bench-note">Bench: adhni (#2)</p><section class="match"><div class="pill">Court 1</div><div class="match-grid"><div class="team win"><strong>Score 3</strong><ul class="players"><li>Kareem Mulachela (#4)</li><li>Toha As (#3)</li></ul></div><div class="score">3 : 2</div><div class="team"><strong>Score 2</strong><ul class="players"><li>Mahdi Kemal Assegaf (#5)</li><li>Areza (#1)</li></ul></div></div></section></article>
 <article class="round"><div class="round-header"><h3 class="round-title">Round 6</h3><div class="round-meta">1 matches</div></div><p class="bench-note">Bench: adhni (#4)</p><section class="match"><div class="pill">Court 1</div><div class="match-grid"><div class="team win"><strong>Score 3</strong><ul class="players"><li>Areza (#1)</li><li>Toha As (#2)</li></ul></div><div class="score">3 : 2</div><div class="team"><strong>Score 2</strong><ul class="players"><li>Mahdi Kemal Assegaf (#5)</li><li>Kareem Mulachela (#3)</li></ul></div></div></section></article>
 <article class="round"><div class="round-header"><h3 class="round-title">Round 7</h3><div class="round-meta">1 matches</div></div><p class="bench-note">Bench: Mahdi Kemal Assegaf (#5)</p><section class="match"><div class="pill">Court 1</div><div class="match-grid"><div class="team"><strong>Score 2</strong><ul class="players"><li>Areza (#1)</li><li>adhni (#4)</li></ul></div><div class="score">2 : 3</div><div class="team win"><strong>Score 3</strong><ul class="players"><li>Kareem Mulachela (#3)</li><li>Toha As (#2)</li></ul></div></div></section></article>
 <article class="round"><div class="round-header"><h3 class="round-title">Round 8</h3><div class="round-meta">1 matches</div></div><p class="bench-note">Bench: Toha As (#1)</p><section class="match"><div class="pill">Court 1</div><div class="match-grid"><div class="team win"><strong>Score 3</strong><ul class="players"><li>Mahdi Kemal Assegaf (#5)</li><li>adhni (#4)</li></ul></div><div class="score">3 : 2</div><div class="team"><strong>Score 2</strong><ul class="players"><li>Kareem Mulachela (#3)</li><li>Areza (#2)</li></ul></div></div></section></article>
-<article class="round"><div class="round-header"><h3 class="round-title">Round 9</h3><div class="round-meta">1 matches</div></div><p class="bench-note">Bench: Areza (#1)</p><section class="match"><div class="pill">Court 1</div><div class="match-grid"><div class="team"><strong>Score 0</strong><ul class="players"><li>Mahdi Kemal Assegaf (#5)</li><li>Toha As (#3)</li></ul></div><div class="score">0 : 0</div><div class="team"><strong>Score 0</strong><ul class="players"><li>Kareem Mulachela (#2)</li><li>adhni (#4)</li></ul></div></div></section></article>
-<article class="round"><div class="round-header"><h3 class="round-title">Round 10</h3><div class="round-meta">1 matches</div></div><p class="bench-note">Bench: Kareem Mulachela (#2)</p><section class="match"><div class="pill">Court 1</div><div class="match-grid"><div class="team"><strong>Score 0</strong><ul class="players"><li>Mahdi Kemal Assegaf (#5)</li><li>Areza (#1)</li></ul></div><div class="score">0 : 0</div><div class="team"><strong>Score 0</strong><ul class="players"><li>adhni (#4)</li><li>Toha As (#3)</li></ul></div></div></section></article>
       </div>
     </section>
   </main>
-  <script id="chart-data" type="application/json">{"rounds":[1,2,3,4,5,6,7,8,9,10],"player_count":5,"series":[{"name":"Areza","final_rank":1,"color":"hsl(0 68% 44%)","points":[{"round":1,"rank":2,"total":3,"raw_total":3,"extra_bench":0,"points":3,"bench":0,"diff":1,"win":1,"lose":0,"tie":0},{"round":2,"rank":1,"total":6,"raw_total":6,"extra_bench":0,"points":6,"bench":0,"diff":2,"win":2,"lose":0,"tie":0},{"round":3,"rank":3,"total":6,"raw_total":16,"extra_bench":10,"points":6,"bench":10,"diff":2,"win":2,"lose":0,"tie":0},{"round":4,"rank":1,"total":10,"raw_total":20,"extra_bench":10,"points":10,"bench":10,"diff":5,"win":3,"lose":0,"tie":0},{"round":5,"rank":1,"total":22,"raw_total":22,"extra_bench":0,"points":12,"bench":10,"diff":4,"win":3,"lose":1,"tie":0},{"round":6,"rank":1,"total":25,"raw_total":25,"extra_bench":0,"points":15,"bench":10,"diff":5,"win":4,"lose":1,"tie":0},{"round":7,"rank":2,"total":27,"raw_total":27,"extra_bench":0,"points":17,"bench":10,"diff":4,"win":4,"lose":2,"tie":0},{"round":8,"rank":1,"total":29,"raw_total":29,"extra_bench":0,"points":19,"bench":10,"diff":3,"win":4,"lose":3,"tie":0},{"round":9,"rank":1,"total":29,"raw_total":39,"extra_bench":10,"points":19,"bench":20,"diff":3,"win":4,"lose":3,"tie":0},{"round":10,"rank":1,"total":39,"raw_total":39,"extra_bench":0,"points":19,"bench":20,"diff":3,"win":4,"lose":3,"tie":1}]},{"name":"Kareem Mulachela","final_rank":2,"color":"hsl(37 68% 44%)","points":[{"round":1,"rank":5,"total":2,"raw_total":2,"extra_bench":0,"points":2,"bench":0,"diff":-1,"win":0,"lose":1,"tie":0},{"round":2,"rank":4,"total":2,"raw_total":12,"extra_bench":10,"points":2,"bench":10,"diff":-1,"win":0,"lose":1,"tie":0},{"round":3,"rank":4,"total":4,"raw_total":14,"extra_bench":10,"points":4,"bench":10,"diff":-2,"win":0,"lose":2,"tie":0},{"round":4,"rank":4,"total":8,"raw_total":18,"extra_bench":10,"points":8,"bench":10,"diff":1,"win":1,"lose":2,"tie":0},{"round":5,"rank":3,"total":21,"raw_total":21,"extra_bench":0,"points":11,"bench":10,"diff":2,"win":2,"lose":2,"tie":0},{"round":6,"rank":3,"total":23,"raw_total":23,"extra_bench":0,"points":13,"bench":10,"diff":1,"win":2,"lose":3,"tie":0},{"round":7,"rank":3,"total":26,"raw_total":26,"extra_bench":0,"points":16,"bench":10,"diff":2,"win":3,"lose":3,"tie":0},{"round":8,"rank":2,"total":28,"raw_total":28,"extra_bench":0,"points":18,"bench":10,"diff":1,"win":3,"lose":4,"tie":0},{"round":9,"rank":2,"total":28,"raw_total":28,"extra_bench":0,"points":18,"bench":10,"diff":1,"win":3,"lose":4,"tie":1},{"round":10,"rank":2,"total":38,"raw_total":38,"extra_bench":0,"points":18,"bench":20,"diff":1,"win":3,"lose":4,"tie":1}]},{"name":"Toha As","final_rank":3,"color":"hsl(74 68% 44%)","points":[{"round":1,"rank":3,"total":3,"raw_total":3,"extra_bench":0,"points":3,"bench":0,"diff":1,"win":1,"lose":0,"tie":0},{"round":2,"rank":3,"total":5,"raw_total":5,"extra_bench":0,"points":5,"bench":0,"diff":0,"win":1,"lose":1,"tie":0},{"round":3,"rank":2,"total":8,"raw_total":8,"extra_bench":0,"points":8,"bench":0,"diff":1,"win":2,"lose":1,"tie":0},{"round":4,"rank":3,"total":8,"raw_total":18,"extra_bench":10,"points":8,"bench":10,"diff":1,"win":2,"lose":1,"tie":0},{"round":5,"rank":2,"total":21,"raw_total":21,"extra_bench":0,"points":11,"bench":10,"diff":2,"win":3,"lose":1,"tie":0},{"round":6,"rank":2,"total":24,"raw_total":24,"extra_bench":0,"points":14,"bench":10,"diff":3,"win":4,"lose":1,"tie":0},{"round":7,"rank":1,"total":27,"raw_total":27,"extra_bench":0,"points":17,"bench":10,"diff":4,"win":5,"lose":1,"tie":0},{"round":8,"rank":3,"total":27,"raw_total":37,"extra_bench":10,"points":17,"bench":20,"diff":4,"win":5,"lose":1,"tie":0},{"round":9,"rank":3,"total":27,"raw_total":37,"extra_bench":10,"points":17,"bench":20,"diff":4,"win":5,"lose":1,"tie":1},{"round":10,"rank":3,"total":37,"raw_total":37,"extra_bench":0,"points":17,"bench":20,"diff":4,"win":5,"lose":1,"tie":2}]},{"name":"adhni","final_rank":4,"color":"hsl(111 68% 44%)","points":[{"round":1,"rank":4,"total":2,"raw_total":2,"extra_bench":0,"points":2,"bench":0,"diff":-1,"win":0,"lose":1,"tie":0},{"round":2,"rank":2,"total":5,"raw_total":5,"extra_bench":0,"points":5,"bench":0,"diff":0,"win":1,"lose":1,"tie":0},{"round":3,"rank":1,"total":8,"raw_total":8,"extra_bench":0,"points":8,"bench":0,"diff":1,"win":2,"lose":1,"tie":0},{"round":4,"rank":2,"total":9,"raw_total":9,"extra_bench":0,"points":9,"bench":0,"diff":-2,"win":2,"lose":2,"tie":0},{"round":5,"rank":4,"total":19,"raw_total":19,"extra_bench":0,"points":9,"bench":10,"diff":-2,"win":2,"lose":2,"tie":0},{"round":6,"rank":4,"total":19,"raw_total":29,"extra_bench":10,"points":9,"bench":20,"diff":-2,"win":2,"lose":2,"tie":0},{"round":7,"rank":4,"total":21,"raw_total":31,"extra_bench":10,"points":11,"bench":20,"diff":-3,"win":2,"lose":3,"tie":0},{"round":8,"rank":4,"total":24,"raw_total":34,"extra_bench":10,"points":14,"bench":20,"diff":-2,"win":3,"lose":3,"tie":0},{"round":9,"rank":4,"total":24,"raw_total":34,"extra_bench":10,"points":14,"bench":20,"diff":-2,"win":3,"lose":3,"tie":1},{"round":10,"rank":4,"total":34,"raw_total":34,"extra_bench":0,"points":14,"bench":20,"diff":-2,"win":3,"lose":3,"tie":2}]},{"name":"Mahdi Kemal Assegaf","final_rank":5,"color":"hsl(148 68% 44%)","points":[{"round":1,"rank":1,"total":0,"raw_total":10,"extra_bench":10,"points":0,"bench":10,"diff":0,"win":0,"lose":0,"tie":0},{"round":2,"rank":5,"total":2,"raw_total":12,"extra_bench":10,"points":2,"bench":10,"diff":-1,"win":0,"lose":1,"tie":0},{"round":3,"rank":5,"total":4,"raw_total":14,"extra_bench":10,"points":4,"bench":10,"diff":-2,"win":0,"lose":2,"tie":0},{"round":4,"rank":5,"total":5,"raw_total":15,"extra_bench":10,"points":5,"bench":10,"diff":-5,"win":0,"lose":3,"tie":0},{"round":5,"rank":5,"total":17,"raw_total":17,"extra_bench":0,"points":7,"bench":10,"diff":-6,"win":0,"lose":4,"tie":0},{"round":6,"rank":5,"total":19,"raw_total":19,"extra_bench":0,"points":9,"bench":10,"diff":-7,"win":0,"lose":5,"tie":0},{"round":7,"rank":5,"total":19,"raw_total":29,"extra_bench":10,"points":9,"bench":20,"diff":-7,"win":0,"lose":5,"tie":0},{"round":8,"rank":5,"total":22,"raw_total":32,"extra_bench":10,"points":12,"bench":20,"diff":-6,"win":1,"lose":5,"tie":0},{"round":9,"rank":5,"total":22,"raw_total":32,"extra_bench":10,"points":12,"bench":20,"diff":-6,"win":1,"lose":5,"tie":1},{"round":10,"rank":5,"total":32,"raw_total":32,"extra_bench":0,"points":12,"bench":20,"diff":-6,"win":1,"lose":5,"tie":2}]}]}</script>
+  <script id="chart-data" type="application/json">{"rounds":[1,2,3,4,5,6,7,8],"player_count":5,"series":[{"name":"Areza","final_rank":1,"color":"hsl(0 68% 44%)","points":[{"round":1,"rank":1,"total":3,"raw_total":3,"extra_bench":0,"points":3,"bench":0,"diff":1,"win":1,"lose":0,"tie":0},{"round":2,"rank":1,"total":6,"raw_total":6,"extra_bench":0,"points":6,"bench":0,"diff":2,"win":2,"lose":0,"tie":0},{"round":3,"rank":3,"total":6,"raw_total":8,"extra_bench":2,"points":6,"bench":2,"diff":2,"win":2,"lose":0,"tie":0},{"round":4,"rank":1,"total":10,"raw_total":12,"extra_bench":2,"points":10,"bench":2,"diff":5,"win":3,"lose":0,"tie":0},{"round":5,"rank":1,"total":14,"raw_total":14,"extra_bench":0,"points":12,"bench":2,"diff":4,"win":3,"lose":1,"tie":0},{"round":6,"rank":1,"total":17,"raw_total":17,"extra_bench":0,"points":15,"bench":2,"diff":5,"win":4,"lose":1,"tie":0},{"round":7,"rank":2,"total":19,"raw_total":19,"extra_bench":0,"points":17,"bench":2,"diff":4,"win":4,"lose":2,"tie":0},{"round":8,"rank":1,"total":21,"raw_total":21,"extra_bench":0,"points":19,"bench":2,"diff":3,"win":4,"lose":3,"tie":0}]},{"name":"Kareem Mulachela","final_rank":2,"color":"hsl(37 68% 44%)","points":[{"round":1,"rank":5,"total":2,"raw_total":2,"extra_bench":0,"points":2,"bench":0,"diff":-1,"win":0,"lose":1,"tie":0},{"round":2,"rank":4,"total":2,"raw_total":4,"extra_bench":2,"points":2,"bench":2,"diff":-1,"win":0,"lose":1,"tie":0},{"round":3,"rank":4,"total":4,"raw_total":6,"extra_bench":2,"points":4,"bench":2,"diff":-2,"win":0,"lose":2,"tie":0},{"round":4,"rank":4,"total":8,"raw_total":10,"extra_bench":2,"points":8,"bench":2,"diff":1,"win":1,"lose":2,"tie":0},{"round":5,"rank":3,"total":13,"raw_total":13,"extra_bench":0,"points":11,"bench":2,"diff":2,"win":2,"lose":2,"tie":0},{"round":6,"rank":3,"total":15,"raw_total":15,"extra_bench":0,"points":13,"bench":2,"diff":1,"win":2,"lose":3,"tie":0},{"round":7,"rank":3,"total":18,"raw_total":18,"extra_bench":0,"points":16,"bench":2,"diff":2,"win":3,"lose":3,"tie":0},{"round":8,"rank":2,"total":20,"raw_total":20,"extra_bench":0,"points":18,"bench":2,"diff":1,"win":3,"lose":4,"tie":0}]},{"name":"Toha As","final_rank":3,"color":"hsl(74 68% 44%)","points":[{"round":1,"rank":2,"total":3,"raw_total":3,"extra_bench":0,"points":3,"bench":0,"diff":1,"win":1,"lose":0,"tie":0},{"round":2,"rank":3,"total":5,"raw_total":5,"extra_bench":0,"points":5,"bench":0,"diff":0,"win":1,"lose":1,"tie":0},{"round":3,"rank":2,"total":8,"raw_total":8,"extra_bench":0,"points":8,"bench":0,"diff":1,"win":2,"lose":1,"tie":0},{"round":4,"rank":3,"total":8,"raw_total":10,"extra_bench":2,"points":8,"bench":2,"diff":1,"win":2,"lose":1,"tie":0},{"round":5,"rank":2,"total":13,"raw_total":13,"extra_bench":0,"points":11,"bench":2,"diff":2,"win":3,"lose":1,"tie":0},{"round":6,"rank":2,"total":16,"raw_total":16,"extra_bench":0,"points":14,"bench":2,"diff":3,"win":4,"lose":1,"tie":0},{"round":7,"rank":1,"total":19,"raw_total":19,"extra_bench":0,"points":17,"bench":2,"diff":4,"win":5,"lose":1,"tie":0},{"round":8,"rank":3,"total":19,"raw_total":21,"extra_bench":2,"points":17,"bench":4,"diff":4,"win":5,"lose":1,"tie":0}]},{"name":"adhni","final_rank":4,"color":"hsl(111 68% 44%)","points":[{"round":1,"rank":4,"total":2,"raw_total":2,"extra_bench":0,"points":2,"bench":0,"diff":-1,"win":0,"lose":1,"tie":0},{"round":2,"rank":2,"total":5,"raw_total":5,"extra_bench":0,"points":5,"bench":0,"diff":0,"win":1,"lose":1,"tie":0},{"round":3,"rank":1,"total":8,"raw_total":8,"extra_bench":0,"points":8,"bench":0,"diff":1,"win":2,"lose":1,"tie":0},{"round":4,"rank":2,"total":9,"raw_total":9,"extra_bench":0,"points":9,"bench":0,"diff":-2,"win":2,"lose":2,"tie":0},{"round":5,"rank":4,"total":11,"raw_total":11,"extra_bench":0,"points":9,"bench":2,"diff":-2,"win":2,"lose":2,"tie":0},{"round":6,"rank":4,"total":11,"raw_total":13,"extra_bench":2,"points":9,"bench":4,"diff":-2,"win":2,"lose":2,"tie":0},{"round":7,"rank":4,"total":13,"raw_total":15,"extra_bench":2,"points":11,"bench":4,"diff":-3,"win":2,"lose":3,"tie":0},{"round":8,"rank":4,"total":16,"raw_total":18,"extra_bench":2,"points":14,"bench":4,"diff":-2,"win":3,"lose":3,"tie":0}]},{"name":"Mahdi Kemal Assegaf","final_rank":5,"color":"hsl(148 68% 44%)","points":[{"round":1,"rank":3,"total":0,"raw_total":2,"extra_bench":2,"points":0,"bench":2,"diff":0,"win":0,"lose":0,"tie":0},{"round":2,"rank":5,"total":2,"raw_total":4,"extra_bench":2,"points":2,"bench":2,"diff":-1,"win":0,"lose":1,"tie":0},{"round":3,"rank":5,"total":4,"raw_total":6,"extra_bench":2,"points":4,"bench":2,"diff":-2,"win":0,"lose":2,"tie":0},{"round":4,"rank":5,"total":5,"raw_total":7,"extra_bench":2,"points":5,"bench":2,"diff":-5,"win":0,"lose":3,"tie":0},{"round":5,"rank":5,"total":9,"raw_total":9,"extra_bench":0,"points":7,"bench":2,"diff":-6,"win":0,"lose":4,"tie":0},{"round":6,"rank":5,"total":11,"raw_total":11,"extra_bench":0,"points":9,"bench":2,"diff":-7,"win":0,"lose":5,"tie":0},{"round":7,"rank":5,"total":11,"raw_total":13,"extra_bench":2,"points":9,"bench":4,"diff":-7,"win":0,"lose":5,"tie":0},{"round":8,"rank":5,"total":14,"raw_total":16,"extra_bench":2,"points":12,"bench":4,"diff":-6,"win":1,"lose":5,"tie":0}]}]}</script>
   <script>
     (() => {
       const data = JSON.parse(document.getElementById("chart-data").textContent);
